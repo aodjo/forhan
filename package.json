@@ -18,7 +18,8 @@
     "test:ime:windows": "node scripts/test-windows-ime.ts",
     "pack": "npm run build && electron-builder --dir",
     "dist:win": "npm run build && electron-builder --win portable",
-    "dist:mac": "npm run build && electron-builder --mac dmg zip"
+    "dist:mac": "npm run build && electron-builder --mac dmg zip --config.mac.identity=- --config.mac.entitlements=build/entitlements.mac.adhoc.plist --config.mac.entitlementsInherit=build/entitlements.mac.adhoc.plist",
+    "dist:mac:signed": "npm run build && electron-builder --mac dmg zip"
   },
   "dependencies": {
     "@tiptap/core": "^3.0.0",
@@ -80,6 +81,9 @@
       "artifactName": "Forhan-${version}-Windows.${ext}"
     },
     "mac": {
+      "hardenedRuntime": true,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.inherit.plist",
       "icon": "build/icon.png",
       "category": "public.app-category.productivity",
       "target": [
@@ -99,6 +103,9 @@
         }
       ],
       "artifactName": "Forhan-${version}-macOS-${arch}.${ext}"
+    },
+    "dmg": {
+      "backgroundColor": "#ffffff"
     }
   }
 }

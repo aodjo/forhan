@@ -1,5 +1,6 @@
 import {DOCUMENT_START_KEY} from './helpers/native-keyboard.ts';
 import {nativeSourceCaretOffset} from './helpers/native-paper-viewport.ts';
+import {observeNativeKeySource,retainNativeKeySource} from './helpers/native-key-source-observation.ts';
 import { test, expect, type Page } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import {createHash} from 'node:crypto';
@@ -11,6 +12,33 @@ import { contextualInk, contextualPositions, contextualCaret } from "./helpers/c
 
 /** Two raster-edge pixels allow sparse mark antialiasing while source font height remains exactly invariant. */
 const CONTEXTUAL_INK_EDGE_TOLERANCE = 2;
+
+/**
+ * Install passive native source ordering observations before each owned page loads.
+ *
+ * Test behavior and expected text remain unchanged across all platform runners.
+ * @async
+ * @param {{page:Page}} context - Current isolated regression renderer.
+ * @returns {Promise<void>} Resolves after registering the read-only observer.
+ * @example
+ * // Actual Command-arrow and subsequent typing share one untouched source trace.
+ */
+async function installKeySourceObservation({page}:{page:Page}):Promise<void>{await page.addInitScript(observeNativeKeySource);}
+
+/**
+ * Preserve genuine source observations after the original assertion outcome.
+ *
+ * Successful and failed original cases retain the same diagnostic evidence.
+ * @async
+ * @param {{page:Page}} context - Current test-owned application renderer.
+ * @returns {Promise<void>} Resolves after retaining the original observation buffer.
+ * @example
+ * // A failed immediate typing assertion retains its preceding real caret endpoints.
+ */
+async function attachKeySourceObservation({page}:{page:Page}):Promise<void>{await retainNativeKeySource(page);}
+
+test.beforeEach(installKeySourceObservation);
+test.afterEach(attachKeySourceObservation);
 
 /**
  * Keep Command-arrow navigation anchored in original native-width source.

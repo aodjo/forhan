@@ -14,6 +14,11 @@ on:
         type: boolean
         default: false
         required: false
+      platform_diagnostic_pattern:
+        description: Optional test title filter for focused native platform diagnostics
+        type: string
+        default: ''
+        required: false
 jobs:
   desktop:
     strategy:
@@ -62,9 +67,10 @@ jobs:
           PLAYWRIGHT_JSON_OUTPUT_FILE: test-results/layout-report.json
       - name: Run focused native platform diagnostics
         if: ${{ inputs.platform_layout_diagnostics }}
-        run: npx playwright test character-width.spec.ts font-size.spec.ts native-body-grid-origin-desktop.spec.ts native-fit-viewport-desktop.spec.ts native-line-layout.spec.ts native-page-view-desktop.spec.ts native-paper-framing-desktop.spec.ts native-paper-viewport-desktop.spec.ts native-relative-shading-desktop.spec.ts paragraph-alignment.spec.ts paragraph-word-break.spec.ts paragraph-word-break-desktop.spec.ts --reporter=line,json
+        run: node scripts/run-native-diagnostics.ts
         env:
           PLAYWRIGHT_JSON_OUTPUT_FILE: test-results/platform-report.json
+          FORHAN_DIAGNOSTIC_GREP: ${{ inputs.platform_diagnostic_pattern }}
       - run: node node_modules/electron-builder/cli.js ${{ matrix.package }} --publish never
         if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
         env:

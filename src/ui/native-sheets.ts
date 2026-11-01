@@ -127,11 +127,12 @@ function nativeSheetTopMargin(canvas:HTMLElement,sheets:NativeEditableSheets):st
  * native sheet instead rounds its absolute near and far edges independently,
  * preventing later sheets from acquiring a one-pixel height or origin drift.
  * Actual chrome, source extents and the existing minimum gap determine the
- * group origin. Only noneditable backgrounds move; source layout stays intact.
+ * group origin. Only the visible background surface moves; logical paper bounds
+ * remain authoritative for physical source measurements and page navigation.
  * @param {HTMLElement} canvas - Actual scrollable workspace containing the ruler and paper.
  * @param {HTMLElement} backgrounds - Owned noneditable physical paper backgrounds.
  * @param {NativeEditableSheets} sheets - Original source page dimensions and complete projection.
- * @returns {void} Updates only changed manual background top and height styles.
+ * @returns {void} Updates only changed manual surface offsets and paint heights.
  * @example
  * renderNativeManualPaperEdges(canvas, backgrounds, sheets);
  */
@@ -144,12 +145,17 @@ function renderNativeManualPaperEdges(canvas:HTMLElement,backgrounds:HTMLElement
     before=(parseFloat(canvasStyle.paddingTop)||0)+ruler.getBoundingClientRect().height+(parseFloat(rulerStyle.marginTop)||0)+(parseFloat(rulerStyle.marginBottom)||0),
     free=canvas.clientHeight-before-(parseFloat(canvasStyle.paddingBottom)||0)-(sheets.projection.height*scale+2),
     origin=canvas.getBoundingClientRect().top+canvas.clientTop+before+Math.max(sheets.bottomInset*scale,free/2)-canvas.scrollTop,
-    backgroundTop=backgrounds.getBoundingClientRect().top,height=sheets.pages.paper.height/NATIVE_UNITS_PER_CSS_PIXEL*scale;
+    height=sheets.pages.paper.height/NATIVE_UNITS_PER_CSS_PIXEL*scale;
   for(let index=0;index<backgrounds.children.length;index++){
     /** Absolute source edges are rounded before deriving a height, so rounding never accumulates across pages. */
     const sheet=backgrounds.children[index] as HTMLElement,sourceTop=origin+1+sheets.projection.cells[index].y*scale,
-      near=Math.round(sourceTop),far=Math.round(sourceTop+height),top=`${(near-1-backgroundTop)/scale}px`,extent=`${(far-near+2)/scale}px`,key=top+':'+extent;
-    if(NATIVE_MANUAL_EDGE_GEOMETRY.get(sheet)!==key){NATIVE_MANUAL_EDGE_GEOMETRY.set(sheet,key);sheet.style.top=top;sheet.style.height=extent;}
+      near=Math.round(sourceTop),far=Math.round(sourceTop+height),top=`${(near-1-sheet.getBoundingClientRect().top)/scale-sheets.border}px`,extent=`${(far-near+2)/scale}px`,key=top+':'+extent;
+    if(NATIVE_MANUAL_EDGE_GEOMETRY.get(sheet)!==key){
+      NATIVE_MANUAL_EDGE_GEOMETRY.set(sheet,key);
+      sheet.dataset.nativeManualPaint='';
+      sheet.style.setProperty('--native-paper-paint-top',top);
+      sheet.style.setProperty('--native-paper-paint-height',extent);
+    }
   }
 }
 

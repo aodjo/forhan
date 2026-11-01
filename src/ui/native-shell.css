@@ -1011,6 +1011,21 @@ svg.native-icon {
   border: calc(1px / var(--native-zoom, 1.25)) solid #ababab;
   background: #fff;
 }
+.native-sheet-background[data-native-manual-paint] {
+  border-color: transparent;
+  background: transparent;
+}
+.native-sheet-background[data-native-manual-paint]::before {
+  content: "";
+  position: absolute;
+  left: calc(-1px / var(--native-zoom, 1.25));
+  right: calc(-1px / var(--native-zoom, 1.25));
+  top: var(--native-paper-paint-top);
+  height: var(--native-paper-paint-height);
+  box-sizing: border-box;
+  border: calc(1px / var(--native-zoom, 1.25)) solid #ababab;
+  background: #fff;
+}
 .native-shell .native-paged-paper #editor {
   position: relative;
 }

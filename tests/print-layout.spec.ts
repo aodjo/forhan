@@ -177,6 +177,8 @@ function observePrintHtml({ app }: typeof import("electron")): void {
  * export and native preview. Forty ordinary paragraphs must fit on one A4 page;
  * accidental default after-spacing used to force a second page. A plain rule
  * must also remain a rule rather than silently becoming a page break.
+ * Cold native PDF generation has its own readiness budget before completed
+ * output bytes and physical pagination are checked.
  * @async
  * @param {PlaywrightWorkerArgs} context - Browser bindings for independent style probes.
  * @returns {Promise<void>} Resolves after export, style and PDF pagination assertions.
@@ -187,6 +189,7 @@ function observePrintHtml({ app }: typeof import("electron")): void {
 async function verifySharedDocumentLayout({
   browser,
 }: PlaywrightWorkerArgs): Promise<void> {
+  test.setTimeout(90000);
   /** Completed standalone bytes and native window state remain available after a CI failure. */
   const diagnosticRoot=test.info().outputPath('layout-diagnostics');await mkdir(diagnosticRoot,{recursive:true});
   /** Isolated application profile, removed after the owned process exits. */
@@ -515,7 +518,7 @@ async function verifySharedDocumentLayout({
         if (page.url().endsWith(".forhan-preview.pdf")) return page;
       return undefined;
     }
-    try{await expect.poll(currentPreview).toBeTruthy();}
+    try{await expect.poll(currentPreview,{timeout:30000}).toBeTruthy();}
     finally{
       /** Native windows distinguish pending generation from an untracked PDF browser target. */
       const nativeWindows=await desktop.evaluate(
@@ -541,7 +544,10 @@ async function verifySharedDocumentLayout({
           return records;
         });
       /** Playwright targets are compared with native ownership rather than assumed identical across platforms. */
-      const pageUrls=[];for(/** Each observed target belongs to the selected native application. */const page of desktop.windows())pageUrls.push(page.url());
+      const pageUrls=[];for(/** Each observed target belongs to the selected native application. */const page of desktop.windows()){
+        /** Large inline print documents remain in their dedicated artifact instead of window metadata. */
+        const url=page.url();pageUrls.push(url.startsWith('data:')?'data:text/html':url);
+      }
       await writeFile(path.join(diagnosticRoot,'native-preview-windows.json'),JSON.stringify({elapsedMilliseconds:Date.now()-previewRequestedAt,nativeWindows,pageUrls},null,2));
     }
     /** First generated PDF must not gain a page merely from an ordinary rule. */
@@ -575,7 +581,7 @@ async function verifySharedDocumentLayout({
     await editor
       .locator('#native-file-menu [data-native-action="preview"]')
       .click();
-    await expect.poll(currentPreview).toBeTruthy();
+    await expect.poll(currentPreview,{timeout:30000}).toBeTruthy();
     /** The second real snapshot tests physical pagination, not stylesheet strings. */
     const paragraphsPdf = await readFile(
       fileURLToPath(currentPreview()!.url()),

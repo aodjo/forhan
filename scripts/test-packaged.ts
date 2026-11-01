@@ -1,4 +1,4 @@
-import { readFile, mkdir, writeFile, rm } from "node:fs/promises";
+import { readFile, mkdir, writeFile, rm, realpath } from "node:fs/promises";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -83,14 +83,14 @@ async function main(): Promise<void> {
     productName: manifest.build.productName,
     bundleId: manifest.build.appId,
   };
-  /** Builder output paths are architecture-specific on Mac and ordinary unpacked paths on Windows. */
-  const executable = path.resolve(
+  /** Actual filesystem spelling binds source NFC names to decomposed Mac executables before runtime identity comparison. */
+  const executable = await realpath(path.resolve(
     root,
     options.get("--executable") ??
       (platform === "win32"
         ? `release/${arch === "x64" ? "win-unpacked" : "win-arm64-unpacked"}/${expected.productName}.exe`
         : `release/${arch === "x64" ? "mac" : "mac-arm64"}/${expected.productName}.app/Contents/MacOS/${expected.productName}`),
-  );
+  ));
   /** Structural validation must complete before launching any executable. */
   const structure = await inspectPackagedApplication(
     root,

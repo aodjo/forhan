@@ -250,6 +250,8 @@ function plistValue(node: PlistNode): PlistValue {
  *
  * This is structural evidence only. The separate native runtime gate must still
  * launch the actual application, verify its process architecture and test file operations.
+ * Human-readable names accept Unicode canonical equivalence; bundle identifiers,
+ * versions and required document associations retain their exact source checks.
  * @param {string} xml - Generated XML Info.plist contents.
  * @param {PackageExpectation} expected - Required application identity from the source manifest.
  * @returns {MacBundleMetadata} Validated generated bundle fields.
@@ -283,10 +285,12 @@ export function validateMacBundleInfo(
     throw new Error("Mac Info.plist dictionary is missing.");
   /** Actual generated bundle properties retain their native scalar/array types. */
   const info = plistValue(children[0]) as Record<string, PlistValue>;
+  /** macOS builders decompose executable filenames; canonical equivalence preserves the exact human-readable identity. */
+  const productName=expected.productName.normalize('NFC');
   if (
     info.CFBundleIdentifier !== expected.bundleId ||
-    info.CFBundleExecutable !== expected.productName ||
-    info.CFBundleName !== expected.productName ||
+    typeof info.CFBundleExecutable!=='string' || info.CFBundleExecutable.normalize('NFC')!==productName ||
+    typeof info.CFBundleName!=='string' || info.CFBundleName.normalize('NFC')!==productName ||
     info.CFBundleShortVersionString !== expected.version ||
     info.CFBundlePackageType !== "APPL"
   )

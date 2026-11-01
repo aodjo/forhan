@@ -23,7 +23,7 @@ npm run test:ui
 npm run dist:win
 ```
 
-macOS에서 `npm run dist:mac`으로 DMG/ZIP을 만듭니다. `.github/workflows/build.yml`은 Windows와 macOS에서 별도로 테스트하고 빌드합니다. 서명·공증 인증서는 포함하지 않습니다.
+macOS에서 `npm run dist:mac`으로 임시 서명한 DMG/ZIP을 만듭니다. 개발자 ID 인증서를 준비한 배포 빌드는 `npm run dist:mac:signed`를 사용합니다. 두 빌드는 Hardened Runtime을 유지하며, 임시 서명 프로필은 [Electron Builder가 요구하는 라이브러리 검증 설정](https://www.electron.build/v26/docs/features/code-signing/code-signing-mac/)을 별도로 적용합니다. DMG는 배경 이미지 별칭 생성에 의존하지 않는 흰색 배경을 사용합니다. `.github/workflows/build.yml`은 Windows와 macOS에서 별도로 테스트하고 빌드합니다. 서명·공증 인증서는 포함하지 않습니다.
 
 배포한 앱 자체의 검사는 빌드 후 `npm run test:packaged`로 실행합니다. 이 검사는 실제 실행 파일의 CPU 종류와 현재 빌드 파일의 일치를 먼저 확인하고, 개발 서버 없이 배포 앱으로 저장·재실행·인쇄 콜백·PDF·설치 글꼴을 검사합니다. 결과는 `release/validation/`에 기록합니다. CI는 Windows x64, macOS Intel x64, Apple Silicon arm64를 각각 같은 CPU의 실행 환경에서 검사하며, 통과해야 배포 파일을 업로드합니다. Mac CI 빌드는 임시 서명과 `codesign` 무결성 검사를 사용하며 Developer ID 서명·공증을 의미하지 않습니다. 세 환경의 실제 실행 검사를 진행 중이며, `391b6ec`의 입력 위치·장평 편집 집중 검사 3개씩은 [실제 CI 실행](https://github.com/aodjo/forhan/actions/runs/41342813689)에서 통과했습니다. 이 결과는 전체 UI·글꼴·배포 앱 호환성 통과를 뜻하지 않습니다.
 

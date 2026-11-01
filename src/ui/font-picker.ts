@@ -101,12 +101,28 @@ export class NativeFontPicker {
     try {
       this.fonts = await enumerateInstalledFonts(
         window as unknown as LocalFontWindow,
+        this.publishInstalledFonts.bind(this),
       );
       this.loaded = true;
     } catch {
       this.loaded = true;
-      this.fonts = [];
     }
+    this.publishInstalledFonts(this.fonts);
+  }
+
+  /**
+   * Publish actual installed families without waiting for optional local metadata.
+   *
+   * Canonical names become selectable immediately after browser enumeration.
+   * Later localized labels update only connected controls and never commit a font
+   * or reopen a cancelled popup. A failed metadata pass retains the known catalog.
+   * @param {InstalledFont[]} fonts - Actual canonical or enriched installed families.
+   * @returns {void} Refreshes font choices without dispatching document edits.
+   * @example
+   * // A slow font blob cannot hide the other genuinely installed families.
+   */
+  private publishInstalledFonts(fonts: InstalledFont[]): void {
+    this.fonts = fonts;
     for (/** Font fields retain their selected canonical or imported value during catalog refresh. */
     const field of document.querySelectorAll<HTMLSelectElement>(FONT_FIELDS))
       this.populate(field);
@@ -127,16 +143,20 @@ export class NativeFontPicker {
     /** Selected source identifier is never replaced by a localized alias. */
     const value = field.value;
     /** Existing values include imported names and platform-independent generic families. */
-    const existing = new Set<string>();
+    const existing = new Map<string, HTMLOptionElement>();
     for (/** Existing option's identity remains independent of display-label localization. */
     const option of field.options)
-      existing.add(option.value);
+      existing.set(option.value, option);
     for (/** Installed canonical family discovered through the browser's local font API. */
-    const font of this.fonts)
-      if (!existing.has(font.family)) {
+    const font of this.fonts) {
+      /** Optional localized labels update existing choices without changing their canonical source values. */
+      const option = existing.get(font.family);
+      if (option) {
+        if (option.textContent !== font.label) option.textContent = font.label;
+      } else {
         field.add(new Option(font.label, font.family));
-        existing.add(font.family);
       }
+    }
     field.value = value;
     field.dataset.fontCatalog = this.fonts.length ? "installed" : "fallback";
     field.dataset.installedFamilies = String(this.fonts.length);

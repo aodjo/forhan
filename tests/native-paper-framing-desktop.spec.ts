@@ -5,6 +5,7 @@ import {createHash,randomUUID} from 'node:crypto';
 import path from 'node:path';
 import {desktopLaunchOptions} from './helpers/desktop-launch.ts';
 import {exerciseNativePaperFraming} from './helpers/native-paper-framing.ts';
+import {exerciseNativeManualPageGaps} from './helpers/native-manual-page-gaps.ts';
 
 /**
  * Verify original native margin boundaries and small-scale paper gaps in the selected application.
@@ -12,7 +13,7 @@ import {exerciseNativePaperFraming} from './helpers/native-paper-framing.ts';
  * Actual native execution retains complete screenshot bytes and executable/archive
  * identities. Public controls own every source import, view choice and navigation.
  * @async
- * @returns {Promise<void>} Resolves after nineteen original frames and actual source behavior agree.
+ * @returns {Promise<void>} Resolves after twenty paper frames, 92 original page strides and actual source behavior agree.
  * @throws {Error} If native execution, observed physical paper and source shade edges or original source behavior differs.
  * @example
  * // The packaged gate cannot substitute the preview server for the archived application.
@@ -69,9 +70,11 @@ async function verifyDesktopNativePaperFraming():Promise<void>{
     };
     /** Complete native observations retain their unchanged image bytes and independent resource identities. */
     const records=await exerciseNativePaperFraming(page,resize,outputRoot);
+    /** Independent native cursor observations retain every low manual caption across widths and arrangements. */
+    const gapRecords=await exerciseNativeManualPageGaps(page,path.join(outputRoot,'manual-page-gaps'));
     /** The archived executable and resource bundle must match this actual observed run. */
     const hashes=identity.packaged?{executableSha256:createHash('sha256').update(await readFile(identity.executable)).digest('hex'),archiveSha256:createHash('sha256').update(await readFile(identity.application)).digest('hex')}:{};
-    await writeFile(path.join(outputRoot,'run.json'),JSON.stringify({kind:'actual-native-paper-framing-and-source-observation-not-REA',identity,...hashes,records},null,2)+'\n');
+    await writeFile(path.join(outputRoot,'run.json'),JSON.stringify({kind:'actual-native-paper-framing-and-source-observation-not-REA',identity,...hashes,records,gapRecords},null,2)+'\n');
   }finally{
     try{
       await desktop.evaluate(
@@ -91,4 +94,4 @@ async function verifyDesktopNativePaperFraming():Promise<void>{
   }
 }
 
-test('actual native application retains 19 original margin and small-scale frames with native shade-unit boundaries and horizontal page coverage',verifyDesktopNativePaperFraming);
+test('actual native application retains 20 original paper frames and 92 manual source strides across widths and layouts',verifyDesktopNativePaperFraming);

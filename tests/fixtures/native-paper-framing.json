@@ -1,5 +1,5 @@
 {
-  "scope": "Original ordinary owned COM/PrintWindow observations, not REA runtime evidence. Ten original margin-boundary frames cover exact paper bounds and vertical source shade edges. Nine small-scale frames cover only horizontal physical page coverage; their vertical paper framing remains unresolved. Foreground glyph raster and shade widths remain separate requirements.",
+  "scope": "Original ordinary owned COM/PrintWindow observations, not REA runtime evidence. Ten original margin-boundary frames cover exact paper bounds and vertical source shade edges. Nine small-scale frames cover only horizontal physical page coverage; their vertical paper framing remains unresolved. Foreground glyph raster and shade widths remain separate requirements. The native quarter-scale condition additionally requires all four physical paper edges; nine earlier small-scale conditions retain horizontal-only scope.",
   "nativeSha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
   "source": {
     "id": "compact-three-pages-solid",
@@ -972,6 +972,31 @@
           "bottom": 628
         }
       ]
+    },
+    {
+      "ratio": 25,
+      "captureSha256": "6a1c31bb9f29ee648607c18b906c42d67a1c82d29d38b7813ea27035dd85d1ba",
+      "papers": [
+        {
+          "left": 525,
+          "right": 723,
+          "top": 472,
+          "bottom": 556
+        },
+        {
+          "left": 729,
+          "right": 927,
+          "top": 472,
+          "bottom": 556
+        },
+        {
+          "left": 525,
+          "right": 723,
+          "top": 562,
+          "bottom": 646
+        }
+      ],
+      "completePaperBounds": true
     }
   ]
 }

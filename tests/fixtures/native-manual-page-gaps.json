@@ -1,0 +1,3193 @@
+{
+  "scope": "All integer manual zoom captions10 through32; original GetMousePos(1,1) observations retain independent page origins for single/two layouts and180/210mm widths. No expected source or renderer coordinates are injected into Forhan.",
+  "mechanism": "Ordinary bounded owned original COM and native cursor observation, not REA runtime evidence.",
+  "nativeVersion": "13.0.0.4049",
+  "nativeSha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "source": {
+    "doc": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "attrs": {
+            "lineHeight": "100%",
+            "nativeSnapToGrid": true,
+            "marginTop": "0pt",
+            "marginBottom": "0pt"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "row000",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8",
+                    "color": "#fff1a8"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "X i",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8",
+                    "color": "#fff1a8"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "lineHeight": "100%",
+            "nativeSnapToGrid": true,
+            "marginTop": "0pt",
+            "marginBottom": "0pt",
+            "pageBreakBefore": true
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "row000",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8",
+                    "color": "#fff1a8"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "X i",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8",
+                    "color": "#fff1a8"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "lineHeight": "100%",
+            "nativeSnapToGrid": true,
+            "marginTop": "0pt",
+            "marginBottom": "0pt",
+            "pageBreakBefore": true
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "row000",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8",
+                    "color": "#fff1a8"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "X i",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8",
+                    "color": "#fff1a8"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "page": {
+      "width": 210,
+      "height": 90,
+      "marginTop": 20,
+      "marginBottom": 15,
+      "marginLeft": 30,
+      "marginRight": 30,
+      "header": 15,
+      "footer": 15,
+      "lineGrid": 3288
+    },
+    "sourceRows": [
+      "row000",
+      "X i",
+      "row000",
+      "X i",
+      "row000",
+      "X i"
+    ]
+  },
+  "rows": [
+    {
+      "percentage": 10,
+      "dpi": 10,
+      "gapUnits": 3600,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "23f7d909a6236f44ad927c1a7d5479cf719f1b8bd448b1513e9c4caf42c6178c",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 42248,
+              "sourceY": 13662
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 15120,
+              "sourceY": 13662
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 42248,
+              "sourceY": 13350
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "6a82866831262ff31bc1d56544048036bad5d2978606e35c2d2cb53dcc8b1a7b",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 33744,
+              "sourceY": 13662
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 15120,
+              "sourceY": 13662
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 33744,
+              "sourceY": 13350
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "378e01d8b906685ee3cd50434cbec90411b6b79faee8ed106c5174e401f9b250",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 519,
+              "sourceX": 25084,
+              "sourceY": 13098
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 25084,
+              "sourceY": 12786
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 599,
+              "sourceX": 25084,
+              "sourceY": 12474
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "31ff896a978767fcb9435bb6d90be555a1cb4f5e65b6a32be340730bcac9d687",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 519,
+              "sourceX": 20832,
+              "sourceY": 13098
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 20832,
+              "sourceY": 12786
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 599,
+              "sourceX": 20832,
+              "sourceY": 12474
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 11,
+      "dpi": 11,
+      "gapUnits": 3240,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "a62e69aa7fbaf5f2c17730548db3282f3191de09cffeeaa7f043951fb52e81ea",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 43803,
+              "sourceY": 14701
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 13762,
+              "sourceY": 14701
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 43803,
+              "sourceY": 12131
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "4f52c7ebc8f54318ff7db895c9835ced30cbc8ae1f94d46bcf250e4b892ae773",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 35299,
+              "sourceY": 14701
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 13762,
+              "sourceY": 14701
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 35299,
+              "sourceY": 12131
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "2d31cd037231769f03d9253b37c86431737b1058d19644012e1101ef1c4163d8",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 515,
+              "sourceX": 25510,
+              "sourceY": 12714
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 25510,
+              "sourceY": 12762
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 603,
+              "sourceX": 25510,
+              "sourceY": 12810
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "1def265bb6e40321df571aa4275bc0db75341374c57e36769277f4e274383709",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 515,
+              "sourceX": 21258,
+              "sourceY": 12714
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 21258,
+              "sourceY": 12762
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 603,
+              "sourceX": 21258,
+              "sourceY": 12810
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 12,
+      "dpi": 12,
+      "gapUnits": 3120,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "20fbe4120d213457c3fb6c8cd3fd2fbe0ccffc0f1208ca0e0bbb4eed5dbdd7b0",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 45188,
+              "sourceY": 15702
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 12540,
+              "sourceY": 15702
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 45188,
+              "sourceY": 11070
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "86f7cafaed837f3cc76b4517f97ec152537309aebbe421250638400d2defae1e",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 36684,
+              "sourceY": 15702
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 12540,
+              "sourceY": 15702
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 36684,
+              "sourceY": 11070
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "830b9e6ae6e5ca5272c88c3308e435e0833186744848a5195004528d622ea6e5",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 511,
+              "sourceX": 25864,
+              "sourceY": 12618
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 25864,
+              "sourceY": 12786
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 607,
+              "sourceX": 25864,
+              "sourceY": 12954
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "33e03fbb95018a79a93b2d22ad79bc52eb5a5eeff3e19f9ded7632409bdae5ae",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 511,
+              "sourceX": 21612,
+              "sourceY": 12618
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 21612,
+              "sourceY": 12786
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 607,
+              "sourceX": 21612,
+              "sourceY": 12954
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 13,
+      "dpi": 12,
+      "gapUnits": 3000,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "96fd15374ec3277370df9c302babcf6bd02727dd521166a952cfd7567cba9323",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 45128,
+              "sourceY": 15612
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 12600,
+              "sourceY": 15612
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 45128,
+              "sourceY": 11100
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "13475e8b472f237353fea10cd6141afffae33deb902f616d6b69b6a3ab94122c",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 36624,
+              "sourceY": 15612
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 12600,
+              "sourceY": 15612
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 36624,
+              "sourceY": 11100
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "cd1417b7fd609e6f52a7b1e1e306b7fbf29e030e08d8a2c9145b7b8d5502d2fa",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 511,
+              "sourceX": 25864,
+              "sourceY": 12468
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 25864,
+              "sourceY": 12756
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 607,
+              "sourceX": 25864,
+              "sourceY": 13044
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "89a73bff8f5ec30af0abdc20bb0fa392aabfc4825e7083b539b318c92df21cae",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 511,
+              "sourceX": 21612,
+              "sourceY": 12468
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 21612,
+              "sourceY": 12756
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 607,
+              "sourceX": 21612,
+              "sourceY": 13044
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 14,
+      "dpi": 13,
+      "gapUnits": 2640,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "36db5f6a01b66020309271ef5212b818bcdff8d59727d14c1cfa3c857a12ee56",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 46172,
+              "sourceY": 16265
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 11696,
+              "sourceY": 16265
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 46172,
+              "sourceY": 10267
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "321e22b7642cb57b6f85956e1c92c7a5ec88c9fc4d4afa8c9d64dd5b711067a2",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 37668,
+              "sourceY": 16265
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 11696,
+              "sourceY": 16265
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 37668,
+              "sourceY": 10267
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "fb2f478b4dabf0fe1c9aa311224fbbf7b6b8013f1fa5ebc06ed879323e17705f",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 508,
+              "sourceX": 26165,
+              "sourceY": 12618
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 26165,
+              "sourceY": 12712
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 610,
+              "sourceX": 26165,
+              "sourceY": 12806
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "1877f5c9b6fd1a76c322997b6f8e422f895e80b01ad967676a771ebc28a3104d",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 508,
+              "sourceX": 21913,
+              "sourceY": 12618
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 21913,
+              "sourceY": 12712
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 610,
+              "sourceX": 21913,
+              "sourceY": 12806
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 15,
+      "dpi": 14,
+      "gapUnits": 2520,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "4529be8a5ab06ee6e90dadcb04b734bb6fa42f4e849467830f90105995923dfe",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 47160,
+              "sourceY": 16967
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 10826,
+              "sourceY": 16967
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 47160,
+              "sourceY": 9506
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "899636c269ad87fcb020f123ce9f4b41013cd65772712caa0bc0c471d1fee020",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 38656,
+              "sourceY": 16967
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 10826,
+              "sourceY": 16967
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 38656,
+              "sourceY": 9506
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "406bc8648d06dd3f3aa4176b8d5a5e99986bfb6a67032d42ec87e88ed0094ad7",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 504,
+              "sourceX": 26421,
+              "sourceY": 12469
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 26421,
+              "sourceY": 12722
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 614,
+              "sourceX": 26421,
+              "sourceY": 12976
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "e2d1a8644d5e179ddbcd2378b46d5ae21d7ccb35adb3432cacf48f2a1971dead",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 504,
+              "sourceX": 22169,
+              "sourceY": 12469
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 22169,
+              "sourceY": 12722
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 614,
+              "sourceX": 22169,
+              "sourceY": 12976
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 16,
+      "dpi": 15,
+      "gapUnits": 2520,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "6b2670bc2f17a2d8df1c7ab061a1367ed2bcbf79272f9379ea273d73d6db82d7",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 48068,
+              "sourceY": 17652
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 10020,
+              "sourceY": 17652
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 48068,
+              "sourceY": 8820
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "388db2fb4ea6de1aa8a6f09874e2ac6a6e55cdfad36c8b037279f20aa9ad50d6",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 39564,
+              "sourceY": 17652
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 10020,
+              "sourceY": 17652
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 39564,
+              "sourceY": 8820
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "ce3103d7570c9c07bc37710f008093082071ceb489379dc31a19476dce9c9070",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 501,
+              "sourceX": 26644,
+              "sourceY": 12948
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 26644,
+              "sourceY": 12756
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 617,
+              "sourceX": 26644,
+              "sourceY": 12564
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "037d70160efe927a6d0e763e7eb3a4b84cf83d070bd692bf85f184fcac6c759a",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 501,
+              "sourceX": 22392,
+              "sourceY": 12948
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 22392,
+              "sourceY": 12756
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 617,
+              "sourceX": 22392,
+              "sourceY": 12564
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 17,
+      "dpi": 16,
+      "gapUnits": 2400,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "32fcfe2e7ff89ce9e80e83698dddc7e853ae4919ae9de7a8b2538f471bb06eb5",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 48803,
+              "sourceY": 18162
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 9375,
+              "sourceY": 18162
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 48803,
+              "sourceY": 8250
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "dbc893cc753962b65a52fed5815893ac9bd406ee49c9dbc33fa6ecdcbf132e2d",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 40299,
+              "sourceY": 18162
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 9375,
+              "sourceY": 18162
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 40299,
+              "sourceY": 8250
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "3661b3dff5203b46e3a0bef9941eddad0207d1f4d31c4e6ead65b78cfe2e8325",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 497,
+              "sourceX": 26839,
+              "sourceY": 12768
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 26839,
+              "sourceY": 12756
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 621,
+              "sourceX": 26839,
+              "sourceY": 12744
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "df79b79dd03e7686ef5b00455acef676cf3339c67cf9ec0f52aa408b6572788c",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 497,
+              "sourceX": 22587,
+              "sourceY": 12768
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 22587,
+              "sourceY": 12756
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 621,
+              "sourceX": 22587,
+              "sourceY": 12744
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 18,
+      "dpi": 17,
+      "gapUnits": 2160,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "57c21a6b80a42b19bde0a18fdb92a6bf9fea74d90a5bdf1d89e46b51cf960828",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 49384,
+              "sourceY": 18512
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 8873,
+              "sourceY": 18512
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 49384,
+              "sourceY": 7781
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "543bf055a419507b781339bf16c1b38c896b162238ed8ce7a1fd2663a46fcb53",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 40880,
+              "sourceY": 18512
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 8873,
+              "sourceY": 18512
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 40880,
+              "sourceY": 7781
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "cb220cccd939df3b14da9de45e048d1cff8d132d370da71de2ea08aedf11c545",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 494,
+              "sourceX": 27011,
+              "sourceY": 12866
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 27011,
+              "sourceY": 12723
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 624,
+              "sourceX": 27011,
+              "sourceY": 12581
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "c33ff1431730c8a81ee24ac6e2c2f72c728dacfdaa288daf880b60c5a5c11c40",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 494,
+              "sourceX": 22759,
+              "sourceY": 12866
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 22759,
+              "sourceY": 12723
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 624,
+              "sourceX": 22759,
+              "sourceY": 12581
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 19,
+      "dpi": 18,
+      "gapUnits": 2160,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "e0d137a14dad8addf447e37cd47bf2a55ac8c812cdd475182d90516dcd5cb8af",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 50008,
+              "sourceY": 18982
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 8320,
+              "sourceY": 18982
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 50008,
+              "sourceY": 7310
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "8f19a0077012d6588c241113d7d375f57b862db0e8ac9c9e5ef69d992aa65fac",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 41504,
+              "sourceY": 18982
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 8320,
+              "sourceY": 18982
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 41504,
+              "sourceY": 7310
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "fd06d2a7a6683a9e5a7ca7d3a160f1df724dfc188c5de0f196cbca2d73a16222",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 490,
+              "sourceX": 27164,
+              "sourceY": 12818
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 27164,
+              "sourceY": 12746
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 628,
+              "sourceX": 27164,
+              "sourceY": 12674
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "347fc3d625b700385b6e689aa0054d50662b053b13a2495e34ff2634ebd9520a",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 490,
+              "sourceX": 22912,
+              "sourceY": 12818
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 22912,
+              "sourceY": 12746
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 628,
+              "sourceX": 22912,
+              "sourceY": 12674
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 20,
+      "dpi": 19,
+      "gapUnits": 2040,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "842cd965fc55b83ba54c4f814ea0474cc87994b61c96dbeeebb2d7f75182cd3c",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 50506,
+              "sourceY": 19313
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 7885,
+              "sourceY": 19313
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 50506,
+              "sourceY": 6919
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "6469c4973bca196e247b6bf7ea06bbc632518413a0aeb6ab9f95530a89381bcc",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 42002,
+              "sourceY": 19313
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 7885,
+              "sourceY": 19313
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 42002,
+              "sourceY": 6919
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "d4760baebd4d94638b9cebbae88d7569dbbe3b0ab88325d972091c778c3811b9",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 486,
+              "sourceX": 27301,
+              "sourceY": 12626
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 27301,
+              "sourceY": 12737
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 632,
+              "sourceX": 27301,
+              "sourceY": 12848
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "54d121254caf08e7923310713363bcb3462734e3a9431f3ee8fd94e57c995138",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 486,
+              "sourceX": 23049,
+              "sourceY": 12626
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 23049,
+              "sourceY": 12737
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 632,
+              "sourceX": 23049,
+              "sourceY": 12848
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 21,
+      "dpi": 20,
+      "gapUnits": 1800,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "074f6623d6da4dc1eab0ad034cbd43541065321c3e2a16ab5ec74831077544a2",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 50888,
+              "sourceY": 19512
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 7560,
+              "sourceY": 19512
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 50888,
+              "sourceY": 6600
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "4fb010eef96526af62dd016027c95b39c0a53ba004cec4d08b07b1b9450101ba",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 42384,
+              "sourceY": 19512
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 7560,
+              "sourceY": 19512
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 42384,
+              "sourceY": 6600
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "3237c96d7801451c3bd814ebee0916144e56149b9b8f7e3840dfab9c842304b3",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 483,
+              "sourceX": 27424,
+              "sourceY": 12648
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 27424,
+              "sourceY": 12696
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 635,
+              "sourceX": 27424,
+              "sourceY": 12744
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "6273dc224ce920f226975bd5397cf9c365727b56c6643b765e911cd75f475ca7",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 483,
+              "sourceX": 23172,
+              "sourceY": 12648
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 23172,
+              "sourceY": 12696
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 635,
+              "sourceX": 23172,
+              "sourceY": 12744
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 22,
+      "dpi": 21,
+      "gapUnits": 1800,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "a6fc5ff1c3080a82d5d8f3760006e359306ca45c09178e8eb50272d78e2eb6d5",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 51342,
+              "sourceY": 19856
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 7157,
+              "sourceY": 19856
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 51342,
+              "sourceY": 6258
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "f7fc83d26c6e6b7c9f6b91d73fcb4394679107f7ced7ff90a23fe3f3d1bd73ea",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 42838,
+              "sourceY": 19856
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 7157,
+              "sourceY": 19856
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 42838,
+              "sourceY": 6258
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "8234510818aaa2e04a4e2090bb9a9e2e4c26e0f4c86bb399feb9f9313fb6728a",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 479,
+              "sourceX": 27535,
+              "sourceY": 12597
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 27535,
+              "sourceY": 12714
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 639,
+              "sourceX": 27535,
+              "sourceY": 12830
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "b3461ad869cf0dd372bfdf73d59e3325f8a09b6d2cb6ff0944da0803d6112d7f",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 479,
+              "sourceX": 23283,
+              "sourceY": 12597
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 23283,
+              "sourceY": 12714
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 639,
+              "sourceX": 23283,
+              "sourceY": 12830
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 23,
+      "dpi": 22,
+      "gapUnits": 1680,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "bdd2842b719bf7be45baab3a35b0b559b0568a15625e3a81dacade1cb37c7487",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 51696,
+              "sourceY": 20077
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 6852,
+              "sourceY": 20077
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 51696,
+              "sourceY": 5976
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "00370fef76ff737e9270ba67ceb4f931cdc02ccf40ed3c1a838b50d77a45883b",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 43192,
+              "sourceY": 20077
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 6852,
+              "sourceY": 20077
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 43192,
+              "sourceY": 5976
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "317c61b9bc9217fec688934941ba1c99304cbfae253982e94ea60419d4c07c59",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 476,
+              "sourceX": 27637,
+              "sourceY": 12727
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 27637,
+              "sourceY": 12699
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 642,
+              "sourceX": 27637,
+              "sourceY": 12670
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "109a02692db27f1bc92bb9bff75a700f7b0ec62443b7f4c6d0430110b202ebcf",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 476,
+              "sourceX": 23385,
+              "sourceY": 12727
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 23385,
+              "sourceY": 12699
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 642,
+              "sourceX": 23385,
+              "sourceY": 12670
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 24,
+      "dpi": 23,
+      "gapUnits": 1560,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "465cbf086946dc2c333b998b73aaacd6cf155a8739d990592571eecb5a1f32bd",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 52012,
+              "sourceY": 20271
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 6576,
+              "sourceY": 20271
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 52012,
+              "sourceY": 5721
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "9d03a39b2e5dcfdc2fac28b26ece8be9f9cb260b8262166a6dbc6c0055ecb95f",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 43508,
+              "sourceY": 20271
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 6576,
+              "sourceY": 20271
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 43508,
+              "sourceY": 5721
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "411b2467a0ff224d0a8af22f41a297d26cbec3b0d9bce69d27f87f7e9f341bf1",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 473,
+              "sourceX": 27729,
+              "sourceY": 12833
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 27729,
+              "sourceY": 12683
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 645,
+              "sourceX": 27729,
+              "sourceY": 12533
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "497d9259adbf481792febbd1778a0848a6843c53f4006af80f81328c6d7b38cb",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 473,
+              "sourceX": 23477,
+              "sourceY": 12833
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 23477,
+              "sourceY": 12683
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 645,
+              "sourceX": 23477,
+              "sourceY": 12533
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 25,
+      "dpi": 24,
+      "gapUnits": 1560,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "d751ccf1afd8b1a916020ec2f68c793496268695909b1de5fe189615bdd80d10",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 52358,
+              "sourceY": 20532
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 6270,
+              "sourceY": 20532
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 52358,
+              "sourceY": 5460
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "a7de8b3c68b016a884f856fbc1ddfe3edef90397f7eaa1f0464a76180d7aede1",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 43854,
+              "sourceY": 20532
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 6270,
+              "sourceY": 20532
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 43854,
+              "sourceY": 5460
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "6b9aeabf8cc6fc8a1a70008e4c88c7d52668d254b2707484e2158993a6edbc1c",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 469,
+              "sourceX": 27814,
+              "sourceY": 12768
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 27814,
+              "sourceY": 12696
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 649,
+              "sourceX": 27814,
+              "sourceY": 12624
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "537a136f437d93cdf5c6d14b025c2a3253b1c6dfad45c176866c9001797e3dd7",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 469,
+              "sourceX": 23562,
+              "sourceY": 12768
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 23562,
+              "sourceY": 12696
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 649,
+              "sourceX": 23562,
+              "sourceY": 12624
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 26,
+      "dpi": 25,
+      "gapUnits": 1560,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "88f196ada4995996fc9de958a6350853a0b00e4db1c1db963723f7d8b7b5fe11",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 52676,
+              "sourceY": 20772
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 5988,
+              "sourceY": 20772
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 52676,
+              "sourceY": 5220
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "ee174f6f73f72db1dcc9e314934cc9d778263f02e8cbef15261a67ecd8b1bad4",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 44172,
+              "sourceY": 20772
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 5988,
+              "sourceY": 20772
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 44172,
+              "sourceY": 5220
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "8eda30139317ff3dde4cac899d45247b9a5efbfb8f689ce191ba2a1aba290c3f",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 465,
+              "sourceX": 27892,
+              "sourceY": 12708
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 27892,
+              "sourceY": 12708
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 653,
+              "sourceX": 27892,
+              "sourceY": 12708
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "ad1d204819dca2dfc70eaa899a2aa4f9b7fc1883ccbbf87490cd7b5645824178",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 465,
+              "sourceX": 23640,
+              "sourceY": 12708
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 23640,
+              "sourceY": 12708
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 653,
+              "sourceX": 23640,
+              "sourceY": 12708
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 27,
+      "dpi": 26,
+      "gapUnits": 1440,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "ea0ce6f935f79380250a34cf5836c3c5669cdd4ca66065535c59bbf998a5ef97",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 52909,
+              "sourceY": 20904
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 5788,
+              "sourceY": 20904
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 52909,
+              "sourceY": 5029
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "3ee873189c84ed61da447e7bd1d1291d9b5219a8b1d334a24e9021efc0e7c84a",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 44405,
+              "sourceY": 20904
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 5788,
+              "sourceY": 20904
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 44405,
+              "sourceY": 5029
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "143717b13d3d0a6f47a9af49dd694aeb7f4671f0cee6bea159160609026bc8be",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 462,
+              "sourceX": 27964,
+              "sourceY": 12780
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 27964,
+              "sourceY": 12690
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 656,
+              "sourceX": 27964,
+              "sourceY": 12599
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "b941bf1243eb3f37737aa18c7e530f2bb67e39a3c6126220d22ff164c743778e",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 462,
+              "sourceX": 23712,
+              "sourceY": 12780
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 23712,
+              "sourceY": 12690
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 656,
+              "sourceX": 23712,
+              "sourceY": 12599
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 28,
+      "dpi": 27,
+      "gapUnits": 1440,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "f5abcb4dbba8f64b6cf79b1f09363eaa22a45c7d82c50b8fc12365975b23b3e7",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 53181,
+              "sourceY": 21109
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 5547,
+              "sourceY": 21109
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 53181,
+              "sourceY": 4823
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "58c58a3c96fa4e904a96c28155c0643825adb256c784bae4485174ef53b826cf",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 44677,
+              "sourceY": 21109
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 5547,
+              "sourceY": 21109
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 44677,
+              "sourceY": 4823
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "7806355dcc13acc0919a90bc84988cfb3201211181de18b2e9c658acbe01b4a0",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 458,
+              "sourceX": 28031,
+              "sourceY": 12718
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 28031,
+              "sourceY": 12699
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 660,
+              "sourceX": 28031,
+              "sourceY": 12681
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "5d44d312a367c6c4c6ae8b06db479222e8402a05a9b28670bfffe14e1baa72d1",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 458,
+              "sourceX": 23779,
+              "sourceY": 12718
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 23779,
+              "sourceY": 12699
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 660,
+              "sourceX": 23779,
+              "sourceY": 12681
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 29,
+      "dpi": 28,
+      "gapUnits": 1320,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "8f5ac9c02c6f3ae097abf21caaf4d8c76653308b87c123adb14e63f3355d6776",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 53374,
+              "sourceY": 21209
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 5383,
+              "sourceY": 21209
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 53374,
+              "sourceY": 4663
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "e0ec7a3a59b25f84cb961a84b75effaf344062826b6ad0e2888edb39f0547e62",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 44870,
+              "sourceY": 21209
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 5383,
+              "sourceY": 21209
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 44870,
+              "sourceY": 4663
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "2499d34bac40b9fce57b5ce157b9943cb1b4e056a5023937b46126a79c084bf7",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 455,
+              "sourceX": 28093,
+              "sourceY": 12768
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 28093,
+              "sourceY": 12679
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 663,
+              "sourceX": 28093,
+              "sourceY": 12590
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "b7cfb26a2456d122a4149619168a6e1c9b2f978ae7ea340d73b88c201c631d4b",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 455,
+              "sourceX": 23841,
+              "sourceY": 12768
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 23841,
+              "sourceY": 12679
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 663,
+              "sourceX": 23841,
+              "sourceY": 12590
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 30,
+      "dpi": 29,
+      "gapUnits": 1200,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "2ce28cbc1e7d2bda02ed934689280ec0597c3ed50e664ea40237eee4d60e8f83",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 53549,
+              "sourceY": 21297
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 5235,
+              "sourceY": 21297
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 53549,
+              "sourceY": 4516
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "61314c2fbe03746f37475b45d71c55d358b5aded32930be212dcf0e52db9e9d8",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 45045,
+              "sourceY": 21297
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 5235,
+              "sourceY": 21297
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 45045,
+              "sourceY": 4516
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "578b320eab95560bef278342f80799360180f1b264c6f8d7d3852bfa5dbaa846",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 451,
+              "sourceX": 28151,
+              "sourceY": 12556
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 28151,
+              "sourceY": 12658
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 667,
+              "sourceX": 28151,
+              "sourceY": 12760
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "4bad4b7abe1c5d4928d747fa72192ebef7f3b1cbb334de2bdf48c18c5bc82369",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 451,
+              "sourceX": 23899,
+              "sourceY": 12556
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 23899,
+              "sourceY": 12658
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 667,
+              "sourceX": 23899,
+              "sourceY": 12760
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 31,
+      "dpi": 30,
+      "gapUnits": 1200,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "2a173e06ca5c664547865583f6589c58c7e40e88e9005a776c0b49cc5174f375",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 53768,
+              "sourceY": 21462
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 5040,
+              "sourceY": 21462
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 53768,
+              "sourceY": 4350
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "0b46f6328e68dafd5f021b62e79d307e3b927dc3fefc2036c5eebd0c01240a21",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 45264,
+              "sourceY": 21462
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 5040,
+              "sourceY": 21462
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 45264,
+              "sourceY": 4350
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "7d791174b141840d901de009e330c8622790a6e79259af4b7362ea05273542ce",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 448,
+              "sourceX": 28204,
+              "sourceY": 12738
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 28204,
+              "sourceY": 12666
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 670,
+              "sourceX": 28204,
+              "sourceY": 12594
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "525dd5f42514494042df9a8291ad756ee71d3fae343b84baed38e69c9aeb622d",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 448,
+              "sourceX": 23952,
+              "sourceY": 12738
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 23952,
+              "sourceY": 12666
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 670,
+              "sourceX": 23952,
+              "sourceY": 12594
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "percentage": 32,
+      "dpi": 31,
+      "gapUnits": 1200,
+      "observations": [
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "c6d554a7fdead26ef2d863a4f1b6bf90ded988d4875cbe2dec96338b0936e530",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 53973,
+              "sourceY": 21617
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 4858,
+              "sourceY": 21617
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 53973,
+              "sourceY": 4195
+            }
+          ]
+        },
+        {
+          "shape": "two",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "c8b2876490ad3a8e31b3ea283f6c5dfed6336dcd4ef0ac387da60c9988020ed4",
+          "points": [
+            {
+              "page": 0,
+              "x": 700,
+              "y": 540,
+              "sourceX": 45469,
+              "sourceY": 21617
+            },
+            {
+              "page": 1,
+              "x": 750,
+              "y": 540,
+              "sourceX": 4858,
+              "sourceY": 21617
+            },
+            {
+              "page": 2,
+              "x": 700,
+              "y": 580,
+              "sourceX": 45469,
+              "sourceY": 4195
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 210,
+          "widthUnits": 59528,
+          "heightUnits": 25512,
+          "sourceSha256": "f0a1689a54e1077ca1253ec239a5718aa233f340f57a348c0b70f40e4a217305",
+          "captureSha256": "374aee8a1d70940530e3b9e6871195c61026cb3eb80445967b400ac38f14cc91",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 444,
+              "sourceX": 28254,
+              "sourceY": 12676
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 28254,
+              "sourceY": 12674
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 674,
+              "sourceX": 28254,
+              "sourceY": 12671
+            }
+          ]
+        },
+        {
+          "shape": "single",
+          "pageWidthMillimetres": 180,
+          "widthUnits": 51024,
+          "heightUnits": 25512,
+          "sourceSha256": "2fa21e21fda25ed74e8f6ad6f714cd1b3c80162e77d846ac42120e13d46d272d",
+          "captureSha256": "865a22f7a913b0e28ec48ab20a1686896dabc8ca5e338670c7fea3aef3dbac2c",
+          "points": [
+            {
+              "page": 0,
+              "x": 720,
+              "y": 444,
+              "sourceX": 24002,
+              "sourceY": 12676
+            },
+            {
+              "page": 1,
+              "x": 720,
+              "y": 559,
+              "sourceX": 24002,
+              "sourceY": 12674
+            },
+            {
+              "page": 2,
+              "x": 720,
+              "y": 674,
+              "sourceX": 24002,
+              "sourceY": 12671
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

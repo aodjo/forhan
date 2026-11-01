@@ -41,7 +41,7 @@ export function measureNativeSheets(root:HTMLElement,plans:NativeParagraphLayout
   if(!paper||!pages)return null;
   /** Quantized source paper dimensions retain the same physical origins used by standalone printing. */
   const zoom=nativeDocumentZoom(root),window=root.ownerDocument.defaultView!,border=parseFloat(window.getComputedStyle(paper).borderTopWidth)||0,
-    projection=projectNativePages(pages.layout.pages.length,pages.paper.width/NATIVE_UNITS_PER_CSS_PIXEL,pages.paper.height/NATIVE_UNITS_PER_CSS_PIXEL,readNativePageView(paper),paper.closest<HTMLElement>('.canvas')?.clientWidth??0,zoom),
+    projection=projectNativePages(pages.layout.pages.length,pages.paper.width/NATIVE_UNITS_PER_CSS_PIXEL,pages.paper.height/NATIVE_UNITS_PER_CSS_PIXEL,readNativePageView(paper),paper.closest<HTMLElement>('.canvas')?.clientWidth??0,zoom,paper.dataset.nativeFit?undefined:Number(paper.closest<HTMLElement>('.workspace')?.style.getPropertyValue('--native-zoom-percent'))||undefined),
     stride=projection.strideY,
     height=projection.height,
     inset=(root.getBoundingClientRect().top-paper.getBoundingClientRect().top)/zoom-border,

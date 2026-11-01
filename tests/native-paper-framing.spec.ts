@@ -8,7 +8,7 @@ import {exerciseNativePaperFraming} from './helpers/native-paper-framing.ts';
  * from the actual renderer and its public source imports and view controls.
  * @async
  * @param {{page:Page}} context - Actual isolated public browser renderer.
- * @returns {Promise<void>} Resolves after all nineteen original conditions agree.
+ * @returns {Promise<void>} Resolves after all twenty original conditions agree.
  * @throws {Error} If native paper columns, vertical shading or source content differs.
  * @example
  * // A one-HWP-unit margin increment moves the native 85-percent first shade edge.
@@ -30,4 +30,4 @@ async function verifyBrowserNativePaperFraming({page}:{page:Page}):Promise<void>
   await exerciseNativePaperFraming(page,resize,test.info().outputPath('native-paper-framing'));
 }
 
-test('nineteen original native margin and small-scale frames retain shade-unit boundaries and horizontal page coverage',verifyBrowserNativePaperFraming);
+test('twenty original native margin and small-scale frames retain shade-unit boundaries and horizontal page coverage',verifyBrowserNativePaperFraming);

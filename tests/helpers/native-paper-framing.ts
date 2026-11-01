@@ -8,9 +8,9 @@ import type {NativePixelBounds} from './native-paper-pixels.ts';
 import type {NativeViewportResize} from './native-paper-scenarios.ts';
 
 /** Literal native margin boundaries retain independently observed paper and vertical source paint. */
-interface NativeMarginFrame {ratio:number;delta:number;topMargin:number;captureSha256:string;papers:NativePixelBounds[];bands:Array<Array<{top:number;bottom:number}>>;}
-/** Small-scale originals establish horizontal coverage separately from unresolved vertical framing. */
-interface NativeSmallFrame {ratio:number;captureSha256:string;papers:NativePixelBounds[];topMargin?:never;delta?:never;bands?:never;}
+interface NativeMarginFrame {completePaperBounds?:never;ratio:number;delta:number;topMargin:number;captureSha256:string;papers:NativePixelBounds[];bands:Array<Array<{top:number;bottom:number}>>;}
+/** Small-scale originals retain horizontal coverage, with complete quarter-scale paper bounds verified separately. */
+interface NativeSmallFrame {completePaperBounds?:boolean;ratio:number;captureSha256:string;papers:NativePixelBounds[];topMargin?:never;delta?:never;bands?:never;}
 
 /**
  * Exercise native integer-unit shade origins and minimum visible page gaps.
@@ -18,12 +18,13 @@ interface NativeSmallFrame {ratio:number;captureSha256:string;papers:NativePixel
  * All expected coordinates originate in complete original native captures.
  * Actual public imports and zoom controls supply source and view conditions;
  * no expected coordinate or renderer layout metadata enters the application.
- * Vertical glyph coverage and small-scale paper height remain separate claims.
+ * Vertical glyph coverage and earlier small-scale heights remain separate
+ * claims; the quarter-scale condition checks complete physical paper bounds.
  * @async
  * @param {Page} page - Actual browser or packaged desktop renderer.
  * @param {NativeViewportResize} resize - Real browser or owned native-window resize.
  * @param {string} outputRoot - Owned destination for unchanged completed screenshots.
- * @returns {Promise<object[]>} Nineteen complete actual frame identities.
+ * @returns {Promise<object[]>} Twenty complete actual frame identities.
  * @throws {Error} If an observed native edge, page count or source content differs.
  * @example
  * await exerciseNativePaperFraming(page,resize,outputRoot); // A one-unit margin change crosses the original 85-percent shade boundary.
@@ -59,7 +60,7 @@ export async function exerciseNativePaperFraming(page:Page,resize:NativeViewport
         expect(papers).toHaveLength(3);
         for(let index=0;index<papers.length;index++){
           expect(papers[index].left).toBe(frame.papers[index].left);expect(papers[index].right).toBe(frame.papers[index].right);
-          if(margin){expect(papers[index].top).toBe(frame.papers[index].top);expect(papers[index].bottom).toBe(frame.papers[index].bottom);}
+          if(margin||frame.completePaperBounds===true){expect(papers[index].top).toBe(frame.papers[index].top);expect(papers[index].bottom).toBe(frame.papers[index].bottom);}
         }
         if(margin){
           /** Source shades are decoded from literal RGB independently from physical paper metadata. */
@@ -79,5 +80,5 @@ export async function exerciseNativePaperFraming(page:Page,resize:NativeViewport
     const file=path.join(outputRoot,name+'.png');await writeFile(file,completed!);
     records.push({name,file,sha256:createHash('sha256').update(completed!).digest('hex'),originalCaptureSha256:frame.captureSha256});
   }
-  expect(records).toHaveLength(19);return records;
+  expect(records).toHaveLength(20);return records;
 }

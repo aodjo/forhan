@@ -133,9 +133,24 @@ async function verifyEditableEmptyContinuation({page}:{page:Page}):Promise<void>
   await page.locator('.tiptap forhan-line').filter({hasText:/^row019$/u}).click();await page.keyboard.press('End');await page.keyboard.press('Shift+Enter');
   await expect(page.locator('.native-sheet-background')).toHaveCount(2);await expect(page.locator('.native-status-page')).toHaveText('2/2쪽');
   await page.keyboard.type('row020');
-  /** Subsequent original text must occupy the same real page as its preceding empty caret. */
-  const geometry=await page.locator('.tiptap').evaluate(editableSheetGeometry),last=geometry.rows[geometry.rows.length-1];
-  expect(geometry.rows.length).toBe(21);expect(last.label).toBe('row020');expect(last.baseline).toBeGreaterThan(geometry.sheets[1].top);expect(last.baseline).toBeLessThan(geometry.sheets[1].bottom);
+  await expect(
+    /**
+     * Await the actual painted continuation after incremental native keyboard input.
+     *
+     * Source text can update before its dependent page projection. Every retry
+     * observes real glyphs and retains the same original physical page bounds.
+     * @async
+     * @returns {Promise<void>} Resolves only when the original row paints on sheet two.
+     * @throws {Error} If the row count, source label or physical page membership differs.
+     * @example
+     * // A persistent caret or glyph on sheet one still fails the unchanged bounds.
+     */
+    async()=>{
+      /** Actual current glyph and paper rectangles share one original viewport observation. */
+      const geometry=await page.locator('.tiptap').evaluate(editableSheetGeometry),last=geometry.rows[geometry.rows.length-1];
+      expect(geometry.rows.length).toBe(21);expect(last.label).toBe('row020');expect(last.baseline).toBeGreaterThan(geometry.sheets[1].top);expect(last.baseline).toBeLessThan(geometry.sheets[1].bottom);
+    },
+  ).toPass({timeout:5000,intervals:[16,32,64,100]});
 }
 
 test('an empty hard-break continuation keeps its caret and subsequent input on the next physical sheet',verifyEditableEmptyContinuation);

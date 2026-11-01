@@ -6,7 +6,7 @@ import {createNativeGridFlow,applyNativeGrid} from '../native-grid-layout.ts';
 import type {PageSettings} from '../types.ts';
 import {measureNativeSheets,renderNativeSheets} from './native-sheets.ts';
 import {measureNativeSheetShading,measureComposingSheetShading,renderNativeSheetShading} from './native-sheet-shading.ts';
-import {setNativeSheetCursorLines,nativeSheetKeyDown,nativeSheetBeforeInput,nativeSheetScrollToSelection,nativeSheetCaretBounds,nativeSheetSourcePage,flushNativeSheetScroll,type NativeSheetCursorLine} from './native-sheet-selection.ts';
+import {setNativeSheetCursorLines,nativeSheetKeyDown,nativeSheetKeySelection,nativeSheetBeforeInput,nativeSheetScrollToSelection,nativeSheetCaretBounds,nativeSheetSourcePage,flushNativeSheetScroll,type NativeSheetCursorLine} from './native-sheet-selection.ts';
 import {readNativePageView} from './native-page-view.ts';
 import { fontSpaceKey } from "./font-space.ts";
 import { preserveNativeTextSelection } from "./native-selection.ts";
@@ -435,7 +435,7 @@ export const NativeLineLayout = Extension.create<{getPage:()=>PageSettings|null}
         props: {
           handleKeyDown:nativeSheetKeyDown,
           handleScrollToSelection:nativeSheetScrollToSelection,
-          handleDOMEvents:{beforeinput:nativeSheetBeforeInput},
+          handleDOMEvents:{keydown:nativeSheetKeySelection,beforeinput:nativeSheetBeforeInput},
           /**
            * Supply current rendering-only native text positions to ProseMirror.
            *

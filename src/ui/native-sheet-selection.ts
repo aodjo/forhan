@@ -170,6 +170,27 @@ function commitNativeSourceCaret(view:EditorView,anchor:number,head:number,side:
 }
 
 /**
+ * Synchronize genuine pending source endpoints before keymaps and keypress input.
+ *
+ * A browser caret can move away from a prior AllSelection before its asynchronous
+ * selectionchange notification reaches the model. Some platforms insert text
+ * from keypress before beforeinput, so the original source selection must be
+ * committed at the initial DOM keydown phase. The key itself remains unconsumed.
+ * @param {EditorView} view - Actual owning original source editor.
+ * @param {KeyboardEvent} event - Original editor keydown event.
+ * @returns {false} Always preserves normal ownership of the original keyboard event.
+ * @example
+ * nativeSheetKeySelection(view,event); // Typing at a pending C caret cannot replace the previously selected whole document.
+ */
+export function nativeSheetKeySelection(view:EditorView,event:KeyboardEvent):false{
+  if(view.composing||event.isComposing||event.defaultPrevented||event.keyCode===229)return false;
+  /** Only independently observed genuine source endpoints can replace an older model selection. */
+  const transaction=preserveNativeTextSelection(view,view.state.tr.setMeta('addToHistory',false)),selection=transaction.selection;
+  if(transaction.selectionSet&&selection instanceof TextSelection&&!selection.eq(view.state.selection))commitNativeSourceCaret(view,selection.anchor,selection.head,selection.head>=selection.anchor?1:-1);
+  return false;
+}
+
+/**
  * Advance native-width left-to-right source by complete original graphemes.
  *
  * Negative native letter spacing and interleaved vector copies can make a

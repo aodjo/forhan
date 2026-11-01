@@ -878,7 +878,18 @@ async function verifyPaginatedPreview(): Promise<void> {
    */
   async function removed(): Promise<boolean> { try { await access(file); return false; } catch(error) { if((error as NodeJS.ErrnoException).code==='ENOENT') return true; throw error; } }
   await expect.poll(removed).toBe(true);
-  expect(desktop.windows()).toHaveLength(1);
+  await expect.poll(
+    /**
+     * Observe completion of the native preview window's asynchronous close event.
+     *
+     * Private PDF removal and the Playwright window list arrive through separate
+     * event paths. The original single-window requirement remains unchanged.
+     * @returns {number} Actual currently registered application windows.
+     * @example
+     * // A preview that remains open still fails the original one-window condition.
+     */
+    ()=>desktop.windows().length,
+  ).toBe(1);
   await expect(window.locator('.tiptap')).toContainText('둘째 쪽 수정 이후 변경');
   await expect(window.locator('#save-state')).toHaveText(before!);
   await expect(window.locator('#zoom-reset')).toHaveText(zoom!);

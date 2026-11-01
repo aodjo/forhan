@@ -7,6 +7,8 @@ import {exerciseNativePaperCentering} from './helpers/native-paper-centering.ts'
  *
  * Complete native captures establish literal expected edges independently
  * from the actual renderer and its public source imports and view controls.
+ * The four-minute case budget includes every original full-frame screenshot
+ * on Intel without extending the per-frame pixel assertion deadline.
  * @async
  * @param {{page:Page}} context - Actual isolated public browser renderer.
  * @returns {Promise<void>} Resolves after twenty original frames and 32 viewport centering conditions agree.
@@ -15,7 +17,7 @@ import {exerciseNativePaperCentering} from './helpers/native-paper-centering.ts'
  * // A one-HWP-unit margin increment moves the native 85-percent first shade edge.
  */
 async function verifyBrowserNativePaperFraming({page}:{page:Page}):Promise<void>{
-  test.setTimeout(120000);await page.goto('/');
+  test.setTimeout(240000);await page.goto('/');
   /**
    * Resize the real browser viewport without supplying expected geometry.
    *

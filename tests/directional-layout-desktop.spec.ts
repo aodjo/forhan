@@ -31,6 +31,8 @@ import { randomUUID } from "node:crypto";
  * The packaged gate selects the actual executable. Independent original
  * Hangul PDF matrices and source-caret observations establish directional
  * spacing. Source measurement arrays must remain unchanged in actual files.
+ * A ninety-second case budget includes native startup and every physical
+ * export on the slower Intel runner; individual geometry assertions are unchanged.
  * @async
  * @returns {Promise<void>} Resolves after real native geometry and actual output validation.
  * @throws {Error} If native geometry, executable identity or original saved source differs.
@@ -38,6 +40,7 @@ import { randomUUID } from "node:crypto";
  * // npm run test:packaged exercises the distribution itself without Vite.
  */
 async function verifyNativeDirectionalLayout(): Promise<void> {
+  test.setTimeout(90000);
   /** Every observation and file belongs to this generated native profile. */
   const profile = await mkdtemp(
       path.join(tmpdir(), "forhan-directional-native-"),
@@ -46,7 +49,8 @@ async function verifyNativeDirectionalLayout(): Promise<void> {
   try {
     /** The actual selected renderer supplies all source and physical glyph geometry. */
     const page = await desktop.firstWindow();
-    await expect(page.locator(".tiptap")).toBeVisible();
+    /** Actual first-start font initialization can outlast a five-second visibility assertion on Intel. */
+    await expect(page.locator(".tiptap")).toBeVisible({timeout:30000});
     if (process.env.FORHAN_PACKAGED_EXECUTABLE)
       expect(
         await desktop.evaluate(

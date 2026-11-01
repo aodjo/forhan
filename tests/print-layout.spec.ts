@@ -121,8 +121,8 @@ function measureDocumentStyles(
 /**
  * Capture the actual isolated print HTML without replacing the PDF engine.
  *
- * The listener belongs exclusively to the test-owned main process. Only loaded
- * data documents are observed; the editor and PDF viewer remain untouched.
+ * The listener belongs exclusively to the test-owned main process. Only actual
+ * native PDF submissions are observed; the editor and PDF viewer remain untouched.
  * @param {typeof import('electron')} runtime - Owned Electron module.
  * @returns {void} Registers a read-only print-document observation.
  * @example
@@ -143,29 +143,37 @@ function observePrintHtml({ app }: typeof import("electron")): void {
      * @param {Electron.BrowserWindow} created - Newly created application window.
      * @returns {void} Attaches a single read-only load observation.
      * @example
-     * // A generated PDF viewer does not match the data-document filter.
+     * // The PDF viewer never submits a new printToPDF operation.
      */
     (_event, created) => {
-      created.webContents.once(
-        "did-finish-load",
+      /** The real native method retains its receiver, options and Chromium-produced output. */
+      const original=created.webContents.printToPDF.bind(created.webContents);
+      created.webContents.printToPDF=
         /**
          * Retain the fully loaded print document for computed-style comparison.
          *
-         * Does not execute code inside the sandboxed print renderer or intercept
-         * its native PDF generation and lifecycle.
-         * @returns {void} Stores only an owned printable data document.
+         * Read-only DOM protocol inspection works with document JavaScript
+         * disabled and does not depend on a data URL or a removed temporary
+         * file. The original native method still generates every output byte.
+         * @async
+         * @param {Electron.PrintToPDFOptions} [options] - Unchanged native print options.
+         * @returns {Promise<Buffer>} Actual native PDF after its original loaded markup is observed.
+         * @throws {Error} If inspecting the loaded document or native PDF generation fails.
          * @example
          * // The stored markup is the same document submitted to Chromium PDF.
          */
-        () => {
-          /** Completed document URL after production loading succeeds. */
-          const url = created.webContents.getURL();
-          if (url.startsWith("data:text/html;charset=utf-8,"))
-            state.forhanLayoutHtml = decodeURIComponent(
-              url.slice(url.indexOf(",") + 1),
-            );
-        },
-      );
+        async (options) => {
+          /** The sandboxed print renderer is inspected at submission before its owned window can close. */
+          const client=created.webContents.debugger;
+          client.attach('1.3');
+          try {
+            /** Original loaded HTML remains independent from expected computed styles and emitted PDF glyphs. */
+            const {root}=await client.sendCommand('DOM.getDocument'),
+              {outerHTML}=await client.sendCommand('DOM.getOuterHTML',{nodeId:root.nodeId});
+            state.forhanLayoutHtml=outerHTML;
+          }finally{client.detach();}
+          return original(options);
+        };
     },
   );
 }
@@ -500,7 +508,7 @@ async function verifySharedDocumentLayout({
             .forhanLayoutHtml,
       );
     }
-    await expect.poll(capturedHtml).toContain("data-forhan-character-fonts");
+    await expect.poll(capturedHtml,{timeout:30000}).toContain("data-forhan-character-fonts");
     await probe.setContent(await capturedHtml());
     expect(await probe.evaluate(measureDocumentStyles, "body")).toEqual(
       editing,

@@ -373,15 +373,17 @@ let recoveryTimer: ReturnType<typeof setTimeout> | undefined,
 /** Text ranges matching the current case-insensitive query. */
 let matches: { from: number; to: number }[] = [];
 
+/** One content stylesheet shared with standalone HTML, PDF and native printing. */
+const documentStyle = document.createElement("style");
+documentStyle.textContent = PORTABLE_EDITOR_FONT_CSS+documentContentStyles(".native-shell .tiptap");
+document.head.append(documentStyle);
+await loadPortableKoreanFonts(document);
+
 $("#app").innerHTML = buildNativeShell(state.title);
 /** One delegated native color picker survives ribbon and dialog replacements. */
 const colorPalettes = new NativeColorPalette();
 /** Local font enumeration and native dropdowns are shared by quick, ribbon and dialog controls. */
 const fontPicker = new NativeFontPicker();
-/** One content stylesheet shared with standalone HTML, PDF and native printing. */
-const documentStyle = document.createElement("style");
-documentStyle.textContent = PORTABLE_EDITOR_FONT_CSS+documentContentStyles(".native-shell .tiptap");
-document.head.append(documentStyle);
 
 /**
  * Replace decorative icon placeholders.
@@ -395,7 +397,6 @@ function icons() {
   createIcons({ icons: iconSet, attrs: { "stroke-width": 1.7 } });
 }
 icons();
-await loadPortableKoreanFonts(document);
 /** Rich-text editor configured for local document editing. */
 const editor = new Editor({
   element: $("#editor"),

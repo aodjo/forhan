@@ -10,6 +10,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { desktopLaunchOptions } from './helpers/desktop-launch';
+import {observeFallbackGlyphs,observeFallbackPlatformFonts} from './helpers/fallback-glyph-observation.ts';
 
 /**
  * Measure actual document-content styles without depending on stylesheet text.
@@ -415,6 +416,8 @@ async function verifySharedDocumentLayout({
     );
     /** Actual settled editing styles used as the source of output fidelity assertions. */
     const editing = await editor.evaluate(measureDocumentStyles, ".tiptap");
+    /** Read-only source observations distinguish actual font fallback from output-parity assertions. */
+    const editorGlyphs=await editor.evaluate(observeFallbackGlyphs,'.tiptap p'),editorFonts=await observeFallbackPlatformFonts(editor,'.tiptap p');
     expect(Object.keys(editing)).toHaveLength(29);
     expect(editing['[data-forhan-paragraph-alignment="distribute"]']['text-justify']).toBe('inter-character');
     expect(editing['[data-forhan-paragraph-alignment="split"]']['text-justify']).toBe('inter-word');
@@ -456,6 +459,9 @@ async function verifySharedDocumentLayout({
     await probe.setContent(html);
     /** Real output styles remain an independent observation rather than an expected-value injection. */
     const standalone=await probe.evaluate(measureDocumentStyles,"body");
+    /** Both source documents retain independently observed platform faces and glyph baselines. */
+    const standaloneGlyphs=await probe.evaluate(observeFallbackGlyphs,'body p'),standaloneFonts=await observeFallbackPlatformFonts(probe,'body p');
+    await writeFile(path.join(diagnosticRoot,'fallback-source.json'),JSON.stringify({editorGlyphs,editorFonts,standaloneGlyphs,standaloneFonts},null,2));
     await writeFile(path.join(diagnosticRoot,'content-styles.json'),JSON.stringify({editing,standalone},null,2));
     expect(standalone).toEqual(editing);
     await desktop.evaluate(observePrintHtml);

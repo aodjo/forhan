@@ -50,6 +50,7 @@ jobs:
         run: |
           brew install displayplacer
           node scripts/prepare-macos-display.ts
+          killall Dock || test $? -eq 1
         env:
           HOMEBREW_NO_AUTO_UPDATE: 1
       - run: npm run test:ui

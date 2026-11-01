@@ -4,8 +4,8 @@ import path from 'node:path';
 
 /** Native viewport fixtures reach 1440x1000; the CI display also needs room for system chrome. */
 const MINIMUM_DISPLAY_WIDTH=1600;
-/** Extra native height preserves the largest original viewport without macOS constraining its window. */
-const MINIMUM_DISPLAY_HEIGHT=1200;
+/** A 1080-pixel display contains the largest 1000-pixel fixture once the ephemeral runner Dock is hidden. */
+const MINIMUM_DISPLAY_HEIGHT=1080;
 /** One real unscaled display mode comes from the native displayplacer's original enumeration. */
 interface NativeDisplayMode {index:number;width:number;height:number;}
 /** The real primary display retains its current geometry and available native modes. */
@@ -73,8 +73,11 @@ async function prepareNativeMacDisplay():Promise<void>{
   /** Native setup evidence is retained separately from Playwright's cleared output directory. */
   const directory=path.resolve('release/validation'),file=path.join(directory,'native-display-darwin-'+process.arch+'.json');
   await mkdir(directory,{recursive:true});
-  let before='',after='',selected:NativeDisplayMode|undefined,success=false,error:string|undefined;
+  let before='',after='',selected:NativeDisplayMode|undefined,success=false,dockAutoHide=false,error:string|undefined;
   try{
+    execFileSync('defaults',['write','com.apple.dock','autohide','-bool','true'],{encoding:'utf8',timeout:10000});
+    dockAutoHide=execFileSync('defaults',['read','com.apple.dock','autohide'],{encoding:'utf8',timeout:10000}).trim()==='1';
+    if(!dockAutoHide)throw new Error('The ephemeral runner Dock auto-hide preference was not applied.');
     before=runDisplayCommand(['list']);
     /** Only the actual primary display's advertised unscaled modes are eligible. */
     const display=readPrimaryDisplay(before);
@@ -93,7 +96,7 @@ async function prepareNativeMacDisplay():Promise<void>{
     success=true;
     console.log(`Native macOS display: ${observed.width}x${observed.height}, scaling off.`);
   }catch(cause){error=cause instanceof Error?cause.message:String(cause);throw cause;}
-  finally{await writeFile(file,JSON.stringify({kind:'actual-macos-ci-native-display-setup',recordedAt:new Date().toISOString(),success,minimumWidth:MINIMUM_DISPLAY_WIDTH,minimumHeight:MINIMUM_DISPLAY_HEIGHT,selected,before,after,error},null,2)+'\n');}
+  finally{await writeFile(file,JSON.stringify({kind:'actual-macos-ci-native-display-setup',recordedAt:new Date().toISOString(),success,minimumWidth:MINIMUM_DISPLAY_WIDTH,minimumHeight:MINIMUM_DISPLAY_HEIGHT,runnerDockAutoHidePreference:dockAutoHide,selected,before,after,error},null,2)+'\n');}
 }
 
 await prepareNativeMacDisplay();

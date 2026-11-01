@@ -1,6 +1,7 @@
 import {execFileSync} from 'node:child_process';
 import {mkdir,writeFile} from 'node:fs/promises';
 import path from 'node:path';
+import {setTimeout as wait} from 'node:timers/promises';
 import {startVirtualMacDisplay,type VirtualDisplayReady} from './macos-virtual-display.ts';
 
 /** Native viewport fixtures reach 1440x1100; the CI display also needs room for system chrome. */
@@ -89,7 +90,18 @@ async function prepareNativeMacDisplay():Promise<void>{
         if(!selected||mode.width*mode.height<selected.width*selected.height)selected=mode;
       }
       if(selected)runDisplayCommand([`id:${display.id} mode:${selected.index}`]);
-      else virtual=await startVirtualMacDisplay();
+      else{
+        virtual=await startVirtualMacDisplay();
+        /** A separately launched utility observes the actual published virtual screen identity. */
+        const registered=runDisplayCommand(['list']);
+        let virtualId:string|undefined;
+        for(/** Window-server hotplug preferences can restore an earlier arrangement after initial creation. */const block of registered.split(/(?=^Persistent screen id:)/mu)){
+          if(Number(/^Contextual screen id:\s*(\d+)\s*$/mu.exec(block)?.[1])===virtual.displayId)virtualId=/^Persistent screen id:\s*([A-Fa-f0-9-]+)\s*$/mu.exec(block)?.[1];
+        }
+        if(!virtualId)throw new Error('The independent native utility did not observe the owned virtual display.');
+        runDisplayCommand([`id:${display.id} origin:(${virtual.width},0)`,`id:${virtualId} origin:(0,0)`]);
+        await wait(500);
+      }
     }
     after=runDisplayCommand(['list']);
     /** The actual final native mode must satisfy the setup contract independently of the command request. */

@@ -29,6 +29,7 @@ export default defineConfig({
     "native-page-view-desktop.spec.ts",
     "native-paper-framing-desktop.spec.ts",
     "native-paper-minimum-insets-desktop.spec.ts",
+    "native-manual-paper-edges-desktop.spec.ts",
   ],
   fullyParallel: false,
   workers: 1,

@@ -11,7 +11,7 @@ import {
 } from "./lib/native-package.ts";
 
 /** Native distribution checks include original physical pagination, isolated previews, adaptive spacing, source dragging and actual native output. */
-const MIN_NATIVE_REGRESSIONS = 30;
+const MIN_NATIVE_REGRESSIONS = 31;
 
 /**
  * Validate and exercise the current packaged app on its actual native host.

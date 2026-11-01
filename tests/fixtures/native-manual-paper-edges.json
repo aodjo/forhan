@@ -1,0 +1,6733 @@
+{
+  "version": 1,
+  "evidence": {
+    "kind": "controlled-installed-native-complete-paper-pixels-not-REA",
+    "executableSha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+    "sourceCounts": [
+      13,
+      43
+    ],
+    "captions": [
+      11,
+      17,
+      24,
+      29
+    ],
+    "candidateFrozenBeforeOriginalCapture": true,
+    "compiledBeforeOriginalCapture": true
+  },
+  "sources": [
+    {
+      "id": "compact-unseen-13-pages",
+      "pageCount": 13,
+      "sourceSha256": "6bfb4b7e82920588e298d8e4c5b1986fa76aa3bf05a289462d01d4af8f655379",
+      "page": {
+        "width": 210.00155555555554,
+        "height": 90.00066666666666,
+        "marginTop": 19.99897222222222,
+        "marginBottom": 15.00011111111111,
+        "marginLeft": 30.00022222222222,
+        "marginRight": 30.00022222222222,
+        "header": 15.00011111111111,
+        "footer": 15.00011111111111,
+        "lineGrid": 3288
+      },
+      "doc": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "sourceId": "hwpx-0"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout001",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-1"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout002",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-2"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout003",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-3"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout004",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-4"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout005",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-5"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout006",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-6"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout007",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-7"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout008",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-8"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout009",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-9"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout010",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-10"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout011",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-11"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout012",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-12"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout013",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "text": "holdout001holdout002holdout003holdout004holdout005holdout006holdout007holdout008holdout009holdout010holdout011holdout012holdout013"
+    },
+    {
+      "id": "compact-unseen-43-pages",
+      "pageCount": 43,
+      "sourceSha256": "8b14d0ae4dc385dacc387ac00f4bb2e53b655705f54dd7d2ece75973a2ffbd09",
+      "page": {
+        "width": 210.00155555555554,
+        "height": 90.00066666666666,
+        "marginTop": 19.99897222222222,
+        "marginBottom": 15.00011111111111,
+        "marginLeft": 30.00022222222222,
+        "marginRight": 30.00022222222222,
+        "header": 15.00011111111111,
+        "footer": 15.00011111111111,
+        "lineGrid": 3288
+      },
+      "doc": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "sourceId": "hwpx-0"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout001",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-1"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout002",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-2"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout003",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-3"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout004",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-4"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout005",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-5"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout006",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-6"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout007",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-7"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout008",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-8"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout009",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-9"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout010",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-10"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout011",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-11"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout012",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-12"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout013",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-13"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout014",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-14"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout015",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-15"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout016",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-16"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout017",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-17"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout018",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-18"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout019",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-19"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout020",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-20"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout021",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-21"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout022",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-22"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout023",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-23"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout024",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-24"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout025",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-25"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout026",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-26"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout027",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-27"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout028",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-28"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout029",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-29"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout030",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-30"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout031",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-31"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout032",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-32"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout033",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-33"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout034",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-34"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout035",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-35"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout036",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-36"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout037",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-37"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout038",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-38"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout039",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-39"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout040",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-40"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout041",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-41"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout042",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-42"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout043",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "text": "holdout001holdout002holdout003holdout004holdout005holdout006holdout007holdout008holdout009holdout010holdout011holdout012holdout013holdout014holdout015holdout016holdout017holdout018holdout019holdout020holdout021holdout022holdout023holdout024holdout025holdout026holdout027holdout028holdout029holdout030holdout031holdout032holdout033holdout034holdout035holdout036holdout037holdout038holdout039holdout040holdout041holdout042holdout043"
+    }
+  ],
+  "frames": [
+    {
+      "id": "compact-unseen-13-pages-manual-11-columns-1-1440x959",
+      "source": "compact-unseen-13-pages",
+      "ratio": 11,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 681,
+          "right": 771,
+          "top": 275,
+          "bottom": 313
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 319,
+          "bottom": 357
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 363,
+          "bottom": 401
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 407,
+          "bottom": 445
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 451,
+          "bottom": 489
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 495,
+          "bottom": 533
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 539,
+          "bottom": 577
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 583,
+          "bottom": 621
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 627,
+          "bottom": 665
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 671,
+          "bottom": 709
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 715,
+          "bottom": 753
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 759,
+          "bottom": 797
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 803,
+          "bottom": 841
+        }
+      ],
+      "captureSha256": "e79f0f63f08119d5bf20781429115eb9522bf0bec6ae610f01dc1824ae0331f9"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-11-columns-1-1440x963",
+      "source": "compact-unseen-13-pages",
+      "ratio": 11,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 681,
+          "right": 771,
+          "top": 277,
+          "bottom": 315
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 321,
+          "bottom": 359
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 365,
+          "bottom": 403
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 409,
+          "bottom": 447
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 453,
+          "bottom": 491
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 497,
+          "bottom": 535
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 541,
+          "bottom": 579
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 585,
+          "bottom": 623
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 629,
+          "bottom": 667
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 673,
+          "bottom": 711
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 717,
+          "bottom": 755
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 761,
+          "bottom": 799
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 805,
+          "bottom": 843
+        }
+      ],
+      "captureSha256": "ba42a761b3890859aa9b53bde3aa2b587858c3d52c3e21d694269669f1281a83"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-11-columns-1-1280x1003",
+      "source": "compact-unseen-13-pages",
+      "ratio": 11,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 601,
+          "right": 691,
+          "top": 297,
+          "bottom": 335
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 341,
+          "bottom": 379
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 385,
+          "bottom": 423
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 429,
+          "bottom": 467
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 473,
+          "bottom": 511
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 517,
+          "bottom": 555
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 561,
+          "bottom": 599
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 605,
+          "bottom": 643
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 649,
+          "bottom": 687
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 693,
+          "bottom": 731
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 737,
+          "bottom": 775
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 781,
+          "bottom": 819
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 825,
+          "bottom": 863
+        }
+      ],
+      "captureSha256": "aac52912c2b933ea24b50de96eacd010f9917d4275bcf1b04b74ecb2d33e16d8"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-11-columns-2-1440x959",
+      "source": "compact-unseen-13-pages",
+      "ratio": 11,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 633,
+          "right": 723,
+          "top": 407,
+          "bottom": 445
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 407,
+          "bottom": 445
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 451,
+          "bottom": 489
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 451,
+          "bottom": 489
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 495,
+          "bottom": 533
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 495,
+          "bottom": 533
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 539,
+          "bottom": 577
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 539,
+          "bottom": 577
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 583,
+          "bottom": 621
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 583,
+          "bottom": 621
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 627,
+          "bottom": 665
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 627,
+          "bottom": 665
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 671,
+          "bottom": 709
+        }
+      ],
+      "captureSha256": "b8424bf84d21ccd3dc47f4b364eb1965920755a36faa0d621b14d0150e0cdb73"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-11-columns-2-1440x963",
+      "source": "compact-unseen-13-pages",
+      "ratio": 11,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 633,
+          "right": 723,
+          "top": 409,
+          "bottom": 447
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 409,
+          "bottom": 447
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 453,
+          "bottom": 491
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 453,
+          "bottom": 491
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 497,
+          "bottom": 535
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 497,
+          "bottom": 535
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 541,
+          "bottom": 579
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 541,
+          "bottom": 579
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 585,
+          "bottom": 623
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 585,
+          "bottom": 623
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 629,
+          "bottom": 667
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 629,
+          "bottom": 667
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 673,
+          "bottom": 711
+        }
+      ],
+      "captureSha256": "68cb11122c616ad5bed8f029f614629e0141e011b1d63d30380f49f1f830458a"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-11-columns-2-1280x1003",
+      "source": "compact-unseen-13-pages",
+      "ratio": 11,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 553,
+          "right": 643,
+          "top": 429,
+          "bottom": 467
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 429,
+          "bottom": 467
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 473,
+          "bottom": 511
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 473,
+          "bottom": 511
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 517,
+          "bottom": 555
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 517,
+          "bottom": 555
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 561,
+          "bottom": 599
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 561,
+          "bottom": 599
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 605,
+          "bottom": 643
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 605,
+          "bottom": 643
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 649,
+          "bottom": 687
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 649,
+          "bottom": 687
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 693,
+          "bottom": 731
+        }
+      ],
+      "captureSha256": "3c57ea18f47d83e7a8831f5adfe17f4c15b4d2bad46f25024a42421948b79d67"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-17-columns-1-1440x959",
+      "source": "compact-unseen-13-pages",
+      "ratio": 17,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 660,
+          "right": 792,
+          "top": 218,
+          "bottom": 274
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 280,
+          "bottom": 336
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 342,
+          "bottom": 398
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 404,
+          "bottom": 460
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 466,
+          "bottom": 522
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 528,
+          "bottom": 584
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 590,
+          "bottom": 646
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 653,
+          "bottom": 708
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 715,
+          "bottom": 770
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 777,
+          "bottom": 832
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 839,
+          "bottom": 894
+        }
+      ],
+      "captureSha256": "efc0a3c7e25353b7d735a8ca481c510075777f09061bfc89b88c9b152c34f984"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-17-columns-1-1440x963",
+      "source": "compact-unseen-13-pages",
+      "ratio": 17,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 660,
+          "right": 792,
+          "top": 218,
+          "bottom": 274
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 280,
+          "bottom": 336
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 342,
+          "bottom": 398
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 404,
+          "bottom": 460
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 466,
+          "bottom": 522
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 528,
+          "bottom": 584
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 590,
+          "bottom": 646
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 653,
+          "bottom": 708
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 715,
+          "bottom": 770
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 777,
+          "bottom": 832
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 839,
+          "bottom": 894
+        }
+      ],
+      "captureSha256": "8f4a992db15715da28f791574a73f2d79611ec1080b384dbec92ca973fc031d0"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-17-columns-1-1280x1003",
+      "source": "compact-unseen-13-pages",
+      "ratio": 17,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 580,
+          "right": 712,
+          "top": 218,
+          "bottom": 274
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 280,
+          "bottom": 336
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 342,
+          "bottom": 398
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 404,
+          "bottom": 460
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 466,
+          "bottom": 522
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 528,
+          "bottom": 584
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 590,
+          "bottom": 646
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 653,
+          "bottom": 708
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 715,
+          "bottom": 770
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 777,
+          "bottom": 832
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 839,
+          "bottom": 894
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 901,
+          "bottom": 947
+        }
+      ],
+      "captureSha256": "31a6acc6c5e7d7d8d68594d02202cfe9798e740cfabf1f2a89e1d91eca33dc2a"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-17-columns-2-1440x959",
+      "source": "compact-unseen-13-pages",
+      "ratio": 17,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 592,
+          "right": 723,
+          "top": 344,
+          "bottom": 400
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 344,
+          "bottom": 400
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 406,
+          "bottom": 462
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 406,
+          "bottom": 462
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 468,
+          "bottom": 524
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 468,
+          "bottom": 524
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 530,
+          "bottom": 586
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 530,
+          "bottom": 586
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 592,
+          "bottom": 648
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 592,
+          "bottom": 648
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 654,
+          "bottom": 710
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 654,
+          "bottom": 710
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 716,
+          "bottom": 772
+        }
+      ],
+      "captureSha256": "7d3388ef8e2322575861b1b290e024ea962f62f3000ccffb72bca2e93498c256"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-17-columns-2-1440x963",
+      "source": "compact-unseen-13-pages",
+      "ratio": 17,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 592,
+          "right": 723,
+          "top": 346,
+          "bottom": 402
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 346,
+          "bottom": 402
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 408,
+          "bottom": 464
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 408,
+          "bottom": 464
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 470,
+          "bottom": 526
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 470,
+          "bottom": 526
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 532,
+          "bottom": 588
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 532,
+          "bottom": 588
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 594,
+          "bottom": 650
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 594,
+          "bottom": 650
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 656,
+          "bottom": 712
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 656,
+          "bottom": 712
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 718,
+          "bottom": 774
+        }
+      ],
+      "captureSha256": "55eb7a898736b60a760df80c9c06cabef4387f1d15d5a488e3b2f0395e89708f"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-17-columns-2-1280x1003",
+      "source": "compact-unseen-13-pages",
+      "ratio": 17,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 512,
+          "right": 643,
+          "top": 366,
+          "bottom": 422
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 366,
+          "bottom": 422
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 428,
+          "bottom": 484
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 428,
+          "bottom": 484
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 490,
+          "bottom": 546
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 490,
+          "bottom": 546
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 552,
+          "bottom": 608
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 552,
+          "bottom": 608
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 614,
+          "bottom": 670
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 614,
+          "bottom": 670
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 676,
+          "bottom": 732
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 676,
+          "bottom": 732
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 738,
+          "bottom": 794
+        }
+      ],
+      "captureSha256": "9954b5debc86303f6e0d2f0159636934c369b3426fda859d570ce4ef91d8d909"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-24-columns-1-1440x959",
+      "source": "compact-unseen-13-pages",
+      "ratio": 24,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 631,
+          "right": 821,
+          "top": 218,
+          "bottom": 299
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 305,
+          "bottom": 385
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 391,
+          "bottom": 472
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 478,
+          "bottom": 558
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 564,
+          "bottom": 645
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 651,
+          "bottom": 731
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 737,
+          "bottom": 818
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 824,
+          "bottom": 903
+        }
+      ],
+      "captureSha256": "c75854ed77f94dfd661d145033ff1e32762b6a5cf1a17253f65dd0c2859647d5"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-24-columns-1-1440x963",
+      "source": "compact-unseen-13-pages",
+      "ratio": 24,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 631,
+          "right": 821,
+          "top": 218,
+          "bottom": 299
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 305,
+          "bottom": 385
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 391,
+          "bottom": 472
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 478,
+          "bottom": 558
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 564,
+          "bottom": 645
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 651,
+          "bottom": 731
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 737,
+          "bottom": 818
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 824,
+          "bottom": 904
+        }
+      ],
+      "captureSha256": "279a5bf0b3dd3baffdc658343b908aa98dd9137e087485f5dbd1270b0cb0888f"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-24-columns-1-1280x1003",
+      "source": "compact-unseen-13-pages",
+      "ratio": 24,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 551,
+          "right": 741,
+          "top": 218,
+          "bottom": 299
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 305,
+          "bottom": 385
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 391,
+          "bottom": 472
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 478,
+          "bottom": 558
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 564,
+          "bottom": 645
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 651,
+          "bottom": 731
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 737,
+          "bottom": 818
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 824,
+          "bottom": 904
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 910,
+          "bottom": 947
+        }
+      ],
+      "captureSha256": "374c7d72d8978b13e75f06ba9b4134ecc2d723150854ddbaac6f6e01c6774295"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-24-columns-2-1440x959",
+      "source": "compact-unseen-13-pages",
+      "ratio": 24,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 534,
+          "right": 723,
+          "top": 259,
+          "bottom": 339
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 259,
+          "bottom": 339
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 345,
+          "bottom": 426
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 345,
+          "bottom": 426
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 432,
+          "bottom": 512
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 432,
+          "bottom": 512
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 518,
+          "bottom": 598
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 518,
+          "bottom": 598
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 604,
+          "bottom": 685
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 604,
+          "bottom": 685
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 691,
+          "bottom": 771
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 691,
+          "bottom": 771
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 777,
+          "bottom": 858
+        }
+      ],
+      "captureSha256": "7fc87e2da3eed75ff72e4b3b45b50ab4b00665e9191b68bd37b23f6edb5c5b3c"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-24-columns-2-1440x963",
+      "source": "compact-unseen-13-pages",
+      "ratio": 24,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 534,
+          "right": 723,
+          "top": 261,
+          "bottom": 341
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 261,
+          "bottom": 341
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 347,
+          "bottom": 428
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 347,
+          "bottom": 428
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 434,
+          "bottom": 514
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 434,
+          "bottom": 514
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 520,
+          "bottom": 600
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 520,
+          "bottom": 600
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 606,
+          "bottom": 687
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 606,
+          "bottom": 687
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 693,
+          "bottom": 773
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 693,
+          "bottom": 773
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 779,
+          "bottom": 860
+        }
+      ],
+      "captureSha256": "af3fdb1c9f2bb5392e5c9ea9aec0daa2a3b4989dae6f88de147038939176d7f0"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-24-columns-2-1280x1003",
+      "source": "compact-unseen-13-pages",
+      "ratio": 24,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 454,
+          "right": 643,
+          "top": 281,
+          "bottom": 361
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 281,
+          "bottom": 361
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 367,
+          "bottom": 448
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 367,
+          "bottom": 448
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 454,
+          "bottom": 534
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 454,
+          "bottom": 534
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 540,
+          "bottom": 620
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 540,
+          "bottom": 620
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 626,
+          "bottom": 707
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 626,
+          "bottom": 707
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 713,
+          "bottom": 793
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 713,
+          "bottom": 793
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 799,
+          "bottom": 880
+        }
+      ],
+      "captureSha256": "feb40fc6c01147418aa655f4fe8a139dc1faccac144579a2c1c37fa57d28bfbc"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-29-columns-1-1440x959",
+      "source": "compact-unseen-13-pages",
+      "ratio": 29,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 611,
+          "right": 841,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 845,
+          "bottom": 903
+        }
+      ],
+      "captureSha256": "7650c97613f4746717ec3960578db405281222ee7977011e104893632049c99b"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-29-columns-1-1440x963",
+      "source": "compact-unseen-13-pages",
+      "ratio": 29,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 611,
+          "right": 841,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 845,
+          "bottom": 907
+        }
+      ],
+      "captureSha256": "cb77f4638a1a33eb9971d844dfa8337e65d543cec1dcaf62a48d52d38d87136b"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-29-columns-1-1280x1003",
+      "source": "compact-unseen-13-pages",
+      "ratio": 29,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 531,
+          "right": 761,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 531,
+          "right": 761,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 531,
+          "right": 761,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 531,
+          "right": 761,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 531,
+          "right": 761,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 531,
+          "right": 761,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 531,
+          "right": 761,
+          "top": 845,
+          "bottom": 943
+        }
+      ],
+      "captureSha256": "110f8bc2f35231b65ef06dbe6f0a7f2c57a04d862593e7a248e2146895237a89"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-29-columns-2-1440x959",
+      "source": "compact-unseen-13-pages",
+      "ratio": 29,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 492,
+          "right": 723,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 845,
+          "bottom": 903
+        }
+      ],
+      "captureSha256": "6b8b99b4325b8f85726193293d432d374147288aa7b43c7ddb2ff51114771006"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-29-columns-2-1440x963",
+      "source": "compact-unseen-13-pages",
+      "ratio": 29,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 492,
+          "right": 723,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 845,
+          "bottom": 907
+        }
+      ],
+      "captureSha256": "fc902adce763e8c4f83db25bbc535a9814185e6f980a326e90b81d47a9f86b19"
+    },
+    {
+      "id": "compact-unseen-13-pages-manual-29-columns-2-1280x1003",
+      "source": "compact-unseen-13-pages",
+      "ratio": 29,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 412,
+          "right": 643,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 649,
+          "right": 880,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 412,
+          "right": 643,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 649,
+          "right": 880,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 412,
+          "right": 643,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 649,
+          "right": 880,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 412,
+          "right": 643,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 649,
+          "right": 880,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 412,
+          "right": 643,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 649,
+          "right": 880,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 412,
+          "right": 643,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 649,
+          "right": 880,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 412,
+          "right": 643,
+          "top": 845,
+          "bottom": 943
+        }
+      ],
+      "captureSha256": "ed009ead4db52bfe562f2636a3dd13b01553bfd8ef20237299ac3fecace5a9df"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-11-columns-1-1440x959",
+      "source": "compact-unseen-43-pages",
+      "ratio": 11,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 681,
+          "right": 771,
+          "top": 218,
+          "bottom": 256
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 262,
+          "bottom": 300
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 306,
+          "bottom": 344
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 350,
+          "bottom": 388
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 394,
+          "bottom": 432
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 438,
+          "bottom": 476
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 481,
+          "bottom": 519
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 525,
+          "bottom": 563
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 569,
+          "bottom": 607
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 613,
+          "bottom": 651
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 657,
+          "bottom": 695
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 701,
+          "bottom": 739
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 745,
+          "bottom": 783
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 789,
+          "bottom": 827
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 833,
+          "bottom": 871
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 877,
+          "bottom": 903
+        }
+      ],
+      "captureSha256": "9c1449135bfc01e83f37005bd48b4b1b1b0c29629561cb1e2add5c92d494ac5b"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-11-columns-1-1440x963",
+      "source": "compact-unseen-43-pages",
+      "ratio": 11,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 681,
+          "right": 771,
+          "top": 218,
+          "bottom": 256
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 262,
+          "bottom": 300
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 306,
+          "bottom": 344
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 350,
+          "bottom": 388
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 394,
+          "bottom": 432
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 438,
+          "bottom": 476
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 481,
+          "bottom": 519
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 525,
+          "bottom": 563
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 569,
+          "bottom": 607
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 613,
+          "bottom": 651
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 657,
+          "bottom": 695
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 701,
+          "bottom": 739
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 745,
+          "bottom": 783
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 789,
+          "bottom": 827
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 833,
+          "bottom": 871
+        },
+        {
+          "left": 681,
+          "right": 771,
+          "top": 877,
+          "bottom": 907
+        }
+      ],
+      "captureSha256": "63213f870ba1bf9d9131944fff7463f4fbe90a574c890d6101fe12f411ca08ba"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-11-columns-1-1280x1003",
+      "source": "compact-unseen-43-pages",
+      "ratio": 11,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 601,
+          "right": 691,
+          "top": 218,
+          "bottom": 256
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 262,
+          "bottom": 300
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 306,
+          "bottom": 344
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 350,
+          "bottom": 388
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 394,
+          "bottom": 432
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 438,
+          "bottom": 476
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 481,
+          "bottom": 519
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 525,
+          "bottom": 563
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 569,
+          "bottom": 607
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 613,
+          "bottom": 651
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 657,
+          "bottom": 695
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 701,
+          "bottom": 739
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 745,
+          "bottom": 783
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 789,
+          "bottom": 827
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 833,
+          "bottom": 871
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 877,
+          "bottom": 915
+        },
+        {
+          "left": 601,
+          "right": 691,
+          "top": 921,
+          "bottom": 947
+        }
+      ],
+      "captureSha256": "d79a9619a9fd39e1e24a3c86e05063af7382dae83ee66313b334f0f74424da4f"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-11-columns-2-1440x959",
+      "source": "compact-unseen-43-pages",
+      "ratio": 11,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 633,
+          "right": 723,
+          "top": 218,
+          "bottom": 256
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 218,
+          "bottom": 256
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 262,
+          "bottom": 300
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 262,
+          "bottom": 300
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 306,
+          "bottom": 344
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 306,
+          "bottom": 344
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 350,
+          "bottom": 388
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 350,
+          "bottom": 388
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 394,
+          "bottom": 432
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 394,
+          "bottom": 432
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 438,
+          "bottom": 476
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 438,
+          "bottom": 476
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 481,
+          "bottom": 519
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 481,
+          "bottom": 519
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 525,
+          "bottom": 563
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 525,
+          "bottom": 563
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 569,
+          "bottom": 607
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 569,
+          "bottom": 607
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 613,
+          "bottom": 651
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 613,
+          "bottom": 651
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 657,
+          "bottom": 695
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 657,
+          "bottom": 695
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 701,
+          "bottom": 739
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 701,
+          "bottom": 739
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 745,
+          "bottom": 783
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 745,
+          "bottom": 783
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 789,
+          "bottom": 827
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 789,
+          "bottom": 827
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 833,
+          "bottom": 871
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 833,
+          "bottom": 871
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 877,
+          "bottom": 903
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 877,
+          "bottom": 903
+        }
+      ],
+      "captureSha256": "ab28a95aecd5ba09e773f84d6cbce768da000f464fd3728fae238bc1875674cb"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-11-columns-2-1440x963",
+      "source": "compact-unseen-43-pages",
+      "ratio": 11,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 633,
+          "right": 723,
+          "top": 218,
+          "bottom": 256
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 218,
+          "bottom": 256
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 262,
+          "bottom": 300
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 262,
+          "bottom": 300
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 306,
+          "bottom": 344
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 306,
+          "bottom": 344
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 350,
+          "bottom": 388
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 350,
+          "bottom": 388
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 394,
+          "bottom": 432
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 394,
+          "bottom": 432
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 438,
+          "bottom": 476
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 438,
+          "bottom": 476
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 481,
+          "bottom": 519
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 481,
+          "bottom": 519
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 525,
+          "bottom": 563
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 525,
+          "bottom": 563
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 569,
+          "bottom": 607
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 569,
+          "bottom": 607
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 613,
+          "bottom": 651
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 613,
+          "bottom": 651
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 657,
+          "bottom": 695
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 657,
+          "bottom": 695
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 701,
+          "bottom": 739
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 701,
+          "bottom": 739
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 745,
+          "bottom": 783
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 745,
+          "bottom": 783
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 789,
+          "bottom": 827
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 789,
+          "bottom": 827
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 833,
+          "bottom": 871
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 833,
+          "bottom": 871
+        },
+        {
+          "left": 633,
+          "right": 723,
+          "top": 877,
+          "bottom": 907
+        },
+        {
+          "left": 729,
+          "right": 819,
+          "top": 877,
+          "bottom": 907
+        }
+      ],
+      "captureSha256": "950dc5ec528802eefa84d236e2f19381cb28df06d598911c920cdad1ea732df9"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-11-columns-2-1280x1003",
+      "source": "compact-unseen-43-pages",
+      "ratio": 11,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 553,
+          "right": 643,
+          "top": 218,
+          "bottom": 256
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 218,
+          "bottom": 256
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 262,
+          "bottom": 300
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 262,
+          "bottom": 300
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 306,
+          "bottom": 344
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 306,
+          "bottom": 344
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 350,
+          "bottom": 388
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 350,
+          "bottom": 388
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 394,
+          "bottom": 432
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 394,
+          "bottom": 432
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 438,
+          "bottom": 476
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 438,
+          "bottom": 476
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 481,
+          "bottom": 519
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 481,
+          "bottom": 519
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 525,
+          "bottom": 563
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 525,
+          "bottom": 563
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 569,
+          "bottom": 607
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 569,
+          "bottom": 607
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 613,
+          "bottom": 651
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 613,
+          "bottom": 651
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 657,
+          "bottom": 695
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 657,
+          "bottom": 695
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 701,
+          "bottom": 739
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 701,
+          "bottom": 739
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 745,
+          "bottom": 783
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 745,
+          "bottom": 783
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 789,
+          "bottom": 827
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 789,
+          "bottom": 827
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 833,
+          "bottom": 871
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 833,
+          "bottom": 871
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 877,
+          "bottom": 915
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 877,
+          "bottom": 915
+        },
+        {
+          "left": 553,
+          "right": 643,
+          "top": 921,
+          "bottom": 947
+        },
+        {
+          "left": 649,
+          "right": 739,
+          "top": 921,
+          "bottom": 947
+        }
+      ],
+      "captureSha256": "b64b490395d263c125071e1c369d59deff82349183979f1c7a0c62a4a3d47d58"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-17-columns-1-1440x959",
+      "source": "compact-unseen-43-pages",
+      "ratio": 17,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 660,
+          "right": 792,
+          "top": 218,
+          "bottom": 274
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 280,
+          "bottom": 336
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 342,
+          "bottom": 398
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 404,
+          "bottom": 460
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 466,
+          "bottom": 522
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 528,
+          "bottom": 584
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 590,
+          "bottom": 646
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 653,
+          "bottom": 708
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 715,
+          "bottom": 770
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 777,
+          "bottom": 832
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 839,
+          "bottom": 894
+        }
+      ],
+      "captureSha256": "3657d5d65ce2d1f9dd4e3d98efa719526f902fb8a80bffa29ec8979484392776"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-17-columns-1-1440x963",
+      "source": "compact-unseen-43-pages",
+      "ratio": 17,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 660,
+          "right": 792,
+          "top": 218,
+          "bottom": 274
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 280,
+          "bottom": 336
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 342,
+          "bottom": 398
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 404,
+          "bottom": 460
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 466,
+          "bottom": 522
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 528,
+          "bottom": 584
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 590,
+          "bottom": 646
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 653,
+          "bottom": 708
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 715,
+          "bottom": 770
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 777,
+          "bottom": 832
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 839,
+          "bottom": 894
+        }
+      ],
+      "captureSha256": "a3bc751d0f323eef3287978f0b17813f653b8471dd7e0d6cee15db6432cb5fa3"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-17-columns-1-1280x1003",
+      "source": "compact-unseen-43-pages",
+      "ratio": 17,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 580,
+          "right": 712,
+          "top": 218,
+          "bottom": 274
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 280,
+          "bottom": 336
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 342,
+          "bottom": 398
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 404,
+          "bottom": 460
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 466,
+          "bottom": 522
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 528,
+          "bottom": 584
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 590,
+          "bottom": 646
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 653,
+          "bottom": 708
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 715,
+          "bottom": 770
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 777,
+          "bottom": 832
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 839,
+          "bottom": 894
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 901,
+          "bottom": 947
+        }
+      ],
+      "captureSha256": "ac32493fb148950fe32139580813c00d458c0c110a7832dd82c88a572aafe6b5"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-17-columns-2-1440x959",
+      "source": "compact-unseen-43-pages",
+      "ratio": 17,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 592,
+          "right": 723,
+          "top": 218,
+          "bottom": 274
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 218,
+          "bottom": 274
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 280,
+          "bottom": 336
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 280,
+          "bottom": 336
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 342,
+          "bottom": 398
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 342,
+          "bottom": 398
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 404,
+          "bottom": 460
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 404,
+          "bottom": 460
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 466,
+          "bottom": 522
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 466,
+          "bottom": 522
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 528,
+          "bottom": 584
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 528,
+          "bottom": 584
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 590,
+          "bottom": 646
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 590,
+          "bottom": 646
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 653,
+          "bottom": 708
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 653,
+          "bottom": 708
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 715,
+          "bottom": 770
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 715,
+          "bottom": 770
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 777,
+          "bottom": 832
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 777,
+          "bottom": 832
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 839,
+          "bottom": 894
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 839,
+          "bottom": 894
+        }
+      ],
+      "captureSha256": "704f2ba9939f05ea17f6fbea82179cb81618559e6f03f4c8fcb6d70487a7d6fa"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-17-columns-2-1440x963",
+      "source": "compact-unseen-43-pages",
+      "ratio": 17,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 592,
+          "right": 723,
+          "top": 218,
+          "bottom": 274
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 218,
+          "bottom": 274
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 280,
+          "bottom": 336
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 280,
+          "bottom": 336
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 342,
+          "bottom": 398
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 342,
+          "bottom": 398
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 404,
+          "bottom": 460
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 404,
+          "bottom": 460
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 466,
+          "bottom": 522
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 466,
+          "bottom": 522
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 528,
+          "bottom": 584
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 528,
+          "bottom": 584
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 590,
+          "bottom": 646
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 590,
+          "bottom": 646
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 653,
+          "bottom": 708
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 653,
+          "bottom": 708
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 715,
+          "bottom": 770
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 715,
+          "bottom": 770
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 777,
+          "bottom": 832
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 777,
+          "bottom": 832
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 839,
+          "bottom": 894
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 839,
+          "bottom": 894
+        }
+      ],
+      "captureSha256": "c503e83d451ff4542a2161c76f90ceef27efeaeee05e30d277c651b21c41b129"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-17-columns-2-1280x1003",
+      "source": "compact-unseen-43-pages",
+      "ratio": 17,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 512,
+          "right": 643,
+          "top": 218,
+          "bottom": 274
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 218,
+          "bottom": 274
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 280,
+          "bottom": 336
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 280,
+          "bottom": 336
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 342,
+          "bottom": 398
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 342,
+          "bottom": 398
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 404,
+          "bottom": 460
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 404,
+          "bottom": 460
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 466,
+          "bottom": 522
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 466,
+          "bottom": 522
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 528,
+          "bottom": 584
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 528,
+          "bottom": 584
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 590,
+          "bottom": 646
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 590,
+          "bottom": 646
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 653,
+          "bottom": 708
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 653,
+          "bottom": 708
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 715,
+          "bottom": 770
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 715,
+          "bottom": 770
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 777,
+          "bottom": 832
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 777,
+          "bottom": 832
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 839,
+          "bottom": 894
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 839,
+          "bottom": 894
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 901,
+          "bottom": 947
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 901,
+          "bottom": 947
+        }
+      ],
+      "captureSha256": "7e52b4fcafb5ae226e8ab3c6e434d4e539ec7dee8d897eb867f7c5b9d4b47b4b"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-24-columns-1-1440x959",
+      "source": "compact-unseen-43-pages",
+      "ratio": 24,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 631,
+          "right": 821,
+          "top": 218,
+          "bottom": 299
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 305,
+          "bottom": 385
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 391,
+          "bottom": 472
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 478,
+          "bottom": 558
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 564,
+          "bottom": 645
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 651,
+          "bottom": 731
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 737,
+          "bottom": 818
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 824,
+          "bottom": 903
+        }
+      ],
+      "captureSha256": "98df41b1ccaebd696d3781c5926f3ae508dd6078a6408521bb415a9c807401fe"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-24-columns-1-1440x963",
+      "source": "compact-unseen-43-pages",
+      "ratio": 24,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 631,
+          "right": 821,
+          "top": 218,
+          "bottom": 299
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 305,
+          "bottom": 385
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 391,
+          "bottom": 472
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 478,
+          "bottom": 558
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 564,
+          "bottom": 645
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 651,
+          "bottom": 731
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 737,
+          "bottom": 818
+        },
+        {
+          "left": 631,
+          "right": 821,
+          "top": 824,
+          "bottom": 904
+        }
+      ],
+      "captureSha256": "4f4f7a64ef15f95cfa08dea1c99473808043d3c4eff96a4fb063098e6e6cd9b2"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-24-columns-1-1280x1003",
+      "source": "compact-unseen-43-pages",
+      "ratio": 24,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 551,
+          "right": 741,
+          "top": 218,
+          "bottom": 299
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 305,
+          "bottom": 385
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 391,
+          "bottom": 472
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 478,
+          "bottom": 558
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 564,
+          "bottom": 645
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 651,
+          "bottom": 731
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 737,
+          "bottom": 818
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 824,
+          "bottom": 904
+        },
+        {
+          "left": 551,
+          "right": 741,
+          "top": 910,
+          "bottom": 947
+        }
+      ],
+      "captureSha256": "bb5a5f73dffacbf38fe2fdc03936f588fe0ce1160836f07b200ad26b38947226"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-24-columns-2-1440x959",
+      "source": "compact-unseen-43-pages",
+      "ratio": 24,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 534,
+          "right": 723,
+          "top": 218,
+          "bottom": 299
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 218,
+          "bottom": 299
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 305,
+          "bottom": 385
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 305,
+          "bottom": 385
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 391,
+          "bottom": 472
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 391,
+          "bottom": 472
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 478,
+          "bottom": 558
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 478,
+          "bottom": 558
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 564,
+          "bottom": 645
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 564,
+          "bottom": 645
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 651,
+          "bottom": 731
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 651,
+          "bottom": 731
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 737,
+          "bottom": 818
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 737,
+          "bottom": 818
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 824,
+          "bottom": 903
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 824,
+          "bottom": 903
+        }
+      ],
+      "captureSha256": "fa9b9626b43d54299bd3a50d6ae894cc880b4bcf97f7e39e6316ba9a277d4253"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-24-columns-2-1440x963",
+      "source": "compact-unseen-43-pages",
+      "ratio": 24,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 534,
+          "right": 723,
+          "top": 218,
+          "bottom": 299
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 218,
+          "bottom": 299
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 305,
+          "bottom": 385
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 305,
+          "bottom": 385
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 391,
+          "bottom": 472
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 391,
+          "bottom": 472
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 478,
+          "bottom": 558
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 478,
+          "bottom": 558
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 564,
+          "bottom": 645
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 564,
+          "bottom": 645
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 651,
+          "bottom": 731
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 651,
+          "bottom": 731
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 737,
+          "bottom": 818
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 737,
+          "bottom": 818
+        },
+        {
+          "left": 534,
+          "right": 723,
+          "top": 824,
+          "bottom": 904
+        },
+        {
+          "left": 729,
+          "right": 918,
+          "top": 824,
+          "bottom": 904
+        }
+      ],
+      "captureSha256": "8764c35e9874d88065d3b8e137b1436e4683c7be6022cf7cbd4385521c9b2f9b"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-24-columns-2-1280x1003",
+      "source": "compact-unseen-43-pages",
+      "ratio": 24,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 454,
+          "right": 643,
+          "top": 218,
+          "bottom": 299
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 218,
+          "bottom": 299
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 305,
+          "bottom": 385
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 305,
+          "bottom": 385
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 391,
+          "bottom": 472
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 391,
+          "bottom": 472
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 478,
+          "bottom": 558
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 478,
+          "bottom": 558
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 564,
+          "bottom": 645
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 564,
+          "bottom": 645
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 651,
+          "bottom": 731
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 651,
+          "bottom": 731
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 737,
+          "bottom": 818
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 737,
+          "bottom": 818
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 824,
+          "bottom": 904
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 824,
+          "bottom": 904
+        },
+        {
+          "left": 454,
+          "right": 643,
+          "top": 910,
+          "bottom": 947
+        },
+        {
+          "left": 649,
+          "right": 838,
+          "top": 910,
+          "bottom": 947
+        }
+      ],
+      "captureSha256": "60b26e79fe44f5ba73f251b642dea93979db853332584557c622137bb493562d"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-29-columns-1-1440x959",
+      "source": "compact-unseen-43-pages",
+      "ratio": 29,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 611,
+          "right": 841,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 845,
+          "bottom": 903
+        }
+      ],
+      "captureSha256": "b4522ae4a4d5309f9f6015c8d9a0157da370e6a40b7ab36a5fe2d0664606ca63"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-29-columns-1-1440x963",
+      "source": "compact-unseen-43-pages",
+      "ratio": 29,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 611,
+          "right": 841,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 611,
+          "right": 841,
+          "top": 845,
+          "bottom": 907
+        }
+      ],
+      "captureSha256": "abb5f95920f80be0356a6047da65e97cd94a5e74b3cfaf916d12e2198d206149"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-29-columns-1-1280x1003",
+      "source": "compact-unseen-43-pages",
+      "ratio": 29,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 531,
+          "right": 761,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 531,
+          "right": 761,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 531,
+          "right": 761,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 531,
+          "right": 761,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 531,
+          "right": 761,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 531,
+          "right": 761,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 531,
+          "right": 761,
+          "top": 845,
+          "bottom": 943
+        }
+      ],
+      "captureSha256": "9dcf17f177bb2b4f4fc8c939d4bb0de43449b405fb97f7245bf79bf6559e2c3f"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-29-columns-2-1440x959",
+      "source": "compact-unseen-43-pages",
+      "ratio": 29,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 959
+      },
+      "papers": [
+        {
+          "left": 492,
+          "right": 723,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 845,
+          "bottom": 903
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 845,
+          "bottom": 903
+        }
+      ],
+      "captureSha256": "e6def375238d039b7ec7efd45922ef50bc9da31ed6a96aa1575482be38ad1418"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-29-columns-2-1440x963",
+      "source": "compact-unseen-43-pages",
+      "ratio": 29,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 963
+      },
+      "papers": [
+        {
+          "left": 492,
+          "right": 723,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 492,
+          "right": 723,
+          "top": 845,
+          "bottom": 907
+        },
+        {
+          "left": 729,
+          "right": 960,
+          "top": 845,
+          "bottom": 907
+        }
+      ],
+      "captureSha256": "ec05dc857db728723a8c7d4094df934e22cbf383ec9320daa4da1baa2d853c41"
+    },
+    {
+      "id": "compact-unseen-43-pages-manual-29-columns-2-1280x1003",
+      "source": "compact-unseen-43-pages",
+      "ratio": 29,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1003
+      },
+      "papers": [
+        {
+          "left": 412,
+          "right": 643,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 649,
+          "right": 880,
+          "top": 219,
+          "bottom": 317
+        },
+        {
+          "left": 412,
+          "right": 643,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 649,
+          "right": 880,
+          "top": 323,
+          "bottom": 421
+        },
+        {
+          "left": 412,
+          "right": 643,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 649,
+          "right": 880,
+          "top": 427,
+          "bottom": 526
+        },
+        {
+          "left": 412,
+          "right": 643,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 649,
+          "right": 880,
+          "top": 532,
+          "bottom": 630
+        },
+        {
+          "left": 412,
+          "right": 643,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 649,
+          "right": 880,
+          "top": 636,
+          "bottom": 734
+        },
+        {
+          "left": 412,
+          "right": 643,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 649,
+          "right": 880,
+          "top": 740,
+          "bottom": 839
+        },
+        {
+          "left": 412,
+          "right": 643,
+          "top": 845,
+          "bottom": 943
+        },
+        {
+          "left": 649,
+          "right": 880,
+          "top": 845,
+          "bottom": 943
+        }
+      ],
+      "captureSha256": "b1f36702a4ae94564c236d15859afcd69598e0f322527b5247307136389aabb4"
+    }
+  ]
+}

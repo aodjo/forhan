@@ -5,7 +5,7 @@ import {
   type Page,
   type PlaywrightWorkerArgs,
 } from "@playwright/test";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -186,6 +186,8 @@ function observePrintHtml({ app }: typeof import("electron")): void {
 async function verifySharedDocumentLayout({
   browser,
 }: PlaywrightWorkerArgs): Promise<void> {
+  /** Completed standalone bytes and native window state remain available after a CI failure. */
+  const diagnosticRoot=test.info().outputPath('layout-diagnostics');await mkdir(diagnosticRoot,{recursive:true});
   /** Isolated application profile, removed after the owned process exits. */
   const profile = await mkdtemp(path.join(tmpdir(), "forhan-layout-test-"));
   /** Owned desktop application with the real sandboxed bridge and PDF renderer. */
@@ -450,11 +452,15 @@ async function verifySharedDocumentLayout({
     await expect(editor.locator("#toast")).toContainText("html 저장 완료");
     /** Exported bytes, including their production content stylesheet. */
     const html = await readFile(htmlFile, "utf8");
+    await writeFile(path.join(diagnosticRoot,'standalone.html'),html);
     await probe.setContent(html);
-    expect(await probe.evaluate(measureDocumentStyles, "body")).toEqual(
-      editing,
-    );
+    /** Real output styles remain an independent observation rather than an expected-value injection. */
+    const standalone=await probe.evaluate(measureDocumentStyles,"body");
+    await writeFile(path.join(diagnosticRoot,'content-styles.json'),JSON.stringify({editing,standalone},null,2));
+    expect(standalone).toEqual(editing);
     await desktop.evaluate(observePrintHtml);
+    /** Native generation time begins before the public preview command is invoked. */
+    const previewRequestedAt=Date.now();
     await editor.locator('[data-native-tab="file"]').click();
     await editor
       .locator('#native-file-menu [data-native-action="preview"]')
@@ -500,7 +506,35 @@ async function verifySharedDocumentLayout({
         if (page.url().endsWith(".forhan-preview.pdf")) return page;
       return undefined;
     }
-    await expect.poll(currentPreview).toBeTruthy();
+    try{await expect.poll(currentPreview).toBeTruthy();}
+    finally{
+      /** Native windows distinguish pending generation from an untracked PDF browser target. */
+      const nativeWindows=await desktop.evaluate(
+        /**
+         * Observe actual owned native windows without changing PDF generation.
+         *
+         * Inline print source URLs are summarized to avoid copying complete documents
+         * into window metadata. Actual PDF paths and loading states remain visible.
+         * @param {typeof import('electron')} runtime - Selected native application runtime.
+         * @returns {Array<{id:number;url:string;visible:boolean;loading:boolean}>} Actual native window state.
+         * @example
+         * // A generated PDF can be distinguished from a still-loading hidden renderer.
+         */
+        ({BrowserWindow})=>{
+          /** Every entry belongs to this isolated regression application's main process. */
+          const records=[];
+          for(/** Destroyed windows cannot provide a live generated viewer. */const window of BrowserWindow.getAllWindows()){
+            if(window.isDestroyed())continue;
+            /** Full data-document markup is retained separately from concise native lifecycle metadata. */
+            const url=window.webContents.getURL();
+            records.push({id:window.id,url:url.startsWith('data:')?'data:text/html':url,visible:window.isVisible(),loading:window.webContents.isLoading()});
+          }
+          return records;
+        });
+      /** Playwright targets are compared with native ownership rather than assumed identical across platforms. */
+      const pageUrls=[];for(/** Each observed target belongs to the selected native application. */const page of desktop.windows())pageUrls.push(page.url());
+      await writeFile(path.join(diagnosticRoot,'native-preview-windows.json'),JSON.stringify({elapsedMilliseconds:Date.now()-previewRequestedAt,nativeWindows,pageUrls},null,2));
+    }
     /** First generated PDF must not gain a page merely from an ordinary rule. */
     const richPreview = currentPreview()!;
     /** Real Chromium PDF bytes from the private generated snapshot. */

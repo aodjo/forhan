@@ -465,7 +465,7 @@ async function createPrintWindow(request: PrintRequest): Promise<BrowserWindow> 
   /** Escaped job caption, kept literal even when a document title contains markup. */
   const title = request.title.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
   /** Shared print stylesheet and document markup, with all external resources blocked. */
-  const content = `<!doctype html><meta charset="utf-8"><title>${title}</title><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:;"><style>${documentPageStyles(p)}body{margin:0;}${documentContentStyles('body')}</style><body>${request.html}</body>`;
+  const content = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>${title}</title><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:;"><style>${documentPageStyles(p)}body{margin:0;}${documentContentStyles('body')}</style></head><body>${request.html}</body></html>`;
   try {
     await print.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(content));
     return print;

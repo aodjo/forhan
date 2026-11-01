@@ -25,6 +25,8 @@ import {installNativePrintPages} from './native-page-export.ts';
  * heights affect only this export copy; native writers and editable history
  * continue to use the unchanged document model. No export script is required.
  * Explicit physical body width avoids the iframe viewport's integer-pixel rounding.
+ * The Korean document language matches the editor and completed standalone output
+ * so generic fallback fonts retain the same language-dependent metrics.
  * @async
  * @param {string} html - Canonical sanitized editor serialization for one captured revision.
  * @param {PageSettings} page - Validated physical paper dimensions and margins.
@@ -66,7 +68,7 @@ export async function prepareNativeLayout(
       frame.onload = () => resolve();
     },
   );
-  frame.srcdoc = `<!doctype html><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:;"><style>${documentContentStyles("body")}html,body{margin:0;padding:0;width:${width}mm}</style><body>${html}</body>`;
+  frame.srcdoc = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:;"><style>${documentContentStyles("body")}html,body{margin:0;padding:0;width:${width}mm}</style></head><body>${html}</body></html>`;
   document.body.appendChild(frame);
   try {
     await loaded;

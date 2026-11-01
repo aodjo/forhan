@@ -172,6 +172,26 @@ int main(int argc, const char *argv[]) {
       while (!CGDisplayIsActive(identifier) && [admissionDeadline timeIntervalSinceNow] > 0)
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
       if (!CGDisplayIsActive(identifier)) return 16;
+      /** Advertising a mode does not guarantee that a new native screen selects it immediately. */
+      NSDate *const modeDeadline = [NSDate dateWithTimeIntervalSinceNow:5];
+      BOOL applied = NO;
+      while (!applied && [modeDeadline timeIntervalSinceNow] > 0) {
+        /** Only modes published for this exact owned native display are eligible. */
+        CFArrayRef const available = CGDisplayCopyAllDisplayModes(identifier, NULL);
+        if (available) {
+          for (CFIndex index = 0; index < CFArrayGetCount(available); index++) {
+            /** Logical and physical dimensions independently reject synthesized HiDPI modes. */
+            CGDisplayModeRef const candidate = (CGDisplayModeRef)CFArrayGetValueAtIndex(available, index);
+            if (CGDisplayModeGetWidth(candidate) != width || CGDisplayModeGetHeight(candidate) != height ||
+                CGDisplayModeGetPixelWidth(candidate) != width || CGDisplayModeGetPixelHeight(candidate) != height) continue;
+            applied = CGDisplaySetDisplayMode(identifier, candidate, NULL) == kCGErrorSuccess;
+            if (applied) break;
+          }
+          CFRelease(available);
+        }
+        if (!applied) [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+      }
+      if (!applied) return 17;
       /** Actual native dimensions and scale must be established independently of requested settings. */
       CGDisplayModeRef const observed = CGDisplayCopyDisplayMode(identifier);
       if (!observed) return 20;
@@ -184,10 +204,12 @@ int main(int argc, const char *argv[]) {
         @"pixelWidth": @(CGDisplayModeGetPixelWidth(observed)), @"pixelHeight": @(CGDisplayModeGetPixelHeight(observed))
       };
       CGDisplayModeRelease(observed);
+      /** Original observed mode metadata remains available in the owned helper log on readiness failure. */
+      NSData *const ready = [NSJSONSerialization dataWithJSONObject:observation options:0 error:nil];
+      fwrite(ready.bytes, 1, ready.length, stdout);fputc('\n', stdout);fflush(stdout);
       if ([observation[@"width"] unsignedIntValue] != width || [observation[@"height"] unsignedIntValue] != height ||
           [observation[@"pixelWidth"] unsignedIntValue] != width || [observation[@"pixelHeight"] unsignedIntValue] != height) return 21;
       /** The owner sees readiness only after independent actual window-server verification. */
-      NSData *const ready = [NSJSONSerialization dataWithJSONObject:observation options:0 error:nil];
       if (![ready writeToFile:[directory stringByAppendingPathComponent:@"ready.json"] atomically:YES]) return 22;
       /** This private marker belongs to the invocation whose nonce appears in the ready record. */
       NSString *const stop = [directory stringByAppendingPathComponent:@"stop"];

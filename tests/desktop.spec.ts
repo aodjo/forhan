@@ -496,6 +496,7 @@ test("operating-system file requests reopen an editor after its last window clos
         }, target);
       }, filename);
     window = await reopened;
+    await expect(window.locator('.tiptap')).toBeVisible({timeout:30000});
     await expect(window.locator('.tiptap')).toContainText('파일 연결로 다시 열린 문서');
     await expect(window.locator('#document-title')).toHaveValue('다시 연 문서');
   });

@@ -1,0 +1,205 @@
+.native-dialog-zoom .modal-body {
+  left: 12px;
+  right: 101px;
+  top: 41px;
+  bottom: 12px;
+  padding: 0;
+}
+.native-dialog-zoom .nz-group {
+  position: absolute;
+  left: 13px;
+  width: 325px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.native-dialog-zoom .nz-group::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e5e5e5;
+}
+.native-dialog-zoom .nz-group legend {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0 3px 0 2px;
+  margin: 0;
+  background: white;
+  color: #171717;
+  font-size: 12px;
+  line-height: 20px;
+  z-index: 1;
+}
+.native-dialog-zoom .nz-scale { top: 9px; height: 169px; }
+.native-dialog-zoom .nz-shape { top: 178px; height: 121px; }
+.native-dialog-zoom .nz-direction { top: 299px; height: 97px; }
+.native-dialog-zoom .nz-option {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  height: 18px;
+  gap: 6px;
+  color: #173a60;
+  font-size: 12px;
+  line-height: 18px;
+  cursor: default;
+}
+.native-dialog-zoom .nz-option:has([value="custom"]) { height: 24px; }
+.native-dialog-zoom .nz-scale .nz-option { width: 59px; }
+.native-dialog-zoom .nz-scale .nz-option:has([value="width"], [value="page"]) { width: 63px; }
+.native-dialog-zoom .nz-scale .nz-option:has([value="custom"]) { width: 85px; }
+.native-dialog-zoom .nz-shape .nz-option { width: 52px; }
+.native-dialog-zoom .nz-shape .nz-option:has([value="auto"], [value="facing"]) { width: 49px; }
+.native-dialog-zoom .nz-shape .nz-option:has([value="multiple"]) { width: 63px; }
+.native-dialog-zoom .nz-direction .nz-option { width: 74px; }
+.native-dialog-zoom .nz-option input[type="radio"] {
+  appearance: none;
+  position: relative;
+  flex: none;
+  margin: 0;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #cacaca;
+  border-radius: 50%;
+  background: white;
+}
+.native-dialog-zoom .nz-option input:checked::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  left: 2px;
+  top: 2px;
+  background: #2367ff;
+}
+.native-dialog-zoom .nz-option input:focus { outline: none; }
+.native-dialog-zoom .nz-option input:focus + span {
+  outline: 1px dotted #999;
+  outline-offset: 1px;
+}
+.native-dialog-zoom .nz-spin {
+  position: absolute;
+  width: 90px;
+  height: 24px;
+  border: 1px solid #b7b7b7;
+  border-radius: 4px;
+  overflow: hidden;
+  background: white;
+}
+.native-dialog-zoom .nz-custom { left: 180px; top: 73px; }
+.native-dialog-zoom .nz-columns { left: 107px; top: 46px; }
+.native-dialog-zoom .nz-rows { left: 216px; top: 46px; width: 91px; }
+.native-dialog-zoom .nz-spin input {
+  width: calc(100% - 14px);
+  height: 22px;
+  margin: 0;
+  padding: 1px 5px;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  box-shadow: none;
+  background: transparent;
+  appearance: textfield;
+  color: #173a60;
+}
+.native-dialog-zoom .nz-spin input::-webkit-inner-spin-button,
+.native-dialog-zoom .nz-spin input::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+.native-dialog-zoom .nz-spin button {
+  position: absolute;
+  right: 0;
+  width: 13px;
+  height: 11px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: white;
+}
+.native-dialog-zoom .nz-up { top: 0; }
+.native-dialog-zoom .nz-down { bottom: 0; }
+.native-dialog-zoom .nz-spin button::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  left: 3px;
+  top: 4px;
+  border-top: 1px solid #a5a5a5;
+  border-right: 1px solid #a5a5a5;
+  transform: rotate(-45deg);
+}
+.native-dialog-zoom .nz-spin .nz-down::after { top: 1px; transform: rotate(135deg); }
+.native-dialog-zoom .nz-disabled { border-color: #e9e9e9; }
+.native-dialog-zoom .nz-disabled input { color: #b2b2b2; }
+.native-dialog-zoom .nz-disabled button::after { border-color: #d0d0d0; }
+.native-dialog-zoom .nz-unit {
+  position: absolute;
+  right: 18px;
+  top: 2px;
+  line-height: 18px;
+  color: #173a60;
+}
+.native-dialog-zoom .nz-disabled .nz-unit { visibility: hidden; }
+.native-dialog-zoom .nz-times { position: absolute; left: 204px; top: 49px; line-height: 18px; }
+.native-dialog-zoom .nz-wheel {
+  position: absolute;
+  left: 35px;
+  top: 70px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  color: #173a60;
+  line-height: 18px;
+}
+.native-dialog-zoom .nz-wheel input { margin: 0; }
+.native-dialog-zoom .nz-wheel:has(:disabled) { color: #a8b2ba; }
+.native-dialog-zoom .nz-quick-help,
+.native-dialog-zoom .nz-help {
+  position: absolute;
+  top: 0;
+  width: 34px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #818b96;
+}
+.native-dialog-zoom .nz-quick-help { left: 364px; display: grid; place-items: center; }
+.native-dialog-zoom .nz-help { left: 398px; font-size: 16px; }
+.native-dialog-zoom .modal-x { right: 0; width: 34px; height: 28px; }
+.native-dialog-zoom .modal-actions .nd-apply { border-color: #2367ff; }
+.native-dialog-zoom .modal-body,
+.native-dialog-zoom .modal-body :is(input, button, span, legend),
+.native-dialog-zoom .modal-actions button {
+  font-family: "Segoe UI", "Malgun Gothic", sans-serif;
+  font-size: 11px;
+  color: #3e3e3e;
+}
+.native-dialog-zoom .nz-spin.nz-disabled input,
+.native-dialog-zoom .nz-wheel:has(:disabled) span {
+  color: #b2b2b2;
+}
+.native-dialog-zoom .nz-help-text {
+  position: absolute;
+  left: 150px;
+  right: 10px;
+  top: 31px;
+  z-index: 5;
+  padding: 8px;
+  background: #ffffe7;
+  border: 1px solid #ababab;
+  color: #222;
+  line-height: 1.5;
+}

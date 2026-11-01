@@ -1,0 +1,170 @@
+﻿/* Functional document scrollbar, measured from the owned native blank-window strip. */
+.native-shell .canvas {
+  margin-right: 15px;
+  scrollbar-gutter: auto;
+  scrollbar-width: none;
+}
+.native-shell .canvas::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.native-scroll-strip {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 15px;
+  background: #dcdcdc;
+  z-index: 4;
+}
+.native-scroll-strip button {
+  position: absolute;
+  left: 0;
+  width: 15px;
+  padding: 0;
+  background: #dcdcdc;
+  color: #7f7f7f;
+  border-radius: 0;
+}
+.native-scroll-strip button:hover {
+  background: #c6c6c6;
+}
+.native-scroll-grip {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  border-top: 1px solid #b8b8b8;
+  border-bottom: 1px solid #b8b8b8;
+}
+.native-scroll-grip::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: 3px;
+  border-top: 1px solid #7f7f7f;
+}
+.native-scroll-up {
+  top: 13px;
+  height: 20px;
+}
+.native-scroll-down {
+  bottom: 53px;
+  height: 20px;
+}
+.native-scroll-up::before,
+.native-scroll-down::before,
+.native-scroll-previous::before,
+.native-scroll-next::before,
+.native-scroll-previous::after,
+.native-scroll-next::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  left: 5px;
+  border-left: 1px solid #7f7f7f;
+  border-top: 1px solid #7f7f7f;
+  transform: rotate(45deg);
+}
+.native-scroll-up::before {
+  top: 7px;
+}
+.native-scroll-down::before {
+  transform: rotate(225deg);
+  top: 5px;
+}
+.native-scroll-track {
+  position: absolute;
+  top: 33px;
+  bottom: 73px;
+  left: 0;
+  width: 15px;
+}
+.native-scroll-thumb {
+  position: absolute;
+  left: 2px;
+  width: 11px;
+  min-height: 24px;
+  background: #c6c6c6;
+  touch-action: none;
+}
+.native-scroll-thumb:hover {
+  background: #aaa;
+}
+.native-scroll-select {
+  bottom: 35px;
+  height: 18px;
+  border-top: 1px solid #b8b8b8;
+  border-bottom: 1px solid #b8b8b8;
+}
+.native-scroll-select span {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 7px;
+  height: 8px;
+  border: 1px solid #7f7f7f;
+}
+.native-scroll-select span::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: 3px;
+  height: 4px;
+  border: 1px solid #7f7f7f;
+}
+.native-scroll-previous {
+  bottom: 17px;
+  height: 18px;
+}
+.native-scroll-next {
+  bottom: 0;
+  height: 17px;
+}
+.native-scroll-previous::before {
+  top: 5px;
+}
+.native-scroll-previous::after {
+  top: 9px;
+}
+.native-scroll-next::before {
+  top: 3px;
+  transform: rotate(225deg);
+}
+.native-scroll-next::after {
+  top: 7px;
+  transform: rotate(225deg);
+}
+.native-scroll-page-picker {
+  position: absolute;
+  right: 17px;
+  bottom: 35px;
+  width: 150px;
+  padding: 9px;
+  background: #fff;
+  border: 1px solid #b8b8b8;
+  box-shadow: 2px 2px 4px #0002;
+}
+.native-scroll-page-picker label {
+  display: block;
+  margin-bottom: 5px;
+}
+.native-scroll-page-picker input {
+  width: 70px;
+  height: 25px;
+}
+.native-scroll-page-picker button {
+  position: static;
+  width: 45px;
+  height: 25px;
+  margin-left: 7px;
+}
+@media print {
+  .native-scroll-strip {
+    display: none !important;
+  }
+}

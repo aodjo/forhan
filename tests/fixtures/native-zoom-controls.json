@@ -1,0 +1,226 @@
+{
+  "nativeSha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "reportSha256": "3438c2d6b9e146a97a3806417a26fa1560c589fcaf5c302df14515d1a9453a9b",
+  "imageSha256": "1c1c2c4bbb013d2d19a7df43282be4db192535b3934f75a329ddebd0a6818f24",
+  "width": 468,
+  "height": 459,
+  "controls": [
+    {
+      "selector": ".nz-quick-help",
+      "bounds": {
+        "left": 365,
+        "width": 34,
+        "top": 1,
+        "height": 28
+      }
+    },
+    {
+      "selector": ".nz-help",
+      "bounds": {
+        "left": 399,
+        "width": 34,
+        "top": 1,
+        "height": 28
+      }
+    },
+    {
+      "selector": ".modal-x",
+      "bounds": {
+        "left": 433,
+        "width": 34,
+        "top": 1,
+        "height": 28
+      }
+    },
+    {
+      "selector": ".nz-scale",
+      "bounds": {
+        "left": 27,
+        "width": 325,
+        "top": 52,
+        "height": 169
+      }
+    },
+    {
+      "selector": "[name=\"native-zoom-mode\"][value=\"100\"] >> xpath=..",
+      "bounds": {
+        "left": 42,
+        "width": 59,
+        "top": 77,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[name=\"native-zoom-mode\"][value=\"125\"] >> xpath=..",
+      "bounds": {
+        "left": 42,
+        "width": 59,
+        "top": 101,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[name=\"native-zoom-mode\"][value=\"150\"] >> xpath=..",
+      "bounds": {
+        "left": 42,
+        "width": 59,
+        "top": 125,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[name=\"native-zoom-mode\"][value=\"200\"] >> xpath=..",
+      "bounds": {
+        "left": 42,
+        "width": 59,
+        "top": 149,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[name=\"native-zoom-mode\"][value=\"300\"] >> xpath=..",
+      "bounds": {
+        "left": 42,
+        "width": 59,
+        "top": 173,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[name=\"native-zoom-mode\"][value=\"500\"] >> xpath=..",
+      "bounds": {
+        "left": 42,
+        "width": 59,
+        "top": 197,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[name=\"native-zoom-mode\"][value=\"width\"] >> xpath=..",
+      "bounds": {
+        "left": 121,
+        "width": 63,
+        "top": 77,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[name=\"native-zoom-mode\"][value=\"page\"] >> xpath=..",
+      "bounds": {
+        "left": 121,
+        "width": 63,
+        "top": 101,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[name=\"native-zoom-mode\"][value=\"custom\"] >> xpath=..",
+      "bounds": {
+        "left": 121,
+        "width": 85,
+        "top": 125,
+        "height": 24
+      }
+    },
+    {
+      "selector": ".nz-shape",
+      "bounds": {
+        "left": 27,
+        "width": 325,
+        "top": 221,
+        "height": 121
+      }
+    },
+    {
+      "selector": "[name=\"native-page-shape\"][value=\"auto\"] >> xpath=..",
+      "bounds": {
+        "left": 42,
+        "width": 49,
+        "top": 246,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[name=\"native-page-shape\"][value=\"single\"] >> xpath=..",
+      "bounds": {
+        "left": 42,
+        "width": 52,
+        "top": 270,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[name=\"native-page-shape\"][value=\"two\"] >> xpath=..",
+      "bounds": {
+        "left": 42,
+        "width": 52,
+        "top": 294,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[name=\"native-page-shape\"][value=\"facing\"] >> xpath=..",
+      "bounds": {
+        "left": 42,
+        "width": 49,
+        "top": 318,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[name=\"native-page-shape\"][value=\"multiple\"] >> xpath=..",
+      "bounds": {
+        "left": 114,
+        "width": 63,
+        "top": 246,
+        "height": 18
+      }
+    },
+    {
+      "selector": ".nz-direction",
+      "bounds": {
+        "left": 27,
+        "width": 325,
+        "top": 342,
+        "height": 97
+      }
+    },
+    {
+      "selector": "[name=\"native-page-direction\"][value=\"vertical\"] >> xpath=..",
+      "bounds": {
+        "left": 42,
+        "width": 74,
+        "top": 367,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[name=\"native-page-direction\"][value=\"horizontal\"] >> xpath=..",
+      "bounds": {
+        "left": 42,
+        "width": 74,
+        "top": 391,
+        "height": 18
+      }
+    },
+    {
+      "selector": "[data-modal-value=\"apply\"]",
+      "bounds": {
+        "left": 375,
+        "width": 80,
+        "top": 42,
+        "height": 28
+      }
+    },
+    {
+      "selector": "[data-modal-value=\"cancel\"]",
+      "bounds": {
+        "left": 375,
+        "width": 80,
+        "top": 76,
+        "height": 28
+      }
+    }
+  ],
+  "scope": "Twenty-four original native UIA control rectangles. Numeric fields and the wheel checkbox are absent from this original UIA tree and are covered by independent public behavior tests, not invented UIA bounds. Complete glyph and raster equality remains unfinished."
+}

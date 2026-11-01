@@ -1,0 +1,2779 @@
+{
+  "kind": "literal-original-native-persistent-fit-view-observations-not-REA",
+  "nativeSha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "scope": "Original mode selected once per resize sequence. Original COM zoom percentage, independently observed UIA mode label and unmodified PNG paper pixels remain distinct observations. Horizontal font advance remains outside the paper boundary contract.",
+  "groups": [
+    {
+      "id": "a4-portrait",
+      "page": {
+        "width": 210,
+        "height": 297,
+        "marginTop": 20,
+        "marginBottom": 15,
+        "marginLeft": 30,
+        "marginRight": 30,
+        "header": 15,
+        "footer": 15,
+        "lineGrid": 3288
+      },
+      "doc": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "lineHeight": "100%",
+              "nativeSnapToGrid": true,
+              "marginTop": "0pt",
+              "marginBottom": "0pt"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "row000",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "X i",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "X iiiiii",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "X WWW",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "X row000 row000",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "sourceRows": [
+        "row000",
+        "X i",
+        "X iiiiii",
+        "X WWW",
+        "X row000 row000"
+      ],
+      "sourceSha256": "7486eb87e2a81b614624b590f02c9071705b095c149aa23a9706bc074580e221",
+      "frames": [
+        {
+          "mode": "width",
+          "step": 0,
+          "zoom": 168,
+          "fitLabel": "폭 맞춤",
+          "width": 1440,
+          "height": 960,
+          "captureSha256": "e81b603bdfe4ece3bf4498cbe2e125cc46b3c09bc87704791076dc0d72bb3208",
+          "papers": [
+            {
+              "left": 61,
+              "right": 1391,
+              "top": 235,
+              "bottom": 904
+            }
+          ],
+          "shades": [
+            {
+              "left": 251,
+              "right": 367,
+              "top": 476,
+              "bottom": 511,
+              "width": 117,
+              "height": 36,
+              "pixels": 2742
+            },
+            {
+              "left": 251,
+              "right": 300,
+              "top": 549,
+              "bottom": 584,
+              "width": 50,
+              "height": 36,
+              "pixels": 1425
+            },
+            {
+              "left": 251,
+              "right": 340,
+              "top": 623,
+              "bottom": 658,
+              "width": 90,
+              "height": 36,
+              "pixels": 2283
+            },
+            {
+              "left": 251,
+              "right": 393,
+              "top": 696,
+              "bottom": 731,
+              "width": 143,
+              "height": 36,
+              "pixels": 3577
+            },
+            {
+              "left": 251,
+              "right": 544,
+              "top": 770,
+              "bottom": 805,
+              "width": 294,
+              "height": 36,
+              "pixels": 7379
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 1,
+          "zoom": 139,
+          "fitLabel": "폭 맞춤",
+          "width": 1200,
+          "height": 960,
+          "captureSha256": "0452e06ae9f65e5c02e41b27fcea15e89f482aac178ccce106742e6695b149ca",
+          "papers": [
+            {
+              "left": 57,
+              "right": 1155,
+              "top": 232,
+              "bottom": 904
+            }
+          ],
+          "shades": [
+            {
+              "left": 214,
+              "right": 310,
+              "top": 430,
+              "bottom": 459,
+              "width": 97,
+              "height": 30,
+              "pixels": 1784
+            },
+            {
+              "left": 214,
+              "right": 254,
+              "top": 491,
+              "bottom": 520,
+              "width": 41,
+              "height": 30,
+              "pixels": 947
+            },
+            {
+              "left": 214,
+              "right": 287,
+              "top": 552,
+              "bottom": 581,
+              "width": 74,
+              "height": 30,
+              "pixels": 1435
+            },
+            {
+              "left": 214,
+              "right": 331,
+              "top": 613,
+              "bottom": 641,
+              "width": 118,
+              "height": 29,
+              "pixels": 2261
+            },
+            {
+              "left": 214,
+              "right": 456,
+              "top": 673,
+              "bottom": 702,
+              "width": 243,
+              "height": 30,
+              "pixels": 4850
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 2,
+          "zoom": 168,
+          "fitLabel": "폭 맞춤",
+          "width": 1440,
+          "height": 840,
+          "captureSha256": "0c57b9fc1ae678ede1346d58739c0b53e9a52099d40f719c856088a48fe69288",
+          "papers": [
+            {
+              "left": 61,
+              "right": 1391,
+              "top": 235,
+              "bottom": 784
+            }
+          ],
+          "shades": [
+            {
+              "left": 251,
+              "right": 367,
+              "top": 476,
+              "bottom": 511,
+              "width": 117,
+              "height": 36,
+              "pixels": 2742
+            },
+            {
+              "left": 251,
+              "right": 300,
+              "top": 549,
+              "bottom": 584,
+              "width": 50,
+              "height": 36,
+              "pixels": 1425
+            },
+            {
+              "left": 251,
+              "right": 340,
+              "top": 623,
+              "bottom": 658,
+              "width": 90,
+              "height": 36,
+              "pixels": 2283
+            },
+            {
+              "left": 251,
+              "right": 393,
+              "top": 696,
+              "bottom": 731,
+              "width": 143,
+              "height": 36,
+              "pixels": 3577
+            },
+            {
+              "left": 251,
+              "right": 544,
+              "top": 770,
+              "bottom": 784,
+              "width": 294,
+              "height": 15,
+              "pixels": 3317
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 3,
+          "zoom": 115,
+          "fitLabel": "폭 맞춤",
+          "width": 1000,
+          "height": 840,
+          "captureSha256": "3eb90eeb53501cd67b9ec6235908dbbe00b57cd0069f635f5f4c2fa9e45c3afb",
+          "papers": [
+            {
+              "left": 52,
+              "right": 960,
+              "top": 229,
+              "bottom": 784
+            }
+          ],
+          "shades": [
+            {
+              "left": 182,
+              "right": 261,
+              "top": 393,
+              "bottom": 417,
+              "width": 80,
+              "height": 25,
+              "pixels": 1224
+            },
+            {
+              "left": 182,
+              "right": 215,
+              "top": 443,
+              "bottom": 467,
+              "width": 34,
+              "height": 25,
+              "pixels": 679
+            },
+            {
+              "left": 182,
+              "right": 242,
+              "top": 494,
+              "bottom": 517,
+              "width": 61,
+              "height": 24,
+              "pixels": 1046
+            },
+            {
+              "left": 182,
+              "right": 279,
+              "top": 544,
+              "bottom": 567,
+              "width": 98,
+              "height": 24,
+              "pixels": 1574
+            },
+            {
+              "left": 182,
+              "right": 382,
+              "top": 594,
+              "bottom": 618,
+              "width": 201,
+              "height": 25,
+              "pixels": 3347
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 4,
+          "zoom": 139,
+          "fitLabel": "폭 맞춤",
+          "width": 1200,
+          "height": 1000,
+          "captureSha256": "0144cf55dcda2705e3f95c8cab665b56cd6a215be5dc818f4185f24307bb7b7c",
+          "papers": [
+            {
+              "left": 57,
+              "right": 1155,
+              "top": 232,
+              "bottom": 944
+            }
+          ],
+          "shades": [
+            {
+              "left": 214,
+              "right": 310,
+              "top": 430,
+              "bottom": 459,
+              "width": 97,
+              "height": 30,
+              "pixels": 1784
+            },
+            {
+              "left": 214,
+              "right": 254,
+              "top": 491,
+              "bottom": 520,
+              "width": 41,
+              "height": 30,
+              "pixels": 947
+            },
+            {
+              "left": 214,
+              "right": 287,
+              "top": 552,
+              "bottom": 581,
+              "width": 74,
+              "height": 30,
+              "pixels": 1435
+            },
+            {
+              "left": 214,
+              "right": 331,
+              "top": 613,
+              "bottom": 641,
+              "width": 118,
+              "height": 29,
+              "pixels": 2261
+            },
+            {
+              "left": 214,
+              "right": 456,
+              "top": 673,
+              "bottom": 702,
+              "width": 243,
+              "height": 30,
+              "pixels": 4850
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 5,
+          "zoom": 168,
+          "fitLabel": "폭 맞춤",
+          "width": 1440,
+          "height": 960,
+          "captureSha256": "e81b603bdfe4ece3bf4498cbe2e125cc46b3c09bc87704791076dc0d72bb3208",
+          "papers": [
+            {
+              "left": 61,
+              "right": 1391,
+              "top": 235,
+              "bottom": 904
+            }
+          ],
+          "shades": [
+            {
+              "left": 251,
+              "right": 367,
+              "top": 476,
+              "bottom": 511,
+              "width": 117,
+              "height": 36,
+              "pixels": 2742
+            },
+            {
+              "left": 251,
+              "right": 300,
+              "top": 549,
+              "bottom": 584,
+              "width": 50,
+              "height": 36,
+              "pixels": 1425
+            },
+            {
+              "left": 251,
+              "right": 340,
+              "top": 623,
+              "bottom": 658,
+              "width": 90,
+              "height": 36,
+              "pixels": 2283
+            },
+            {
+              "left": 251,
+              "right": 393,
+              "top": 696,
+              "bottom": 731,
+              "width": 143,
+              "height": 36,
+              "pixels": 3577
+            },
+            {
+              "left": 251,
+              "right": 544,
+              "top": 770,
+              "bottom": 805,
+              "width": 294,
+              "height": 36,
+              "pixels": 7379
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 0,
+          "zoom": 59,
+          "fitLabel": "쪽 맞춤",
+          "width": 1440,
+          "height": 960,
+          "captureSha256": "eabc3c9fccfe0fb4861c28b09b8264e22da43c942c1bc7076966b31141f18b76",
+          "papers": [
+            {
+              "left": 491,
+              "right": 961,
+              "top": 226,
+              "bottom": 891
+            }
+          ],
+          "shades": [
+            {
+              "left": 558,
+              "right": 599,
+              "top": 311,
+              "bottom": 322,
+              "width": 42,
+              "height": 12,
+              "pixels": 208
+            },
+            {
+              "left": 558,
+              "right": 575,
+              "top": 337,
+              "bottom": 348,
+              "width": 18,
+              "height": 12,
+              "pixels": 146
+            },
+            {
+              "left": 558,
+              "right": 589,
+              "top": 363,
+              "bottom": 375,
+              "width": 32,
+              "height": 13,
+              "pixels": 222
+            },
+            {
+              "left": 558,
+              "right": 608,
+              "top": 389,
+              "bottom": 401,
+              "width": 51,
+              "height": 13,
+              "pixels": 368
+            },
+            {
+              "left": 558,
+              "right": 661,
+              "top": 415,
+              "bottom": 427,
+              "width": 104,
+              "height": 13,
+              "pixels": 696
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 1,
+          "zoom": 59,
+          "fitLabel": "쪽 맞춤",
+          "width": 1200,
+          "height": 960,
+          "captureSha256": "a39e10bba69c012a80df87a95f555b3ce5270ceabd33e9a29db43d27ff79f16a",
+          "papers": [
+            {
+              "left": 371,
+              "right": 841,
+              "top": 226,
+              "bottom": 891
+            }
+          ],
+          "shades": [
+            {
+              "left": 438,
+              "right": 479,
+              "top": 311,
+              "bottom": 322,
+              "width": 42,
+              "height": 12,
+              "pixels": 208
+            },
+            {
+              "left": 438,
+              "right": 455,
+              "top": 337,
+              "bottom": 348,
+              "width": 18,
+              "height": 12,
+              "pixels": 146
+            },
+            {
+              "left": 438,
+              "right": 469,
+              "top": 363,
+              "bottom": 375,
+              "width": 32,
+              "height": 13,
+              "pixels": 222
+            },
+            {
+              "left": 438,
+              "right": 488,
+              "top": 389,
+              "bottom": 401,
+              "width": 51,
+              "height": 13,
+              "pixels": 368
+            },
+            {
+              "left": 438,
+              "right": 541,
+              "top": 415,
+              "bottom": 427,
+              "width": 104,
+              "height": 13,
+              "pixels": 696
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 2,
+          "zoom": 49,
+          "fitLabel": "쪽 맞춤",
+          "width": 1440,
+          "height": 840,
+          "captureSha256": "bf65c3c423fe2c5b7b0cb78bfbd4f2d11ea375711307957ff31014e24cc26ade",
+          "papers": [
+            {
+              "left": 532,
+              "right": 920,
+              "top": 224,
+              "bottom": 773
+            }
+          ],
+          "shades": [
+            {
+              "left": 588,
+              "right": 621,
+              "top": 295,
+              "bottom": 304,
+              "width": 34,
+              "height": 10,
+              "pixels": 147
+            },
+            {
+              "left": 588,
+              "right": 601,
+              "top": 316,
+              "bottom": 325,
+              "width": 14,
+              "height": 10,
+              "pixels": 97
+            },
+            {
+              "left": 588,
+              "right": 613,
+              "top": 337,
+              "bottom": 347,
+              "width": 26,
+              "height": 11,
+              "pixels": 161
+            },
+            {
+              "left": 588,
+              "right": 629,
+              "top": 359,
+              "bottom": 368,
+              "width": 42,
+              "height": 10,
+              "pixels": 239
+            },
+            {
+              "left": 588,
+              "right": 673,
+              "top": 380,
+              "bottom": 390,
+              "width": 86,
+              "height": 11,
+              "pixels": 533
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 3,
+          "zoom": 49,
+          "fitLabel": "쪽 맞춤",
+          "width": 1000,
+          "height": 840,
+          "captureSha256": "ec6dc80e41b671029bd9d8a32f995d2979a7c52c2ac1c5513ae1632597004fba",
+          "papers": [
+            {
+              "left": 312,
+              "right": 700,
+              "top": 224,
+              "bottom": 773
+            }
+          ],
+          "shades": [
+            {
+              "left": 368,
+              "right": 401,
+              "top": 295,
+              "bottom": 304,
+              "width": 34,
+              "height": 10,
+              "pixels": 147
+            },
+            {
+              "left": 368,
+              "right": 381,
+              "top": 316,
+              "bottom": 325,
+              "width": 14,
+              "height": 10,
+              "pixels": 97
+            },
+            {
+              "left": 368,
+              "right": 393,
+              "top": 337,
+              "bottom": 347,
+              "width": 26,
+              "height": 11,
+              "pixels": 161
+            },
+            {
+              "left": 368,
+              "right": 409,
+              "top": 359,
+              "bottom": 368,
+              "width": 42,
+              "height": 10,
+              "pixels": 239
+            },
+            {
+              "left": 368,
+              "right": 453,
+              "top": 380,
+              "bottom": 390,
+              "width": 86,
+              "height": 11,
+              "pixels": 533
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 4,
+          "zoom": 63,
+          "fitLabel": "쪽 맞춤",
+          "width": 1200,
+          "height": 1000,
+          "captureSha256": "d294968754c062833f94dfcb40381f729dda85405e9774f23a4bc8ae0117db97",
+          "papers": [
+            {
+              "left": 358,
+              "right": 854,
+              "top": 228,
+              "bottom": 929
+            }
+          ],
+          "shades": [
+            {
+              "left": 429,
+              "right": 472,
+              "top": 318,
+              "bottom": 330,
+              "width": 44,
+              "height": 13,
+              "pixels": 264
+            },
+            {
+              "left": 429,
+              "right": 447,
+              "top": 345,
+              "bottom": 357,
+              "width": 19,
+              "height": 13,
+              "pixels": 177
+            },
+            {
+              "left": 429,
+              "right": 462,
+              "top": 372,
+              "bottom": 385,
+              "width": 34,
+              "height": 14,
+              "pixels": 274
+            },
+            {
+              "left": 429,
+              "right": 482,
+              "top": 400,
+              "bottom": 412,
+              "width": 54,
+              "height": 13,
+              "pixels": 399
+            },
+            {
+              "left": 429,
+              "right": 538,
+              "top": 427,
+              "bottom": 440,
+              "width": 110,
+              "height": 14,
+              "pixels": 879
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 5,
+          "zoom": 59,
+          "fitLabel": "쪽 맞춤",
+          "width": 1440,
+          "height": 960,
+          "captureSha256": "eabc3c9fccfe0fb4861c28b09b8264e22da43c942c1bc7076966b31141f18b76",
+          "papers": [
+            {
+              "left": 491,
+              "right": 961,
+              "top": 226,
+              "bottom": 891
+            }
+          ],
+          "shades": [
+            {
+              "left": 558,
+              "right": 599,
+              "top": 311,
+              "bottom": 322,
+              "width": 42,
+              "height": 12,
+              "pixels": 208
+            },
+            {
+              "left": 558,
+              "right": 575,
+              "top": 337,
+              "bottom": 348,
+              "width": 18,
+              "height": 12,
+              "pixels": 146
+            },
+            {
+              "left": 558,
+              "right": 589,
+              "top": 363,
+              "bottom": 375,
+              "width": 32,
+              "height": 13,
+              "pixels": 222
+            },
+            {
+              "left": 558,
+              "right": 608,
+              "top": 389,
+              "bottom": 401,
+              "width": 51,
+              "height": 13,
+              "pixels": 368
+            },
+            {
+              "left": 558,
+              "right": 661,
+              "top": 415,
+              "bottom": 427,
+              "width": 104,
+              "height": 13,
+              "pixels": 696
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        }
+      ]
+    },
+    {
+      "id": "short-portrait",
+      "page": {
+        "width": 210,
+        "height": 148,
+        "marginTop": 20,
+        "marginBottom": 15,
+        "marginLeft": 30,
+        "marginRight": 30,
+        "header": 15,
+        "footer": 15,
+        "lineGrid": 3288
+      },
+      "doc": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "lineHeight": "100%",
+              "nativeSnapToGrid": true,
+              "marginTop": "0pt",
+              "marginBottom": "0pt"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "row000",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "X i",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "X iiiiii",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "X WWW",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "X row000 row000",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "sourceRows": [
+        "row000",
+        "X i",
+        "X iiiiii",
+        "X WWW",
+        "X row000 row000"
+      ],
+      "sourceSha256": "ae3833ad6c3800199f8488e7fbdf90e8777561532c5d6d883f838a01754567a7",
+      "frames": [
+        {
+          "mode": "width",
+          "step": 0,
+          "zoom": 168,
+          "fitLabel": "폭 맞춤",
+          "width": 1440,
+          "height": 960,
+          "captureSha256": "821bb04a6f5824419505891d3b7cf6d33c0d729ca4a51f6c2df8d4a579326564",
+          "papers": [
+            {
+              "left": 61,
+              "right": 1391,
+              "top": 235,
+              "bottom": 904
+            }
+          ],
+          "shades": [
+            {
+              "left": 251,
+              "right": 367,
+              "top": 476,
+              "bottom": 511,
+              "width": 117,
+              "height": 36,
+              "pixels": 2742
+            },
+            {
+              "left": 251,
+              "right": 300,
+              "top": 549,
+              "bottom": 584,
+              "width": 50,
+              "height": 36,
+              "pixels": 1425
+            },
+            {
+              "left": 251,
+              "right": 340,
+              "top": 623,
+              "bottom": 658,
+              "width": 90,
+              "height": 36,
+              "pixels": 2283
+            },
+            {
+              "left": 251,
+              "right": 393,
+              "top": 696,
+              "bottom": 731,
+              "width": 143,
+              "height": 36,
+              "pixels": 3577
+            },
+            {
+              "left": 251,
+              "right": 544,
+              "top": 770,
+              "bottom": 805,
+              "width": 294,
+              "height": 36,
+              "pixels": 7379
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 1,
+          "zoom": 139,
+          "fitLabel": "폭 맞춤",
+          "width": 1200,
+          "height": 960,
+          "captureSha256": "d944792a96b8c9ad13cb27370cf72bd7697eab06ec036d035f23729df24bcd14",
+          "papers": [
+            {
+              "left": 57,
+              "right": 1155,
+              "top": 232,
+              "bottom": 904
+            }
+          ],
+          "shades": [
+            {
+              "left": 214,
+              "right": 310,
+              "top": 430,
+              "bottom": 459,
+              "width": 97,
+              "height": 30,
+              "pixels": 1784
+            },
+            {
+              "left": 214,
+              "right": 254,
+              "top": 491,
+              "bottom": 520,
+              "width": 41,
+              "height": 30,
+              "pixels": 947
+            },
+            {
+              "left": 214,
+              "right": 287,
+              "top": 552,
+              "bottom": 581,
+              "width": 74,
+              "height": 30,
+              "pixels": 1435
+            },
+            {
+              "left": 214,
+              "right": 331,
+              "top": 613,
+              "bottom": 641,
+              "width": 118,
+              "height": 29,
+              "pixels": 2261
+            },
+            {
+              "left": 214,
+              "right": 456,
+              "top": 673,
+              "bottom": 702,
+              "width": 243,
+              "height": 30,
+              "pixels": 4850
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 2,
+          "zoom": 168,
+          "fitLabel": "폭 맞춤",
+          "width": 1440,
+          "height": 840,
+          "captureSha256": "488b20831614717d1d2624a3f2a38a3870220f5112a13eab34d465a6073116bf",
+          "papers": [
+            {
+              "left": 61,
+              "right": 1391,
+              "top": 235,
+              "bottom": 784
+            }
+          ],
+          "shades": [
+            {
+              "left": 251,
+              "right": 367,
+              "top": 476,
+              "bottom": 511,
+              "width": 117,
+              "height": 36,
+              "pixels": 2742
+            },
+            {
+              "left": 251,
+              "right": 300,
+              "top": 549,
+              "bottom": 584,
+              "width": 50,
+              "height": 36,
+              "pixels": 1425
+            },
+            {
+              "left": 251,
+              "right": 340,
+              "top": 623,
+              "bottom": 658,
+              "width": 90,
+              "height": 36,
+              "pixels": 2283
+            },
+            {
+              "left": 251,
+              "right": 393,
+              "top": 696,
+              "bottom": 731,
+              "width": 143,
+              "height": 36,
+              "pixels": 3577
+            },
+            {
+              "left": 251,
+              "right": 544,
+              "top": 770,
+              "bottom": 784,
+              "width": 294,
+              "height": 15,
+              "pixels": 3317
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 3,
+          "zoom": 115,
+          "fitLabel": "폭 맞춤",
+          "width": 1000,
+          "height": 840,
+          "captureSha256": "7ef88bb43f102bf2bf238247ee594f613146c063d7b1771c4c6560bd1ae32ce2",
+          "papers": [
+            {
+              "left": 52,
+              "right": 960,
+              "top": 229,
+              "bottom": 784
+            }
+          ],
+          "shades": [
+            {
+              "left": 182,
+              "right": 261,
+              "top": 393,
+              "bottom": 417,
+              "width": 80,
+              "height": 25,
+              "pixels": 1224
+            },
+            {
+              "left": 182,
+              "right": 215,
+              "top": 443,
+              "bottom": 467,
+              "width": 34,
+              "height": 25,
+              "pixels": 679
+            },
+            {
+              "left": 182,
+              "right": 242,
+              "top": 494,
+              "bottom": 517,
+              "width": 61,
+              "height": 24,
+              "pixels": 1046
+            },
+            {
+              "left": 182,
+              "right": 279,
+              "top": 544,
+              "bottom": 567,
+              "width": 98,
+              "height": 24,
+              "pixels": 1574
+            },
+            {
+              "left": 182,
+              "right": 382,
+              "top": 594,
+              "bottom": 618,
+              "width": 201,
+              "height": 25,
+              "pixels": 3347
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 4,
+          "zoom": 139,
+          "fitLabel": "폭 맞춤",
+          "width": 1200,
+          "height": 1000,
+          "captureSha256": "bd48fa49dff7c0554cdf011800f154c1dd11c20dde6a67c0e296e24a5b223f4d",
+          "papers": [
+            {
+              "left": 57,
+              "right": 1155,
+              "top": 232,
+              "bottom": 944
+            }
+          ],
+          "shades": [
+            {
+              "left": 214,
+              "right": 310,
+              "top": 430,
+              "bottom": 459,
+              "width": 97,
+              "height": 30,
+              "pixels": 1784
+            },
+            {
+              "left": 214,
+              "right": 254,
+              "top": 491,
+              "bottom": 520,
+              "width": 41,
+              "height": 30,
+              "pixels": 947
+            },
+            {
+              "left": 214,
+              "right": 287,
+              "top": 552,
+              "bottom": 581,
+              "width": 74,
+              "height": 30,
+              "pixels": 1435
+            },
+            {
+              "left": 214,
+              "right": 331,
+              "top": 613,
+              "bottom": 641,
+              "width": 118,
+              "height": 29,
+              "pixels": 2261
+            },
+            {
+              "left": 214,
+              "right": 456,
+              "top": 673,
+              "bottom": 702,
+              "width": 243,
+              "height": 30,
+              "pixels": 4850
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 5,
+          "zoom": 168,
+          "fitLabel": "폭 맞춤",
+          "width": 1440,
+          "height": 960,
+          "captureSha256": "821bb04a6f5824419505891d3b7cf6d33c0d729ca4a51f6c2df8d4a579326564",
+          "papers": [
+            {
+              "left": 61,
+              "right": 1391,
+              "top": 235,
+              "bottom": 904
+            }
+          ],
+          "shades": [
+            {
+              "left": 251,
+              "right": 367,
+              "top": 476,
+              "bottom": 511,
+              "width": 117,
+              "height": 36,
+              "pixels": 2742
+            },
+            {
+              "left": 251,
+              "right": 300,
+              "top": 549,
+              "bottom": 584,
+              "width": 50,
+              "height": 36,
+              "pixels": 1425
+            },
+            {
+              "left": 251,
+              "right": 340,
+              "top": 623,
+              "bottom": 658,
+              "width": 90,
+              "height": 36,
+              "pixels": 2283
+            },
+            {
+              "left": 251,
+              "right": 393,
+              "top": 696,
+              "bottom": 731,
+              "width": 143,
+              "height": 36,
+              "pixels": 3577
+            },
+            {
+              "left": 251,
+              "right": 544,
+              "top": 770,
+              "bottom": 805,
+              "width": 294,
+              "height": 36,
+              "pixels": 7379
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 0,
+          "zoom": 117,
+          "fitLabel": "쪽 맞춤",
+          "width": 1440,
+          "height": 960,
+          "captureSha256": "d6258711a74bed11c2077f0b3caf947ef65671bcae2846adc3d6e8462c4d64da",
+          "papers": [
+            {
+              "left": 264,
+              "right": 1188,
+              "top": 231,
+              "bottom": 883
+            }
+          ],
+          "shades": [
+            {
+              "left": 396,
+              "right": 476,
+              "top": 399,
+              "bottom": 423,
+              "width": 81,
+              "height": 25,
+              "pixels": 1221
+            },
+            {
+              "left": 396,
+              "right": 429,
+              "top": 450,
+              "bottom": 474,
+              "width": 34,
+              "height": 25,
+              "pixels": 646
+            },
+            {
+              "left": 396,
+              "right": 457,
+              "top": 501,
+              "bottom": 525,
+              "width": 62,
+              "height": 25,
+              "pixels": 1024
+            },
+            {
+              "left": 396,
+              "right": 494,
+              "top": 552,
+              "bottom": 576,
+              "width": 99,
+              "height": 25,
+              "pixels": 1629
+            },
+            {
+              "left": 396,
+              "right": 599,
+              "top": 603,
+              "bottom": 627,
+              "width": 204,
+              "height": 25,
+              "pixels": 3348
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 1,
+          "zoom": 117,
+          "fitLabel": "쪽 맞춤",
+          "width": 1200,
+          "height": 960,
+          "captureSha256": "981772a35238e304652433a093a4ff53ca677bdecdca0a2cacc4df24d989f95a",
+          "papers": [
+            {
+              "left": 144,
+              "right": 1068,
+              "top": 231,
+              "bottom": 883
+            }
+          ],
+          "shades": [
+            {
+              "left": 276,
+              "right": 356,
+              "top": 399,
+              "bottom": 423,
+              "width": 81,
+              "height": 25,
+              "pixels": 1221
+            },
+            {
+              "left": 276,
+              "right": 309,
+              "top": 450,
+              "bottom": 474,
+              "width": 34,
+              "height": 25,
+              "pixels": 646
+            },
+            {
+              "left": 276,
+              "right": 337,
+              "top": 501,
+              "bottom": 525,
+              "width": 62,
+              "height": 25,
+              "pixels": 1024
+            },
+            {
+              "left": 276,
+              "right": 374,
+              "top": 552,
+              "bottom": 576,
+              "width": 99,
+              "height": 25,
+              "pixels": 1629
+            },
+            {
+              "left": 276,
+              "right": 479,
+              "top": 603,
+              "bottom": 627,
+              "width": 204,
+              "height": 25,
+              "pixels": 3348
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 2,
+          "zoom": 97,
+          "fitLabel": "쪽 맞춤",
+          "width": 1440,
+          "height": 840,
+          "captureSha256": "31e8e3129f8c8d65f9c7e9ee773c41ceaa98cf3374dc362495d0ad07ce512a59",
+          "papers": [
+            {
+              "left": 342,
+              "right": 1110,
+              "top": 227,
+              "bottom": 768
+            }
+          ],
+          "shades": [
+            {
+              "left": 452,
+              "right": 519,
+              "top": 366,
+              "bottom": 386,
+              "width": 68,
+              "height": 21,
+              "pixels": 807
+            },
+            {
+              "left": 452,
+              "right": 480,
+              "top": 409,
+              "bottom": 428,
+              "width": 29,
+              "height": 20,
+              "pixels": 434
+            },
+            {
+              "left": 452,
+              "right": 503,
+              "top": 451,
+              "bottom": 471,
+              "width": 52,
+              "height": 21,
+              "pixels": 732
+            },
+            {
+              "left": 452,
+              "right": 534,
+              "top": 494,
+              "bottom": 513,
+              "width": 83,
+              "height": 20,
+              "pixels": 1030
+            },
+            {
+              "left": 452,
+              "right": 621,
+              "top": 536,
+              "bottom": 556,
+              "width": 170,
+              "height": 21,
+              "pixels": 2221
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 3,
+          "zoom": 97,
+          "fitLabel": "쪽 맞춤",
+          "width": 1000,
+          "height": 840,
+          "captureSha256": "008b488b782ce2679a7ccd528e839cddb6a9618d28b2dafb9ccbbe10c28273d5",
+          "papers": [
+            {
+              "left": 122,
+              "right": 890,
+              "top": 227,
+              "bottom": 768
+            }
+          ],
+          "shades": [
+            {
+              "left": 232,
+              "right": 299,
+              "top": 366,
+              "bottom": 386,
+              "width": 68,
+              "height": 21,
+              "pixels": 807
+            },
+            {
+              "left": 232,
+              "right": 260,
+              "top": 409,
+              "bottom": 428,
+              "width": 29,
+              "height": 20,
+              "pixels": 434
+            },
+            {
+              "left": 232,
+              "right": 283,
+              "top": 451,
+              "bottom": 471,
+              "width": 52,
+              "height": 21,
+              "pixels": 732
+            },
+            {
+              "left": 232,
+              "right": 314,
+              "top": 494,
+              "bottom": 513,
+              "width": 83,
+              "height": 20,
+              "pixels": 1030
+            },
+            {
+              "left": 232,
+              "right": 401,
+              "top": 536,
+              "bottom": 556,
+              "width": 170,
+              "height": 21,
+              "pixels": 2221
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 4,
+          "zoom": 124,
+          "fitLabel": "쪽 맞춤",
+          "width": 1200,
+          "height": 1000,
+          "captureSha256": "64517d2d3edbfd6cb36cc78becdbddce04ab77321f29a7579f7f99b3e8c17289",
+          "papers": [
+            {
+              "left": 115,
+              "right": 1097,
+              "top": 231,
+              "bottom": 923
+            }
+          ],
+          "shades": [
+            {
+              "left": 255,
+              "right": 341,
+              "top": 409,
+              "bottom": 434,
+              "width": 87,
+              "height": 26,
+              "pixels": 1416
+            },
+            {
+              "left": 255,
+              "right": 291,
+              "top": 463,
+              "bottom": 489,
+              "width": 37,
+              "height": 27,
+              "pixels": 779
+            },
+            {
+              "left": 255,
+              "right": 320,
+              "top": 517,
+              "bottom": 543,
+              "width": 66,
+              "height": 27,
+              "pixels": 1218
+            },
+            {
+              "left": 255,
+              "right": 360,
+              "top": 572,
+              "bottom": 597,
+              "width": 106,
+              "height": 26,
+              "pixels": 1833
+            },
+            {
+              "left": 255,
+              "right": 471,
+              "top": 626,
+              "bottom": 652,
+              "width": 217,
+              "height": 27,
+              "pixels": 4011
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 5,
+          "zoom": 117,
+          "fitLabel": "쪽 맞춤",
+          "width": 1440,
+          "height": 960,
+          "captureSha256": "d6258711a74bed11c2077f0b3caf947ef65671bcae2846adc3d6e8462c4d64da",
+          "papers": [
+            {
+              "left": 264,
+              "right": 1188,
+              "top": 231,
+              "bottom": 883
+            }
+          ],
+          "shades": [
+            {
+              "left": 396,
+              "right": 476,
+              "top": 399,
+              "bottom": 423,
+              "width": 81,
+              "height": 25,
+              "pixels": 1221
+            },
+            {
+              "left": 396,
+              "right": 429,
+              "top": 450,
+              "bottom": 474,
+              "width": 34,
+              "height": 25,
+              "pixels": 646
+            },
+            {
+              "left": 396,
+              "right": 457,
+              "top": 501,
+              "bottom": 525,
+              "width": 62,
+              "height": 25,
+              "pixels": 1024
+            },
+            {
+              "left": 396,
+              "right": 494,
+              "top": 552,
+              "bottom": 576,
+              "width": 99,
+              "height": 25,
+              "pixels": 1629
+            },
+            {
+              "left": 396,
+              "right": 599,
+              "top": 603,
+              "bottom": 627,
+              "width": 204,
+              "height": 25,
+              "pixels": 3348
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        }
+      ]
+    },
+    {
+      "id": "a4-landscape",
+      "page": {
+        "width": 297,
+        "height": 210,
+        "marginTop": 20,
+        "marginBottom": 15,
+        "marginLeft": 30,
+        "marginRight": 30,
+        "header": 15,
+        "footer": 15,
+        "lineGrid": 3288
+      },
+      "doc": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "lineHeight": "100%",
+              "nativeSnapToGrid": true,
+              "marginTop": "0pt",
+              "marginBottom": "0pt"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "row000",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "X i",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "X iiiiii",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "X WWW",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "X row000 row000",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "backgroundColor": "#fff1a8"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "sourceRows": [
+        "row000",
+        "X i",
+        "X iiiiii",
+        "X WWW",
+        "X row000 row000"
+      ],
+      "sourceSha256": "2898add2c7df74aaeb83294863187ec64f3d2f18a37366a96c12d4b4474712ed",
+      "frames": [
+        {
+          "mode": "width",
+          "step": 0,
+          "zoom": 120,
+          "fitLabel": "폭 맞춤",
+          "width": 1440,
+          "height": 960,
+          "captureSha256": "5cf14ed562ba0e61a0602f12b08c5e8c267fb276897b7c1dd7f0c4db5c58fb09",
+          "papers": [
+            {
+              "left": 54,
+              "right": 1398,
+              "top": 229,
+              "bottom": 904
+            }
+          ],
+          "shades": [
+            {
+              "left": 190,
+              "right": 273,
+              "top": 401,
+              "bottom": 426,
+              "width": 84,
+              "height": 26,
+              "pixels": 1341
+            },
+            {
+              "left": 190,
+              "right": 225,
+              "top": 454,
+              "bottom": 478,
+              "width": 36,
+              "height": 25,
+              "pixels": 680
+            },
+            {
+              "left": 190,
+              "right": 253,
+              "top": 506,
+              "bottom": 531,
+              "width": 64,
+              "height": 26,
+              "pixels": 1101
+            },
+            {
+              "left": 190,
+              "right": 291,
+              "top": 559,
+              "bottom": 583,
+              "width": 102,
+              "height": 25,
+              "pixels": 1642
+            },
+            {
+              "left": 190,
+              "right": 399,
+              "top": 611,
+              "bottom": 636,
+              "width": 210,
+              "height": 26,
+              "pixels": 3616
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 1,
+          "zoom": 100,
+          "fitLabel": "폭 맞춤",
+          "width": 1200,
+          "height": 960,
+          "captureSha256": "097298ce0a386657617361ce8c127554b85106071c6baac722e7d489e63aba25",
+          "papers": [
+            {
+              "left": 45,
+              "right": 1167,
+              "top": 227,
+              "bottom": 904
+            }
+          ],
+          "shades": [
+            {
+              "left": 159,
+              "right": 227,
+              "top": 371,
+              "bottom": 391,
+              "width": 69,
+              "height": 21,
+              "pixels": 827
+            },
+            {
+              "left": 159,
+              "right": 187,
+              "top": 414,
+              "bottom": 435,
+              "width": 29,
+              "height": 22,
+              "pixels": 492
+            },
+            {
+              "left": 159,
+              "right": 211,
+              "top": 458,
+              "bottom": 479,
+              "width": 53,
+              "height": 22,
+              "pixels": 806
+            },
+            {
+              "left": 159,
+              "right": 243,
+              "top": 502,
+              "bottom": 522,
+              "width": 85,
+              "height": 21,
+              "pixels": 1151
+            },
+            {
+              "left": 159,
+              "right": 333,
+              "top": 546,
+              "bottom": 566,
+              "width": 175,
+              "height": 21,
+              "pixels": 2317
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 2,
+          "zoom": 120,
+          "fitLabel": "폭 맞춤",
+          "width": 1440,
+          "height": 840,
+          "captureSha256": "343b3108c9bc2d8e60e8f9f8bab3126b784fb3c220be587f1add4fff69aba681",
+          "papers": [
+            {
+              "left": 54,
+              "right": 1398,
+              "top": 229,
+              "bottom": 784
+            }
+          ],
+          "shades": [
+            {
+              "left": 190,
+              "right": 273,
+              "top": 401,
+              "bottom": 426,
+              "width": 84,
+              "height": 26,
+              "pixels": 1341
+            },
+            {
+              "left": 190,
+              "right": 225,
+              "top": 454,
+              "bottom": 478,
+              "width": 36,
+              "height": 25,
+              "pixels": 680
+            },
+            {
+              "left": 190,
+              "right": 253,
+              "top": 506,
+              "bottom": 531,
+              "width": 64,
+              "height": 26,
+              "pixels": 1101
+            },
+            {
+              "left": 190,
+              "right": 291,
+              "top": 559,
+              "bottom": 583,
+              "width": 102,
+              "height": 25,
+              "pixels": 1642
+            },
+            {
+              "left": 190,
+              "right": 399,
+              "top": 611,
+              "bottom": 636,
+              "width": 210,
+              "height": 26,
+              "pixels": 3616
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 3,
+          "zoom": 82,
+          "fitLabel": "폭 맞춤",
+          "width": 1000,
+          "height": 840,
+          "captureSha256": "e591725d65789f8242a09bcab2eccb13dfb6a6965d32f9b8bfb127c78e58588b",
+          "papers": [
+            {
+              "left": 45,
+              "right": 967,
+              "top": 225,
+              "bottom": 784
+            }
+          ],
+          "shades": [
+            {
+              "left": 138,
+              "right": 194,
+              "top": 343,
+              "bottom": 360,
+              "width": 57,
+              "height": 18,
+              "pixels": 516
+            },
+            {
+              "left": 138,
+              "right": 161,
+              "top": 379,
+              "bottom": 396,
+              "width": 24,
+              "height": 18,
+              "pixels": 305
+            },
+            {
+              "left": 138,
+              "right": 181,
+              "top": 415,
+              "bottom": 432,
+              "width": 44,
+              "height": 18,
+              "pixels": 409
+            },
+            {
+              "left": 138,
+              "right": 207,
+              "top": 451,
+              "bottom": 468,
+              "width": 70,
+              "height": 18,
+              "pixels": 775
+            },
+            {
+              "left": 138,
+              "right": 281,
+              "top": 487,
+              "bottom": 504,
+              "width": 144,
+              "height": 18,
+              "pixels": 1490
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 4,
+          "zoom": 100,
+          "fitLabel": "폭 맞춤",
+          "width": 1200,
+          "height": 1000,
+          "captureSha256": "c95063c749089c2c66fd287d7c1534cb415aec4295c211c1037ad404cc4c35a1",
+          "papers": [
+            {
+              "left": 45,
+              "right": 1167,
+              "top": 227,
+              "bottom": 944
+            }
+          ],
+          "shades": [
+            {
+              "left": 159,
+              "right": 227,
+              "top": 371,
+              "bottom": 391,
+              "width": 69,
+              "height": 21,
+              "pixels": 827
+            },
+            {
+              "left": 159,
+              "right": 187,
+              "top": 414,
+              "bottom": 435,
+              "width": 29,
+              "height": 22,
+              "pixels": 492
+            },
+            {
+              "left": 159,
+              "right": 211,
+              "top": 458,
+              "bottom": 479,
+              "width": 53,
+              "height": 22,
+              "pixels": 806
+            },
+            {
+              "left": 159,
+              "right": 243,
+              "top": 502,
+              "bottom": 522,
+              "width": 85,
+              "height": 21,
+              "pixels": 1151
+            },
+            {
+              "left": 159,
+              "right": 333,
+              "top": 546,
+              "bottom": 566,
+              "width": 175,
+              "height": 21,
+              "pixels": 2317
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "width",
+          "step": 5,
+          "zoom": 120,
+          "fitLabel": "폭 맞춤",
+          "width": 1440,
+          "height": 960,
+          "captureSha256": "5cf14ed562ba0e61a0602f12b08c5e8c267fb276897b7c1dd7f0c4db5c58fb09",
+          "papers": [
+            {
+              "left": 54,
+              "right": 1398,
+              "top": 229,
+              "bottom": 904
+            }
+          ],
+          "shades": [
+            {
+              "left": 190,
+              "right": 273,
+              "top": 401,
+              "bottom": 426,
+              "width": 84,
+              "height": 26,
+              "pixels": 1341
+            },
+            {
+              "left": 190,
+              "right": 225,
+              "top": 454,
+              "bottom": 478,
+              "width": 36,
+              "height": 25,
+              "pixels": 680
+            },
+            {
+              "left": 190,
+              "right": 253,
+              "top": 506,
+              "bottom": 531,
+              "width": 64,
+              "height": 26,
+              "pixels": 1101
+            },
+            {
+              "left": 190,
+              "right": 291,
+              "top": 559,
+              "bottom": 583,
+              "width": 102,
+              "height": 25,
+              "pixels": 1642
+            },
+            {
+              "left": 190,
+              "right": 399,
+              "top": 611,
+              "bottom": 636,
+              "width": 210,
+              "height": 26,
+              "pixels": 3616
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 0,
+          "zoom": 83,
+          "fitLabel": "쪽 맞춤",
+          "width": 1440,
+          "height": 960,
+          "captureSha256": "d0b394889a3daeeae1669176f911f743c856cb779956c02d02b5b103c3f14b72",
+          "papers": [
+            {
+              "left": 259,
+              "right": 1193,
+              "top": 228,
+              "bottom": 888
+            }
+          ],
+          "shades": [
+            {
+              "left": 353,
+              "right": 410,
+              "top": 347,
+              "bottom": 364,
+              "width": 58,
+              "height": 18,
+              "pixels": 531
+            },
+            {
+              "left": 353,
+              "right": 377,
+              "top": 384,
+              "bottom": 401,
+              "width": 25,
+              "height": 18,
+              "pixels": 323
+            },
+            {
+              "left": 353,
+              "right": 397,
+              "top": 420,
+              "bottom": 437,
+              "width": 45,
+              "height": 18,
+              "pixels": 427
+            },
+            {
+              "left": 353,
+              "right": 423,
+              "top": 457,
+              "bottom": 474,
+              "width": 71,
+              "height": 18,
+              "pixels": 793
+            },
+            {
+              "left": 353,
+              "right": 498,
+              "top": 493,
+              "bottom": 510,
+              "width": 146,
+              "height": 18,
+              "pixels": 1523
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 1,
+          "zoom": 83,
+          "fitLabel": "쪽 맞춤",
+          "width": 1200,
+          "height": 960,
+          "captureSha256": "a6427bf31a884064683633b54f42fb57f08884332ec7865cad1176018d0d86e7",
+          "papers": [
+            {
+              "left": 139,
+              "right": 1073,
+              "top": 228,
+              "bottom": 888
+            }
+          ],
+          "shades": [
+            {
+              "left": 233,
+              "right": 290,
+              "top": 347,
+              "bottom": 364,
+              "width": 58,
+              "height": 18,
+              "pixels": 531
+            },
+            {
+              "left": 233,
+              "right": 257,
+              "top": 384,
+              "bottom": 401,
+              "width": 25,
+              "height": 18,
+              "pixels": 323
+            },
+            {
+              "left": 233,
+              "right": 277,
+              "top": 420,
+              "bottom": 437,
+              "width": 45,
+              "height": 18,
+              "pixels": 427
+            },
+            {
+              "left": 233,
+              "right": 303,
+              "top": 457,
+              "bottom": 474,
+              "width": 71,
+              "height": 18,
+              "pixels": 793
+            },
+            {
+              "left": 233,
+              "right": 378,
+              "top": 493,
+              "bottom": 510,
+              "width": 146,
+              "height": 18,
+              "pixels": 1523
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 2,
+          "zoom": 69,
+          "fitLabel": "쪽 맞춤",
+          "width": 1440,
+          "height": 840,
+          "captureSha256": "754f045cf24dd2d957a1df9d471ffdcb86fa5884894eeea7a0aac04b19a7d38c",
+          "papers": [
+            {
+              "left": 341,
+              "right": 1111,
+              "top": 226,
+              "bottom": 770
+            }
+          ],
+          "shades": [
+            {
+              "left": 419,
+              "right": 466,
+              "top": 324,
+              "bottom": 338,
+              "width": 48,
+              "height": 15,
+              "pixels": 358
+            },
+            {
+              "left": 419,
+              "right": 438,
+              "top": 355,
+              "bottom": 368,
+              "width": 20,
+              "height": 14,
+              "pixels": 197
+            },
+            {
+              "left": 419,
+              "right": 454,
+              "top": 385,
+              "bottom": 398,
+              "width": 36,
+              "height": 14,
+              "pixels": 273
+            },
+            {
+              "left": 419,
+              "right": 476,
+              "top": 415,
+              "bottom": 429,
+              "width": 58,
+              "height": 15,
+              "pixels": 509
+            },
+            {
+              "left": 419,
+              "right": 538,
+              "top": 445,
+              "bottom": 459,
+              "width": 120,
+              "height": 15,
+              "pixels": 1020
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 3,
+          "zoom": 69,
+          "fitLabel": "쪽 맞춤",
+          "width": 1000,
+          "height": 840,
+          "captureSha256": "d9f4a40c1e80c3f22af504d1413d98ceeeff4d1ba50dc7f037effc1ad03ab9bb",
+          "papers": [
+            {
+              "left": 121,
+              "right": 891,
+              "top": 226,
+              "bottom": 770
+            }
+          ],
+          "shades": [
+            {
+              "left": 199,
+              "right": 246,
+              "top": 324,
+              "bottom": 338,
+              "width": 48,
+              "height": 15,
+              "pixels": 358
+            },
+            {
+              "left": 199,
+              "right": 218,
+              "top": 355,
+              "bottom": 368,
+              "width": 20,
+              "height": 14,
+              "pixels": 197
+            },
+            {
+              "left": 199,
+              "right": 234,
+              "top": 385,
+              "bottom": 398,
+              "width": 36,
+              "height": 14,
+              "pixels": 273
+            },
+            {
+              "left": 199,
+              "right": 256,
+              "top": 415,
+              "bottom": 429,
+              "width": 58,
+              "height": 15,
+              "pixels": 509
+            },
+            {
+              "left": 199,
+              "right": 318,
+              "top": 445,
+              "bottom": 459,
+              "width": 120,
+              "height": 15,
+              "pixels": 1020
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 4,
+          "zoom": 88,
+          "fitLabel": "쪽 맞춤",
+          "width": 1200,
+          "height": 1000,
+          "captureSha256": "65f62ba9ee42bd8be4fc9a282e76bcc6175a5aae4f03aad8f2fb7b3dc78e4990",
+          "papers": [
+            {
+              "left": 115,
+              "right": 1097,
+              "top": 231,
+              "bottom": 924
+            }
+          ],
+          "shades": [
+            {
+              "left": 215,
+              "right": 275,
+              "top": 357,
+              "bottom": 374,
+              "width": 61,
+              "height": 18,
+              "pixels": 557
+            },
+            {
+              "left": 215,
+              "right": 240,
+              "top": 395,
+              "bottom": 413,
+              "width": 26,
+              "height": 19,
+              "pixels": 353
+            },
+            {
+              "left": 215,
+              "right": 260,
+              "top": 433,
+              "bottom": 451,
+              "width": 46,
+              "height": 19,
+              "pixels": 476
+            },
+            {
+              "left": 215,
+              "right": 288,
+              "top": 472,
+              "bottom": 489,
+              "width": 74,
+              "height": 18,
+              "pixels": 783
+            },
+            {
+              "left": 215,
+              "right": 367,
+              "top": 510,
+              "bottom": 528,
+              "width": 153,
+              "height": 19,
+              "pixels": 1733
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        },
+        {
+          "mode": "page",
+          "step": 5,
+          "zoom": 83,
+          "fitLabel": "쪽 맞춤",
+          "width": 1440,
+          "height": 960,
+          "captureSha256": "d0b394889a3daeeae1669176f911f743c856cb779956c02d02b5b103c3f14b72",
+          "papers": [
+            {
+              "left": 259,
+              "right": 1193,
+              "top": 228,
+              "bottom": 888
+            }
+          ],
+          "shades": [
+            {
+              "left": 353,
+              "right": 410,
+              "top": 347,
+              "bottom": 364,
+              "width": 58,
+              "height": 18,
+              "pixels": 531
+            },
+            {
+              "left": 353,
+              "right": 377,
+              "top": 384,
+              "bottom": 401,
+              "width": 25,
+              "height": 18,
+              "pixels": 323
+            },
+            {
+              "left": 353,
+              "right": 397,
+              "top": 420,
+              "bottom": 437,
+              "width": 45,
+              "height": 18,
+              "pixels": 427
+            },
+            {
+              "left": 353,
+              "right": 423,
+              "top": 457,
+              "bottom": 474,
+              "width": 71,
+              "height": 18,
+              "pixels": 793
+            },
+            {
+              "left": 353,
+              "right": 498,
+              "top": 493,
+              "bottom": 510,
+              "width": 146,
+              "height": 18,
+              "pixels": 1523
+            }
+          ],
+          "unpaintedBottom": null,
+          "bottomObserved": true
+        }
+      ]
+    }
+  ]
+}

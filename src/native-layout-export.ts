@@ -1,5 +1,5 @@
 import { documentContentStyles } from "./document-styles.ts";
-import {portableFontStyles} from './portable-font-styles.ts';
+import {PORTABLE_EDITOR_FONT_CSS} from './portable-editor-font-styles.ts';
 import {
   applyNativeParagraph,
   measureNativeParagraph,
@@ -69,7 +69,7 @@ export async function prepareNativeLayout(
       frame.onload = () => resolve();
     },
   );
-  frame.srcdoc = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src data:;"><style>${portableFontStyles(html)}${documentContentStyles("body")}html,body{margin:0;padding:0;width:${width}mm}</style></head><body>${html}</body></html>`;
+  frame.srcdoc = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src 'self' data:;"><style>${PORTABLE_EDITOR_FONT_CSS}${documentContentStyles("body")}html,body{margin:0;padding:0;width:${width}mm}</style></head><body>${html}</body></html>`;
   document.body.appendChild(frame);
   try {
     await loaded;

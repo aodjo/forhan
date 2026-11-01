@@ -45,6 +45,13 @@ jobs:
       - run: npm test
       - run: npx playwright install chromium
       - run: npm run build
+      - name: Prepare actual macOS display for native viewport fixtures
+        if: ${{ matrix.platform == 'darwin' }}
+        run: |
+          brew install displayplacer
+          node scripts/prepare-macos-display.ts
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: 1
       - run: npm run test:ui
         if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
       - name: Run focused standalone layout diagnostics
@@ -64,6 +71,12 @@ jobs:
           CSC_FOR_PULL_REQUEST: true
       - run: npm run test:packaged -- --platform ${{ matrix.platform }} --arch ${{ matrix.arch }}
         if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() && matrix.platform == 'darwin' }}
+        with:
+          name: Forhan-native-display-${{ matrix.arch }}
+          path: release/validation/native-display-darwin-${{ matrix.arch }}.json
+          if-no-files-found: warn
       - uses: actions/upload-artifact@v4
         if: always()
         with:

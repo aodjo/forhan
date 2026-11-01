@@ -1,0 +1,1171 @@
+{
+  "scope": "Literal full paper-body bounds from32 original native captures across two new viewport sizes, two paper widths, four low manual captions and one/two-column views.",
+  "mechanism": "Owned native COM cursor observation and unchanged PrintWindow screenshots; not REA runtime evidence.",
+  "nativeSha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "source": {
+    "doc": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "attrs": {
+            "lineHeight": "100%",
+            "nativeSnapToGrid": true,
+            "marginTop": "0pt",
+            "marginBottom": "0pt"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "row000",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8",
+                    "color": "#fff1a8"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "X i",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8",
+                    "color": "#fff1a8"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "lineHeight": "100%",
+            "nativeSnapToGrid": true,
+            "marginTop": "0pt",
+            "marginBottom": "0pt",
+            "pageBreakBefore": true
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "row000",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8",
+                    "color": "#fff1a8"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "X i",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8",
+                    "color": "#fff1a8"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "lineHeight": "100%",
+            "nativeSnapToGrid": true,
+            "marginTop": "0pt",
+            "marginBottom": "0pt",
+            "pageBreakBefore": true
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "row000",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8",
+                    "color": "#fff1a8"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "X i",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8",
+                    "color": "#fff1a8"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "page": {
+      "width": 210,
+      "height": 90,
+      "marginTop": 20,
+      "marginBottom": 15,
+      "marginLeft": 30,
+      "marginRight": 30,
+      "header": 15,
+      "footer": 15,
+      "lineGrid": 3288
+    },
+    "sourceRows": [
+      "row000",
+      "X i",
+      "row000",
+      "X i",
+      "row000",
+      "X i"
+    ]
+  },
+  "rows": [
+    {
+      "id": "compact-width-210-1280x1000-columns-1-manual-10",
+      "width": 210,
+      "ratio": 10,
+      "columns": 1,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 605,
+          "right": 687,
+          "top": 521,
+          "bottom": 555
+        },
+        {
+          "left": 605,
+          "right": 687,
+          "top": 561,
+          "bottom": 596
+        },
+        {
+          "left": 605,
+          "right": 687,
+          "top": 602,
+          "bottom": 636
+        }
+      ],
+      "captureSha256": "8c569ca9cd20048a3c2fba05fdd346c0f7506b827a4c08dc0de419c418cb4ead"
+    },
+    {
+      "id": "compact-width-210-1280x1000-columns-1-manual-17",
+      "width": 210,
+      "ratio": 17,
+      "columns": 1,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 580,
+          "right": 712,
+          "top": 489,
+          "bottom": 544
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 551,
+          "bottom": 606
+        },
+        {
+          "left": 580,
+          "right": 712,
+          "top": 613,
+          "bottom": 668
+        }
+      ],
+      "captureSha256": "aed336fa6711e4d6295171c3f3eebeb7747edcc270416111e788850849626871"
+    },
+    {
+      "id": "compact-width-210-1280x1000-columns-1-manual-25",
+      "width": 210,
+      "ratio": 25,
+      "columns": 1,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 547,
+          "right": 745,
+          "top": 446,
+          "bottom": 530
+        },
+        {
+          "left": 547,
+          "right": 745,
+          "top": 537,
+          "bottom": 621
+        },
+        {
+          "left": 547,
+          "right": 745,
+          "top": 627,
+          "bottom": 711
+        }
+      ],
+      "captureSha256": "7fb4fb6afb14294a77cc943aa0b5737f86fb271111b4c28023cfb7308d438f20"
+    },
+    {
+      "id": "compact-width-210-1280x1000-columns-1-manual-32",
+      "width": 210,
+      "ratio": 32,
+      "columns": 1,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 518,
+          "right": 774,
+          "top": 409,
+          "bottom": 518
+        },
+        {
+          "left": 518,
+          "right": 774,
+          "top": 524,
+          "bottom": 633
+        },
+        {
+          "left": 518,
+          "right": 774,
+          "top": 639,
+          "bottom": 748
+        }
+      ],
+      "captureSha256": "948af705445c85c4eb6124ed3fc08f4b611da685638428a1d486403a4ac4d1d2"
+    },
+    {
+      "id": "compact-width-210-1280x1000-columns-2-manual-10",
+      "width": 210,
+      "ratio": 10,
+      "columns": 2,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 561,
+          "right": 643,
+          "top": 541,
+          "bottom": 575
+        },
+        {
+          "left": 649,
+          "right": 731,
+          "top": 541,
+          "bottom": 575
+        },
+        {
+          "left": 561,
+          "right": 643,
+          "top": 581,
+          "bottom": 616
+        }
+      ],
+      "captureSha256": "d47bcb787788e606b26a7646796336b7426b023fd8be79e059e7c95eee84fe55"
+    },
+    {
+      "id": "compact-width-210-1280x1000-columns-2-manual-17",
+      "width": 210,
+      "ratio": 17,
+      "columns": 2,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 512,
+          "right": 643,
+          "top": 520,
+          "bottom": 575
+        },
+        {
+          "left": 649,
+          "right": 780,
+          "top": 520,
+          "bottom": 575
+        },
+        {
+          "left": 512,
+          "right": 643,
+          "top": 582,
+          "bottom": 637
+        }
+      ],
+      "captureSha256": "c98bd522cc12a3d8c1b288a1af6c638b3821cf3aabd61eb54a1044e568285f97"
+    },
+    {
+      "id": "compact-width-210-1280x1000-columns-2-manual-25",
+      "width": 210,
+      "ratio": 25,
+      "columns": 2,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 445,
+          "right": 643,
+          "top": 492,
+          "bottom": 576
+        },
+        {
+          "left": 649,
+          "right": 847,
+          "top": 492,
+          "bottom": 576
+        },
+        {
+          "left": 445,
+          "right": 643,
+          "top": 582,
+          "bottom": 666
+        }
+      ],
+      "captureSha256": "3cd3e6abbe92d29148f3f45a4cd76633911d5816f0743e0001e78d1c8c20dc07"
+    },
+    {
+      "id": "compact-width-210-1280x1000-columns-2-manual-32",
+      "width": 210,
+      "ratio": 32,
+      "columns": 2,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 388,
+          "right": 643,
+          "top": 467,
+          "bottom": 576
+        },
+        {
+          "left": 649,
+          "right": 904,
+          "top": 467,
+          "bottom": 576
+        },
+        {
+          "left": 388,
+          "right": 643,
+          "top": 582,
+          "bottom": 691
+        }
+      ],
+      "captureSha256": "90f59be0a9ee0ae953042f1bd89fd1fa2fae82d4773e44d9207770b242f4e5c7"
+    },
+    {
+      "id": "compact-width-210-1440x961-columns-1-manual-10",
+      "width": 210,
+      "ratio": 10,
+      "columns": 1,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 685,
+          "right": 767,
+          "top": 501,
+          "bottom": 536
+        },
+        {
+          "left": 685,
+          "right": 767,
+          "top": 542,
+          "bottom": 576
+        },
+        {
+          "left": 685,
+          "right": 767,
+          "top": 582,
+          "bottom": 617
+        }
+      ],
+      "captureSha256": "4c6b0f322f8e226212d3f48836f617c50cc7f4652c93169369e338218c00011d"
+    },
+    {
+      "id": "compact-width-210-1440x961-columns-1-manual-17",
+      "width": 210,
+      "ratio": 17,
+      "columns": 1,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 660,
+          "right": 792,
+          "top": 469,
+          "bottom": 525
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 531,
+          "bottom": 587
+        },
+        {
+          "left": 660,
+          "right": 792,
+          "top": 593,
+          "bottom": 649
+        }
+      ],
+      "captureSha256": "afa0d83c9d873a4584916c61a1744e9b7ce95113689c46fd016b482aee919475"
+    },
+    {
+      "id": "compact-width-210-1440x961-columns-1-manual-25",
+      "width": 210,
+      "ratio": 25,
+      "columns": 1,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 627,
+          "right": 825,
+          "top": 427,
+          "bottom": 511
+        },
+        {
+          "left": 627,
+          "right": 825,
+          "top": 517,
+          "bottom": 601
+        },
+        {
+          "left": 627,
+          "right": 825,
+          "top": 607,
+          "bottom": 691
+        }
+      ],
+      "captureSha256": "e111385a2384a6ab3fcdcaeca60ffbc42a2aa44b400b3b4ae207189dc6dcb62e"
+    },
+    {
+      "id": "compact-width-210-1440x961-columns-1-manual-32",
+      "width": 210,
+      "ratio": 32,
+      "columns": 1,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 598,
+          "right": 854,
+          "top": 390,
+          "bottom": 499
+        },
+        {
+          "left": 598,
+          "right": 854,
+          "top": 505,
+          "bottom": 614
+        },
+        {
+          "left": 598,
+          "right": 854,
+          "top": 620,
+          "bottom": 729
+        }
+      ],
+      "captureSha256": "fb7ba5ac59966633c41ab2726fb61c9809935323f6b41e75bcb9e7290238dd95"
+    },
+    {
+      "id": "compact-width-210-1440x961-columns-2-manual-10",
+      "width": 210,
+      "ratio": 10,
+      "columns": 2,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 641,
+          "right": 723,
+          "top": 522,
+          "bottom": 556
+        },
+        {
+          "left": 729,
+          "right": 811,
+          "top": 522,
+          "bottom": 556
+        },
+        {
+          "left": 641,
+          "right": 723,
+          "top": 562,
+          "bottom": 596
+        }
+      ],
+      "captureSha256": "a51fdc3ea7c339c815d433d620a695487bbbc2b3860c95e4c0ad95bb3814d649"
+    },
+    {
+      "id": "compact-width-210-1440x961-columns-2-manual-17",
+      "width": 210,
+      "ratio": 17,
+      "columns": 2,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 592,
+          "right": 723,
+          "top": 500,
+          "bottom": 556
+        },
+        {
+          "left": 729,
+          "right": 860,
+          "top": 500,
+          "bottom": 556
+        },
+        {
+          "left": 592,
+          "right": 723,
+          "top": 562,
+          "bottom": 618
+        }
+      ],
+      "captureSha256": "3759c49d4d4f109adbcc285b6360f15a5839fdeff1cf5c3ebcfb85fd54d39026"
+    },
+    {
+      "id": "compact-width-210-1440x961-columns-2-manual-25",
+      "width": 210,
+      "ratio": 25,
+      "columns": 2,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 525,
+          "right": 723,
+          "top": 472,
+          "bottom": 556
+        },
+        {
+          "left": 729,
+          "right": 927,
+          "top": 472,
+          "bottom": 556
+        },
+        {
+          "left": 525,
+          "right": 723,
+          "top": 562,
+          "bottom": 646
+        }
+      ],
+      "captureSha256": "dfb2bc9aecb4d476dfa293de22040155417e8dd5a6169ed384f781bfb7fef340"
+    },
+    {
+      "id": "compact-width-210-1440x961-columns-2-manual-32",
+      "width": 210,
+      "ratio": 32,
+      "columns": 2,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 468,
+          "right": 723,
+          "top": 447,
+          "bottom": 556
+        },
+        {
+          "left": 729,
+          "right": 984,
+          "top": 447,
+          "bottom": 556
+        },
+        {
+          "left": 468,
+          "right": 723,
+          "top": 562,
+          "bottom": 671
+        }
+      ],
+      "captureSha256": "c65661a5ba09ac3b954a460771c006517170d95b3894b3e440a47c45019c6120"
+    },
+    {
+      "id": "compact-width-180-1280x1000-columns-1-manual-10",
+      "width": 180,
+      "ratio": 10,
+      "columns": 1,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 611,
+          "right": 681,
+          "top": 521,
+          "bottom": 555
+        },
+        {
+          "left": 611,
+          "right": 681,
+          "top": 561,
+          "bottom": 596
+        },
+        {
+          "left": 611,
+          "right": 681,
+          "top": 602,
+          "bottom": 636
+        }
+      ],
+      "captureSha256": "c0e302f7002e85fff5dbbfb3876733f4d55862070d03ab6e2def01ace4b5658c"
+    },
+    {
+      "id": "compact-width-180-1280x1000-columns-1-manual-17",
+      "width": 180,
+      "ratio": 17,
+      "columns": 1,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 590,
+          "right": 702,
+          "top": 489,
+          "bottom": 544
+        },
+        {
+          "left": 590,
+          "right": 702,
+          "top": 551,
+          "bottom": 606
+        },
+        {
+          "left": 590,
+          "right": 702,
+          "top": 613,
+          "bottom": 668
+        }
+      ],
+      "captureSha256": "13b7c36d21e9422c7f8964e004d09b1e1dbe4381fc3ed67ddda6075e0b675952"
+    },
+    {
+      "id": "compact-width-180-1280x1000-columns-1-manual-25",
+      "width": 180,
+      "ratio": 25,
+      "columns": 1,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 561,
+          "right": 731,
+          "top": 446,
+          "bottom": 530
+        },
+        {
+          "left": 561,
+          "right": 731,
+          "top": 537,
+          "bottom": 621
+        },
+        {
+          "left": 561,
+          "right": 731,
+          "top": 627,
+          "bottom": 711
+        }
+      ],
+      "captureSha256": "f63716df562c809b4cf65cc861b4c74dd53a433dc5361b9671afa0847a500701"
+    },
+    {
+      "id": "compact-width-180-1280x1000-columns-1-manual-32",
+      "width": 180,
+      "ratio": 32,
+      "columns": 1,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 537,
+          "right": 755,
+          "top": 409,
+          "bottom": 518
+        },
+        {
+          "left": 537,
+          "right": 755,
+          "top": 524,
+          "bottom": 633
+        },
+        {
+          "left": 537,
+          "right": 755,
+          "top": 639,
+          "bottom": 748
+        }
+      ],
+      "captureSha256": "35847bfa82c337f327699336acb853e01decbbfa4c32d94a3ad95a75b2896c4f"
+    },
+    {
+      "id": "compact-width-180-1280x1000-columns-2-manual-10",
+      "width": 180,
+      "ratio": 10,
+      "columns": 2,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 573,
+          "right": 643,
+          "top": 541,
+          "bottom": 575
+        },
+        {
+          "left": 649,
+          "right": 719,
+          "top": 541,
+          "bottom": 575
+        },
+        {
+          "left": 573,
+          "right": 643,
+          "top": 581,
+          "bottom": 616
+        }
+      ],
+      "captureSha256": "5ce99c92a1fc5e056923c8d941da60b71e5a40d7a88fea8cc776f76dfa8a3af4"
+    },
+    {
+      "id": "compact-width-180-1280x1000-columns-2-manual-17",
+      "width": 180,
+      "ratio": 17,
+      "columns": 2,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 530,
+          "right": 643,
+          "top": 520,
+          "bottom": 575
+        },
+        {
+          "left": 649,
+          "right": 762,
+          "top": 520,
+          "bottom": 575
+        },
+        {
+          "left": 530,
+          "right": 643,
+          "top": 582,
+          "bottom": 637
+        }
+      ],
+      "captureSha256": "0e3b1650b1ca3b5f9ea13e356781527571b592b37267250da0203c84ccf9fd28"
+    },
+    {
+      "id": "compact-width-180-1280x1000-columns-2-manual-25",
+      "width": 180,
+      "ratio": 25,
+      "columns": 2,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 474,
+          "right": 643,
+          "top": 492,
+          "bottom": 576
+        },
+        {
+          "left": 649,
+          "right": 818,
+          "top": 492,
+          "bottom": 576
+        },
+        {
+          "left": 474,
+          "right": 643,
+          "top": 582,
+          "bottom": 666
+        }
+      ],
+      "captureSha256": "b6c23efacacc870a7bed66ba7302cb925f1c447b8c1533e62dcffcdf899733c4"
+    },
+    {
+      "id": "compact-width-180-1280x1000-columns-2-manual-32",
+      "width": 180,
+      "ratio": 32,
+      "columns": 2,
+      "viewport": {
+        "height": 1000,
+        "width": 1280
+      },
+      "papers": [
+        {
+          "left": 424,
+          "right": 643,
+          "top": 467,
+          "bottom": 576
+        },
+        {
+          "left": 649,
+          "right": 868,
+          "top": 467,
+          "bottom": 576
+        },
+        {
+          "left": 424,
+          "right": 643,
+          "top": 582,
+          "bottom": 691
+        }
+      ],
+      "captureSha256": "5236de2a631266d301dd434ce5d0229735631a44aac70aaae93b113566ba948c"
+    },
+    {
+      "id": "compact-width-180-1440x961-columns-1-manual-10",
+      "width": 180,
+      "ratio": 10,
+      "columns": 1,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 691,
+          "right": 761,
+          "top": 501,
+          "bottom": 536
+        },
+        {
+          "left": 691,
+          "right": 761,
+          "top": 542,
+          "bottom": 576
+        },
+        {
+          "left": 691,
+          "right": 761,
+          "top": 582,
+          "bottom": 617
+        }
+      ],
+      "captureSha256": "7a887fc610ea5aa73185eae1b3612a0708851960864b634aef511331dd7dde21"
+    },
+    {
+      "id": "compact-width-180-1440x961-columns-1-manual-17",
+      "width": 180,
+      "ratio": 17,
+      "columns": 1,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 670,
+          "right": 782,
+          "top": 469,
+          "bottom": 525
+        },
+        {
+          "left": 670,
+          "right": 782,
+          "top": 531,
+          "bottom": 587
+        },
+        {
+          "left": 670,
+          "right": 782,
+          "top": 593,
+          "bottom": 649
+        }
+      ],
+      "captureSha256": "547937a2c7a004a8dabbaec818165308f29911c01d95fb84995b263493a8f43b"
+    },
+    {
+      "id": "compact-width-180-1440x961-columns-1-manual-25",
+      "width": 180,
+      "ratio": 25,
+      "columns": 1,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 641,
+          "right": 811,
+          "top": 427,
+          "bottom": 511
+        },
+        {
+          "left": 641,
+          "right": 811,
+          "top": 517,
+          "bottom": 601
+        },
+        {
+          "left": 641,
+          "right": 811,
+          "top": 607,
+          "bottom": 691
+        }
+      ],
+      "captureSha256": "7885637864ad7d5a5cad554e3727548d9c3d0a4723561b0844a89ff88b6bcb39"
+    },
+    {
+      "id": "compact-width-180-1440x961-columns-1-manual-32",
+      "width": 180,
+      "ratio": 32,
+      "columns": 1,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 617,
+          "right": 835,
+          "top": 390,
+          "bottom": 499
+        },
+        {
+          "left": 617,
+          "right": 835,
+          "top": 505,
+          "bottom": 614
+        },
+        {
+          "left": 617,
+          "right": 835,
+          "top": 620,
+          "bottom": 729
+        }
+      ],
+      "captureSha256": "3a130157626c3d11be16b1f7027ef9a96a148afce57b736701d4b90ae5d179a5"
+    },
+    {
+      "id": "compact-width-180-1440x961-columns-2-manual-10",
+      "width": 180,
+      "ratio": 10,
+      "columns": 2,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 653,
+          "right": 723,
+          "top": 522,
+          "bottom": 556
+        },
+        {
+          "left": 729,
+          "right": 799,
+          "top": 522,
+          "bottom": 556
+        },
+        {
+          "left": 653,
+          "right": 723,
+          "top": 562,
+          "bottom": 596
+        }
+      ],
+      "captureSha256": "e14c700c38f78031950e2ac37f1fd6b7a5033b6b6e8c23d969977f4b4a59a432"
+    },
+    {
+      "id": "compact-width-180-1440x961-columns-2-manual-17",
+      "width": 180,
+      "ratio": 17,
+      "columns": 2,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 610,
+          "right": 723,
+          "top": 500,
+          "bottom": 556
+        },
+        {
+          "left": 729,
+          "right": 842,
+          "top": 500,
+          "bottom": 556
+        },
+        {
+          "left": 610,
+          "right": 723,
+          "top": 562,
+          "bottom": 618
+        }
+      ],
+      "captureSha256": "be59a901fda43eced7c236e8ab1faabc465c88a326bbb4afd98d4d0365a8c2de"
+    },
+    {
+      "id": "compact-width-180-1440x961-columns-2-manual-25",
+      "width": 180,
+      "ratio": 25,
+      "columns": 2,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 554,
+          "right": 723,
+          "top": 472,
+          "bottom": 556
+        },
+        {
+          "left": 729,
+          "right": 898,
+          "top": 472,
+          "bottom": 556
+        },
+        {
+          "left": 554,
+          "right": 723,
+          "top": 562,
+          "bottom": 646
+        }
+      ],
+      "captureSha256": "d96c6261bf599d80948a9a6d5e97d12319d53a75a57fd1e12e631703574fe975"
+    },
+    {
+      "id": "compact-width-180-1440x961-columns-2-manual-32",
+      "width": 180,
+      "ratio": 32,
+      "columns": 2,
+      "viewport": {
+        "height": 961,
+        "width": 1440
+      },
+      "papers": [
+        {
+          "left": 504,
+          "right": 723,
+          "top": 447,
+          "bottom": 556
+        },
+        {
+          "left": 729,
+          "right": 948,
+          "top": 447,
+          "bottom": 556
+        },
+        {
+          "left": 504,
+          "right": 723,
+          "top": 562,
+          "bottom": 671
+        }
+      ],
+      "captureSha256": "9b3551c291ad16c2f3f22b65bd4b3b9ced950447281148116273b97f0231a112"
+    }
+  ]
+}

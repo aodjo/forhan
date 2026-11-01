@@ -6,6 +6,7 @@ import path from 'node:path';
 import {desktopLaunchOptions} from './helpers/desktop-launch.ts';
 import {exerciseNativePaperFraming} from './helpers/native-paper-framing.ts';
 import {exerciseNativeManualPageGaps} from './helpers/native-manual-page-gaps.ts';
+import {exerciseNativePaperCentering} from './helpers/native-paper-centering.ts';
 
 /**
  * Verify original native margin boundaries and small-scale paper gaps in the selected application.
@@ -13,13 +14,13 @@ import {exerciseNativeManualPageGaps} from './helpers/native-manual-page-gaps.ts
  * Actual native execution retains complete screenshot bytes and executable/archive
  * identities. Public controls own every source import, view choice and navigation.
  * @async
- * @returns {Promise<void>} Resolves after twenty paper frames, 92 original page strides and actual source behavior agree.
+ * @returns {Promise<void>} Resolves after twenty paper frames, 92 source strides and 32 viewport centering conditions agree.
  * @throws {Error} If native execution, observed physical paper and source shade edges or original source behavior differs.
  * @example
  * // The packaged gate cannot substitute the preview server for the archived application.
  */
 async function verifyDesktopNativePaperFraming():Promise<void>{
-  test.setTimeout(180000);
+  test.setTimeout(240000);
   /** Only this invocation owns its native profile and actual completed frame artifacts. */
   const profile=await mkdtemp(path.join(tmpdir(),'forhan-native-paper-framing-')),options=desktopLaunchOptions(profile),
     outputRoot=process.env.FORHAN_PACKAGED_EXECUTABLE?path.resolve('release/validation/native-paper-framing',randomUUID()):test.info().outputPath('native-paper-framing-frames');
@@ -72,9 +73,11 @@ async function verifyDesktopNativePaperFraming():Promise<void>{
     const records=await exerciseNativePaperFraming(page,resize,outputRoot);
     /** Independent native cursor observations retain every low manual caption across widths and arrangements. */
     const gapRecords=await exerciseNativeManualPageGaps(page,path.join(outputRoot,'manual-page-gaps'));
+    /** Independent native viewport holdouts retain complete paper bounds at even and odd heights. */
+    const centeringRecords=await exerciseNativePaperCentering(page,resize,path.join(outputRoot,'paper-centering'));
     /** The archived executable and resource bundle must match this actual observed run. */
     const hashes=identity.packaged?{executableSha256:createHash('sha256').update(await readFile(identity.executable)).digest('hex'),archiveSha256:createHash('sha256').update(await readFile(identity.application)).digest('hex')}:{};
-    await writeFile(path.join(outputRoot,'run.json'),JSON.stringify({kind:'actual-native-paper-framing-and-source-observation-not-REA',identity,...hashes,records,gapRecords},null,2)+'\n');
+    await writeFile(path.join(outputRoot,'run.json'),JSON.stringify({kind:'actual-native-paper-framing-and-source-observation-not-REA',identity,...hashes,records,gapRecords,centeringRecords},null,2)+'\n');
   }finally{
     try{
       await desktop.evaluate(

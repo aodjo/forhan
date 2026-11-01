@@ -38,7 +38,7 @@ function sourcePaperOrigin(root:HTMLElement,sheets:NativeEditableSheets,viewport
   /** Raw custom-property tokens retain the exact native scale beyond computed-style decimal serialization. */
   const zoom=Number(sheets.paper.closest<HTMLElement>('.workspace')?.style.getPropertyValue('--native-zoom'))||viewport.zoom,
     border=Math.round(sheets.border*zoom*viewport.deviceScale)/viewport.deviceScale,box=canvas.getBoundingClientRect(),rulerHeight=canvas.querySelector<HTMLElement>(':scope > .ruler')?.getBoundingClientRect().height??0,
-    horizontal=Math.max(0,12*zoom-border),before=rulerHeight+12*zoom,after=Math.max(0,16*zoom-border),
+    horizontal=Math.max(0,12*zoom-border),before=rulerHeight+12*zoom,after=Math.max(0,16*zoom-border)+sheets.bottomInset*zoom,
     width=sheets.projection.width*zoom+2*border,height=sheets.projection.height*zoom+2*border,
     editTop=box.top+canvas.clientTop+rulerHeight+border,
     sourceTop=box.top+canvas.clientTop+before+Math.max(0,(canvas.clientHeight-before-after-height)/2)-canvas.scrollTop+border;

@@ -285,12 +285,13 @@ export function validateMacBundleInfo(
     throw new Error("Mac Info.plist dictionary is missing.");
   /** Actual generated bundle properties retain their native scalar/array types. */
   const info = plistValue(children[0]) as Record<string, PlistValue>;
-  /** macOS builders decompose executable filenames; canonical equivalence preserves the exact human-readable identity. */
+  /** Canonical source identity permits decomposed names, while runtime helper lookup requires identical raw bundle and executable names. */
   const productName=expected.productName.normalize('NFC');
   if (
     info.CFBundleIdentifier !== expected.bundleId ||
     typeof info.CFBundleExecutable!=='string' || info.CFBundleExecutable.normalize('NFC')!==productName ||
     typeof info.CFBundleName!=='string' || info.CFBundleName.normalize('NFC')!==productName ||
+    info.CFBundleName!==info.CFBundleExecutable ||
     info.CFBundleShortVersionString !== expected.version ||
     info.CFBundlePackageType !== "APPL"
   )

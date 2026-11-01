@@ -1,0 +1,49 @@
+{
+  "family": "Fhan Sans KR",
+  "license": "SIL Open Font License 1.1",
+  "licenseFile": "licenses/fhan-sans-kr-OFL.txt",
+  "copyright": "Copyright (c) 2014-2021 Adobe (http://www.adobe.com/).",
+  "upstreamRevision": "f8d157532fbfaeda587e826d4cd5b21a49186f7c",
+  "upstreamLicenseUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Sans/LICENSE",
+  "builder": "scripts/build-korean-font.ts",
+  "changes": "Distinct Fhan primary and CID font names; one-em Hangul horizontal advances and matching Hangul CFF private default width; original outline/shaping programs and original legal metadata retained.",
+  "scope": "Rendering-only missing-source-family Korean fallback; original document font names remain unchanged. Glyph-shape identity and full-face metric equivalence are not claimed.",
+  "fonts": [
+    {
+      "style": "Regular",
+      "weight": 400,
+      "file": "src/assets/FhanSansKR-Regular.otf",
+      "sha256": "dd0649090bf83717c6aed6a916aab58806aedf9aa3ef874711496cb2841d8e6a",
+      "bytes": 4644748,
+      "sourceFile": "NotoSansKR-Regular.otf",
+      "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Sans/SubsetOTF/KR/NotoSansKR-Regular.otf",
+      "sourceSha256": "69975a0ac8472717870aefeab0a4d52739308d90856b9955313b2ad5e0148d68",
+      "changedModernHangulGlyphs": 11172,
+      "changedHangulGlyphs": 12742,
+      "originalAdvance": 920,
+      "derivedAdvance": 1000,
+      "unitsPerEm": 1000,
+      "protectedCffProgramsSha256": "b4e48430a017012b8bc4fb042cb5b373b551b34da2d25fc08b2bed6cff85179b",
+      "glyphProgramsUnchanged": true,
+      "otherScriptsMetricsUnchanged": true
+    },
+    {
+      "style": "Bold",
+      "weight": 700,
+      "file": "src/assets/FhanSansKR-Bold.otf",
+      "sha256": "0b897d33992881fb06ffe01c073c83b63702a70130dc140beb2590c008b9dd55",
+      "bytes": 4816044,
+      "sourceFile": "NotoSansKR-Bold.otf",
+      "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Sans/SubsetOTF/KR/NotoSansKR-Bold.otf",
+      "sourceSha256": "5a6ceb287ed2fc6cfc6213144ebea68cbd94b20fc9eb873d8486493bf02d9bda",
+      "changedModernHangulGlyphs": 11172,
+      "changedHangulGlyphs": 12742,
+      "originalAdvance": 920,
+      "derivedAdvance": 1000,
+      "unitsPerEm": 1000,
+      "protectedCffProgramsSha256": "cabe8fed49b130b4831fc8a1aa06b4b681725a431b1d03937c5503819cc38f45",
+      "glyphProgramsUnchanged": true,
+      "otherScriptsMetricsUnchanged": true
+    }
+  ]
+}

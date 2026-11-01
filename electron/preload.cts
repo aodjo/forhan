@@ -2,6 +2,28 @@ import { contextBridge, ipcRenderer } from 'electron';
 import type { IpcRendererEvent } from 'electron';
 import type { AppAction, BridgeResult, DesktopBridge, PageSettings } from '../src/types';
 
+/** Native actions received before the asynchronously initialized editor subscribes retain their order. */
+const pendingActions: AppAction[] = [];
+/** Renderer subscribers receive supported actions without private Electron event objects. */
+const actionListeners = new Set<(action: AppAction) => void>();
+ipcRenderer.on('action',
+  /**
+   * Retain native actions until the editor is ready to receive them.
+   *
+   * The preload subscribes before document scripts execute, so local font loading
+   * cannot discard an operating-system file request delivered after page loading.
+   * @param {IpcRendererEvent} _event - Private event kept inside the isolated preload.
+   * @param {AppAction} action - Supported native application action.
+   * @returns {void} Queues the action or forwards it to current subscribers.
+   * @example
+   * // A file request arriving during font loading is delivered after subscription.
+   */
+  (_event: IpcRendererEvent, action: AppAction): void => {
+    if (!actionListeners.size) pendingActions.push(action);
+    else for (/** Each subscriber receives the same native action once. */ const listener of actionListeners) listener(action);
+  },
+);
+
 /**
  * Invoke one named application operation.
  *
@@ -189,22 +211,8 @@ const bridge: DesktopBridge = {
    * const unsubscribe = window.forhan?.onAction(action => console.log(action));
    */
   onAction(callback) {
-    /**
-     * The native-action listener registered for this subscription.
-     */
-    const listener = /**
-     * Forward a native action to the renderer callback.
-     *
-     * Keep the Electron event object private to the isolated preload context.
-     *
-     * @param {IpcRendererEvent} _event - Private Electron event that is never exposed to the renderer.
-     * @param {AppAction} action - Supported application action delivered to the editor.
-     * @returns {void} The operation result or completion signal.
-     * @example
-     * listener(event, "save");
-     */
-    (_event: IpcRendererEvent, action: AppAction): void => callback(action);
-    ipcRenderer.on('action', listener);
+    actionListeners.add(callback);
+    for (/** The initial native actions are delivered in their original order exactly once. */ const action of pendingActions.splice(0)) callback(action);
     /**
      * Unsubscribe from native application actions.
      *
@@ -214,7 +222,7 @@ const bridge: DesktopBridge = {
      * @example
      * unsubscribe();
      */
-    function unsubscribe(): void { ipcRenderer.removeListener('action', listener); }
+    function unsubscribe(): void { actionListeners.delete(callback); }
     return unsubscribe;
   },
 };

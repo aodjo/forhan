@@ -1,4 +1,5 @@
-import { characterFonts, characterFontCss } from "../character-fonts";
+import { characterFonts } from "../character-fonts";
+import {renderLiteralFontCss} from '../font-fallback.ts';
 import {
   characterMetrics,
   characterLanguage,
@@ -80,7 +81,7 @@ export function renderCharacterSample(
     run.style.letterSpacing = `${(base * metrics.spacing[slot]) / 100}pt`;
     run.style.position = "relative";
     run.style.top = `${(base * (metrics.offset[slot] - metrics.offset[language])) / 100}pt`;
-    if (fonts[slot]) run.style.fontFamily = characterFontCss(fonts[slot]);
+    if (fonts[slot]) run.style.fontFamily = renderLiteralFontCss(fonts[slot]);
     run.textContent = value;
     element.append(run);
     previous = slot;

@@ -16,7 +16,7 @@ import { readHwpx } from "../src/formats/hwpx";
 import { spawnSync } from 'node:child_process';
 import { desktopArguments, desktopLaunchOptions } from './helpers/desktop-launch';
 /** Collected options and isolated document markup from a stubbed native print call. */
-interface NativePrintCall { options: Electron.WebContentsPrintOptions; html: string }
+interface NativePrintCall { options: Electron.WebContentsPrintOptions; html: string; url: string }
 /** Test-owned main-process state; actual printer submission is always intercepted. */
 interface NativePrintHarness { calls: NativePrintCall[]; mode: 'success' | 'cancel' | 'failure'; saves: number }
 /**
@@ -592,16 +592,28 @@ async function verifyInteractivePrinting(): Promise<void> {
             /**
              * Record print options and return the configured native outcome.
              *
-             * The loaded data document is captured to verify layout and its
-             * resource policy at the point of printer submission.
+             * The actual loaded document is captured to verify layout and its
+             * resource policy at submission, independently of its transport URL.
+             * The owned temporary HTML must already have been removed.
+             * @async
              * @param {Electron.WebContentsPrintOptions} [options] - Submitted print settings.
              * @param {(success: boolean, reason: string) => void} [callback] - Native job continuation.
-             * @returns {void} Records the operation and settles its callback.
+             * @returns {Promise<void>} Records actual loaded markup and settles its callback.
              * @example
              * // A simulated cancellation uses the native Print job canceled reason.
              */
-            (options, callback) => {
-              state.calls.push({ options: options || {}, html: decodeURIComponent(created.webContents.getURL().split(',').slice(1).join(',')) });
+            async (options, callback) => {
+              /** DOM protocol inspection works with document JavaScript disabled and leaves the source unchanged. */
+              const debuggerClient = created.webContents.debugger;
+              debuggerClient.attach('1.3');
+              let html: string;
+              try {
+                /** Actual loaded markup is read independently of file contents and transport encoding. */
+                const { root } = await debuggerClient.sendCommand('DOM.getDocument'),
+                  observed = await debuggerClient.sendCommand('DOM.getOuterHTML', { nodeId: root.nodeId });
+                html = observed.outerHTML;
+              } finally { debuggerClient.detach(); }
+              state.calls.push({ options: options || {}, html, url: created.webContents.getURL() });
               if (state.mode === 'success') callback?.(true, '');
               else callback?.(false, state.mode === 'cancel' ? 'Print job canceled' : 'Printer unavailable');
             };
@@ -629,6 +641,8 @@ async function verifyInteractivePrinting(): Promise<void> {
   const first = await desktop.evaluate(inspect);
   expect(first.state.calls).toHaveLength(1);
   expect(first.state.saves).toBe(0);
+  await expect(access(fileURLToPath(first.state.calls[0].url))).rejects.toMatchObject({code:'ENOENT'});
+  await expect(access(path.dirname(fileURLToPath(first.state.calls[0].url)))).rejects.toMatchObject({code:'ENOENT'});
   expect(first.windows).toBe(1);
   expect(first.state.calls[0].options).toMatchObject({ silent: false, printBackground: true, landscape: false, pageSize: { width: 210000, height: 297000 } });
   expect(first.state.calls[0].html).toContain("default-src 'none'; style-src 'unsafe-inline'; img-src data:;");

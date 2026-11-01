@@ -23,6 +23,7 @@ import {
 import { contextualSourceText } from "./helpers/contextual-width.ts";
 import { readHwp } from "../src/formats/hwp.ts";
 import { readHwpx } from "../src/formats/hwpx.ts";
+import {observePdf} from './helpers/pdf.ts';
 
 /**
  * Verify actual native desktop paragraph breaking and all public native outputs.
@@ -221,6 +222,21 @@ async function verifyDesktopWordBreaking(): Promise<void> {
       path.join(outputRoot, "word-breaking.pdf"),
     );
     expect(pdf.subarray(0, 5).toString()).toBe("%PDF-");
+    /** Independent PDF CMap decoding verifies actual Korean and Latin glyph source after font embedding. */
+    const printed = await observePdf(pdf),
+      printedText = printed.glyphs.map(
+        /**
+         * Read original decoded PDF text without consulting editor markup.
+         *
+         * Only the completed physical output supplies these source characters.
+         * @param {import('./helpers/pdf.ts').PdfGlyphItem} glyph - Original decoded text item.
+         * @returns {string} Actual PDF source text.
+         * @example
+         * // Embedded Korean fonts must preserve their Unicode source mapping.
+         */
+        glyph => glyph.text,
+      ).join('').replace(/\s/gu, '');
+    expect(printedText).toBe(WORD_BREAK_SOURCE.join('').replace(/\s/gu, ''));
     await writeFile(
       path.join(outputRoot, "run.json"),
       JSON.stringify(

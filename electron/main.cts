@@ -5,6 +5,7 @@ import * as path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { documentContentStyles, documentPageStyles } from '../src/document-styles.ts';
+import {portableFontStyles} from '../src/portable-font-styles.ts';
 import { showPdfPreview, clearStalePreviews, isPreviewWindow } from './preview.cts';
 import type { AppAction, BridgeResult, DocumentPayload, ExportFormat, OpenedFile, PageSettings, RecentFile, SavedFile } from '../src/types';
 
@@ -423,8 +424,10 @@ async function exportPdf(value: unknown): Promise<SavedFile | null> {
 /**
  * Create and load the isolated document renderer shared by PDF and printing.
  *
- * Scripts, external resources, popups and navigation are disabled. The caller
- * owns the returned window and must destroy it after its print job completes.
+ * Scripts, external resources, popups and navigation are disabled. An owned
+ * temporary HTML file avoids Chromium's data-URL length limit for embedded
+ * fonts and is removed after loading. The caller owns the returned window and
+ * must destroy it after its print job completes.
  * @param {PrintRequest} request - Validated markup, title and physical geometry.
  * @returns {Promise<BrowserWindow>} Fully loaded sandboxed print window.
  * @throws {Error} If loading fails; the failed window is destroyed first.
@@ -465,9 +468,18 @@ async function createPrintWindow(request: PrintRequest): Promise<BrowserWindow> 
   /** Escaped job caption, kept literal even when a document title contains markup. */
   const title = request.title.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
   /** Shared print stylesheet and document markup, with all external resources blocked. */
-  const content = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>${title}</title><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:;"><style>${documentPageStyles(p)}body{margin:0;}${documentContentStyles('body')}</style></head><body>${request.html}</body></html>`;
+  const content = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>${title}</title><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src data:;"><style>${portableFontStyles(request.html)}${documentPageStyles(p)}body{margin:0;}${documentContentStyles('body')}</style></head><body>${request.html}</body></html>`;
   try {
-    await print.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(content));
+    /** The generated directory and its single HTML file belong exclusively to this print operation. */
+    const directory = await fs.mkdtemp(path.join(app.getPath('temp'), 'forhan-print-')),
+      filename = path.join(directory, 'document.html');
+    try {
+      await fs.writeFile(filename, content, { encoding: 'utf8', flag: 'wx', mode: 0o600 });
+      await print.loadFile(filename);
+    } finally {
+      try { await fs.rm(filename, { force: true }); }
+      finally { await fs.rmdir(directory); }
+    }
     return print;
   } catch (error) { print.destroy(); throw error; }
 }

@@ -2,9 +2,9 @@ import { FontSize, FontFamily } from "@tiptap/extension-text-style";
 import {
   characterFonts,
   hasCharacterFonts,
-  characterFontCss,
 } from "../character-fonts";
 import { isValidCSSStyleValue, type Editor } from "@tiptap/core";
+import {renderFontFamilyCss,renderLiteralFontCss} from '../font-fallback.ts';
 import { Plugin, type Transaction } from "@tiptap/pm/state";
 import {
   characterMetrics,
@@ -436,6 +436,8 @@ export const NativeFontFamily = FontFamily.extend({
              * Restore the active language face or an ordinary CSS family.
              *
              * Native arrays take priority over CSS canonicalization of literal names.
+             * Ordinary original names are restored only while their generated
+             * fallback list remains unchanged; external CSS keeps its authority.
              * @param {HTMLElement} element - Imported character span.
              * @returns {string | null} Literal native name or ordinary CSS family.
              * @throws {SyntaxError | RangeError} If native face metadata is malformed.
@@ -458,12 +460,22 @@ export const NativeFontFamily = FontFamily.extend({
                   null
                 );
               }
+              /** Original ordinary family metadata is restored only while its generated fallback style remains authoritative. */
+              const original=element.getAttribute('data-forhan-font-family');
+              if(original&&isValidCSSStyleValue(original)){
+                /** Canonical CSSOM spelling distinguishes untouched exports from an external font override. */
+                const rendered=renderFontFamilyCss(original),canonical=element.ownerDocument.createElement('span').style;
+                canonical.fontFamily=rendered;
+                if(rendered!==original&&canonical.fontFamily===element.style.fontFamily)return original;
+              }
               return element.style.fontFamily || null;
             },
             /**
              * Render the correct script-specific font family.
              *
              * Ordinary values retain Tiptap's CSS validation and list semantics.
+             * Rendering-only Korean fallback lists carry original ordinary
+             * source metadata without changing native language font arrays.
              * @param {Record<string, unknown>} attrs - Active text-style attributes.
              * @returns {Record<string, string>} Valid CSS font-family declaration or no style.
              * @throws {RangeError} If the native font table is malformed.
@@ -479,12 +491,13 @@ export const NativeFontFamily = FontFamily.extend({
                 /** Active source face, falling back only for missing native names. */
                 const face = fonts[language] || String(attrs.fontFamily || "");
                 return face
-                  ? { style: `font-family:${characterFontCss(face)}` }
+                  ? { style: `font-family:${renderLiteralFontCss(face)}` }
                   : {};
               }
-              return isValidCSSStyleValue(attrs.fontFamily)
-                ? { style: `font-family:${attrs.fontFamily}` }
-                : {};
+              if(!isValidCSSStyleValue(attrs.fontFamily))return {};
+              /** The authored ordinary family stays separate from the rendering-only fallback list. */
+              const original=String(attrs.fontFamily),rendered=renderFontFamilyCss(original);
+              return rendered===original?{style:`font-family:${original}`}:{style:`font-family:${rendered}`,'data-forhan-font-family':original};
             },
           },
         },

@@ -93,6 +93,32 @@ export function measureNativeSheets(root:HTMLElement,plans:NativeParagraphLayout
 }
 
 /**
+ * Retain the native minimum leading space when a manual page group overflows.
+ *
+ * Low manual scales expose more than the ordinary source page gap. Its half
+ * excess bounds the first page's minimum top margin, while fitting groups keep
+ * their existing automatic centering. Only actual workspace dimensions and
+ * source sheet extents determine the margin; original expected pixels never do.
+ * @param {HTMLElement} canvas - Actual scrollable workspace containing the ruler and paper.
+ * @param {NativeEditableSheets} sheets - Original source projection and unzoomed gap inset.
+ * @returns {string} Unzoomed minimum margin or an empty value restoring automatic centering.
+ * @example
+ * const margin = nativeSheetTopMargin(canvas, sheets); // Long groups retain their source gap inset.
+ */
+function nativeSheetTopMargin(canvas:HTMLElement,sheets:NativeEditableSheets):string {
+  if(!sheets.bottomInset)return '';
+  /** Existing chrome and projected source extents supply available vertical space independently of the current margin. */
+  const ruler=canvas.querySelector<HTMLElement>(':scope > .ruler'),window=canvas.ownerDocument.defaultView!;
+  if(!ruler)return '';
+  /** Physical chrome remains outside the paper's effective document zoom. */
+  const zoom=nativeDocumentZoom(sheets.paper),canvasStyle=window.getComputedStyle(canvas),rulerStyle=window.getComputedStyle(ruler),
+    free=canvas.clientHeight-(parseFloat(canvasStyle.paddingTop)||0)-(parseFloat(canvasStyle.paddingBottom)||0)
+      -ruler.getBoundingClientRect().height-(parseFloat(rulerStyle.marginTop)||0)-(parseFloat(rulerStyle.marginBottom)||0)
+      -(sheets.height+2*sheets.border)*zoom;
+  return free<2*sheets.bottomInset*zoom?`${sheets.bottomInset}px`:'';
+}
+
+/**
  * Synchronize noneditable paper backgrounds with measured physical page count.
  *
  * The owned background is a sibling of the editor host. It contains no source
@@ -111,6 +137,7 @@ export function renderNativeSheets(root:HTMLElement,sheets:NativeEditableSheets|
   const existing=paper.querySelector<HTMLElement>(':scope > .native-sheet-backgrounds'),canvas=paper.closest<HTMLElement>('.canvas');
   if(!sheets){
     if(canvas?.style.getPropertyValue('--native-page-bottom-extra'))canvas.style.removeProperty('--native-page-bottom-extra');
+    if(paper.style.marginTop)paper.style.removeProperty('margin-top');
     if(existing)existing.remove();
     if(paper.classList.contains('native-paged-paper'))paper.classList.remove('native-paged-paper');
     if(paper.classList.contains('native-grid-paper'))paper.classList.remove('native-grid-paper');
@@ -122,6 +149,9 @@ export function renderNativeSheets(root:HTMLElement,sheets:NativeEditableSheets|
   /** Workspace padding changes only view centering; authored page geometry and history remain intact. */
   const bottomExtra=`${sheets.bottomInset*nativeDocumentZoom(root)}px`;
   if(canvas&&canvas.style.getPropertyValue('--native-page-bottom-extra')!==bottomExtra)canvas.style.setProperty('--native-page-bottom-extra',bottomExtra);
+  /** The source gap bounds an overflowing group without moving already centered paper or editing document content. */
+  const topMargin=canvas?nativeSheetTopMargin(canvas,sheets):'';
+  if(paper.style.marginTop!==topMargin){if(topMargin)paper.style.marginTop=topMargin;else paper.style.removeProperty('margin-top');}
   /** Background identity also includes page dimensions, so orientation changes refresh every sheet. */
   const count=sheets.pages.layout.pages.length,view=readNativePageView(paper),grid=view.shape!=='single'||view.direction!=='vertical',cells=JSON.stringify(sheets.projection.cells),key=[count,sheets.stride,sheets.pages.paper.width,sheets.pages.paper.height,sheets.border,paper.dataset.nativeFit??'',grid,cells].join(':'),
     backgrounds=existing??paper.ownerDocument.createElement('div');

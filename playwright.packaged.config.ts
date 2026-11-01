@@ -27,6 +27,7 @@ export default defineConfig({
     "native-fit-viewport-desktop.spec.ts",
     "native-page-view-desktop.spec.ts",
     "native-paper-framing-desktop.spec.ts",
+    "native-paper-minimum-insets-desktop.spec.ts",
   ],
   fullyParallel: false,
   workers: 1,

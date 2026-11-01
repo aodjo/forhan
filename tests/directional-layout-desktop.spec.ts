@@ -49,7 +49,8 @@ async function verifyNativeDirectionalLayout(): Promise<void> {
   try {
     /** The actual selected renderer supplies all source and physical glyph geometry. */
     const page = await desktop.firstWindow();
-    await expect(page.locator(".tiptap")).toBeVisible();
+    /** Actual first-start font initialization can outlast a five-second visibility assertion on Intel. */
+    await expect(page.locator(".tiptap")).toBeVisible({timeout:30000});
     if (process.env.FORHAN_PACKAGED_EXECUTABLE)
       expect(
         await desktop.evaluate(

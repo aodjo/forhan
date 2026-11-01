@@ -10,6 +10,8 @@ const SHEET_LAYOUT_QUANTUM=1/64;
 const NATIVE_FIT_EDGE_HEIGHTS=new WeakMap<HTMLElement,string>();
 /** Absolute page-column edges retain exact requested paint without CSS decimal mutation feedback. */
 const NATIVE_GRID_EDGE_WIDTHS=new WeakMap<HTMLElement,string>();
+/** Manual page paint keeps exact requested viewport edges without decimal serialization feedback. */
+const NATIVE_MANUAL_EDGE_GEOMETRY=new WeakMap<HTMLElement,string>();
 
 /** Editable paper metadata stays outside document attributes, serialization and history. */
 export interface NativeEditableSheets {
@@ -119,6 +121,39 @@ function nativeSheetTopMargin(canvas:HTMLElement,sheets:NativeEditableSheets):st
 }
 
 /**
+ * Paint independent manual page edges from unquantized source positions.
+ *
+ * Browser layout quantizes fractional source positions before painting. Each
+ * native sheet instead rounds its absolute near and far edges independently,
+ * preventing later sheets from acquiring a one-pixel height or origin drift.
+ * Actual chrome, source extents and the existing minimum gap determine the
+ * group origin. Only noneditable backgrounds move; source layout stays intact.
+ * @param {HTMLElement} canvas - Actual scrollable workspace containing the ruler and paper.
+ * @param {HTMLElement} backgrounds - Owned noneditable physical paper backgrounds.
+ * @param {NativeEditableSheets} sheets - Original source page dimensions and complete projection.
+ * @returns {void} Updates only changed manual background top and height styles.
+ * @example
+ * renderNativeManualPaperEdges(canvas, backgrounds, sheets);
+ */
+function renderNativeManualPaperEdges(canvas:HTMLElement,backgrounds:HTMLElement,sheets:NativeEditableSheets):void {
+  /** The existing chrome retains its own unzoomed viewport geometry and source-independent margins. */
+  const ruler=canvas.querySelector<HTMLElement>(':scope > .ruler'),window=canvas.ownerDocument.defaultView!;
+  if(!ruler)return;
+  /** Source projection precedes CSS layout rounding; the paper border occupies one viewport pixel per edge. */
+  const scale=nativeDocumentZoom(sheets.paper),canvasStyle=window.getComputedStyle(canvas),rulerStyle=window.getComputedStyle(ruler),
+    before=(parseFloat(canvasStyle.paddingTop)||0)+ruler.getBoundingClientRect().height+(parseFloat(rulerStyle.marginTop)||0)+(parseFloat(rulerStyle.marginBottom)||0),
+    free=canvas.clientHeight-before-(parseFloat(canvasStyle.paddingBottom)||0)-(sheets.projection.height*scale+2),
+    origin=canvas.getBoundingClientRect().top+canvas.clientTop+before+Math.max(sheets.bottomInset*scale,free/2)-canvas.scrollTop,
+    backgroundTop=backgrounds.getBoundingClientRect().top,height=sheets.pages.paper.height/NATIVE_UNITS_PER_CSS_PIXEL*scale;
+  for(let index=0;index<backgrounds.children.length;index++){
+    /** Absolute source edges are rounded before deriving a height, so rounding never accumulates across pages. */
+    const sheet=backgrounds.children[index] as HTMLElement,sourceTop=origin+1+sheets.projection.cells[index].y*scale,
+      near=Math.round(sourceTop),far=Math.round(sourceTop+height),top=`${(near-1-backgroundTop)/scale}px`,extent=`${(far-near+2)/scale}px`,key=top+':'+extent;
+    if(NATIVE_MANUAL_EDGE_GEOMETRY.get(sheet)!==key){NATIVE_MANUAL_EDGE_GEOMETRY.set(sheet,key);sheet.style.top=top;sheet.style.height=extent;}
+  }
+}
+
+/**
  * Synchronize noneditable paper backgrounds with measured physical page count.
  *
  * The owned background is a sibling of the editor host. It contains no source
@@ -192,6 +227,7 @@ export function renderNativeSheets(root:HTMLElement,sheets:NativeEditableSheets|
       if(NATIVE_GRID_EDGE_WIDTHS.get(sheet)!==key){NATIVE_GRID_EDGE_WIDTHS.set(sheet,key);sheet.style.left=offset;sheet.style.width=width;}
     }
   }
+  if(!paper.dataset.nativeFit&&canvas)renderNativeManualPaperEdges(canvas,backgrounds,sheets);
   if(paper.dataset.nativeFit){
     /** Original fit frames retain whole device DPI and nearest absolute paper edges, with halfway edges rounding down. */
     const zoom=nativeDocumentZoom(root),extent=Math.floor((sheets.pages.paper.height/NATIVE_UNITS_PER_CSS_PIXEL+2*sheets.border)*zoom/SHEET_LAYOUT_QUANTUM)*SHEET_LAYOUT_QUANTUM;

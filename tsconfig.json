@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "types": ["node"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "electron/**/*.cts",
+    "scripts/**/*.ts",
+    "vite.config.ts",
+    "playwright.config.ts",
+    "playwright.packaged.config.ts",
+    "playwright.ime.config.ts",
+    "tests/**/*.ts"
+  ]
+}

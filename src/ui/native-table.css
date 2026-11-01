@@ -1,0 +1,155 @@
+.native-table-menu.dropdown {
+  position: fixed;
+  width: 248px;
+  min-width: 248px;
+  padding: 9px 6px 4px;
+  border: 1px solid #bfbfbf;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 3px 3px 0 #ddd;
+  color: #333;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+  z-index: 50;
+  overflow: visible;
+}
+.native-table-menu[hidden],
+.native-table-menu [hidden] {
+  display: none !important;
+}
+.native-table-menu button {
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+  color: #444;
+  background: #fff;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+}
+.native-table-menu .nt-cancel {
+  width: 234px;
+  height: 23px;
+  border: 1px solid #e1e1e1;
+  text-align: center;
+  display: block;
+  margin-bottom: 9px;
+}
+.native-table-menu .nt-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 17px);
+  grid-template-rows: repeat(12, 17px);
+  gap: 2px;
+  width: 226px;
+  height: 226px;
+  margin-bottom: 14px;
+}
+.native-table-menu .nt-grid button {
+  display: block;
+  width: 17px;
+  height: 17px;
+  min-height: 0;
+  border: 1px solid #e0e0e0;
+  padding: 0;
+  background: white;
+}
+.native-table-menu .nt-grid button.selected {
+  background: #c6dbfc;
+  border-color: #7ea7e7;
+}
+.native-table-menu .nt-grid button:focus-visible {
+  outline: 2px solid #4678ff;
+  outline-offset: -2px;
+}
+.native-table-menu .nt-commands {
+  margin: 0 -6px;
+}
+.native-table-menu .nt-commands > button {
+  width: 100%;
+  height: 27px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-align: left;
+}
+.native-table-menu .nt-commands > button:hover {
+  background: #e7efff;
+}
+.native-table-menu .nt-commands svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.native-table-menu kbd {
+  margin-left: auto;
+  padding-right: 15px;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+  color: #333;
+}
+.native-table-menu .nt-convert {
+  border-top: 1px solid #d8d8d8;
+}
+.native-table-menu .nt-convert button {
+  display: block;
+  width: 100%;
+  height: 27px;
+  text-align: left;
+  padding-left: 32px;
+  color: #aaa;
+}
+.native-table-menu .nt-numeric,
+.native-table-menu .nt-edit {
+  position: absolute;
+  left: calc(100% + 3px);
+  top: 282px;
+  width: 205px;
+  border: 1px solid #bbb;
+  padding: 10px;
+  background: white;
+  box-shadow: 2px 2px 3px #bbb;
+}
+.native-table-menu .nt-numeric strong {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+.native-table-menu .nt-numeric label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+.native-table-menu .nt-numeric input {
+  width: 100px;
+  height: 24px;
+  border: 1px solid #bbb;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+}
+.native-table-menu .nt-numeric > button {
+  border: 1px solid #4678ff;
+  width: 100%;
+  height: 27px;
+  margin-top: 6px;
+}
+.native-table-menu .nt-edit {
+  top: 334px;
+  padding: 4px;
+}
+.native-table-menu .nt-edit button {
+  display: block;
+  width: 100%;
+  height: 26px;
+  text-align: left;
+  padding-left: 10px;
+}
+.native-table-menu .nt-edit button:hover {
+  background: #e7efff;
+}

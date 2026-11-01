@@ -1,0 +1,460 @@
+.native-color-palette {
+  --color-popup-height: 184px;
+  --color-none-height: 0px;
+  position: fixed;
+  z-index: 20000;
+  width: 239px;
+  height: min(
+    calc(var(--color-popup-height) + var(--color-none-height)),
+    100dvh
+  );
+  overflow: auto;
+  padding: 1px 5px 5px 1px;
+  border: 0;
+  background: transparent;
+  color: #333;
+  font:
+    12px/16px "Malgun Gothic",
+    "Apple SD Gothic Neo",
+    sans-serif;
+  text-align: left;
+}
+.native-color-palette::before {
+  content: "";
+  position: absolute;
+  inset: 0 4px 4px 0;
+  z-index: -1;
+  border: 1px solid #c8c8c8;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 1px 2px 4px #0002;
+}
+.native-color-palette *,
+.native-color-palette {
+  box-sizing: border-box;
+}
+.native-color-palette[data-mode="palette"] {
+  --color-popup-height: 219px;
+}
+.native-color-palette[data-mode="spectrum"] {
+  --color-popup-height: 436px;
+}
+.native-color-palette.cp-with-none {
+  --color-none-height: 29px;
+}
+.native-color-palette button,
+.native-color-palette input,
+.native-color-palette select {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  font: inherit;
+  color: inherit;
+  box-shadow: none;
+}
+.native-color-palette button {
+  border: 0;
+  background: #fff;
+  cursor: default;
+}
+.native-color-palette button:disabled {
+  opacity: 1;
+}
+.native-color-palette button:focus-visible,
+.native-color-palette .cp-plane:focus-visible {
+  outline: 1px solid #326dff;
+  outline-offset: 1px;
+}
+.native-color-palette .cp-content {
+  position: relative;
+  margin-top: var(--color-none-height);
+  height: calc(var(--color-popup-height) - 6px);
+}
+.native-color-palette .cp-none {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: calc(100% - 6px);
+  height: 29px;
+  padding-left: 9px;
+  border-bottom: 1px solid #c8c8c8;
+  text-align: left;
+}
+.native-color-palette .cp-none span {
+  display: inline-block;
+  width: 21px;
+  color: #326dff;
+  font-size: 17px;
+}
+.native-color-palette .cp-tabs {
+  position: absolute;
+  left: 10px;
+  top: 14px;
+  display: flex;
+  width: 188px;
+  height: 23px;
+  border: 1px solid #b4b4b4;
+}
+.native-color-palette .cp-tabs button {
+  flex: 1;
+  height: 21px;
+  border-right: 1px solid #c8c8c8;
+}
+.native-color-palette .cp-tabs button:last-child {
+  border-right: 0;
+}
+.native-color-palette .cp-tabs button[aria-selected="true"] {
+  background: #e0e0e0;
+}
+.native-color-palette .cp-tabs svg,
+.native-color-palette .cp-eyedropper svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: auto;
+}
+.native-color-palette .cp-eyedropper {
+  position: absolute;
+  left: 201px;
+  top: 14px;
+  width: 23px;
+  height: 23px;
+  border: 1px solid #c8c8c8;
+}
+.native-color-palette .cp-eyedropper:disabled {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+.native-color-palette [role="grid"] {
+  position: absolute;
+  display: grid;
+}
+.native-color-palette .cp-cell {
+  display: block;
+}
+.native-color-palette .cp-cell:hover {
+  outline: 1px solid #326dff;
+  outline-offset: 1px;
+  z-index: 1;
+}
+.native-color-palette .cp-cell[aria-selected="true"] {
+  outline: 1px solid #000;
+  outline-offset: 1px;
+}
+.native-color-palette .cp-theme-base,
+.native-color-palette .cp-theme-shades,
+.native-color-palette .cp-standard {
+  left: 10px;
+  grid-template-columns: repeat(10, 15px);
+  column-gap: 4px;
+}
+.native-color-palette .cp-theme-base {
+  top: 48px;
+}
+.native-color-palette .cp-theme-base .cp-cell,
+.native-color-palette .cp-standard .cp-cell {
+  width: 15px;
+  height: 15px;
+  border: 1px solid #c8c8c8;
+}
+.native-color-palette .cp-theme-more {
+  position: absolute;
+  left: 201px;
+  top: 48px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #ccc;
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+  line-height: 12px;
+}
+.native-color-palette .cp-theme-shades {
+  top: 70px;
+  grid-template-rows: 14px repeat(3, 13px) 14px;
+}
+.native-color-palette .cp-theme-shades .cp-cell {
+  width: 15px;
+  height: 100%;
+  border: solid #c8c8c8;
+  border-width: 0 1px;
+}
+.native-color-palette .cp-theme-shades .cp-cell:nth-child(-n + 10) {
+  border-top-width: 1px;
+}
+.native-color-palette .cp-theme-shades .cp-cell:nth-last-child(-n + 10) {
+  border-bottom-width: 1px;
+}
+.native-color-palette .cp-theme-divider {
+  position: absolute;
+  left: 10px;
+  top: 146px;
+  width: 206px;
+  height: 1px;
+  background: #d6d6d6;
+}
+.native-color-palette .cp-standard {
+  top: 153px;
+}
+.native-color-palette .cp-palette-strip,
+.native-color-palette .cp-palette-grid {
+  left: 10px;
+  grid-template-columns: repeat(20, 10px);
+  width: 202px;
+  border: 1px solid #c8c8c8;
+}
+.native-color-palette .cp-palette-strip {
+  top: 47px;
+  grid-template-rows: 11px;
+}
+.native-color-palette .cp-palette-grid {
+  top: 65px;
+  grid-template-rows: repeat(12, 11px);
+}
+.native-color-palette .cp-palette-strip .cp-cell,
+.native-color-palette .cp-palette-grid .cp-cell {
+  width: 10px;
+  height: 11px;
+}
+.native-color-palette .cp-prior,
+.native-color-palette .cp-current {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+}
+.native-color-palette .cp-prior {
+  left: 15px;
+  top: 53px;
+}
+.native-color-palette .cp-current {
+  left: 10px;
+  top: 58px;
+}
+.native-color-palette .cp-hex {
+  position: absolute;
+  left: 36px;
+  top: 51px;
+  width: 64px;
+  height: 24px;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  outline-offset: 1px;
+}
+.native-color-palette .cp-apply {
+  position: absolute;
+  left: 173px;
+  top: 51px;
+  width: 50px;
+  height: 24px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.native-color-palette .cp-apply span {
+  color: #326dff;
+}
+.native-color-palette input[type="range"] {
+  appearance: none;
+  background: transparent;
+}
+.native-color-palette input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(to right, #000, #f00);
+}
+.native-color-palette input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #999;
+  border-radius: 50%;
+  background: #fff;
+  margin-top: -4px;
+}
+.native-color-palette .cp-hue {
+  position: absolute;
+  left: 10px;
+  top: 77px;
+  width: 216px;
+  height: 22px;
+}
+.native-color-palette
+  input.cp-hue[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(
+    to right,
+    #f00,
+    #ff0,
+    #0f0,
+    #0ff,
+    #00f,
+    #f0f,
+    #f00
+  );
+}
+.native-color-palette .cp-plane {
+  position: absolute;
+  left: 10px;
+  top: 102px;
+  width: 214px;
+  height: 134px;
+  border: 1px solid #e5e5e5;
+  overflow: hidden;
+  touch-action: none;
+}
+.native-color-palette .cp-plane-canvas {
+  display: block;
+  width: 212px;
+  height: 132px;
+}
+.native-color-palette .cp-plane-marker {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 1px #000;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.native-color-palette .cp-channel-panel {
+  position: absolute;
+  left: 10px;
+  top: 241px;
+  width: 214px;
+  height: 119px;
+  border: 1px solid #e5e5e5;
+}
+.native-color-palette .cp-model {
+  position: absolute;
+  left: 9px;
+  top: 4px;
+  height: 18px;
+  border: 0;
+  background: #fff;
+}
+.native-color-palette .cp-channel {
+  position: absolute;
+  left: 10px;
+  display: grid;
+  grid-template-columns: 16px 112px 52px;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+}
+.native-color-palette .cp-channel:nth-of-type(1) {
+  top: 27px;
+}
+.native-color-palette .cp-channel:nth-of-type(2) {
+  top: 55px;
+}
+.native-color-palette .cp-channel:nth-of-type(3) {
+  top: 83px;
+}
+.native-color-palette .cp-channel input[type="range"] {
+  width: 112px;
+  height: 22px;
+}
+.native-color-palette
+  .cp-channel:nth-of-type(2)
+  input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, #000, #0f0);
+}
+.native-color-palette
+  .cp-channel:nth-of-type(3)
+  input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, #000, #00f);
+}
+.native-color-palette .cp-channel input[type="number"] {
+  width: 52px;
+  height: 24px;
+  padding-left: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.native-color-palette
+  .cp-channel
+  input[type="number"]::-webkit-inner-spin-button {
+  opacity: 0.65;
+}
+.native-color-palette .cp-custom-label {
+  position: absolute;
+  left: 10px;
+  top: 375px;
+}
+.native-color-palette .cp-custom-add,
+.native-color-palette .cp-custom-delete {
+  position: absolute;
+  top: 372px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 18px;
+  line-height: 18px;
+}
+.native-color-palette .cp-custom-add {
+  left: 180px;
+  color: #4475f1;
+}
+.native-color-palette .cp-custom-add:disabled {
+  color: #aaa;
+}
+.native-color-palette .cp-custom-delete {
+  left: 204px;
+  color: #f34;
+}
+.native-color-palette .cp-custom-delete:disabled {
+  color: #aaa;
+}
+.native-color-palette .cp-custom {
+  position: absolute;
+  left: 11px;
+  top: 400px;
+  display: grid;
+  grid-template-columns: repeat(12, 15px);
+  gap: 3px;
+}
+.native-color-palette .cp-custom-cell {
+  width: 15px;
+  height: 17px;
+  border: 1px solid #ccc;
+}
+.native-color-palette .cp-custom-cell[aria-pressed="true"] {
+  outline: 1px solid #326dff;
+}
+.native-dialog .nd-color-select {
+  position: relative;
+  width: 91px;
+  min-width: 91px;
+  height: 24px;
+  min-height: 24px;
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  text-align: left;
+}
+.native-dialog .nd-color-select [data-color-sample] {
+  display: block;
+  width: 72px;
+  height: 16px;
+  background: var(--native-selected-color, transparent);
+  color: #566c83;
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px;
+}
+.native-dialog .nd-color-select::after {
+  content: "";
+  position: absolute;
+  right: 3px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border: solid #83919f;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+.native-color-control.color-updated > svg path[stroke="#ff493a"] {
+  stroke: var(--native-selected-color);
+}

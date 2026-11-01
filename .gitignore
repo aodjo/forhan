@@ -1,0 +1,11 @@
+node_modules/
+AGENTS.md
+research/
+dist/
+electron-dist/
+release/
+test-results/
+playwright-report/
+.tools/
+*.log
+research/fixtures-private/

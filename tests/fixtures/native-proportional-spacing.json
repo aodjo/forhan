@@ -1,0 +1,2281 @@
+{
+  "nativeSha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "description": "Forty-nine independently observed native cache/PDF conditions establish proportional line gaps, integral glyph baselines, signed half ties and zero-percent residues. Five additional actual grid cases verify how these residues interact with section snapping. Source positions are hundredths of a point; actual original PDF positions retain 600dpi printer quantization.",
+  "rows": [
+    {
+      "id": "h1000-p170",
+      "font": 1000,
+      "percent": 170,
+      "nativeInputSha256": "859c5cd22464a517755433e6837de57a5634d91d4fbb3fc65b26138da696c011",
+      "nativeHwpSha256": "3c45da2ee2aa73f8f43dd5a0098bf57e9f24b643470a0f74e366b6639f1d27f1",
+      "nativePdfSha256": "7d09c1d13f3d1bb6c9ea1aa4666f56eb644f1c3121696c0a20b34523e29db312",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1000,
+          "baseline": 850,
+          "spacing": 700
+        },
+        {
+          "position": 1700,
+          "height": 1000,
+          "baseline": 850,
+          "spacing": 700
+        },
+        {
+          "position": 3400,
+          "height": 1000,
+          "baseline": 850,
+          "spacing": 700
+        },
+        {
+          "position": 5100,
+          "height": 1000,
+          "baseline": 850,
+          "spacing": 700
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1703.9999999999975,
+        3395.999999999996,
+        5099.999999999994
+      ],
+      "inferredSpacing": 700,
+      "matches": true
+    },
+    {
+      "id": "h1001-p170",
+      "font": 1001,
+      "percent": 170,
+      "nativeInputSha256": "4a9bd30db63495542866001e7a394ba8f4843e85e7676751ebb8350bfbbdaf49",
+      "nativeHwpSha256": "b0cae290e48cec658e9de299fac98467c752e9ee17065c2e8961273a4fe18bcf",
+      "nativePdfSha256": "4e7eec8185a793160a29521987785a0317c6e4f00c96b548c4e14f7c8a2b04be",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": 700
+        },
+        {
+          "position": 1701,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": 700
+        },
+        {
+          "position": 3402,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": 700
+        },
+        {
+          "position": 5103,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": 700
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1703.9999999999975,
+        3395.999999999996,
+        5099.999999999994
+      ],
+      "inferredSpacing": 700,
+      "matches": true
+    },
+    {
+      "id": "h1002-p170",
+      "font": 1002,
+      "percent": 170,
+      "nativeInputSha256": "fe82f39d03a02fc96ce4d816c339d34e4f35b1b7246d30986b16655318456b88",
+      "nativeHwpSha256": "da80855a33c960f24ba2681df95df6b6733b46e07fa341ed1c51b8360ed64775",
+      "nativePdfSha256": "bccc694caba7564c9b7e23008ae8d656a74b33fb6952ce7bac8cda4e0f6d027a",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1002,
+          "baseline": 852,
+          "spacing": 700
+        },
+        {
+          "position": 1702,
+          "height": 1002,
+          "baseline": 852,
+          "spacing": 700
+        },
+        {
+          "position": 3404,
+          "height": 1002,
+          "baseline": 852,
+          "spacing": 700
+        },
+        {
+          "position": 5106,
+          "height": 1002,
+          "baseline": 852,
+          "spacing": 700
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1703.9999999999975,
+        3407.999999999995,
+        5111.999999999993
+      ],
+      "inferredSpacing": 700,
+      "matches": true
+    },
+    {
+      "id": "h1003-p170",
+      "font": 1003,
+      "percent": 170,
+      "nativeInputSha256": "b16675316c8218f486676b54b8d4b6b2aa690ae01b6fa232db223b7246f1373c",
+      "nativeHwpSha256": "826b5caf201b3f10f328bd34d107e8791bb20703bd666be027f62d162cd47ff2",
+      "nativePdfSha256": "c2a19d8bee58ea343002de0b527e103c1a9ba46d2246b9582c49a308a5c928a6",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": 700
+        },
+        {
+          "position": 1703,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": 700
+        },
+        {
+          "position": 3406,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": 700
+        },
+        {
+          "position": 5109,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": 700
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1703.9999999999975,
+        3407.999999999995,
+        5111.999999999993
+      ],
+      "inferredSpacing": 700,
+      "matches": true
+    },
+    {
+      "id": "h1004-p170",
+      "font": 1004,
+      "percent": 170,
+      "nativeInputSha256": "1e242c99e73552aa98ef7a31178d6ed5aff5e94ae8b5ca9b92de3730e067ab42",
+      "nativeHwpSha256": "a056f06913757192e22b06d5c1db26a48a29db13c6916e3b788babeb6056985e",
+      "nativePdfSha256": "4fd6527fbe39926dedf101c6811ba79d6d16ad40acfb555d65a25d1f22221046",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 704
+        },
+        {
+          "position": 1708,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 704
+        },
+        {
+          "position": 3416,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 704
+        },
+        {
+          "position": 5124,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 704
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1703.9999999999975,
+        3419.9999999999945,
+        5123.999999999993
+      ],
+      "inferredSpacing": 704,
+      "matches": true
+    },
+    {
+      "id": "h1005-p170",
+      "font": 1005,
+      "percent": 170,
+      "nativeInputSha256": "8690c7a23f507347f1f184ab2b0d790f3e5541223fd68bde4e224c76bdca80ea",
+      "nativeHwpSha256": "8e117bc0beb512c04e5ae3e0299e68de706ca43c7fbffe3359dd661eb8e6a1f2",
+      "nativePdfSha256": "8b76409e8b2daf613b7762509a7f07c1178ce0de4ece4e8c83fdeb236a239875",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1005,
+          "baseline": 854,
+          "spacing": 704
+        },
+        {
+          "position": 1709,
+          "height": 1005,
+          "baseline": 854,
+          "spacing": 704
+        },
+        {
+          "position": 3418,
+          "height": 1005,
+          "baseline": 854,
+          "spacing": 704
+        },
+        {
+          "position": 5127,
+          "height": 1005,
+          "baseline": 854,
+          "spacing": 704
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1715.9999999999968,
+        3419.9999999999945,
+        5123.999999999993
+      ],
+      "inferredSpacing": 704,
+      "matches": true
+    },
+    {
+      "id": "h1006-p170",
+      "font": 1006,
+      "percent": 170,
+      "nativeInputSha256": "a19bd995c628da51238b68fa7535226e3fa9f60a45069fda59c8c6ffeeb15a8b",
+      "nativeHwpSha256": "25ea58b7304468c89b8c8f0cb30cac2eb984f455976bf98ccd8ffea94eea37af",
+      "nativePdfSha256": "6405549f322047d138f66fb8c2576b03fc67ff132e955f93623b24d683bb6dad",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1006,
+          "baseline": 855,
+          "spacing": 704
+        },
+        {
+          "position": 1710,
+          "height": 1006,
+          "baseline": 855,
+          "spacing": 704
+        },
+        {
+          "position": 3420,
+          "height": 1006,
+          "baseline": 855,
+          "spacing": 704
+        },
+        {
+          "position": 5130,
+          "height": 1006,
+          "baseline": 855,
+          "spacing": 704
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1715.9999999999968,
+        3419.9999999999945,
+        5135.999999999992
+      ],
+      "inferredSpacing": 704,
+      "matches": true
+    },
+    {
+      "id": "h1007-p170",
+      "font": 1007,
+      "percent": 170,
+      "nativeInputSha256": "6f45dc8befaaf8cd9e76a74a0f531a84ebf3502c5a37d4252e26bc8150a5061c",
+      "nativeHwpSha256": "5800e752e15de0e7c16ecf8c0f5bc77caeb3dd94f2d49f66a891c02c4a654e35",
+      "nativePdfSha256": "65708005fd5c7b4c16ec8a2aee3cec0dd45b279f83ce3ef6a1b1939d30ec3e8e",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1007,
+          "baseline": 856,
+          "spacing": 704
+        },
+        {
+          "position": 1711,
+          "height": 1007,
+          "baseline": 856,
+          "spacing": 704
+        },
+        {
+          "position": 3422,
+          "height": 1007,
+          "baseline": 856,
+          "spacing": 704
+        },
+        {
+          "position": 5133,
+          "height": 1007,
+          "baseline": 856,
+          "spacing": 704
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1715.9999999999968,
+        3431.9999999999936,
+        5135.999999999992
+      ],
+      "inferredSpacing": 704,
+      "matches": true
+    },
+    {
+      "id": "h1008-p170",
+      "font": 1008,
+      "percent": 170,
+      "nativeInputSha256": "30413cfa0c3c0fcabd33cce3838c014bcdeb4c2aa7aa2a9f649034475e69c882",
+      "nativeHwpSha256": "a5697e8291d39175e9f0286e64b954ab3dfcd826a50950d1cedc15c7b2c33562",
+      "nativePdfSha256": "4450772b28e882a525304c0426dfc77cbc61bf2e756b9ded8029b421961d2ab4",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1008,
+          "baseline": 857,
+          "spacing": 704
+        },
+        {
+          "position": 1712,
+          "height": 1008,
+          "baseline": 857,
+          "spacing": 704
+        },
+        {
+          "position": 3424,
+          "height": 1008,
+          "baseline": 857,
+          "spacing": 704
+        },
+        {
+          "position": 5136,
+          "height": 1008,
+          "baseline": 857,
+          "spacing": 704
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1715.9999999999968,
+        3431.9999999999936,
+        5135.999999999992
+      ],
+      "inferredSpacing": 704,
+      "matches": true
+    },
+    {
+      "id": "h1009-p170",
+      "font": 1009,
+      "percent": 170,
+      "nativeInputSha256": "568b674ad4a3e4f46244925db1682a3f58fa62e08a1d76697f58a1727f26e673",
+      "nativeHwpSha256": "2824514efea58ea757beb2ba656cf7b08e91e07903adcb7e3fd552265aa538b1",
+      "nativePdfSha256": "b4e42c1333087f641ac417acdb08c8c079c17d43884bd5d2a51295cf0ed1c203",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1009,
+          "baseline": 858,
+          "spacing": 704
+        },
+        {
+          "position": 1713,
+          "height": 1009,
+          "baseline": 858,
+          "spacing": 704
+        },
+        {
+          "position": 3426,
+          "height": 1009,
+          "baseline": 858,
+          "spacing": 704
+        },
+        {
+          "position": 5139,
+          "height": 1009,
+          "baseline": 858,
+          "spacing": 704
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1703.9999999999975,
+        3419.9999999999945,
+        5135.999999999992
+      ],
+      "inferredSpacing": 704,
+      "matches": true
+    },
+    {
+      "id": "h1990-p170",
+      "font": 1990,
+      "percent": 170,
+      "nativeInputSha256": "8718a50f9fcc0b741d5b4a430698fef2b4148a262098614abab45b627a01462d",
+      "nativeHwpSha256": "35702b2c62f4f082af199240af1b71d1f70add65c2e0b082ee9795cd3f553ede",
+      "nativePdfSha256": "cd9cfae3d89ad5bfe8ff7008efe2f080f1cab83ff17ef75f8a614e7ae68c734a",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1990,
+          "baseline": 1692,
+          "spacing": 1392
+        },
+        {
+          "position": 3382,
+          "height": 1990,
+          "baseline": 1692,
+          "spacing": 1392
+        },
+        {
+          "position": 6764,
+          "height": 1990,
+          "baseline": 1692,
+          "spacing": 1392
+        },
+        {
+          "position": 10146,
+          "height": 1990,
+          "baseline": 1692,
+          "spacing": 1392
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3384.0000000000073,
+        6768.000000000004,
+        10152
+      ],
+      "inferredSpacing": 1392,
+      "matches": true
+    },
+    {
+      "id": "h1991-p170",
+      "font": 1991,
+      "percent": 170,
+      "nativeInputSha256": "d5d181ff5fd3648658e906c54cc8b0d2c8ec94fa55084747d98b37281517177a",
+      "nativeHwpSha256": "f30beb79ef5a2dbcdce9c95d46905463a00a53a73823f05b52a557947443f289",
+      "nativePdfSha256": "fd71b798252813aa45e84003b97c161d00c22b2f988f36541372acbc6640b429",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1991,
+          "baseline": 1692,
+          "spacing": 1392
+        },
+        {
+          "position": 3383,
+          "height": 1991,
+          "baseline": 1692,
+          "spacing": 1392
+        },
+        {
+          "position": 6766,
+          "height": 1991,
+          "baseline": 1692,
+          "spacing": 1392
+        },
+        {
+          "position": 10149,
+          "height": 1991,
+          "baseline": 1692,
+          "spacing": 1392
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3384.0000000000073,
+        6768.000000000004,
+        10152
+      ],
+      "inferredSpacing": 1392,
+      "matches": true
+    },
+    {
+      "id": "h1992-p170",
+      "font": 1992,
+      "percent": 170,
+      "nativeInputSha256": "f18d115d1a814e8fb4b213db202b91913e1228b435ee1b508b71d30737f51f37",
+      "nativeHwpSha256": "af158c949713a9fddf5f67d29d1ebd26d84aa405ca894518552293a62ff0edea",
+      "nativePdfSha256": "222ae2cc6d015f3a803c956da5d09020f114cc92a260e4d766573d62f17520b1",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1992,
+          "baseline": 1693,
+          "spacing": 1396
+        },
+        {
+          "position": 3388,
+          "height": 1992,
+          "baseline": 1693,
+          "spacing": 1396
+        },
+        {
+          "position": 6776,
+          "height": 1992,
+          "baseline": 1693,
+          "spacing": 1396
+        },
+        {
+          "position": 10164,
+          "height": 1992,
+          "baseline": 1693,
+          "spacing": 1396
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3384.0000000000073,
+        6780.000000000004,
+        10164
+      ],
+      "inferredSpacing": 1396,
+      "matches": true
+    },
+    {
+      "id": "h1993-p170",
+      "font": 1993,
+      "percent": 170,
+      "nativeInputSha256": "28c7fce31af59f436c592f16b36d520225f75490a3f0561e786ee8453b498f81",
+      "nativeHwpSha256": "5888882796fbc55f76da1f3fdb1e71aee3d6b7fd1c1c1b0b40aa814f50e37dc4",
+      "nativePdfSha256": "92598025a22213fd94f70633e410e475fe68ca44e5ac7c10f0b08ffe70a0255f",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1993,
+          "baseline": 1694,
+          "spacing": 1396
+        },
+        {
+          "position": 3389,
+          "height": 1993,
+          "baseline": 1694,
+          "spacing": 1396
+        },
+        {
+          "position": 6778,
+          "height": 1993,
+          "baseline": 1694,
+          "spacing": 1396
+        },
+        {
+          "position": 10167,
+          "height": 1993,
+          "baseline": 1694,
+          "spacing": 1396
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3395.999999999996,
+        6780.000000000004,
+        10164
+      ],
+      "inferredSpacing": 1396,
+      "matches": true
+    },
+    {
+      "id": "h1994-p170",
+      "font": 1994,
+      "percent": 170,
+      "nativeInputSha256": "797fb8376ca5f368028967452dcf0ea8cf56b929da5a623ad56e7480c9dacd90",
+      "nativeHwpSha256": "40b883bf4ddbb593d9b247c78afe667308c2b8355c6a3e5f42c885d497fd0a07",
+      "nativePdfSha256": "208459dc266c0c4fa851bb98b43ba1771c37457d9ff1209da49bbbb8d803ddc0",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1994,
+          "baseline": 1695,
+          "spacing": 1396
+        },
+        {
+          "position": 3390,
+          "height": 1994,
+          "baseline": 1695,
+          "spacing": 1396
+        },
+        {
+          "position": 6780,
+          "height": 1994,
+          "baseline": 1695,
+          "spacing": 1396
+        },
+        {
+          "position": 10170,
+          "height": 1994,
+          "baseline": 1695,
+          "spacing": 1396
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3395.999999999996,
+        6780.000000000004,
+        10176
+      ],
+      "inferredSpacing": 1396,
+      "matches": true
+    },
+    {
+      "id": "h1995-p170",
+      "font": 1995,
+      "percent": 170,
+      "nativeInputSha256": "e97af8a01701e2fee2df04a7e1a44f7671ad2d2d91ee94fc0873634c5fd92b68",
+      "nativeHwpSha256": "01d0cc232d441e594dbbc895784af80c87bd52ca6cdc2a38295449e6b54a5da3",
+      "nativePdfSha256": "7b4823e942ee2a1fbdc642174214e640f87c69815702375e47a238680918f90f",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1995,
+          "baseline": 1696,
+          "spacing": 1396
+        },
+        {
+          "position": 3391,
+          "height": 1995,
+          "baseline": 1696,
+          "spacing": 1396
+        },
+        {
+          "position": 6782,
+          "height": 1995,
+          "baseline": 1696,
+          "spacing": 1396
+        },
+        {
+          "position": 10173,
+          "height": 1995,
+          "baseline": 1696,
+          "spacing": 1396
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3395.999999999996,
+        6792.000000000003,
+        10176
+      ],
+      "inferredSpacing": 1396,
+      "matches": true
+    },
+    {
+      "id": "h1996-p170",
+      "font": 1996,
+      "percent": 170,
+      "nativeInputSha256": "fc3e976268cfeb353e574a61d6890fd7090cfd5838d3c09a637c3ccd87d16b36",
+      "nativeHwpSha256": "52333678bc69af63e9b47fb3436e06284ee30691bacc67772f2676f4e4b88a7a",
+      "nativePdfSha256": "29d0066c0883090d4f307f669ae3252993195e1cc79e5bb1ffa36a17626d2ace",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1996,
+          "baseline": 1697,
+          "spacing": 1396
+        },
+        {
+          "position": 3392,
+          "height": 1996,
+          "baseline": 1697,
+          "spacing": 1396
+        },
+        {
+          "position": 6784,
+          "height": 1996,
+          "baseline": 1697,
+          "spacing": 1396
+        },
+        {
+          "position": 10176,
+          "height": 1996,
+          "baseline": 1697,
+          "spacing": 1396
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3395.999999999996,
+        6792.000000000003,
+        10176
+      ],
+      "inferredSpacing": 1396,
+      "matches": true
+    },
+    {
+      "id": "h1997-p170",
+      "font": 1997,
+      "percent": 170,
+      "nativeInputSha256": "63e52f108a6b3b5a81f4a80e8fdae8e3012304b9fd68650fbfc1d3686191493d",
+      "nativeHwpSha256": "ec012e6e37a2b28ef8a687f10986246ad06f8c54ecc2dd8ffdc57f9674d0bf7e",
+      "nativePdfSha256": "b94b867b570b0c9b2ffbcc34e75c907fa23262d7eb628672ca7df464a8ba418e",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1997,
+          "baseline": 1697,
+          "spacing": 1396
+        },
+        {
+          "position": 3393,
+          "height": 1997,
+          "baseline": 1697,
+          "spacing": 1396
+        },
+        {
+          "position": 6786,
+          "height": 1997,
+          "baseline": 1697,
+          "spacing": 1396
+        },
+        {
+          "position": 10179,
+          "height": 1997,
+          "baseline": 1697,
+          "spacing": 1396
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3395.999999999996,
+        6792.000000000003,
+        10187.999999999998
+      ],
+      "inferredSpacing": 1396,
+      "matches": true
+    },
+    {
+      "id": "h1998-p170",
+      "font": 1998,
+      "percent": 170,
+      "nativeInputSha256": "15b23cbf6cdbcb869184a3c0d9bd721ba4d4ca9b44771a1fdc72072eaa6ebd28",
+      "nativeHwpSha256": "42680de5c461a83a7c86c0b525d5961e1ec6ccec043984d0357aaa710b10720c",
+      "nativePdfSha256": "6c421226d471209c98c0aea4ec6faf0a4dc29b1f7c6653892364423a21ec2d03",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1998,
+          "baseline": 1698,
+          "spacing": 1396
+        },
+        {
+          "position": 3394,
+          "height": 1998,
+          "baseline": 1698,
+          "spacing": 1396
+        },
+        {
+          "position": 6788,
+          "height": 1998,
+          "baseline": 1698,
+          "spacing": 1396
+        },
+        {
+          "position": 10182,
+          "height": 1998,
+          "baseline": 1698,
+          "spacing": 1396
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3383.999999999996,
+        6780.000000000004,
+        10176
+      ],
+      "inferredSpacing": 1396,
+      "matches": true
+    },
+    {
+      "id": "h1999-p170",
+      "font": 1999,
+      "percent": 170,
+      "nativeInputSha256": "3c1da08aef42dc975c62f89b5d8d6cc433e5e41ba44f2dfc71e9662a2dab1dc3",
+      "nativeHwpSha256": "1f85fbf5c8c8b294277bc4b14f3083418c4d6bf36d5d65f92fd68e3fca1fb5af",
+      "nativePdfSha256": "93e07856c3bc8c7f269667065fab64a25f84bb18ddc272c8a62a87788e08c746",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 1396
+        },
+        {
+          "position": 3395,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 1396
+        },
+        {
+          "position": 6790,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 1396
+        },
+        {
+          "position": 10185,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 1396
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3396.0000000000064,
+        6780.000000000004,
+        10176
+      ],
+      "inferredSpacing": 1396,
+      "matches": true
+    },
+    {
+      "id": "h2000-p170",
+      "font": 2000,
+      "percent": 170,
+      "nativeInputSha256": "f5c575dd4d86d4b648d4a2496d56d5c6c7d6308e3b39d35ec69e32cca84b2460",
+      "nativeHwpSha256": "cb455f6625e3e5ee167004aa1bedddce76590b3aacd9b3d90093ab66350745cf",
+      "nativePdfSha256": "658c6fbbb9b072f5c5009794e7bc43d638b3527136930f5225a65177e99a3ed6",
+      "lines": [
+        {
+          "position": 0,
+          "height": 2000,
+          "baseline": 1700,
+          "spacing": 1400
+        },
+        {
+          "position": 3400,
+          "height": 2000,
+          "baseline": 1700,
+          "spacing": 1400
+        },
+        {
+          "position": 6800,
+          "height": 2000,
+          "baseline": 1700,
+          "spacing": 1400
+        },
+        {
+          "position": 10200,
+          "height": 2000,
+          "baseline": 1700,
+          "spacing": 1400
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3396.0000000000064,
+        6792.000000000003,
+        10199.999999999998
+      ],
+      "inferredSpacing": 1400,
+      "matches": true
+    },
+    {
+      "id": "h2001-p170",
+      "font": 2001,
+      "percent": 170,
+      "nativeInputSha256": "e1a34a40a902b1d70a73532701ee2d032d961e5d0359c55b9f3b832bb11f6326",
+      "nativeHwpSha256": "fe30dcd767a9988ea2c0bee170e7bb82904609775aec994c62c9f9f00fbeaac3",
+      "nativePdfSha256": "1b8be0d25e81ed4d85dcfe1ba15e030bc86bb3df85eb12db7f830d1c93c6e9c8",
+      "lines": [
+        {
+          "position": 0,
+          "height": 2001,
+          "baseline": 1701,
+          "spacing": 1400
+        },
+        {
+          "position": 3401,
+          "height": 2001,
+          "baseline": 1701,
+          "spacing": 1400
+        },
+        {
+          "position": 6802,
+          "height": 2001,
+          "baseline": 1701,
+          "spacing": 1400
+        },
+        {
+          "position": 10203,
+          "height": 2001,
+          "baseline": 1701,
+          "spacing": 1400
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3396.0000000000064,
+        6804.000000000002,
+        10199.999999999998
+      ],
+      "inferredSpacing": 1400,
+      "matches": true
+    },
+    {
+      "id": "h2002-p170",
+      "font": 2002,
+      "percent": 170,
+      "nativeInputSha256": "6144ebeddcf56d6ba663a6d90dfa32c752723fb8545b49df04a68bd15342e75a",
+      "nativeHwpSha256": "9fcfb33fa7f82c59e18ad6bd582fb321ed35cb95d7ccd18a3c776276709fd362",
+      "nativePdfSha256": "57d99da3dd1439bdd47d5a528fb8233435b98c81ec07f15a39212aed323a2e9d",
+      "lines": [
+        {
+          "position": 0,
+          "height": 2002,
+          "baseline": 1702,
+          "spacing": 1400
+        },
+        {
+          "position": 3402,
+          "height": 2002,
+          "baseline": 1702,
+          "spacing": 1400
+        },
+        {
+          "position": 6804,
+          "height": 2002,
+          "baseline": 1702,
+          "spacing": 1400
+        },
+        {
+          "position": 10206,
+          "height": 2002,
+          "baseline": 1702,
+          "spacing": 1400
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3396.0000000000064,
+        6804.000000000002,
+        10199.999999999998
+      ],
+      "inferredSpacing": 1400,
+      "matches": true
+    },
+    {
+      "id": "h2003-p170",
+      "font": 2003,
+      "percent": 170,
+      "nativeInputSha256": "bb0d7af77611cf7619e46688b0db7807b00f8c1472fc7058400da05d33de8767",
+      "nativeHwpSha256": "a1ea7ce41be16888eb2d8c5165db4b803e6a9c31e18c79bdf746c9e34df54e88",
+      "nativePdfSha256": "d6d29530a1deccd8e3e29bd232a1c47ee841ac4be18fe850773e128fa5a7d41a",
+      "lines": [
+        {
+          "position": 0,
+          "height": 2003,
+          "baseline": 1703,
+          "spacing": 1400
+        },
+        {
+          "position": 3403,
+          "height": 2003,
+          "baseline": 1703,
+          "spacing": 1400
+        },
+        {
+          "position": 6806,
+          "height": 2003,
+          "baseline": 1703,
+          "spacing": 1400
+        },
+        {
+          "position": 10209,
+          "height": 2003,
+          "baseline": 1703,
+          "spacing": 1400
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3408.000000000007,
+        6804.000000000002,
+        10211.999999999998
+      ],
+      "inferredSpacing": 1400,
+      "matches": true
+    },
+    {
+      "id": "h2004-p170",
+      "font": 2004,
+      "percent": 170,
+      "nativeInputSha256": "639a1d3793b9b1fb9f94dfbc6d083e9891e18f8536b00b8cb583ce15d0fde944",
+      "nativeHwpSha256": "9b2e21340581104cf33111f131498e1792199b2d64f48c6fc2be89328a294c47",
+      "nativePdfSha256": "57d22122c0ecc43fde25eea1ab1355f4873d4d142d46e26c16680e6a50af48c1",
+      "lines": [
+        {
+          "position": 0,
+          "height": 2004,
+          "baseline": 1703,
+          "spacing": 1404
+        },
+        {
+          "position": 3408,
+          "height": 2004,
+          "baseline": 1703,
+          "spacing": 1404
+        },
+        {
+          "position": 6816,
+          "height": 2004,
+          "baseline": 1703,
+          "spacing": 1404
+        },
+        {
+          "position": 10224,
+          "height": 2004,
+          "baseline": 1703,
+          "spacing": 1404
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3408.000000000007,
+        6816.000000000001,
+        10224.000000000007
+      ],
+      "inferredSpacing": 1404,
+      "matches": true
+    },
+    {
+      "id": "h2005-p170",
+      "font": 2005,
+      "percent": 170,
+      "nativeInputSha256": "51715ca80488a4e93ed1201a24f93175b27e13bd84ccaafc899609d749f0310a",
+      "nativeHwpSha256": "b2c53b5f48071d653d78a648546851a1df8a3a0d6c774ea3cd40f58af6d9c935",
+      "nativePdfSha256": "98edc4b28b75d0f94eeeeba9e15b93a90e4528f5d6bb3fa0beb78f91ecc072a5",
+      "lines": [
+        {
+          "position": 0,
+          "height": 2005,
+          "baseline": 1704,
+          "spacing": 1404
+        },
+        {
+          "position": 3409,
+          "height": 2005,
+          "baseline": 1704,
+          "spacing": 1404
+        },
+        {
+          "position": 6818,
+          "height": 2005,
+          "baseline": 1704,
+          "spacing": 1404
+        },
+        {
+          "position": 10227,
+          "height": 2005,
+          "baseline": 1704,
+          "spacing": 1404
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3408.000000000007,
+        6816.000000000001,
+        10224.000000000007
+      ],
+      "inferredSpacing": 1404,
+      "matches": true
+    },
+    {
+      "id": "h2006-p170",
+      "font": 2006,
+      "percent": 170,
+      "nativeInputSha256": "8ae38a8944bc08ff88ea1f7aaf6c9defea5e6b0023e4d74902946117e4b40c7f",
+      "nativeHwpSha256": "18822f930be636a4029ff3b2729914f4b3577416d8e0d33576becb9d849fb2dc",
+      "nativePdfSha256": "e649cc9811ba67eb6dfe4ed8f1443c499a7ececb6f5c081393fd27571e547b33",
+      "lines": [
+        {
+          "position": 0,
+          "height": 2006,
+          "baseline": 1705,
+          "spacing": 1404
+        },
+        {
+          "position": 3410,
+          "height": 2006,
+          "baseline": 1705,
+          "spacing": 1404
+        },
+        {
+          "position": 6820,
+          "height": 2006,
+          "baseline": 1705,
+          "spacing": 1404
+        },
+        {
+          "position": 10230,
+          "height": 2006,
+          "baseline": 1705,
+          "spacing": 1404
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3408.000000000007,
+        6816.000000000001,
+        10235.999999999996
+      ],
+      "inferredSpacing": 1404,
+      "matches": true
+    },
+    {
+      "id": "h2007-p170",
+      "font": 2007,
+      "percent": 170,
+      "nativeInputSha256": "f0e511d2097cfdbcbc06db3871f2cb9332e43e7703f41abe5ba90ee3403d7420",
+      "nativeHwpSha256": "63b07d883c7d8cac4d187246dd835f0f23e13f80b73f0799330966afc155bf66",
+      "nativePdfSha256": "b96b88c16c393becd822743d4a8b478e833ca418d9a233ae21453a927b93860e",
+      "lines": [
+        {
+          "position": 0,
+          "height": 2007,
+          "baseline": 1706,
+          "spacing": 1404
+        },
+        {
+          "position": 3411,
+          "height": 2007,
+          "baseline": 1706,
+          "spacing": 1404
+        },
+        {
+          "position": 6822,
+          "height": 2007,
+          "baseline": 1706,
+          "spacing": 1404
+        },
+        {
+          "position": 10233,
+          "height": 2007,
+          "baseline": 1706,
+          "spacing": 1404
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3408.000000000007,
+        6828.000000000002,
+        10235.999999999996
+      ],
+      "inferredSpacing": 1404,
+      "matches": true
+    },
+    {
+      "id": "h2008-p170",
+      "font": 2008,
+      "percent": 170,
+      "nativeInputSha256": "6426571e7860c352ef112e47a05195ec315a73ff4d6fb9520548293348b261c1",
+      "nativeHwpSha256": "ee853436e96ba0a5623d7fb6199b73b52a63022badb7d9d5457361266dfc292c",
+      "nativePdfSha256": "0c55810b00efe07098751825e14ae8922cc119e0fe49203fea152d59c6feea11",
+      "lines": [
+        {
+          "position": 0,
+          "height": 2008,
+          "baseline": 1707,
+          "spacing": 1404
+        },
+        {
+          "position": 3412,
+          "height": 2008,
+          "baseline": 1707,
+          "spacing": 1404
+        },
+        {
+          "position": 6824,
+          "height": 2008,
+          "baseline": 1707,
+          "spacing": 1404
+        },
+        {
+          "position": 10236,
+          "height": 2008,
+          "baseline": 1707,
+          "spacing": 1404
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3420.000000000006,
+        6828.000000000002,
+        10235.999999999996
+      ],
+      "inferredSpacing": 1404,
+      "matches": true
+    },
+    {
+      "id": "h2009-p170",
+      "font": 2009,
+      "percent": 170,
+      "nativeInputSha256": "fe61dcfdc2a166d6ef8152b4904c65d4343972450966fce6cf35921aff7fa434",
+      "nativeHwpSha256": "b06cafa97a011c7d58138390ea02837a276b3125e0b69bcbd0a4c863cacc2bea",
+      "nativePdfSha256": "2f8d4ad033df8d41addaa70e4a88aa75bbcc66e919df7fd9c52d3bccdad0fd56",
+      "lines": [
+        {
+          "position": 0,
+          "height": 2009,
+          "baseline": 1708,
+          "spacing": 1404
+        },
+        {
+          "position": 3413,
+          "height": 2009,
+          "baseline": 1708,
+          "spacing": 1404
+        },
+        {
+          "position": 6826,
+          "height": 2009,
+          "baseline": 1708,
+          "spacing": 1404
+        },
+        {
+          "position": 10239,
+          "height": 2009,
+          "baseline": 1708,
+          "spacing": 1404
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3420.000000000006,
+        6828.000000000002,
+        10248.000000000007
+      ],
+      "inferredSpacing": 1404,
+      "matches": true
+    },
+    {
+      "id": "h1001-p50",
+      "font": 1001,
+      "percent": 50,
+      "nativeInputSha256": "d2f46300577da03ebbf9b90a63cb50a116c195a70558672c18d95faafe5b55bd",
+      "nativeHwpSha256": "de8ffbb43e59578854bc8beaa1b2d567833f16136a1c2f58b49004dbb1857144",
+      "nativePdfSha256": "3dfcccccdcf3c2f33926f8a19380676a077ca368abe35ec7bb183300c6ba01e2",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -500
+        },
+        {
+          "position": 501,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -500
+        },
+        {
+          "position": 1002,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -500
+        },
+        {
+          "position": 1503,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -500
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        503.9999999999985,
+        995.9999999999976,
+        1499.9999999999961
+      ],
+      "inferredSpacing": -500,
+      "matches": true
+    },
+    {
+      "id": "h1001-p130",
+      "font": 1001,
+      "percent": 130,
+      "nativeInputSha256": "59afa7d949b8eb7943158f492fdab7712631af50fa4e625fa334dc28e192af33",
+      "nativeHwpSha256": "837acf7d5b7a9557a2816163883c1d88133ebd4657d82dea5707f115d612154d",
+      "nativePdfSha256": "b2f49361aea627528817ef8b7cdc73c98d885c5816a52cbbe06a59cded8f5791",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": 300
+        },
+        {
+          "position": 1301,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": 300
+        },
+        {
+          "position": 2602,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": 300
+        },
+        {
+          "position": 3903,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": 300
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1295.9999999999945,
+        2603.9999999999995,
+        3899.9999999999945
+      ],
+      "inferredSpacing": 300,
+      "matches": true
+    },
+    {
+      "id": "h1001-p160",
+      "font": 1001,
+      "percent": 160,
+      "nativeInputSha256": "c43de8ceeb78b91a770c6cb51b1581520f58777868f5ecc101f5e27892836dcb",
+      "nativeHwpSha256": "4f8b1466c8acb8e7e07da61e7a0b41c22d929b271ecdd64030af2ecba1ef9439",
+      "nativePdfSha256": "57ee1789a48d7136b592139a73fa4dc8b31de41b79cc5c23448171be714b9933",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": 600
+        },
+        {
+          "position": 1601,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": 600
+        },
+        {
+          "position": 3202,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": 600
+        },
+        {
+          "position": 4803,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": 600
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1595.9999999999916,
+        3203.999999999994,
+        4799.999999999996
+      ],
+      "inferredSpacing": 600,
+      "matches": true
+    },
+    {
+      "id": "h1999-p50",
+      "font": 1999,
+      "percent": 50,
+      "nativeInputSha256": "b7cb9508b76a1dd1cf958fe81b2e2cbe8044eda5304fbbd40d38be2a35cd3796",
+      "nativeHwpSha256": "b486c04b6668d7a1b661088d9bd7d743d4565af54f132ba4f5126141996a127f",
+      "nativePdfSha256": "bb80239bfc29cfaa4ac698766e720ab66961b932e1e5734957114be53f78a725",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1000
+        },
+        {
+          "position": 999,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1000
+        },
+        {
+          "position": 1998,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1000
+        },
+        {
+          "position": 2997,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1000
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        995.9999999999976,
+        1992.0000000000061,
+        2988.000000000004
+      ],
+      "inferredSpacing": -1000,
+      "matches": true
+    },
+    {
+      "id": "h1999-p130",
+      "font": 1999,
+      "percent": 130,
+      "nativeInputSha256": "5da07cca42ac8e02b1bc6bb2f8408e49da444219097d06f0bb8e34c520bd6838",
+      "nativeHwpSha256": "e7532200da509bff7e20a407aac5c0128a07905032c5601da289151f0f75dc35",
+      "nativePdfSha256": "4c68fe43667356f17d9536b52650be70a4c33d4c4a5271e4e98716590d0aab03",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 600
+        },
+        {
+          "position": 2599,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 600
+        },
+        {
+          "position": 5198,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 600
+        },
+        {
+          "position": 7797,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 600
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        2592,
+        5196,
+        7788
+      ],
+      "inferredSpacing": 600,
+      "matches": true
+    },
+    {
+      "id": "h1999-p160",
+      "font": 1999,
+      "percent": 160,
+      "nativeInputSha256": "a640b27a494128bcdec50cf2425bd5e97b30ef915d66672ff5d2392094808bfd",
+      "nativeHwpSha256": "52fd7f543b99800cda068e634ca909b4492a95a10a1c7267f4c7269d8188260e",
+      "nativePdfSha256": "bff2d5ca8ba27abf3da37c90292f25a6d503697d1a2cbf78a9a052e79c9ca169",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 1196
+        },
+        {
+          "position": 3195,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 1196
+        },
+        {
+          "position": 6390,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 1196
+        },
+        {
+          "position": 9585,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 1196
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3192.0000000000055,
+        6384,
+        9576.000000000005
+      ],
+      "inferredSpacing": 1196,
+      "matches": true
+    },
+    {
+      "id": "h1001-p0",
+      "font": 1001,
+      "percent": 0,
+      "nativeInputSha256": "933cce30e5c3a01d4221e0b634820edcecf6256c4d31ce59437d24ae03640485",
+      "nativeHwpSha256": "24ab0238b546ed54d7e5493cfe4db375817d58c1006519ae3b70778f40d428d6",
+      "nativePdfSha256": "cdcd001256eb594814838f7b85dbdc595e61717aeba388e721d165eec7bf02bd",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -1000
+        },
+        {
+          "position": 1,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -1000
+        },
+        {
+          "position": 2,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -1000
+        },
+        {
+          "position": 3,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -1000
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "inferredSpacing": -1000,
+      "matches": true
+    },
+    {
+      "id": "h1003-p0",
+      "font": 1003,
+      "percent": 0,
+      "nativeInputSha256": "e466f8b6924fbb319cea67b14362cb9730f17b6212e3685df492bec6825e69d6",
+      "nativeHwpSha256": "7cb7880d31fee8518be72c91be65f04b976bd6122eac03865b291b5ef0b9e175",
+      "nativePdfSha256": "eb458148f91200db966348626995f6e9db885ab31792bea2661de7878993a5cc",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": -1000
+        },
+        {
+          "position": 3,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": -1000
+        },
+        {
+          "position": 6,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": -1000
+        },
+        {
+          "position": 9,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": -1000
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        0,
+        11.999999999999423,
+        11.999999999999423
+      ],
+      "inferredSpacing": -1000,
+      "matches": true
+    },
+    {
+      "id": "h1004-p0",
+      "font": 1004,
+      "percent": 0,
+      "nativeInputSha256": "f06a1c0a6f92d79af349048f6951a0d084e758f18f1e4a2b440e1ce125004cce",
+      "nativeHwpSha256": "602b47cb4d872ce15b678bda762926b9e76492de8834f132f1a1822dd11c68d9",
+      "nativePdfSha256": "34c8673426aa5e0667c65585b22b3062feae6231ba9e1e1b03e9f69c507e951f",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -1004
+        },
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -1004
+        },
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -1004
+        },
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -1004
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "inferredSpacing": -1004,
+      "matches": true
+    },
+    {
+      "id": "h1999-p0",
+      "font": 1999,
+      "percent": 0,
+      "nativeInputSha256": "80e609214c48b4ba5f93d1bc9302c591328a77882772c4edf55c414bef0d2d09",
+      "nativeHwpSha256": "5da56a33e838ffad7d8d1b43c56d2f8e8b18d51a0edcfef1f9e069ad3cd5b13e",
+      "nativePdfSha256": "35bfaa14e384830efce69a8448784214fece1645e39c016f403e2d60b4ac0737",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1996
+        },
+        {
+          "position": 3,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1996
+        },
+        {
+          "position": 6,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1996
+        },
+        {
+          "position": 9,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1996
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "inferredSpacing": -1996,
+      "matches": true
+    },
+    {
+      "id": "h1001-p1",
+      "font": 1001,
+      "percent": 1,
+      "nativeInputSha256": "1e4f32bd40e698980f0e1d22acf2b975516dc1895ad26e3523b35036389772ac",
+      "nativeHwpSha256": "47b8a2340d5278a1171580a688344eace44f0b68bbad81fe32e1567623bf1b68",
+      "nativePdfSha256": "c353325162c36fd93b8027752be652ce62eac57a2e5fa63fba16a948b164c1ae",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -992
+        },
+        {
+          "position": 9,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -992
+        },
+        {
+          "position": 18,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -992
+        },
+        {
+          "position": 27,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -992
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        11.999999999999423,
+        11.999999999999423,
+        23.999999999998845
+      ],
+      "inferredSpacing": -992,
+      "matches": true
+    },
+    {
+      "id": "h1999-p1",
+      "font": 1999,
+      "percent": 1,
+      "nativeInputSha256": "ab30432659cbcd607b2fcae6a98900f62e4020fd68393f739ac3ba8e56177d8e",
+      "nativeHwpSha256": "014a505f7aca33958b6baadd9838fa2d619f35fe435c36467248377cd2492277",
+      "nativePdfSha256": "f11b33bc46c027a53fa339b9b2960550e698b1af8a892a235ccdb7ea7ddbc739",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1976
+        },
+        {
+          "position": 23,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1976
+        },
+        {
+          "position": 46,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1976
+        },
+        {
+          "position": 69,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1976
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        23.999999999998845,
+        35.999999999998266,
+        60.000000000008505
+      ],
+      "inferredSpacing": -1976,
+      "matches": true
+    },
+    {
+      "id": "h1004-p50",
+      "font": 1004,
+      "percent": 50,
+      "nativeInputSha256": "a43fbef16b03954f111d63158933aa6cfe7654e6a512cbbc20f7f454d13cd426",
+      "nativeHwpSha256": "42cc98d39cd6f4c25e843dd3260f81244304197b4bed55dbe39afe1c407aab94",
+      "nativePdfSha256": "4e962fab1e51d2fe291902f1c2942f17ba6628b13e36a04a4868c1e97c462b8e",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -504
+        },
+        {
+          "position": 500,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -504
+        },
+        {
+          "position": 1000,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -504
+        },
+        {
+          "position": 1500,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -504
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        503.9999999999985,
+        995.9999999999976,
+        1499.9999999999961
+      ],
+      "inferredSpacing": -504,
+      "matches": true
+    },
+    {
+      "id": "h1004-p150",
+      "font": 1004,
+      "percent": 150,
+      "nativeInputSha256": "2fbaf5509ca24dcd72a3204d873330045875750b3a5b7cac5aceed789675356f",
+      "nativeHwpSha256": "5dccbe7063122f3fc3db269601813ae13912b5f612f3cdc1bcda65e4d2ab2fed",
+      "nativePdfSha256": "bb32be65bc6c23ce94ce061f3b54f35896f86d10e3bfa195515bea88833def3d",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 504
+        },
+        {
+          "position": 1508,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 504
+        },
+        {
+          "position": 3016,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 504
+        },
+        {
+          "position": 4524,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 504
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1511.9999999999955,
+        3011.9999999999914,
+        4523.999999999999
+      ],
+      "inferredSpacing": 504,
+      "matches": true
+    },
+    {
+      "id": "h1004-p250",
+      "font": 1004,
+      "percent": 250,
+      "nativeInputSha256": "46b18d1bdf4365bc9e4895df773fad24e066ed0fd712404a3b384ef62db115fd",
+      "nativeHwpSha256": "f6534b50a91c07137cd40ced7607d1962ac34fc7c0e2501908f09cd65ed847df",
+      "nativePdfSha256": "9266c1ee4cdb7997a380e7b7911308f9ade44daaafd52043c37b95340add2b59",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 1508
+        },
+        {
+          "position": 2512,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 1508
+        },
+        {
+          "position": 5024,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 1508
+        },
+        {
+          "position": 7536,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 1508
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        2507.9999999999936,
+        5027.999999999996,
+        7536.000000000002
+      ],
+      "inferredSpacing": 1508,
+      "matches": true
+    },
+    {
+      "id": "h1004-p350",
+      "font": 1004,
+      "percent": 350,
+      "nativeInputSha256": "6d70412e03a5d4af3d6ff49a1319f5e143a6acd4fc0208a44e86ca0625339d31",
+      "nativeHwpSha256": "0dfa05160e1f78a1f0010165525c6d0ac683ae833a448e539fb8bcb166c24bd7",
+      "nativePdfSha256": "424dbfd5c69abb38b0abec57749f2953aa14259c1f41da5435908f1df3957c18",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 2512
+        },
+        {
+          "position": 3516,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 2512
+        },
+        {
+          "position": 7032,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 2512
+        },
+        {
+          "position": 10548,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": 2512
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3516.000000000001,
+        7031.999999999992,
+        10547.999999999993
+      ],
+      "inferredSpacing": 2512,
+      "matches": true
+    },
+    {
+      "id": "h1999-p150",
+      "font": 1999,
+      "percent": 150,
+      "nativeInputSha256": "1d23367b39ad5b7169616ee4a6b280f503c4ba8a5c328d93a5b656dbcec024bd",
+      "nativeHwpSha256": "994218531f5e1c837416e75eacd8a944c4a863b7da5dad707116e1d54eda489e",
+      "nativePdfSha256": "101545ae7388dda78413eb198613755005e8ce20eb48ce12340099c368110c5f",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 1000
+        },
+        {
+          "position": 2999,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 1000
+        },
+        {
+          "position": 5998,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 1000
+        },
+        {
+          "position": 8997,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": 1000
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3000.0000000000036,
+        5987.999999999996,
+        8988
+      ],
+      "inferredSpacing": 1000,
+      "matches": true
+    },
+    {
+      "id": "h1003-p150",
+      "font": 1003,
+      "percent": 150,
+      "nativeInputSha256": "3f0835df490f3c35890986c677f03410268bfb8ba6f4285db70e5d0634783426",
+      "nativeHwpSha256": "f5fdd155c18f6e24720442d58aff96fa882c0afc95ea47761801484f825af96a",
+      "nativePdfSha256": "8bc179d7c2032466bf5e65158a984b9ac1698ca00bd09ccb44231b11b55a95e1",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": 500
+        },
+        {
+          "position": 1503,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": 500
+        },
+        {
+          "position": 3006,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": 500
+        },
+        {
+          "position": 4509,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": 500
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1499.9999999999961,
+        3011.9999999999914,
+        4511.999999999999
+      ],
+      "inferredSpacing": 500,
+      "matches": true
+    },
+    {
+      "id": "h1003-p130",
+      "font": 1003,
+      "percent": 130,
+      "nativeInputSha256": "71fac11c994641c31d75468e7d2924e7469144fb72115313f96496483941f483",
+      "nativeHwpSha256": "110bac0c0b1a3e99c198385dc59d2b33326aa220d5491d136422a3721b9230a8",
+      "nativePdfSha256": "58830aff989ac6e1cb0c76addfc5abea7f6502cf35f184973cda5277db720565",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": 300
+        },
+        {
+          "position": 1303,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": 300
+        },
+        {
+          "position": 2606,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": 300
+        },
+        {
+          "position": 3909,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": 300
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1307.9999999999939,
+        2603.9999999999995,
+        3911.999999999994
+      ],
+      "inferredSpacing": 300,
+      "matches": true
+    }
+  ],
+  "gridRows": [
+    {
+      "id": "h1001-p0-g1600",
+      "grid": 1600,
+      "font": 1001,
+      "percent": 0,
+      "nativeInputSha256": "e292cdb5590231c978ca594f39c3dca4ddc29b289860ec26f4ec6c11311b4097",
+      "nativeHwpSha256": "178f56f914637ea2032c22804164a5471d0be986899bb7cb4c7b5f6814759a6c",
+      "nativePdfSha256": "fdb5a63c516ac1150d6e224f429f32c6e1f670a930ccf217c3a38a62cb5acc78",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -1000
+        },
+        {
+          "position": 1600,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -1000
+        },
+        {
+          "position": 3200,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -1000
+        },
+        {
+          "position": 4800,
+          "height": 1001,
+          "baseline": 851,
+          "spacing": -1000
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1596.0000000000027,
+        3192.0000000000055,
+        4799.999999999996
+      ],
+      "inferredSpacing": -1000,
+      "matches": true
+    },
+    {
+      "id": "h1003-p0-g3288",
+      "grid": 3288,
+      "font": 1003,
+      "percent": 0,
+      "nativeInputSha256": "f8a2d602b3757ac0512c956e37c36c1ebe743b00722de967bb91f6458fbf41e0",
+      "nativeHwpSha256": "8e3f3f5022f5dc22f4d22eb08ad3a55cd3c1fbe2f7c905b09a1cdfb4dc86f78f",
+      "nativePdfSha256": "35a2592d7b2f1a49d4830a36f25c855fadc59eab41e14be9463b35dea457a85d",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": -1000
+        },
+        {
+          "position": 3288,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": -1000
+        },
+        {
+          "position": 6576,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": -1000
+        },
+        {
+          "position": 9864,
+          "height": 1003,
+          "baseline": 853,
+          "spacing": -1000
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        3288.0000000000005,
+        6576.000000000001,
+        9863.99999999999
+      ],
+      "inferredSpacing": -1000,
+      "matches": true
+    },
+    {
+      "id": "h1999-p0-g1600",
+      "grid": 1600,
+      "font": 1999,
+      "percent": 0,
+      "nativeInputSha256": "a8b99d7158a78e71d12172099fbdd756c8830c7a3c570f795d8db1c5bf036cd9",
+      "nativeHwpSha256": "8ea6e1e2bf83dd0256d9586ab6644c6c84dbb583824d81a8330f119c018521d6",
+      "nativePdfSha256": "a87cd3cf0a1ba3f25b797bf4c98fb89c48276612fcb0f773182c89b4162dc3c9",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1996
+        },
+        {
+          "position": 1600,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1996
+        },
+        {
+          "position": 3200,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1996
+        },
+        {
+          "position": 4800,
+          "height": 1999,
+          "baseline": 1699,
+          "spacing": -1996
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1595.9999999999916,
+        3203.999999999994,
+        4799.999999999996
+      ],
+      "inferredSpacing": -1996,
+      "matches": true
+    },
+    {
+      "id": "h1004-p0-g1600",
+      "grid": 1600,
+      "font": 1004,
+      "percent": 0,
+      "nativeInputSha256": "9380f71433fe037247a94f18a63f623aad4a3cfb0d17fdcfb2b02279f43e231d",
+      "nativeHwpSha256": "f336ff690908a34b59e57864b39699e14e62b040bb23cf3d9096f3746d2f87df",
+      "nativePdfSha256": "41e78547aa88312dda82c84d009a95f6262cac62fb17ab6e2fa3ab1f6ada8b47",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -1004
+        },
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -1004
+        },
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -1004
+        },
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -1004
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "inferredSpacing": -1004,
+      "matches": true
+    },
+    {
+      "id": "h1004-p50-g1600",
+      "grid": 1600,
+      "font": 1004,
+      "percent": 50,
+      "nativeInputSha256": "e71d8130f0ed74639aa8cbc1fb38306ef3d8f520147acd02a2c141b162ea86ec",
+      "nativeHwpSha256": "0d0e951fff2da9f581945c560f911aaeac509484e7cc301ea4fc538cead537b1",
+      "nativePdfSha256": "298a362d4ce98d5f63e8dcc7f385c488173961bd3a60f2b226f2e5361cb13e72",
+      "lines": [
+        {
+          "position": 0,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -504
+        },
+        {
+          "position": 1600,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -504
+        },
+        {
+          "position": 3200,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -504
+        },
+        {
+          "position": 4800,
+          "height": 1004,
+          "baseline": 853,
+          "spacing": -504
+        }
+      ],
+      "nativePdfPositions": [
+        0,
+        1596.0000000000027,
+        3203.999999999994,
+        4799.999999999996
+      ],
+      "inferredSpacing": -504,
+      "matches": true
+    }
+  ]
+}

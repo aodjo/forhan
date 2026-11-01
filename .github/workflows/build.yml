@@ -1,0 +1,58 @@
+name: Build Forhan
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: win32
+            arch: x64
+            package: --win portable --x64
+          - os: macos-15-intel
+            platform: darwin
+            arch: x64
+            package: --mac dmg zip --x64 --config.mac.identity=-
+          - os: macos-15
+            platform: darwin
+            arch: arm64
+            package: --mac dmg zip --arm64 --config.mac.identity=-
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          architecture: ${{ matrix.arch }}
+          cache: npm
+      - run: npm ci
+      - run: node node_modules/electron/install.js
+      - run: npm test
+      - run: npx playwright install chromium
+      - run: npm run build
+      - run: npm run test:ui
+      - run: node node_modules/electron-builder/cli.js ${{ matrix.package }} --publish never
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: false
+          CSC_FOR_PULL_REQUEST: true
+      - run: npm run test:packaged -- --platform ${{ matrix.platform }} --arch ${{ matrix.arch }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Forhan-validation-${{ matrix.platform }}-${{ matrix.arch }}
+          path: |
+            release/validation/*.json
+            test-results/packaged/
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Forhan-${{ matrix.platform }}-${{ matrix.arch }}
+          path: |
+            release/*.exe
+            release/*.dmg
+            release/*.zip
+          if-no-files-found: error

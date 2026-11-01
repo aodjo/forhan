@@ -1,0 +1,173 @@
+#native-font-picker {
+  position: fixed;
+  z-index: 11000;
+  display: flex;
+  box-sizing: border-box;
+  border: 1px solid #b5b5b5;
+  border-radius: 3px;
+  background: white;
+  box-shadow: 1px 1px 2px #0002;
+  font:
+    12px "Malgun Gothic",
+    "맑은 고딕",
+    "Apple SD Gothic Neo",
+    sans-serif;
+  color: #333;
+  overflow: hidden;
+}
+.nfp-list {
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: auto;
+}
+.nfp-list::before,
+.nfp-list::after {
+  content: "";
+  position: sticky;
+  display: block;
+  height: 4px;
+  background: white;
+  z-index: 1;
+  pointer-events: none;
+}
+.nfp-list::before {
+  top: 0;
+}
+.nfp-list::after {
+  bottom: 0;
+}
+#native-font-picker .nfp-row {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 26px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 0;
+  gap: 3px;
+  background: white;
+  color: #333;
+  text-align: left;
+  white-space: nowrap;
+  font: inherit;
+  overflow: hidden;
+  cursor: default;
+  outline: none;
+}
+#native-font-picker .nfp-row:hover,
+#native-font-picker .nfp-row.nfp-active {
+  background: #ebebeb;
+  border: 1px dotted #aaa;
+}
+.nfp-tt {
+  position: relative;
+  flex: none;
+  width: 13px;
+  color: #5a9e41;
+  font:
+    14px Georgia,
+    serif;
+  letter-spacing: -5px;
+  line-height: 18px;
+}
+.nfp-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nfp-expanded .nfp-tt {
+  display: none;
+}
+.nfp-expanded .nfp-label {
+  font-size: 23px;
+  line-height: 26px;
+  color: #000;
+}
+.nfp-groups {
+  position: relative;
+  box-sizing: border-box;
+  flex: none;
+  width: 133px;
+  padding: 4px 0;
+  background: #ebebeb;
+}
+#native-font-picker .nfp-groups button {
+  display: block;
+  width: 100%;
+  height: 28px;
+  padding: 0 9px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  text-align: left;
+  color: #333;
+  font:
+    12px "Malgun Gothic",
+    "맑은 고딕",
+    "Apple SD Gothic Neo",
+    sans-serif;
+}
+#native-font-picker .nfp-groups button[aria-selected="true"],
+#native-font-picker .nfp-groups button:hover {
+  background: #fff;
+}
+#native-font-picker .nfp-groups .nfp-refresh {
+  position: absolute;
+  left: 14px;
+  bottom: 69px;
+  width: 106px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid #c5c5c5;
+  border-radius: 4px;
+  background: white;
+  text-align: center;
+  font-size: 11px;
+}
+.nfp-draft {
+  position: fixed;
+  z-index: 11001;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 3px;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background: white;
+  color: #333;
+  font:
+    12px "Malgun Gothic",
+    "맑은 고딕",
+    "Apple SD Gothic Neo",
+    sans-serif;
+}
+.nfp-empty {
+  padding: 8px;
+  color: #666;
+  white-space: normal;
+}
+.nfp-list::-webkit-scrollbar {
+  width: 16px;
+  background: #f0f0f0;
+}
+.nfp-list::-webkit-scrollbar-thumb {
+  background: #c8c8c8;
+  border: 2px solid #f0f0f0;
+}
+.nfp-list::-webkit-scrollbar-button:single-button:vertical {
+  display: block;
+  height: 16px;
+  background: #f0f0f0 center no-repeat;
+}
+.nfp-list::-webkit-scrollbar-button:single-button:vertical:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='6'%3E%3Cpath d='m1 5 3-3 3 3' fill='none' stroke='%23888'/%3E%3C/svg%3E");
+}
+.nfp-list::-webkit-scrollbar-button:single-button:vertical:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='6'%3E%3Cpath d='m1 1 3 3 3-3' fill='none' stroke='%23888'/%3E%3C/svg%3E");
+}

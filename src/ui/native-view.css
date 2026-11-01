@@ -1,0 +1,14 @@
+body.ribbon-collapsed .native-shell.main {
+  grid-template-rows: 32px 33px 0 32px minmax(0, 1fr) 29px 25px;
+}
+body.ribbon-collapsed .native-ribbon {
+  visibility: hidden;
+  overflow: hidden;
+}
+body.ribbon-collapsed .native-ribbon-collapse {
+  transform: rotate(180deg);
+}
+body.hide-rulers .native-shell .ruler,
+body.hide-rulers .native-vertical-ruler {
+  visibility: hidden;
+}

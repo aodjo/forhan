@@ -112,8 +112,20 @@ function nativeLineDecorations(view: EditorView,page:PageSettings|null): {
      * // Background projection cannot split an authored paragraph.
      */
     entry=>entry.plan),sheets):null);
-  /** Original model positions supply vertical navigation independently from rendering wrappers. */
-  const cursorLines:NativeSheetCursorLine[]=[];
+  /** Complete top-level source lines retain navigation even when independent paint prevents page projection. */
+  const cursorLines:NativeSheetCursorLine[]=[],paper=view.dom.closest<HTMLElement>('#paper'),
+    cursorSourceComplete=!!paper&&plans.length===view.dom.children.length&&plans.every(
+      /**
+       * Require every measured source block to belong directly to the original editor.
+       *
+       * Nested table or list fragments cannot establish complete document navigation.
+       * Independent glyph drawings may prevent paper projection without invalidating source line geometry.
+       * @param {{plan:NativeParagraphLayout}} entry - One actual measured original block.
+       * @returns {boolean} Whether this block retains complete top-level source ownership.
+       * @example
+       * // A native-width paragraph keeps its own caret edges without moving auxiliary paint.
+       */
+      entry=>entry.plan.element.parentElement===view.dom);
   for(/** Model blocks retain their original offsets regardless of their physical page count. */const {position,size,plan} of plans){
     if(!sheets)applyNativeGrid(plan,grid,nativeDocumentZoom(plan.element));
     let trailingGap:number|null=null;
@@ -167,13 +179,13 @@ function nativeLineDecorations(view: EditorView,page:PageSettings|null): {
         'data-forhan-line-shift':String(range.shift),'data-forhan-line-shift-x':String(range.shiftX??0),'data-forhan-visual-line':`${position}:${range.line}`}));
       signature.push(from,to,range.shift,range.shiftX??0);
     }
-    if(sheets)for(let line=0;line<plan.lines.length;line++){
+    if(cursorSourceComplete)for(let line=0;line<plan.lines.length;line++){
       /** Empty source lines remain addressable without adding visible or serialized characters. */
       const source=plan.lines[line],from=firstPositions[line]??(source.breakBefore?view.posAtDOM(source.breakBefore,0)+1:position+1);
-      cursorLines.push({from,to:lastPositions[line]??from,key:`${position}:${line}`,height:source.fontSize,page:source.page,pageX:source.shiftX,top:(plan.element.getBoundingClientRect().top-sheets.paper.getBoundingClientRect().top)/nativeDocumentZoom(view.dom)+source.baseline-nativeLineBaseline(source.fontSize)});
+      cursorLines.push({from,to:lastPositions[line]??from,key:`${position}:${line}`,height:source.fontSize,page:source.page??0,pageX:source.shiftX??0,top:(plan.element.getBoundingClientRect().top-paper!.getBoundingClientRect().top)/nativeDocumentZoom(view.dom)+source.baseline-nativeLineBaseline(source.fontSize)});
     }
   }
-  setNativeSheetCursorLines(view,sheets?cursorLines:null);
+  setNativeSheetCursorLines(view,cursorSourceComplete?cursorLines:null);
   return {
     decorations: DecorationSet.create(view.state.doc, decorations),
     signature: signature.join(","),

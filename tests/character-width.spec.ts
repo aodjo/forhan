@@ -1,4 +1,5 @@
 import {DOCUMENT_START_KEY} from './helpers/native-keyboard.ts';
+import {nativeSourceCaretOffset} from './helpers/native-paper-viewport.ts';
 import { test, expect, type Page } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import {createHash} from 'node:crypto';
@@ -10,6 +11,43 @@ import { contextualInk, contextualPositions, contextualCaret } from "./helpers/c
 
 /** Two raster-edge pixels allow sparse mark antialiasing while source font height remains exactly invariant. */
 const CONTEXTUAL_INK_EDGE_TOLERANCE = 2;
+
+/**
+ * Keep Command-arrow navigation anchored in original native-width source.
+ *
+ * Browser default movement can target drawing wrappers while a source caret
+ * still points elsewhere. Real key chords must commit line/document edges
+ * before immediate typing, preserve Shift selection and retain ordinary undo.
+ * @async
+ * @param {{page:Page}} context - Actual isolated public document renderer.
+ * @returns {Promise<void>} Resolves after source edges, typing, selection and undo agree.
+ * @throws {Error} If a Command-arrow gesture leaves the caret in drawing DOM or at a stale source endpoint.
+ * @example
+ * // Command-Up, Right and C produce MCMMMMMMM rather than MMMMMMMMC.
+ */
+async function verifyNativeCommandEdges({page}:{page:Page}):Promise<void>{
+  await page.goto('/');await loadWidth(page,50);await page.locator('.tiptap').focus();
+  await test.info().attach('command-source-before-input',{body:await page.locator('#paper').evaluate(/**
+   * Retain the actual original source and drawing geometry before navigation.
+   *
+   * @param {HTMLElement} paper - Actual unmodified rendered paper.
+   * @returns {string} Original paper markup for diagnosing source caret ownership.
+   * @example
+   * // A missing native flow stays observable instead of being assumed ready.
+   */paper=>paper.outerHTML),contentType:'text/html'});
+  for(/** Every native document or line edge is observed through its real source DOM caret. */const [key,expected]of [['Meta+ArrowDown',8],['Meta+ArrowUp',0],['Meta+ArrowRight',8],['Meta+ArrowLeft',0]] as const){
+    await page.keyboard.press(key);
+    expect(await page.locator('.tiptap').evaluate(nativeSourceCaretOffset),key).toBe(expected);
+  }
+  await page.keyboard.press('ArrowRight');await page.keyboard.type('C');
+  expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe('MCMMMMMMM');
+  await page.keyboard.press('ControlOrMeta+z');expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe('MMMMMMMM');
+  await page.keyboard.press('Meta+ArrowDown');await page.keyboard.press('Shift+Meta+ArrowUp');await page.keyboard.type('C');
+  expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe('C');
+  await page.keyboard.press('ControlOrMeta+z');expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe('MMMMMMMM');
+}
+
+test('Command-arrow edges commit native-width source before immediate typing and Shift replacement',verifyNativeCommandEdges);
 
 /**
  * Load native width source through the ordinary document input.

@@ -212,6 +212,8 @@ export function setNativeSheetCursorLines(view:EditorView,lines:NativeSheetCurso
  * grapheme. Shift retains the original anchor and source history is untouched.
  * Home and End commit their actual source line edge synchronously, so an
  * immediate following Enter or IME key cannot reuse a pending browser caret.
+ * Command-arrow line and document edges use the same source path, including
+ * Shift selections, instead of leaving native-width drawings to browser flow.
  * Genuine DOM endpoints are resolved before choosing a line because native
  * pointer selection can precede the editor's selectionchange notification.
  * @param {EditorView} view - Actual live source editor view.
@@ -221,12 +223,14 @@ export function setNativeSheetCursorLines(view:EditorView,lines:NativeSheetCurso
  * nativeSheetKeyDown(view,event); // ArrowDown crosses the physical page margin without inserting text.
  */
 export function nativeSheetKeyDown(view:EditorView,event:KeyboardEvent):boolean{
-  /** Unsupported flow and platform word/document shortcuts retain their existing native handling. */
-  const cursor=cursors.get(view);
+  /** Command-arrow source edges distinguish a whole-document jump from a current-line edge. */
+  const cursor=cursors.get(view),commandArrow=event.metaKey&&!event.ctrlKey&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key),
+    edgeKey=commandArrow?(event.key==='ArrowUp'||event.key==='ArrowLeft'?'Home':'End'):event.key,
+    documentEdge=commandArrow?(event.key==='ArrowUp'||event.key==='ArrowDown'):(event.ctrlKey||event.metaKey);
   if(!cursor)return false;
-  if(!['ArrowUp','ArrowDown','Home','End'].includes(event.key)){cursor.goal=null;return false;}
+  if(!['ArrowUp','ArrowDown','Home','End'].includes(edgeKey)){cursor.goal=null;return false;}
   if(view.composing||event.isComposing||event.altKey||!(view.state.selection instanceof TextSelection))return false;
-  if((event.ctrlKey||event.metaKey)&&event.key!=='Home'&&event.key!=='End')return false;
+  if((event.ctrlKey||event.metaKey)&&edgeKey!=='Home'&&edgeKey!=='End')return false;
   /** The real source DOM endpoint resolves soft-wrap affinity without generated document attributes. */
   const selection=preserveNativeTextSelection(view,view.state.tr.setMeta('addToHistory',false)).selection,
     domSelection=view.dom.ownerDocument.getSelection(),focus=domSelection?.focusNode,
@@ -245,13 +249,16 @@ export function nativeSheetKeyDown(view:EditorView,event:KeyboardEvent):boolean{
     const next=Math.abs(candidate.top-top);if(next<distance){distance=next;index=line;}
   }
   if(index<0)return false;
-  if(event.key==='Home'||event.key==='End'){
+  if(edgeKey==='Home'||edgeKey==='End'){
     /** Synchronous source selection keeps an immediate following Enter or IME key at the intended visual line edge. */
-    const line=event.ctrlKey||event.metaKey?cursor.lines[event.key==='Home'?0:cursor.lines.length-1]:cursor.lines[index],
-      position=event.key==='Home'?line.from:line.to;
+    const line=documentEdge?cursor.lines[edgeKey==='Home'?0:cursor.lines.length-1]:cursor.lines[index],
+      position=edgeKey==='Home'?line.from:line.to;
     cursor.goal=null;
     view.dispatch(view.state.tr.setSelection(TextSelection.create(view.state.doc,event.shiftKey?selection.anchor:position,position)).setMeta('addToHistory',false).scrollIntoView());
-    if((event.ctrlKey||event.metaKey)&&event.key==='Home'){
+    /** Explicit source-side affinity avoids placing the caret before a noneditable glyph drawing. */
+    const focus=view.domAtPos(position,edgeKey==='Home'?1:-1),anchor=event.shiftKey?view.domAtPos(selection.anchor,selection.anchor<=position?1:-1):focus;
+    view.dom.ownerDocument.getSelection()?.setBaseAndExtent(anchor.node,anchor.offset,focus.node,focus.offset);
+    if(documentEdge&&edgeKey==='Home'){
       /** Original document-begin navigation restores the first paper's complete initial inset. */
       const canvas=view.dom.closest<HTMLElement>('.canvas');if(canvas)canvas.scrollTop=0;
     }

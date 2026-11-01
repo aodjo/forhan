@@ -300,33 +300,39 @@ test(
  *
  * Native pointer selection can reach the source DOM before selectionchange
  * updates the immutable editor state. A same-turn End event must use that
- * actual source endpoint rather than the previous model caret on line A.
+ * actual source endpoint rather than the previous model caret on line A or
+ * a preceding whole-document AllSelection. Direct typing without a line-end
+ * command must also retain the genuine collapsed source caret.
  * @async
  * @param {{page:Page}} context - Actual isolated public browser application.
- * @returns {Promise<void>} Resolves after immediate source-edge movement inserts only after line C.
+ * @returns {Promise<void>} Resolves after source navigation and direct typing retain their genuine original caret positions.
  * @throws {Error} If pending browser selection is replaced by an older model position.
  * @example
  * // Pending selection on C followed immediately by End produces ABCX, never AXBC.
  */
 async function verifyPendingLineEnd({page}:{page:Page}):Promise<void>{
+  for(/** Source navigation and direct typing both yield to genuine pending endpoints after whole-document selection. */const scenario of [{wholeDocument:false,useLineEnd:true},{wholeDocument:true,useLineEnd:true},{wholeDocument:true,useLineEnd:false}]){
   await page.goto('/');await loadLines(page,'1.6',[20,10,20]);await page.locator('.tiptap').focus();
+  if(scenario.wholeDocument)await page.keyboard.press('ControlOrMeta+a');
   await page.evaluate(
     /**
      * Queue a genuine source DOM endpoint and its same-turn line-end command.
      *
      * No editor state or source text is injected. The command deliberately
      * precedes the browser's asynchronous selectionchange notification.
+     * @param {boolean} useLineEnd - Whether the same-turn original source edge command precedes typing.
      * @returns {void} Presents the original pending-selection ordering to the real editor handler.
      * @example
      * // Subsequent real browser text input verifies the handler's selected source position.
      */
-    ()=>{
+    useLineEnd=>{
       /** The actual source C text node supplies both unchanged DOM selection endpoints. */
       const root=document.querySelector<HTMLElement>('.tiptap')!,last=root.querySelectorAll('forhan-line')[2],walker=document.createTreeWalker(last,NodeFilter.SHOW_TEXT);
       walker.nextNode();getSelection()!.setBaseAndExtent(walker.currentNode,0,walker.currentNode,0);
-      root.dispatchEvent(new KeyboardEvent('keydown',{key:'End',code:'End',bubbles:true,cancelable:true}));
-    });
-  await page.keyboard.type('X');await expect(page.locator('.tiptap p')).toHaveText('ABCX');
+      if(useLineEnd)root.dispatchEvent(new KeyboardEvent('keydown',{key:'End',code:'End',bubbles:true,cancelable:true}));
+    },scenario.useLineEnd);
+  await page.keyboard.type('X');await expect(page.locator('.tiptap p')).toHaveText(scenario.useLineEnd?'ABCX':'ABXC');
+  }
 }
 
 test('a pending native DOM selection remains authoritative for an immediate source line-end command',verifyPendingLineEnd);

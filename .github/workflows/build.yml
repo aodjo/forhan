@@ -19,6 +19,11 @@ on:
         type: string
         default: ''
         required: false
+      observe_native_keys:
+        description: Retain passive source-key event observations for explicit diagnostics
+        type: boolean
+        default: false
+        required: false
 jobs:
   desktop:
     strategy:
@@ -71,6 +76,7 @@ jobs:
         env:
           PLAYWRIGHT_JSON_OUTPUT_FILE: test-results/platform-report.json
           FORHAN_DIAGNOSTIC_GREP: ${{ inputs.platform_diagnostic_pattern }}
+          FORHAN_KEY_SOURCE_OBSERVE: ${{ inputs.observe_native_keys && '1' || '' }}
       - run: node node_modules/electron-builder/cli.js ${{ matrix.package }} --publish never
         if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
         env:

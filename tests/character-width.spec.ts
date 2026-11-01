@@ -14,16 +14,17 @@ import { contextualInk, contextualPositions, contextualCaret } from "./helpers/c
 const CONTEXTUAL_INK_EDGE_TOLERANCE = 2;
 
 /**
- * Install passive native source ordering observations before each owned page loads.
+ * Enable passive native source ordering observations for explicitly selected diagnostics.
  *
- * Test behavior and expected text remain unchanged across all platform runners.
+ * Normal regression runs preserve their original event timing. Explicit diagnostic
+ * runs retain the same original events and expected text without changing source.
  * @async
  * @param {{page:Page}} context - Current isolated regression renderer.
  * @returns {Promise<void>} Resolves after registering the read-only observer.
  * @example
  * // Actual Command-arrow and subsequent typing share one untouched source trace.
  */
-async function installKeySourceObservation({page}:{page:Page}):Promise<void>{await page.addInitScript(observeNativeKeySource);}
+async function installKeySourceObservation({page}:{page:Page}):Promise<void>{if(process.env.FORHAN_KEY_SOURCE_OBSERVE==='1')await page.addInitScript(observeNativeKeySource);}
 
 /**
  * Preserve genuine source observations after the original assertion outcome.
@@ -35,7 +36,7 @@ async function installKeySourceObservation({page}:{page:Page}):Promise<void>{awa
  * @example
  * // A failed immediate typing assertion retains its preceding real caret endpoints.
  */
-async function attachKeySourceObservation({page}:{page:Page}):Promise<void>{await retainNativeKeySource(page);}
+async function attachKeySourceObservation({page}:{page:Page}):Promise<void>{if(process.env.FORHAN_KEY_SOURCE_OBSERVE==='1')await retainNativeKeySource(page);}
 
 test.beforeEach(installKeySourceObservation);
 test.afterEach(attachKeySourceObservation);
@@ -73,6 +74,14 @@ async function verifyNativeCommandEdges({page}:{page:Page}):Promise<void>{
   await page.keyboard.press('Meta+ArrowDown');await page.keyboard.press('Shift+Meta+ArrowUp');await page.keyboard.type('C');
   expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe('C');
   await page.keyboard.press('ControlOrMeta+z');expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe('MMMMMMMM');
+  /** Independent Unicode source has three graphemes and seven UTF-16 positions. */
+  const joined='A👩‍💻B';
+  await loadWidth(page,50,0,joined);await page.locator('.tiptap').focus();await page.keyboard.press('Meta+ArrowUp');
+  await page.keyboard.press('ArrowRight');expect(await page.locator('.tiptap').evaluate(nativeSourceCaretOffset)).toBe(1);
+  await page.keyboard.press('ArrowRight');expect(await page.locator('.tiptap').evaluate(nativeSourceCaretOffset)).toBe(6);
+  await page.keyboard.press('Shift+ArrowLeft');await page.keyboard.type('X');
+  expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe('AXB');
+  await page.keyboard.press('ControlOrMeta+z');expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe(joined);
 }
 
 test('Command-arrow edges commit native-width source before immediate typing and Shift replacement',verifyNativeCommandEdges);

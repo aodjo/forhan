@@ -8,3 +8,5 @@
 *.ps1 text eol=crlf
 *.png binary
 *.ico binary
+*.hwp binary
+*.hwpx binary

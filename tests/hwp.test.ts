@@ -1,3 +1,4 @@
+import {nativeCorpusFixture} from './helpers/native-corpus.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -505,7 +506,7 @@ test('unknown controls retain complete binary payload with a readable placeholde
   assert.deepEqual(Buffer.from(preserved.attrs.raw.records[0].base64, 'base64'), ctrl);
   assert.equal(result.warnings.length, 1);
 });
-test('Hancom 2024 generated private fixture opens independently when present', { skip: !fs.existsSync('research/fixtures-private/sample.hwp') }, /**
+test('checked-in Hancom 2024 source opens independently',  /**
  * Verify the documented HWP compatibility case.
  *
  * The assertions exercise known fixture input and fail when imported structure, content or protection handling differs.
@@ -516,13 +517,13 @@ test('Hancom 2024 generated private fixture opens independently when present', {
  */
 () => {
   /** Accumulated result for the current parsing operation. */
-  const result = readHwp(fs.readFileSync('research/fixtures-private/sample.hwp'));
+  const result = readHwp(fs.readFileSync(nativeCorpusFixture('sample.hwp')));
   assert.match(texts(result.doc), /포한 호환성 시험/);
   assert.match(texts(result.doc), /한글 문서를 누구나 편집합니다/);
   assert.ok(Math.abs(result.page.width - 210) < 0.1);
   assert.deepEqual(result.warnings, []);
 });
-test('Hancom 2024 generated table fixture uses sequential list headers and 8-byte prefixes', { skip: !fs.existsSync('research/fixtures-private/rich.hwp') }, /**
+test('Hancom 2024 generated table fixture uses sequential list headers and 8-byte prefixes',  /**
  * Verify the documented HWP compatibility case.
  *
  * The assertions exercise known fixture input and fail when imported structure, content or protection handling differs.
@@ -533,7 +534,7 @@ test('Hancom 2024 generated table fixture uses sequential list headers and 8-byt
  */
 () => {
   /** Accumulated result for the current parsing operation. */
-  const result = readHwp(fs.readFileSync('research/fixtures-private/rich.hwp'));
+  const result = readHwp(fs.readFileSync(nativeCorpusFixture('rich.hwp')));
   /** The table value used by the current fixture or parsing operation. */
   const table = result.doc.content.find(/**
    * Evaluate the current parsing callback.
@@ -572,7 +573,7 @@ test('Hancom 2024 generated table fixture uses sequential list headers and 8-byt
   m => m.type === 'textStyle')!.attrs.fontSize, '16pt');
   assert.deepEqual(result.warnings, []);
 });
-test('native merged table retains multi-paragraph cells and per-cell formatting', { skip: !fs.existsSync('research/fixtures-private/table.hwp') }, /**
+test('native merged table retains multi-paragraph cells and per-cell formatting',  /**
  * Verify the documented HWP compatibility case.
  *
  * The assertions exercise known fixture input and fail when imported structure, content or protection handling differs.
@@ -583,7 +584,7 @@ test('native merged table retains multi-paragraph cells and per-cell formatting'
  */
 () => {
   /** Accumulated result for the current parsing operation. */
-  const result = readHwp(fs.readFileSync('research/fixtures-private/table.hwp'));
+  const result = readHwp(fs.readFileSync(nativeCorpusFixture('table.hwp')));
   /** The table value used by the current fixture or parsing operation. */
   const table = result.doc.content.find(/**
    * Evaluate the current parsing callback.
@@ -763,7 +764,7 @@ test('embedded picture resolves BinData reference and forced compression without
   assert.equal(image.attrs.width, 100); assert.equal(image.attrs.height, 50);
   assert.deepEqual(result.warnings, []);
 });
-test('native Hancom embedded image matches original PNG bytes and dimensions', { skip: !fs.existsSync('research/fixtures-private/image.hwp') || !fs.existsSync('research/fixtures-private/pattern.png') }, /**
+test('native Hancom embedded image matches original PNG bytes and dimensions',  /**
  * Verify the documented HWP compatibility case.
  *
  * The assertions exercise known fixture input and fail when imported structure, content or protection handling differs.
@@ -774,7 +775,7 @@ test('native Hancom embedded image matches original PNG bytes and dimensions', {
  */
 () => {
   /** Accumulated result for the current parsing operation. */
-  const result = readHwp(fs.readFileSync('research/fixtures-private/image.hwp'));
+  const result = readHwp(fs.readFileSync(nativeCorpusFixture('image.hwp')));
   /** The image value used by the current fixture or parsing operation. */
   const image = result.doc.content.find(/**
    * Evaluate the current parsing callback.
@@ -787,7 +788,7 @@ test('native Hancom embedded image matches original PNG bytes and dimensions', {
    */
   n => n.type === 'image')!;
   assert.equal(image.attrs.width, 32); assert.equal(image.attrs.height, 16);
-  assert.equal(Buffer.compare(Buffer.from(image.attrs.src.split(',')[1], 'base64'), fs.readFileSync('research/fixtures-private/pattern.png')), 0);
+  assert.equal(Buffer.compare(Buffer.from(image.attrs.src.split(',')[1], 'base64'), fs.readFileSync(nativeCorpusFixture('pattern.png'))), 0);
   assert.match(texts(result.doc), /이미지 앞 문단/);
   assert.deepEqual(result.warnings, []);
 });

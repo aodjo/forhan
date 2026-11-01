@@ -1,3 +1,4 @@
+import { nativeCorpusFixture } from "./helpers/native-corpus.ts";
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -78,15 +79,13 @@ test(
  */
 function verifyNativeHeaderFooterAreas(): void {
   /** Native Hancom-authored geometry read without a runtime Hancom dependency. */
-  const result = readHwp(
-    fs.readFileSync("research/fixtures-private/sample.hwp"),
-  );
+  const result = readHwp(fs.readFileSync(nativeCorpusFixture("sample.hwp")));
   assert.ok(Math.abs((result.page.header || 0) - 15) < 0.02);
   assert.ok(Math.abs((result.page.footer || 0) - 15) < 0.02);
 }
 test(
   "native authored HWP retains real 15mm header and footer areas",
-  { skip: !fs.existsSync("research/fixtures-private/sample.hwp") },
+
   verifyNativeHeaderFooterAreas,
 );
 
@@ -183,11 +182,7 @@ test(
  */
 function verifyHwpWriterCase3(): void {
   /** Constructed bytes, editor nodes or parsed result for the current serialization step. */
-  const result = readHwp(
-    fs.readFileSync(
-      "research/fixtures-private/forhan-lists-hancom-resaved-hwp-native-lists-native.hwp",
-    ),
-  );
+  const result = readHwp(fs.readFileSync(nativeCorpusFixture("lists.hwp")));
   assert.equal(result.doc.content?.[0].type, "bulletList");
   assert.equal(result.doc.content?.[0].content?.length, 2);
   assert.equal(result.doc.content?.[1].type, "orderedList");
@@ -196,11 +191,6 @@ function verifyHwpWriterCase3(): void {
 }
 test(
   "native authored bullets and numbering become explicit editor list containers",
-  {
-    skip: !fs.existsSync(
-      "research/fixtures-private/forhan-lists-hancom-resaved-hwp-native-lists-native.hwp",
-    ),
-  },
 
   verifyHwpWriterCase3,
 );
@@ -382,7 +372,7 @@ test(
 function verifyHwpWriterCase6(): void {
   /** Embedded raster data URL or independently imported source fixture. */
   const source = readHwp(
-    fs.readFileSync("research/fixtures-private/hyperlink-native.hwp"),
+    fs.readFileSync(nativeCorpusFixture("hyperlink-native.hwp")),
   );
   /** Source linked used by the current native serialization step. */
   const linked = source.doc.content?.[0].content?.find(
@@ -429,7 +419,6 @@ function verifyHwpWriterCase6(): void {
 }
 test(
   "native hyperlink source imports as an editable link rather than an opaque object",
-  { skip: !fs.existsSync("research/fixtures-private/hyperlink-native.hwp") },
 
   verifyHwpWriterCase6,
 );
@@ -966,9 +955,7 @@ test(
  */
 function verifyHwpWriterCase15(): void {
   /** Embedded raster data URL or independently imported source fixture. */
-  const source = readHwp(
-    fs.readFileSync("research/fixtures-private/table.hwp"),
-  );
+  const source = readHwp(fs.readFileSync(nativeCorpusFixture("table.hwp")));
   /** Constructed bytes, editor nodes or parsed result for the current serialization step. */
   const result = readHwp(writeHwp({ doc: source.doc, page: source.page }));
   assert.equal(textOf(result.doc), textOf(source.doc));
@@ -980,7 +967,6 @@ function verifyHwpWriterCase15(): void {
 }
 test(
   "native authored merged table survives independent HWP rewriting",
-  { skip: !fs.existsSync("research/fixtures-private/table.hwp") },
 
   verifyHwpWriterCase15,
 );
@@ -995,9 +981,7 @@ test(
  */
 function verifyHwpWriterCase16(): void {
   /** Embedded raster data URL or independently imported source fixture. */
-  const source = readHwp(
-    fs.readFileSync("research/fixtures-private/image.hwp"),
-  );
+  const source = readHwp(fs.readFileSync(nativeCorpusFixture("image.hwp")));
   /** Constructed bytes, editor nodes or parsed result for the current serialization step. */
   const result = readHwp(writeHwp({ doc: source.doc, page: source.page }));
   assert.equal(
@@ -1030,7 +1014,6 @@ function verifyHwpWriterCase16(): void {
 }
 test(
   "native authored embedded PNG survives independent HWP rewriting",
-  { skip: !fs.existsSync("research/fixtures-private/image.hwp") },
 
   verifyHwpWriterCase16,
 );

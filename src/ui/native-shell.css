@@ -811,7 +811,7 @@ svg.native-icon {
   margin: 0 0 0 28px;
   /* Native framing and workspace gaps scale with the document, while borders retain viewport-pixel thickness. */
   padding: 0 max(0px, calc(12px * var(--native-zoom, 1.25) - 1px))
-    max(0px, calc(16px * var(--native-zoom, 1.25) - 1px));
+    calc(max(0px, 16px * var(--native-zoom, 1.25) - 1px) + var(--native-page-bottom-extra, 0px));
   background: #f5f5f5;
   scrollbar-gutter: stable;
   scrollbar-width: auto;

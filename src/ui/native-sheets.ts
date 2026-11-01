@@ -2,7 +2,7 @@ import type {PageSettings} from '../types.ts';
 import {nativeDocumentZoom,NATIVE_UNITS_PER_CSS_PIXEL,type NativeParagraphLayout} from '../native-line-layout.ts';
 import {planNativeDocumentPages,type NativeDocumentPages} from '../native-page-layout.ts';
 import {snapNativePageDistance} from '../native-pagination.ts';
-import {projectNativePages,readNativePageView,type NativePageProjection} from './native-page-view.ts';
+import {NATIVE_PAGE_VIEW_GAP,projectNativePages,readNativePageView,type NativePageProjection} from './native-page-view.ts';
 
 /** Browser layout retains one sixty-fourth of an effective zoomed CSS pixel. */
 const SHEET_LAYOUT_QUANTUM=1/64;
@@ -18,6 +18,7 @@ export interface NativeEditableSheets {
   stride:number;
   height:number;
   border:number;
+  bottomInset:number;
   projection:NativePageProjection;
 }
 
@@ -86,7 +87,9 @@ export function measureNativeSheets(root:HTMLElement,plans:NativeParagraphLayout
     const last=rows[rows.length-1],end=origin+last.page*stride+(last.top+last.advance+snapNativePageDistance(source.after,source.snap?(page.lineGrid??0):0))/NATIVE_UNITS_PER_CSS_PIXEL;
     plan.height=Math.max(0,quantize(end-top-after));correction+=plan.height-box.height/zoom;
   }
-  return {paper,pages,stride,height,border,projection};
+  /** Native low-scale manual views center against half the excess source gap below the workspace. */
+  const bottomInset=paper.dataset.nativeFit?0:Math.max(0,projection.strideY-pages.paper.height/NATIVE_UNITS_PER_CSS_PIXEL-NATIVE_PAGE_VIEW_GAP)/2;
+  return {paper,pages,stride,height,border,bottomInset,projection};
 }
 
 /**
@@ -105,8 +108,9 @@ export function renderNativeSheets(root:HTMLElement,sheets:NativeEditableSheets|
   /** Only the real application editor can own editable physical paper chrome. */
   const paper=root.closest<HTMLElement>('#paper');if(!paper||root.parentElement?.id!=='editor')return;
   /** Existing owned chrome is independent of document model and source content. */
-  const existing=paper.querySelector<HTMLElement>(':scope > .native-sheet-backgrounds');
+  const existing=paper.querySelector<HTMLElement>(':scope > .native-sheet-backgrounds'),canvas=paper.closest<HTMLElement>('.canvas');
   if(!sheets){
+    if(canvas?.style.getPropertyValue('--native-page-bottom-extra'))canvas.style.removeProperty('--native-page-bottom-extra');
     if(existing)existing.remove();
     if(paper.classList.contains('native-paged-paper'))paper.classList.remove('native-paged-paper');
     if(paper.classList.contains('native-grid-paper'))paper.classList.remove('native-grid-paper');
@@ -115,6 +119,9 @@ export function renderNativeSheets(root:HTMLElement,sheets:NativeEditableSheets|
     if(paper.style.getPropertyValue('--native-sheets-height'))paper.style.removeProperty('--native-sheets-height');
     return;
   }
+  /** Workspace padding changes only view centering; authored page geometry and history remain intact. */
+  const bottomExtra=`${sheets.bottomInset*nativeDocumentZoom(root)}px`;
+  if(canvas&&canvas.style.getPropertyValue('--native-page-bottom-extra')!==bottomExtra)canvas.style.setProperty('--native-page-bottom-extra',bottomExtra);
   /** Background identity also includes page dimensions, so orientation changes refresh every sheet. */
   const count=sheets.pages.layout.pages.length,view=readNativePageView(paper),grid=view.shape!=='single'||view.direction!=='vertical',cells=JSON.stringify(sheets.projection.cells),key=[count,sheets.stride,sheets.pages.paper.width,sheets.pages.paper.height,sheets.border,paper.dataset.nativeFit??'',grid,cells].join(':'),
     backgrounds=existing??paper.ownerDocument.createElement('div');

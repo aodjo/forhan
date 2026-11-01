@@ -163,6 +163,23 @@
   line-height: 18px;
 }
 .native-dialog-zoom .nz-wheel input { margin: 0; }
+.native-dialog-zoom .nz-wheel input:focus { outline: none; }
+.native-dialog-zoom .nz-wheel span { position: relative; }
+/** Original native focus uses two gray pixels per three-pixel period around the label. */
+.native-dialog-zoom .nz-wheel input:focus + span::after {
+  content: "";
+  position: absolute;
+  inset: 0 -4px 0 -3px;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, #acacac 0 2px, transparent 2px 3px),
+    linear-gradient(to right, #acacac 0 2px, transparent 2px 3px),
+    linear-gradient(to bottom, #acacac 0 2px, transparent 2px 3px),
+    linear-gradient(to bottom, #acacac 0 2px, transparent 2px 3px);
+  background-size: 3px 1px, 3px 1px, 1px 3px, 1px 3px;
+  background-position: left top, left bottom, left -1px, right -1px;
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+}
 .native-dialog-zoom .nz-wheel:has(:disabled) { color: #a8b2ba; }
 .native-dialog-zoom .nz-quick-help,
 .native-dialog-zoom .nz-help {

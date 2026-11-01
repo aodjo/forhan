@@ -3,6 +3,12 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      standalone_layout_diagnostics:
+        description: Run the failing standalone layout cases and retain renderer traces
+        type: boolean
+        default: false
+        required: false
 jobs:
   desktop:
     strategy:
@@ -35,13 +41,27 @@ jobs:
       - run: npx playwright install chromium
       - run: npm run build
       - run: npm run test:ui
+        if: ${{ !inputs.standalone_layout_diagnostics }}
+      - name: Run focused standalone layout diagnostics
+        if: ${{ inputs.standalone_layout_diagnostics }}
+        run: npx playwright test native-body-grid-origin.spec.ts paragraph-line-grid.spec.ts print-layout.spec.ts --grep "standalone|share document layout" --reporter=line,json
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_FILE: test-results/layout-report.json
       - run: node node_modules/electron-builder/cli.js ${{ matrix.package }} --publish never
+        if: ${{ !inputs.standalone_layout_diagnostics }}
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: false
           CSC_FOR_PULL_REQUEST: true
       - run: npm run test:packaged -- --platform ${{ matrix.platform }} --arch ${{ matrix.arch }}
+        if: ${{ !inputs.standalone_layout_diagnostics }}
       - uses: actions/upload-artifact@v4
         if: always()
+        with:
+          name: Forhan-renderer-${{ matrix.platform }}-${{ matrix.arch }}
+          path: test-results/
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() && !inputs.standalone_layout_diagnostics }}
         with:
           name: Forhan-validation-${{ matrix.platform }}-${{ matrix.arch }}
           path: |
@@ -49,6 +69,7 @@ jobs:
             test-results/packaged/
           if-no-files-found: warn
       - uses: actions/upload-artifact@v4
+        if: ${{ !inputs.standalone_layout_diagnostics }}
         with:
           name: Forhan-${{ matrix.platform }}-${{ matrix.arch }}
           path: |

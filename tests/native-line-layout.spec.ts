@@ -494,9 +494,12 @@ function hebrewLineGeometry(paragraph:HTMLElement):{height:number;baselines:numb
     const node=walker.currentNode as Text,
       style=getComputedStyle(node.parentElement!),
       range=document.createRange();
-    range.selectNodeContents(node);
     context.font=`${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
-    baselines.push((range.getBoundingClientRect().top-box.top)/zoom+context.measureText(node.data).fontBoundingBoxAscent);
+    let offset=0;
+    for(/** Each Unicode source glyph is observed independently of platform-dependent text-node segmentation. */const glyph of node.data){
+      range.setStart(node,offset);offset+=glyph.length;range.setEnd(node,offset);
+      baselines.push((range.getBoundingClientRect().top-box.top)/zoom+context.measureText(glyph).fontBoundingBoxAscent);
+    }
   }
   return{height:box.height/zoom,baselines};
 }

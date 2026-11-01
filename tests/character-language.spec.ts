@@ -1,3 +1,4 @@
+import {DOCUMENT_START_KEY} from './helpers/native-keyboard.ts';
 import { test, expect, type PlaywrightTestArgs } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import { characterMetrics } from "../src/character-metrics";
@@ -71,7 +72,7 @@ async function verifyLanguageDialog({
   await expect(
     page.locator('.tiptap [data-forhan-character-language="1"]'),
   ).toHaveCSS("font-family", "Arial");
-  await page.locator(".tiptap").press("ControlOrMeta+Home");
+  await page.locator(".tiptap").press(DOCUMENT_START_KEY);
   await page.locator(".tiptap").press("ArrowRight");
   await page.locator(".tiptap").pressSequentially("B");
   await expect(

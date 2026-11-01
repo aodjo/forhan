@@ -3,7 +3,7 @@ import {mkdtemp,mkdir,readFile,writeFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {createHash,randomUUID} from 'node:crypto';
 import path from 'node:path';
-import {desktopLaunchOptions} from './helpers/desktop-launch.ts';
+import {desktopLaunchOptions,closeOwnedDesktop} from './helpers/desktop-launch.ts';
 import {saveDesktopOutput} from './helpers/native-output.ts';
 import {observePdf} from './helpers/pdf.ts';
 import {verifyNativePaginationPdf} from './helpers/native-pagination.ts';
@@ -58,7 +58,7 @@ async function verifyNativeRelativeShading():Promise<void>{
     /** A packaged observation binds every completed output to the actual running archive. */
     const hashes=identity.packaged?{executableSha256:createHash('sha256').update(await readFile(identity.executable)).digest('hex'),archiveSha256:createHash('sha256').update(await readFile(identity.application)).digest('hex')}:{};
     await writeFile(path.join(outputRoot,'run.json'),JSON.stringify({kind:'actual-native-relative-glyph-and-base-font-shade-PDF-observation-not-REA',identity,...hashes,records},null,2)+'\n');
-  }finally{await desktop.close();await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:200});}
+  }finally{await closeOwnedDesktop(desktop);await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:200});}
 }
 
 test('four original native font conditions preserve physical PDF glyphs and base-font shade edges',verifyNativeRelativeShading);

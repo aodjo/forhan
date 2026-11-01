@@ -1,3 +1,4 @@
+import {DOCUMENT_START_KEY} from './helpers/native-keyboard.ts';
 import { test, expect, type PlaywrightTestArgs } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import { readHwp } from "../src/formats/hwp";
@@ -110,7 +111,7 @@ async function verifyLinkNavigation({ page }: PlaywrightTestArgs): Promise<void>
   const buffer = Buffer.from(JSON.stringify({ application: 'forhan', version: 1, title: '링크 탐색', doc: { type: 'doc', content: [{ type: 'paragraph', content: [{ type: 'text', text: '첫째', marks: [{ type: 'link', attrs: { href: 'https://example.com/first' } }, { type: 'bold' }] }, { type: 'text', text: ' 링크', marks: [{ type: 'link', attrs: { href: 'https://example.com/first' } }, { type: 'italic' }] }, { type: 'text', text: ' 그리고 ' }, { type: 'text', text: '둘째', marks: [{ type: 'link', attrs: { href: 'https://example.com/second' } }] }] }] } }));
   await page.locator('#file-input').setInputFiles({ name: '탐색.forhan', mimeType: 'application/json', buffer });
   await expect(page.locator('.tiptap')).toContainText('첫째 링크 그리고 둘째');
-  await page.locator('.tiptap').press('ControlOrMeta+Home');
+  await page.locator('.tiptap').press(DOCUMENT_START_KEY);
   await page.locator('button[data-native-tab="input"]').click();
   for (/** Command and expected target visited from the current selection. */ const [command, target] of [['hyperlink-next', 'second'], ['hyperlink-previous', 'first'], ['hyperlink-previous', 'second']]) {
     await page.locator(`#native-ribbon [data-native-action="${command}"]`).click();

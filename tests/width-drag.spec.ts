@@ -1,3 +1,4 @@
+import {DOCUMENT_START_KEY} from './helpers/native-keyboard.ts';
 import { test, expect, type Page } from "@playwright/test";
 import type { JSONContent } from "@tiptap/core";
 import { readFile } from "node:fs/promises";
@@ -597,7 +598,7 @@ async function verifyDragCancellation({ page }: { page: Page }): Promise<void> {
   ]);
   await page.mouse.move(1300, 850, { steps: 4 });
   await page.mouse.up();
-  await page.locator(".tiptap").press("ControlOrMeta+Home");
+  await page.locator(".tiptap").press(DOCUMENT_START_KEY);
   await page.keyboard.type("R");
   expect(dragText(await saveDrag(page))).toBe("R새 문서 원문");
   expect(errors).toEqual([]);

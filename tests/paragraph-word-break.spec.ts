@@ -1,6 +1,7 @@
 import {
   WORD_BREAK_SOURCE,
   actualWordBreakLines,
+  attachWordBreakFonts,
 } from "./helpers/paragraph-word-break.ts";
 import { test, expect, type Page } from "@playwright/test";
 import { readFile } from "node:fs/promises";
@@ -148,6 +149,7 @@ async function wordBreakExport(page: Page, format: string): Promise<Buffer> {
 async function verifyWordBreakDialog({ page }: { page: Page }): Promise<void> {
   test.setTimeout(90000);
   await openWordBreakSource(page);
+  await attachWordBreakFonts(page);
   /** Real source measurements distinguish native character, word and hyphen modes. */
   const observed: Array<{ latin: number; nonLatin: number; lines: string[] }> =
     [];

@@ -1,3 +1,4 @@
+import {DOCUMENT_START_KEY} from './helpers/native-keyboard.ts';
 import { test, expect, type Page } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import {createHash} from 'node:crypto';
@@ -316,7 +317,7 @@ async function verifyWidthEditing({ page }: { page: Page }): Promise<void> {
   const half = await page.locator(".tiptap").evaluate(widthGeometry);
   expect(half.width / baseline.width).toBeCloseTo(0.5, 2);
   expect(half.height).toBeCloseTo(baseline.height, 3);
-  await page.locator(".tiptap").press("ControlOrMeta+Home");
+  await page.locator(".tiptap").press(DOCUMENT_START_KEY);
   await page.locator(".tiptap").press("ArrowRight");
   await page.locator(".tiptap").pressSequentially("C");
   /** One real typed character changes the authored source and never edits drawing text. */
@@ -778,7 +779,7 @@ async function verifyContextualEffects({page}:{page:Page}):Promise<void>{
   await expect(page.locator('.tiptap svg g[data-emphasis-kind="1"]')).not.toHaveCount(0);
   await page.locator('.tiptap').press('ControlOrMeta+a');
   await expect(glyph).toHaveAttribute('stroke','#ffffff');await expect(glyph).toHaveCSS('text-shadow','none');
-  await page.locator('.tiptap').press('ControlOrMeta+Home');await expect(glyph).toHaveCSS('text-shadow',/192, 0, 0/);
+  await page.locator('.tiptap').press(DOCUMENT_START_KEY);await expect(glyph).toHaveCSS('text-shadow',/192, 0, 0/);
   for(
     /** Both native formats are inspected independently after their real GUI output path. */
     const format of ['hwp','hwpx'] as const
@@ -1025,7 +1026,7 @@ async function verifyHebrewWidth({page}:{page:Page}):Promise<void> {
   await page.locator('#file-input').setInputFiles({name:'hebrew-width.html',mimeType:'text/html',buffer:html});
   await expect(page.locator('#toast')).toContainText('hebrew-width.html');
   await expect(page.locator('.tiptap svg text[direction="rtl"]')).toHaveCount(5);
-  await page.locator('.tiptap').press('ControlOrMeta+Home');
+  await page.locator('.tiptap').press(DOCUMENT_START_KEY);
   await page.keyboard.type('X');
   /** Source output proves keyboard input remains outside the inaccessible RTL drawing. */
   const edited=JSON.parse((await saveWidth(page,'forhan')).toString('utf8'));

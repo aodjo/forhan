@@ -1,3 +1,4 @@
+import {DOCUMENT_START_KEY} from './native-keyboard.ts';
 import {expect,type Page} from '@playwright/test';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import path from 'node:path';
@@ -45,7 +46,7 @@ export async function exerciseNativePaperFrames(page:Page,resize:NativeViewportR
     for(/** Every original viewport condition exercises actual native document zoom and window geometry. */const frame of group.frames){
       await resize(frame.width,frame.height);
       await page.locator('#zoom-reset').click();await page.locator('[name="native-zoom-mode"][value="custom"]').check();await page.locator('#native-zoom-value').fill(String(frame.zoom));await page.locator('[data-modal-value="apply"]').click();
-      await expect(page.locator('#zoom-reset')).toHaveText(frame.zoom+'%');await page.locator('.tiptap').press('ControlOrMeta+Home');await page.keyboard.press('ArrowRight');
+      await expect(page.locator('#zoom-reset')).toHaveText(frame.zoom+'%');await page.locator('.tiptap').press(DOCUMENT_START_KEY);await page.keyboard.press('ArrowRight');
       /** Real source and original frame pixels establish completion independently from layout metadata. */
       const observed=await verifyNativePaperFrame(page,frame),file=path.join(outputRoot,name+'-'+frame.height+'-'+frame.zoom+'.png');
       await writeFile(file,observed.png);expect(await page.locator('.tiptap').textContent()).toBe(group.sourceRows.join(''));
@@ -77,14 +78,14 @@ export async function exerciseNativePaperResize(page:Page,resize:NativeViewportR
   expect(group).toBeDefined();
   await resize(1440,960);await page.locator('#file-input').setInputFiles({name:'resize-only-native.fhn',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({application:'forhan',version:1,page:group!.page,doc:group!.doc}))});
   await expect(page.locator('#toast')).toContainText('resize-only-native');await page.locator('#zoom-reset').click();await page.locator('[name="native-zoom-mode"][value="custom"]').check();await page.locator('#native-zoom-value').fill('50');await page.locator('[data-modal-value="apply"]').click();
-  await page.locator('.tiptap').press('ControlOrMeta+Home');await page.keyboard.press('ArrowRight');
+  await page.locator('.tiptap').press(DOCUMENT_START_KEY);await page.keyboard.press('ArrowRight');
   for(/** No zoom, source update or focus action may hide stale native raster alignment after a genuine resize. */const height of [841,960,961,840,960]){
     let original;
     for(/** Exact independent observations supply each requested original window condition. */const frame of group!.frames)if(frame.zoom===50&&frame.height===height)original=frame;
     expect(original).toBeDefined();await resize(1440,height);await verifyNativePaperFrame(page,original!,true);
   }
   await page.locator('#zoom-reset').click();await page.locator('[name="native-zoom-mode"][value="custom"]').check();await page.locator('#native-zoom-value').fill('125');await page.locator('[data-modal-value="apply"]').click();
-  await page.locator('.tiptap').press('ControlOrMeta+Home');await page.keyboard.press('ArrowRight');await page.keyboard.press('ArrowRight');await page.keyboard.press('ArrowRight');await page.keyboard.press('ArrowDown');
+  await page.locator('.tiptap').press(DOCUMENT_START_KEY);await page.keyboard.press('ArrowRight');await page.keyboard.press('ArrowRight');await page.keyboard.press('ArrowRight');await page.keyboard.press('ArrowDown');
   expect(await page.locator('.tiptap').evaluate(nativeSourceCaretOffset)).toBe(9);
   await resize(1200,960);await page.locator('.tiptap').press('ArrowDown');
   expect(await page.locator('.tiptap').evaluate(nativeSourceCaretOffset)).toBe(13);

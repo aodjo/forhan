@@ -1,3 +1,4 @@
+import {DOCUMENT_END_KEY} from './native-keyboard.ts';
 import {expect,type Page} from '@playwright/test';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -81,6 +82,6 @@ export async function exerciseNativeZoomFieldAccessKeys(page:Page,outputRoot:str
   await page.locator('#zoom-reset').click();await page.locator('[name="native-zoom-mode"][value="custom"]').check();
   await page.locator('[data-modal-value="cancel"]').focus();await page.keyboard.press('Alt+u');await page.keyboard.type('137');
   await page.locator('[data-modal-value="cancel"]').click();await expect(page.locator('#zoom-reset')).toHaveText('151%');
-  await page.locator('.tiptap').press('ControlOrMeta+End');await page.keyboard.type('Z');await expect(page.locator('.tiptap')).toContainText('Z');
+  await page.locator('.tiptap').press(DOCUMENT_END_KEY);await page.keyboard.type('Z');await expect(page.locator('.tiptap')).toContainText('Z');
   await page.keyboard.press('ControlOrMeta+z');expect(await page.locator('.tiptap').textContent()).toBe(source);expect(records).toHaveLength(14);return records;
 }

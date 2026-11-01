@@ -1,4 +1,4 @@
-import {expect,type Page} from '@playwright/test';
+import {expect,test,type Page} from '@playwright/test';
 import type {JSONContent} from '@tiptap/core';
 import type {PageSettings} from '../../src/types.ts';
 import {nativePaperPixels,type NativePaperPixels} from './native-paper-pixels.ts';
@@ -39,7 +39,7 @@ export interface NativePaperViewportGroup {
  */
 export async function verifyNativePaperFrame(page:Page,frame:NativePaperViewportFrame,shades=false):Promise<{png:Buffer;pixels:NativePaperPixels}>{
   let png:Buffer|undefined,pixels:NativePaperPixels|undefined;
-  await expect(
+  try{await expect(
     /**
      * Read a fresh actual frame after dependent native layout updates settle.
      *
@@ -69,6 +69,11 @@ export async function verifyNativePaperFrame(page:Page,frame:NativePaperViewport
         }
       }
     }).toPass({timeout:5000,intervals:[16,32,64,100]});
+  }catch(error){
+    if(png)await test.info().attach('actual-paper-frame',{body:png,contentType:'image/png'});
+    await test.info().attach('actual-paper-observation',{body:JSON.stringify({actual:pixels,expected:frame},null,2),contentType:'application/json'});
+    throw error;
+  }
   return{png:png!,pixels:pixels!};
 }
 

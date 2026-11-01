@@ -1,3 +1,4 @@
+import {DOCUMENT_START_KEY} from './helpers/native-keyboard.ts';
 import { test, expect, type PlaywrightTestArgs } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import { readHwp } from "../src/formats/hwp";
@@ -199,7 +200,7 @@ async function verifyMixedCharacterMetrics({
     mimeType: "application/json",
     buffer: Buffer.from(JSON.stringify(payload)),
   });
-  await page.locator(".tiptap").press("ControlOrMeta+Home");
+  await page.locator(".tiptap").press(DOCUMENT_START_KEY);
   await page.locator(".tiptap").press("ArrowRight");
   await page.locator(".tiptap").pressSequentially("C");
   await expect(
@@ -328,7 +329,7 @@ async function verifyInheritedCharacterBase({
         mimeType: "text/html",
         buffer: bytes,
       });
-      await page.locator(".tiptap").press("ControlOrMeta+Home");
+      await page.locator(".tiptap").press(DOCUMENT_START_KEY);
       await expect(page.locator(".tiptap h1 span")).toHaveCSS(
         "font-size",
         "25.6px",

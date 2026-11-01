@@ -1,3 +1,4 @@
+import {DOCUMENT_START_KEY} from './helpers/native-keyboard.ts';
 import {test,expect,type Page} from '@playwright/test';
 import {readFile} from 'node:fs/promises';
 import {nativeShadePixels,type NativeShadePixelBox} from './helpers/native-shade-pixels.ts';
@@ -49,7 +50,7 @@ async function verifyNativeShadeFrames({page}:{page:Page}):Promise<void>{
     expect(row.nativeHwpSha256).toBe(frame.sourceSha256);
     await page.locator('#file-input').setInputFiles({name:row.id+'.fhn',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({application:'forhan',version:1,page:row.source.page,doc:row.doc}))});
     await expect(page.locator('#toast')).toContainText(row.id);await verifyEditableSheetCase(page,row);
-    await page.locator('.tiptap').press('ControlOrMeta+Home');
+    await page.locator('.tiptap').press(DOCUMENT_START_KEY);
     if(frame.name==='boundary')for(let line=0;line<20;line++)await page.keyboard.press('ArrowDown');
     await expect(
       /**

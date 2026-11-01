@@ -1,3 +1,4 @@
+import {DOCUMENT_START_KEY,DOCUMENT_END_KEY} from './native-keyboard.ts';
 import {expect,type Page} from '@playwright/test';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import path from 'node:path';
@@ -67,7 +68,7 @@ export async function exerciseNativeFitFrames(page:Page,resize:NativeViewportRes
          * // A changed viewport must expose the original native percentage.
          */
         async()=>nativeFitPercentage(page)).toBe(frame.zoom);
-      await page.locator('.tiptap').press('ControlOrMeta+Home');await page.keyboard.press('ArrowRight');
+      await page.locator('.tiptap').press(DOCUMENT_START_KEY);await page.keyboard.press('ArrowRight');
       /** Exact source-colored and paper pixels are decoded from a complete actual screenshot. */
       const observed=await verifyNativePaperFrame(page,frame),file=path.join(outputRoot,name+'-'+frame.mode+'-'+frame.step+'.png');
       await writeFile(file,observed.png);expect(await page.locator('.tiptap').textContent()).toBe(group.sourceRows.join(''));
@@ -152,7 +153,7 @@ export async function exerciseNativeFitBehavior(page:Page,resize:NativeViewportR
      * // Undo restores landscape width fitting at 120 percent.
      */
     async()=>nativeFitPercentage(page)).toBe(120);
-  await page.locator('.tiptap').press('ControlOrMeta+End');await page.keyboard.type('fit-source-check');
+  await page.locator('.tiptap').press(DOCUMENT_END_KEY);await page.keyboard.type('fit-source-check');
   await page.locator('.native-statusbar [data-native-action="fit-page"]').click();await resize(1200,1000);
   await page.locator('.tiptap').press('ControlOrMeta+z');expect(await page.locator('.tiptap').textContent()).toBe(original);
   await expect(page.locator('#zoom-reset')).toHaveText('쪽 맞춤');

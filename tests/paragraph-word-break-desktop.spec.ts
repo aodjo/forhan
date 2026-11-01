@@ -18,6 +18,7 @@ import { desktopLaunchOptions } from "./helpers/desktop-launch.ts";
 import {
   WORD_BREAK_SOURCE,
   actualWordBreakLines,
+  attachWordBreakFonts,
 } from "./helpers/paragraph-word-break.ts";
 import { contextualSourceText } from "./helpers/contextual-width.ts";
 import { readHwp } from "../src/formats/hwp.ts";
@@ -126,6 +127,7 @@ async function verifyDesktopWordBreaking(): Promise<void> {
       ),
     });
     await expect(page.locator("#toast")).toContainText("배포 줄 나눔.fhn");
+    await attachWordBreakFonts(page);
     await page.locator(".tiptap p").click();
     for (/** Every independent native non-Latin choice is exercised in the real modal. */ const nonLatin of [
       0, 1,

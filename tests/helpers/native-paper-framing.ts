@@ -1,3 +1,4 @@
+import {DOCUMENT_START_KEY} from './native-keyboard.ts';
 import {expect,type Page} from '@playwright/test';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -41,7 +42,7 @@ export async function exerciseNativePaperFraming(page:Page,resize:NativeViewport
     await page.locator('#zoom-reset').click();await page.locator('[name="native-page-shape"][value="two"]').check();
     await page.locator('[name="native-page-direction"][value="vertical"]').check();await page.locator('[name="native-zoom-mode"][value="custom"]').check();
     await page.locator('#native-zoom-value').fill(String(frame.ratio));await page.locator('[data-modal-value="apply"]').click();
-    await page.locator('.tiptap').press('ControlOrMeta+Home');await page.keyboard.press('ArrowRight');
+    await page.locator('.tiptap').press(DOCUMENT_START_KEY);await page.keyboard.press('ArrowRight');
     let completed:Buffer|undefined;
     await expect(
       /**

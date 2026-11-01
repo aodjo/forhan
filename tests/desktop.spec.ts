@@ -1,3 +1,4 @@
+import {DOCUMENT_END_KEY} from './helpers/native-keyboard.ts';
 import {
   test,
   expect,
@@ -708,7 +709,7 @@ async function verifyPaginatedPreview(): Promise<void> {
   const buffer = Buffer.from(JSON.stringify({ application: 'forhan', version: 1, title: '두 쪽 미리 보기', doc: { type: 'doc', content: [{type:'paragraph',content:[{type:'text',text:'첫째 쪽'}]},{type:'pageBreak'},{type:'paragraph',content:[{type:'text',text:'둘째 쪽'}]}] } }));
   await window.locator('#file-input').setInputFiles({ name: '두 쪽.forhan', mimeType: 'application/json', buffer });
   await expect(window.locator('.tiptap')).toContainText('둘째 쪽');
-  await window.locator('.tiptap').press('ControlOrMeta+End');
+  await window.locator('.tiptap').press(DOCUMENT_END_KEY);
   await window.keyboard.insertText(' 수정');
   /** Dirty-state caption captured before generating the independent snapshot. */
   const before = await window.locator('#save-state').textContent();
@@ -738,7 +739,7 @@ async function verifyPaginatedPreview(): Promise<void> {
   const pdf = await readFile(file);
   expect(pdf.subarray(0,5).toString()).toBe('%PDF-');
   expect(pdf.toString('latin1').match(/\/Type\s*\/Page\b/g)).toHaveLength(2);
-  await window.locator('.tiptap').press('ControlOrMeta+End');
+  await window.locator('.tiptap').press(DOCUMENT_END_KEY);
   await window.keyboard.insertText(' 이후 변경');
   expect(await readFile(file)).toEqual(pdf);
   /**

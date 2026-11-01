@@ -3,7 +3,7 @@ import {mkdtemp,mkdir,readFile,writeFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {createHash,randomUUID} from 'node:crypto';
 import path from 'node:path';
-import {desktopLaunchOptions} from './helpers/desktop-launch.ts';
+import {desktopLaunchOptions,resizeOwnedDesktop} from './helpers/desktop-launch.ts';
 import {exerciseNativePageViewFrames,exerciseNativeZoomBehavior} from './helpers/native-page-view-scenarios.ts';
 import {exerciseNativeZoomFieldAccessKeys} from './helpers/native-zoom-accesskeys.ts';
 
@@ -55,18 +55,7 @@ async function verifyDesktopNativePageView():Promise<void>{
      * await resize(1440,960);
      */
     const resize=async(width:number,height:number):Promise<void>=>{
-      await desktop.evaluate(
-        /**
-         * Apply actual owned native content dimensions.
-         *
-         * Only this generated application's window is resized; no expected source position is injected.
-         * @param {typeof import('electron')} context - Actual selected native exports.
-         * @param {{width:number;height:number}} size - Requested native viewport dimensions.
-         * @returns {void} Applies real physical viewport dimensions.
-         * @example
-         * // Native resize observers update the original document view.
-         */
-        ({BrowserWindow},size)=>{BrowserWindow.getAllWindows()[0].setContentSize(size.width,size.height);},{width,height});
+      await resizeOwnedDesktop(desktop,width,height);
     };
     /** Complete native observations retain their unchanged image bytes and independent resource identities. */
     const records=await exerciseNativePageViewFrames(page,resize,outputRoot);await exerciseNativeZoomBehavior(page);

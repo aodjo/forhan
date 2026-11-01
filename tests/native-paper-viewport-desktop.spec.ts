@@ -3,7 +3,7 @@ import {mkdtemp,mkdir,readFile,writeFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {createHash,randomUUID} from 'node:crypto';
 import path from 'node:path';
-import {desktopLaunchOptions} from './helpers/desktop-launch.ts';
+import {desktopLaunchOptions,closeOwnedDesktop,resizeOwnedDesktop} from './helpers/desktop-launch.ts';
 import {exerciseNativePaperFrames,exerciseNativePaperResize} from './helpers/native-paper-scenarios.ts';
 
 /**
@@ -56,18 +56,7 @@ async function verifyDesktopNativePaperViewport():Promise<void>{
      * await resize(1440,961); // No source transaction supplies expected pixel geometry.
      */
     const resize=async(width:number,height:number):Promise<void>=>{
-      await desktop.evaluate(
-        /**
-         * Set real content dimensions on the owned native editor window.
-         *
-         * The selected test application owns this window and no unrelated process is targeted.
-         * @param {typeof import('electron')} context - Native exports from the actual running main process.
-         * @param {{width:number;height:number}} size - Requested actual viewport dimensions.
-         * @returns {void} Applies native window geometry without editing source or changing document zoom.
-         * @example
-         * // A centered page moves through actual native resizing rather than injected renderer coordinates.
-         */
-        ({BrowserWindow},size)=>{BrowserWindow.getAllWindows()[0].setContentSize(size.width,size.height);},{width,height});
+      await resizeOwnedDesktop(desktop,width,height);
     };
     /** Completed original frame comparisons retain their actual unmodified screenshot identities. */
     const records=await exerciseNativePaperFrames(page,resize,outputRoot);await exerciseNativePaperResize(page,resize);
@@ -75,7 +64,7 @@ async function verifyDesktopNativePaperViewport():Promise<void>{
     const hashes=identity.packaged?{executableSha256:createHash('sha256').update(await readFile(identity.executable)).digest('hex'),archiveSha256:createHash('sha256').update(await readFile(identity.application)).digest('hex')}:{};
     await writeFile(path.join(outputRoot,'run.json'),JSON.stringify({kind:'actual-native-paper-viewport-and-source-resize-observation-not-REA',identity,...hashes,records},null,2)+'\n');
   }finally{
-    await desktop.close();expect(path.dirname(path.resolve(profile))).toBe(path.resolve(tmpdir()));expect(path.basename(profile).startsWith('forhan-native-paper-')).toBe(true);
+    await closeOwnedDesktop(desktop);expect(path.dirname(path.resolve(profile))).toBe(path.resolve(tmpdir()));expect(path.basename(profile).startsWith('forhan-native-paper-')).toBe(true);
     await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:200});
   }
 }

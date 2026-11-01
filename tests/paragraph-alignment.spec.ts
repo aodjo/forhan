@@ -1,3 +1,4 @@
+import {DOCUMENT_START_KEY,LINE_END_KEY} from './helpers/native-keyboard.ts';
 import { test, expect, type Page } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import { readHwp } from "../src/formats/hwp.ts";
@@ -227,9 +228,9 @@ async function verifyDiscreteAlignmentHistory({page}:{page:Page}):Promise<void>{
   /** Explicit original source keeps formatting history independent of document initialization. */
   const doc={type:'doc',content:[{type:'paragraph',attrs:{textAlign:'justify',lineHeight:'100%'},content:[{type:'text',text:'ALPHA beta',marks:[{type:'textStyle',attrs:{fontFamily:'Arial',fontSize:'16pt'}}]}]}]};
   await page.locator('#file-input').setInputFiles({name:'alignment-history.fhn',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({application:'forhan',version:1,doc}))});
-  await expect(page.locator('#toast')).toContainText('alignment-history.fhn');await page.locator('.tiptap').press('ControlOrMeta+Home');
+  await expect(page.locator('#toast')).toContainText('alignment-history.fhn');await page.locator('.tiptap').press(DOCUMENT_START_KEY);
   await page.keyboard.press('ControlOrMeta+Shift+t');await expect(page.locator('.tiptap p')).toHaveAttribute('data-forhan-paragraph-alignment','distribute');
-  await page.keyboard.press('End');await page.keyboard.type('X');await expect(page.locator('.tiptap')).toHaveText('ALPHA betaX');
+  await page.keyboard.press(LINE_END_KEY);await page.keyboard.type('X');await expect(page.locator('.tiptap')).toHaveText('ALPHA betaX');
   await page.keyboard.press('ControlOrMeta+z');await expect(page.locator('.tiptap')).toHaveText('ALPHA beta');await expect(page.locator('.tiptap p')).toHaveAttribute('data-forhan-paragraph-alignment','distribute');
   await page.keyboard.press('ControlOrMeta+z');await expect(page.locator('.tiptap p')).toHaveAttribute('data-forhan-paragraph-alignment','justify');
   await page.keyboard.press('ControlOrMeta+Shift+z');await expect(page.locator('.tiptap p')).toHaveAttribute('data-forhan-paragraph-alignment','distribute');

@@ -192,8 +192,19 @@ int main(int argc, const char *argv[]) {
         if (!applied) [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
       }
       if (!applied) return 17;
-      /** Actual native dimensions and scale must be established independently of requested settings. */
-      CGDisplayModeRef const observed = CGDisplayCopyDisplayMode(identifier);
+      /** A successful mode request can precede the window server replacing its initial one-pixel placeholder. */
+      NSDate *const observationDeadline = [NSDate dateWithTimeIntervalSinceNow:15];
+      CGDisplayModeRef observed = NULL;
+      while ([observationDeadline timeIntervalSinceNow] > 0) {
+        observed = CGDisplayCopyDisplayMode(identifier);
+        if (observed && CGDisplayModeGetWidth(observed) == width && CGDisplayModeGetHeight(observed) == height &&
+            CGDisplayModeGetPixelWidth(observed) == width && CGDisplayModeGetPixelHeight(observed) == height) break;
+        if (observed) CGDisplayModeRelease(observed);
+        observed = NULL;
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+      }
+      /** Failure retains the last actual native mode for diagnostics instead of reporting requested dimensions. */
+      if (!observed) observed = CGDisplayCopyDisplayMode(identifier);
       if (!observed) return 20;
       /** Readiness records physical and logical dimensions separately to reject HiDPI emulation. */
       NSDictionary *const observation = @{

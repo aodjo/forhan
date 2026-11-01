@@ -116,8 +116,8 @@ export async function startVirtualMacDisplay():Promise<VirtualDisplayReady>{
   const owner:DisplayOwner={directory,nonce,pid:actor.pid,executable,executableSha256,fingerprint:readDisplayProcessFingerprint(actor.pid),before};
   if(owner.fingerprint&&(!owner.fingerprint.includes(executable)||!owner.fingerprint.includes(nonce)))throw new Error('The native display process identity does not match its owner.');
   await writeFile(OWNER_FILE,JSON.stringify(owner,null,2)+'\n',{flag:'wx'});
-  /** Readiness observes the same original actor for a bounded native registration interval. */
-  const deadline=Date.now()+25000;
+  /** One actor gets forty-five seconds for native admission, mode selection and independent actual-mode observation. */
+  const deadline=Date.now()+45000;
   while(Date.now()<deadline){
     if(launchError)throw launchError;
     let ready:VirtualDisplayReady|undefined;

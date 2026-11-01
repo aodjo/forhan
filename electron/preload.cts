@@ -190,16 +190,18 @@ const bridge: DesktopBridge = {
    * window.forhan?.resetDocument();
    */
   () => ipcRenderer.send('document:reset'),
-  close: /**
+  /**
    * Close the editor after confirmation.
    *
-   * Complete the native close operation after the editor resolves unsaved changes.
+   * Complete the native close operation after the editor resolves unsaved changes,
+   * or cancel pending application quit intent when the document remains open.
    *
+   * @param {boolean} [confirmed=true] - Whether the renderer approved closing its current document.
    * @returns {void} The operation result or completion signal.
    * @example
    * window.forhan?.close();
    */
-  () => ipcRenderer.send('window:close-confirmed'),
+  close: (confirmed = true) => ipcRenderer.send('window:close-confirmed', confirmed),
   /**
    * Subscribe to native application actions.
    *

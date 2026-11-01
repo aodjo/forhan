@@ -1,5 +1,9 @@
 import { _electron as electron, test, type ElectronApplication } from "@playwright/test";
 import path from "node:path";
+import {fileURLToPath} from 'node:url';
+
+/** The selected test source owns its development entry point independently from the invoking shell directory. */
+const DESKTOP_SOURCE_ROOT=fileURLToPath(new URL('../../',import.meta.url));
 
 /** Native desktop launch options shared by development and actual packaged regression suites. */
 export type DesktopLaunchOptions = NonNullable<
@@ -44,6 +48,7 @@ export function desktopLaunchOptions(profile: string): DesktopLaunchOptions {
   const executable = process.env.FORHAN_PACKAGED_EXECUTABLE;
   return {
     ...(executable ? { executablePath: path.resolve(executable) } : {}),
+    cwd: DESKTOP_SOURCE_ROOT,
     args: desktopArguments(profile),
     env: { ...process.env, APPDATA: profile },
     timeout: 60000,

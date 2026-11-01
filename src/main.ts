@@ -3013,10 +3013,12 @@ async function action(value: AppAction) {
      * runAction() // Completes the selected document operation.
      */
     close: async () => {
-      if (await canLeave()) {
-        await clearRecovery();
-        native?.close();
-      }
+      try {
+        if (await canLeave()) {
+          await clearRecovery();
+          native?.close();
+        } else native?.close(false);
+      } catch (error) { native?.close(false); throw error; }
     },
   };
   await actions[value]?.();

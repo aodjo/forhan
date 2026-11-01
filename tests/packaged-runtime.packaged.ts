@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { desktopLaunchOptions } from "./helpers/desktop-launch";
+import type { LocalFontWindow } from "../src/ui/installed-fonts";
 
 /**
  * Prove the selected distribution runs its own archived, isolated application.
@@ -95,12 +96,91 @@ async function verifyPackagedRuntime(): Promise<void> {
     expect(renderer.bridge).toBe("function");
     expect(renderer.require).toBe("undefined");
     expect(renderer.process).toBe("undefined");
-    await page.locator("#font-family").click();
-    await expect(page.locator("#font-family")).toHaveAttribute(
-      "data-font-catalog",
-      "installed",
-      { timeout: 30000 },
+    await page.evaluate(
+      /**
+       * Observe the genuine font request without replacing its descriptors or result.
+       *
+       * The original browser receiver, exceptions and returned faces are preserved.
+       * A bounded status record distinguishes API rejection from later metadata work.
+       * @returns {void} Installs a passive observer before the first font-control click.
+       * @example
+       * // A rejected request retains its actual DOMException name and message.
+       */
+      () => {
+        /** The real capability retains its native Window receiver. */
+        const capability = window as unknown as LocalFontWindow;
+        /** In-memory diagnostic state contains no font bytes, paths or family names. */
+        const observation = { status: "not-requested", count: 0, elapsedMs: 0, name: "", message: "" };
+        Reflect.set(window, "forhanFontDiscoveryObservation", observation);
+        if (!capability.queryLocalFonts) {
+          observation.status = "unsupported";
+          return;
+        }
+        /** Original API implementation is called exactly once for each genuine UI request. */
+        const original = capability.queryLocalFonts;
+        capability.queryLocalFonts =
+          /**
+           * Record completion of the original browser-owned enumeration request.
+           *
+           * Returned descriptors and thrown exceptions pass through unchanged, and
+           * no retry, permission override or synthesized catalog is introduced.
+           * @async
+           * @returns {Promise<import('../src/ui/installed-fonts').LocalFontFace[]>} Original native descriptors.
+           * @throws {DOMException} The original browser enumeration error, unchanged.
+           * @example
+           * // A fulfilled API with a pending UI catalog identifies metadata work.
+           */
+          async function observeFontRequest() {
+            /** Monotonic elapsed time identifies slow enumeration independently of the assertion budget. */
+            const started = performance.now();
+            observation.status = "pending";
+            try {
+              /** Exact native response remains authoritative for production metadata parsing. */
+              const faces = await original.call(window);
+              observation.status = "fulfilled";
+              observation.count = faces.length;
+              return faces;
+            } catch (error) {
+              observation.status = "rejected";
+              observation.name = error instanceof Error ? error.name : typeof error;
+              observation.message = error instanceof Error ? error.message : String(error);
+              throw error;
+            } finally {
+              observation.elapsedMs = performance.now() - started;
+            }
+          };
+      },
     );
+    await page.locator("#font-family").click();
+    try {
+      await expect(page.locator("#font-family")).toHaveAttribute(
+        "data-font-catalog",
+        "installed",
+        { timeout: 30000 },
+      );
+    } finally {
+      /** Actual browser visibility and API completion accompany both passing and failing assertions. */
+      const fontDiscovery = await page.evaluate(
+        /**
+         * Read the live font discovery observer and original renderer state.
+         *
+         * This snapshot does not request fonts again or alter focus or permission.
+         * @returns {object} Bounded native capability, visibility and catalog evidence.
+         * @example
+         * // API status fulfilled with a fallback catalog distinguishes metadata delay.
+         */
+        () => ({
+          visibility: document.visibilityState,
+          focused: document.hasFocus(),
+          secureContext: window.isSecureContext,
+          activation: { active: navigator.userActivation.isActive, everActive: navigator.userActivation.hasBeenActive },
+          request: Reflect.get(window, "forhanFontDiscoveryObservation"),
+          catalog: (document.querySelector("#font-family") as HTMLElement | null)?.dataset.fontCatalog,
+          installedFamilies: (document.querySelector("#font-family") as HTMLElement | null)?.dataset.installedFamilies,
+        }),
+      );
+      await test.info().attach("native-font-discovery", { body: JSON.stringify(fontDiscovery, null, 2), contentType: "application/json" });
+    }
     /** Actual localized family count varies by native host and is never hard-coded. */
     const installedFamilies = Number(
       await page

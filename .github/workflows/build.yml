@@ -84,11 +84,14 @@ jobs:
           CSC_FOR_PULL_REQUEST: true
       - run: npm run test:packaged -- --platform ${{ matrix.platform }} --arch ${{ matrix.arch }}
         if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
+      - name: Remove owned temporary macOS CI display
+        if: ${{ always() && matrix.platform == 'darwin' }}
+        run: node scripts/stop-macos-display.ts
       - uses: actions/upload-artifact@v4
         if: ${{ always() && matrix.platform == 'darwin' }}
         with:
           name: Forhan-native-display-${{ matrix.arch }}
-          path: release/validation/native-display-darwin-${{ matrix.arch }}.json
+          path: release/validation/native-display-*
           if-no-files-found: warn
       - uses: actions/upload-artifact@v4
         if: always()

@@ -1,11 +1,12 @@
 import {execFileSync} from 'node:child_process';
 import {mkdir,writeFile} from 'node:fs/promises';
 import path from 'node:path';
+import {startVirtualMacDisplay,type VirtualDisplayReady} from './macos-virtual-display.ts';
 
-/** Native viewport fixtures reach 1440x1000; the CI display also needs room for system chrome. */
+/** Native viewport fixtures reach 1440x1100; the CI display also needs room for system chrome. */
 const MINIMUM_DISPLAY_WIDTH=1600;
-/** A 1080-pixel display contains the largest 1000-pixel fixture once the ephemeral runner Dock is hidden. */
-const MINIMUM_DISPLAY_HEIGHT=1080;
+/** An unscaled1200-pixel screen contains the original1100-pixel fixture plus native system chrome. */
+const MINIMUM_DISPLAY_HEIGHT=1200;
 /** One real unscaled display mode comes from the native displayplacer's original enumeration. */
 interface NativeDisplayMode {index:number;width:number;height:number;}
 /** The real primary display retains its current geometry and available native modes. */
@@ -57,14 +58,15 @@ function readPrimaryDisplay(listing:string):NativeDisplay{
 /**
  * Give ephemeral macOS CI a real display large enough for original fixtures.
  *
- * The macOS runner previously constrained requested 960-pixel windows to 684
+ * The macOS runner previously constrained requested1100-pixel windows to1055
  * pixels. This changes the runner's actual native display mode before tests;
  * application source, renderer viewport emulation and reference pixels remain
- * unchanged. Local machines are rejected before any display command executes.
+ * unchanged. An owned actual native screen is created only when no advertised
+ * mode is sufficient. Local machines are rejected before any display command executes.
  * The original enumeration and final native result are retained on failure too.
  * @async
  * @returns {Promise<void>} Resolves after a sufficiently large unscaled native mode is observed.
- * @throws {Error} If the host is not ephemeral macOS CI or no suitable native mode exists.
+ * @throws {Error} If the host is not ephemeral macOS CI or actual display setup fails.
  * @example
  * // GitHub's Mac jobs run this after installing displayplacer and before native UI tests.
  */
@@ -73,7 +75,7 @@ async function prepareNativeMacDisplay():Promise<void>{
   /** Native setup evidence is retained separately from Playwright's cleared output directory. */
   const directory=path.resolve('release/validation'),file=path.join(directory,'native-display-darwin-'+process.arch+'.json');
   await mkdir(directory,{recursive:true});
-  let before='',after='',selected:NativeDisplayMode|undefined,success=false,dockAutoHide=false,error:string|undefined;
+  let before='',after='',selected:NativeDisplayMode|undefined,virtual:VirtualDisplayReady|undefined,success=false,dockAutoHide=false,error:string|undefined;
   try{
     execFileSync('defaults',['write','com.apple.dock','autohide','-bool','true'],{encoding:'utf8',timeout:10000});
     dockAutoHide=execFileSync('defaults',['read','com.apple.dock','autohide'],{encoding:'utf8',timeout:10000}).trim()==='1';
@@ -86,8 +88,8 @@ async function prepareNativeMacDisplay():Promise<void>{
         if(mode.width<MINIMUM_DISPLAY_WIDTH||mode.height<MINIMUM_DISPLAY_HEIGHT)continue;
         if(!selected||mode.width*mode.height<selected.width*selected.height)selected=mode;
       }
-      if(!selected)throw new Error('No advertised unscaled primary display mode can contain the original 1440x1000 native fixtures.');
-      runDisplayCommand([`id:${display.id} mode:${selected.index}`]);
+      if(selected)runDisplayCommand([`id:${display.id} mode:${selected.index}`]);
+      else virtual=await startVirtualMacDisplay();
     }
     after=runDisplayCommand(['list']);
     /** The actual final native mode must satisfy the setup contract independently of the command request. */
@@ -96,7 +98,7 @@ async function prepareNativeMacDisplay():Promise<void>{
     success=true;
     console.log(`Native macOS display: ${observed.width}x${observed.height}, scaling off.`);
   }catch(cause){error=cause instanceof Error?cause.message:String(cause);throw cause;}
-  finally{await writeFile(file,JSON.stringify({kind:'actual-macos-ci-native-display-setup',recordedAt:new Date().toISOString(),success,minimumWidth:MINIMUM_DISPLAY_WIDTH,minimumHeight:MINIMUM_DISPLAY_HEIGHT,runnerDockAutoHidePreference:dockAutoHide,selected,before,after,error},null,2)+'\n');}
+  finally{await writeFile(file,JSON.stringify({kind:'actual-macos-ci-native-display-setup',recordedAt:new Date().toISOString(),success,minimumWidth:MINIMUM_DISPLAY_WIDTH,minimumHeight:MINIMUM_DISPLAY_HEIGHT,runnerDockAutoHidePreference:dockAutoHide,selected,virtual,before,after,error},null,2)+'\n');}
 }
 
 await prepareNativeMacDisplay();

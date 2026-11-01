@@ -157,12 +157,19 @@ function verifyNativeHeaders(): void {
  * // Valid Info.plist structure remains distinct from execution proof.
  */
 function verifyBundleMetadata(): void {
+  /** Native Mac executable names can be canonically decomposed without changing their identity. */
+  const decomposed=EXPECTED.productName.normalize('NFD');
+  assert.deepEqual(validateMacBundleInfo(PLIST.replaceAll(EXPECTED.productName,decomposed),EXPECTED).documentExtensions,['fhn','hwp','hwpx']);
+  assert.deepEqual(validateMacBundleInfo(PLIST,{...EXPECTED,productName:decomposed}).documentExtensions,['fhn','hwp','hwpx']);
   assert.deepEqual(validateMacBundleInfo(PLIST, EXPECTED).documentExtensions, [
     "fhn",
     "hwp",
     "hwpx",
   ]);
   for (/** Independently corrupted identity/role/pairing/extension fixture. */ const xml of [
+    PLIST.replace('<key>CFBundleName</key><string>포한</string>','<key>CFBundleName</key><string>한글</string>'),
+    PLIST.replace('<key>CFBundleExecutable</key><string>포한</string>','<key>CFBundleExecutable</key><string>포한 Helper</string>'),
+    PLIST.replace('<string>org.forhan.editor</string>','<string>org.ｆｏｒｈａｎ.editor</string>'),
     PLIST.replace(
       "<key>CFBundleIdentifier</key>",
       "<key>UnrelatedIdentifier</key>",

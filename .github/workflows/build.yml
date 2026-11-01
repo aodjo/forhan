@@ -24,6 +24,11 @@ on:
         type: boolean
         default: false
         required: false
+      native_package_diagnostics:
+        description: Build and execute native distribution checks without repeating unchanged renderer UI tests
+        type: boolean
+        default: false
+        required: false
 jobs:
   desktop:
     strategy:
@@ -64,7 +69,7 @@ jobs:
         env:
           HOMEBREW_NO_AUTO_UPDATE: 1
       - run: npm run test:ui
-        if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
+        if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics && !inputs.native_package_diagnostics }}
       - name: Run focused standalone layout diagnostics
         if: ${{ inputs.standalone_layout_diagnostics }}
         run: npx playwright test native-body-grid-origin.spec.ts paragraph-line-grid.spec.ts print-layout.spec.ts --grep "standalone|share document layout" --reporter=line,json

@@ -869,6 +869,7 @@ function applyPage() {
     p.marginRight,
   );
   $(".workspace").style.setProperty("--native-zoom", String(scale));
+  $(".workspace").style.setProperty("--native-zoom-percent", String(state.zoom));
   $(".workspace").style.setProperty(
     "--native-body-top",
     `${p.marginTop + (p.header ?? 0)}mm`,

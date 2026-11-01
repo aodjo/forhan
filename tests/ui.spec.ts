@@ -1,5 +1,7 @@
 import { test, expect, type Page } from "@playwright/test";
-import { readFile, access } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import { nativeCorpusFixture } from "./helpers/native-corpus.ts";
 import { writeHwpx, readHwpx } from "../src/formats/hwpx";
 import { readHwp } from "../src/formats/hwp";
 import { defaultPage } from "../src/documents";
@@ -444,10 +446,11 @@ async ({ page }) => {
   await expect(page.locator(".tiptap")).toHaveText("자동 복구할 한글 원고");
   await expect(page.locator("#save-state")).toContainText("저장되지 않은 변경");
 });
-test("installed Hancom HWP fixture opens without Hancom runtime in renderer", /**
+test("checked-in native HWP fixture opens without Hancom runtime in renderer", /**
  * Verify independent import of a native HWP fixture.
  *
- * Loads a locally generated Hancom document and checks merged-cell rendering without exposing the Hancom runtime to renderer code.
+ * Loads a required independently authored native document and checks merged-cell
+ * rendering without an installed Hancom runtime or ignored research directory.
  *
  * @param {PlaywrightTestArgs & PlaywrightTestOptions & PlaywrightWorkerArgs & PlaywrightWorkerOptions} context - The isolated test or Electron process bindings supplied by Playwright.
  * @returns {Promise<void>} The completion or inspection result used by the regression test.
@@ -457,17 +460,9 @@ test("installed Hancom HWP fixture opens without Hancom runtime in renderer", /*
  */
 async ({ page }) => {
   /**
-   * The locally generated native HWP fixture selected for interoperability checks.
+   * Required native reference path remains portable across Windows and Mac checkouts.
    */
-  const filename = "research/fixtures-private/table.hwp";
-  try {
-    await access(filename);
-  } catch {
-    test.skip(
-      true,
-      "Native private fixture is generated only on the development machine.",
-    );
-  }
+  const filename = fileURLToPath(nativeCorpusFixture("table.hwp"));
   await openEditor(page);
   await page.locator("#file-input").setInputFiles(filename);
   await expect(page.locator(".tiptap table")).toHaveCount(1);

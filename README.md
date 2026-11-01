@@ -23,7 +23,7 @@ npm run test:ui
 npm run dist:win
 ```
 
-macOS에서 `npm run dist:mac`으로 DMG/ZIP을 만듭니다. `.github/workflows/build.yml`은 Windows와 macOS에서 별도로 테스트하고 빌드합니다. 서명·공증 인증서는 포함하지 않습니다.
+macOS에서 `npm run dist:mac`으로 임시 서명한 DMG/ZIP을 만듭니다. 개발자 ID 인증서를 준비한 배포 빌드는 `npm run dist:mac:signed`를 사용합니다. 두 빌드는 Hardened Runtime을 유지하며, 임시 서명 프로필은 [Electron Builder가 요구하는 라이브러리 검증 설정](https://www.electron.build/v26/docs/features/code-signing/code-signing-mac/)을 별도로 적용합니다. DMG는 배경 이미지 별칭 생성에 의존하지 않는 흰색 배경을 사용합니다. `.github/workflows/build.yml`은 Windows와 macOS에서 별도로 테스트하고 빌드합니다. 서명·공증 인증서는 포함하지 않습니다.
 
 배포한 앱 자체의 검사는 빌드 후 `npm run test:packaged`로 실행합니다. 이 검사는 실제 실행 파일의 CPU 종류와 현재 빌드 파일의 일치를 먼저 확인하고, 개발 서버 없이 배포 앱으로 저장·재실행·인쇄 콜백·PDF·설치 글꼴을 검사합니다. 결과는 `release/validation/`에 기록합니다. CI는 Windows x64, macOS Intel x64, Apple Silicon arm64를 각각 같은 CPU의 실행 환경에서 검사하며, 통과해야 배포 파일을 업로드합니다. Mac CI 빌드는 임시 서명과 `codesign` 무결성 검사를 사용하며 Developer ID 서명·공증을 의미하지 않습니다. 세 환경의 실제 실행 검사를 진행 중이며, `391b6ec`의 입력 위치·장평 편집 집중 검사 3개씩은 [실제 CI 실행](https://github.com/aodjo/forhan/actions/runs/41342813689)에서 통과했습니다. 이 결과는 전체 UI·글꼴·배포 앱 호환성 통과를 뜻하지 않습니다.
 
@@ -41,6 +41,10 @@ node scripts/build-korean-font.ts NotoSansKR-Bold.otf src/assets/FhanSansKR-Bold
 ```
 
 실제 Windows 한국어 입력기 검사는 `npm run test:ime:windows`로 실행합니다. 빌드된 Windows x64 배포 앱, 설치된 한국어 입력기와 대화형 세션이 필요합니다. 검사에서 만든 전경 창에만 운영체제 키 입력을 보내며 창의 소유권이나 포커스가 바뀌면 중단합니다. 시스템 입력기 설정을 변경하지 않으며, 전제 조건이 없으면 실패로 보고합니다. 결과는 `release/validation/windows-ime-win32-x64.json`과 해당 실행의 개별 원문·입력·출력 기록에 남습니다.
+
+수동 축소 보기에서는 원본 쪽 간격에 따라 긴 문서의 첫 용지 최소 여백을 유지합니다. 7쪽·49쪽 문서의 원본 48조건을 브라우저와 실제 데스크톱 앱에서 검사하며, 원문과 쪽 수·저장 상태도 확인합니다. 뒤쪽 용지에 남은 1픽셀 그리기 차이와 전체 UI 일치는 추가 작업이 필요합니다.
+
+현재 빌더 26은 Mac 보조 앱의 파일 이름을 분해형 한글로 만듭니다. Mac 빌드의 `CFBundleName`도 같은 표현을 사용하도록 명시해 [보조 앱 이름 불일치 문제](https://github.com/electron-userland/electron-builder/pull/9962)를 피합니다. 사용자에게 보이는 `CFBundleDisplayName`과 문서 제목은 그대로 `포한`입니다. 패키지 검사는 표시 이름의 정규화된 일치와 별개로 런타임 이름의 정확한 일치도 확인합니다.
 
 ## 문서 작업
 

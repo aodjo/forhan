@@ -24,6 +24,11 @@ on:
         type: boolean
         default: false
         required: false
+      native_package_diagnostics:
+        description: Build and execute native distribution checks without repeating unchanged renderer UI tests
+        type: boolean
+        default: false
+        required: false
 jobs:
   desktop:
     strategy:
@@ -37,11 +42,11 @@ jobs:
           - os: macos-15-intel
             platform: darwin
             arch: x64
-            package: --mac dmg zip --x64 --config.mac.identity=-
+            package: --mac dmg zip --x64 --config.mac.identity=- --config.mac.entitlements=build/entitlements.mac.adhoc.plist --config.mac.entitlementsInherit=build/entitlements.mac.adhoc.plist
           - os: macos-15
             platform: darwin
             arch: arm64
-            package: --mac dmg zip --arm64 --config.mac.identity=-
+            package: --mac dmg zip --arm64 --config.mac.identity=- --config.mac.entitlements=build/entitlements.mac.adhoc.plist --config.mac.entitlementsInherit=build/entitlements.mac.adhoc.plist
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -64,7 +69,7 @@ jobs:
         env:
           HOMEBREW_NO_AUTO_UPDATE: 1
       - run: npm run test:ui
-        if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
+        if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics && !inputs.native_package_diagnostics }}
       - name: Run focused standalone layout diagnostics
         if: ${{ inputs.standalone_layout_diagnostics }}
         run: npx playwright test native-body-grid-origin.spec.ts paragraph-line-grid.spec.ts print-layout.spec.ts --grep "standalone|share document layout" --reporter=line,json
@@ -84,6 +89,11 @@ jobs:
           CSC_FOR_PULL_REQUEST: true
       - run: npm run test:packaged -- --platform ${{ matrix.platform }} --arch ${{ matrix.arch }}
         if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
+        env:
+          ELECTRON_ENABLE_LOGGING: ${{ matrix.platform == 'darwin' && '1' || '' }}
+      - name: Retain actual Mac package signing and owned crash evidence
+        if: ${{ always() && matrix.platform == 'darwin' && !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
+        run: node scripts/collect-macos-package-diagnostics.ts --arch ${{ matrix.arch }}
       - name: Remove owned temporary macOS CI display
         if: ${{ always() && matrix.platform == 'darwin' }}
         run: node scripts/stop-macos-display.ts
@@ -105,6 +115,7 @@ jobs:
           name: Forhan-validation-${{ matrix.platform }}-${{ matrix.arch }}
           path: |
             release/validation/*.json
+            release/validation/macos-package-*/
             test-results/packaged/
           if-no-files-found: warn
       - uses: actions/upload-artifact@v4
@@ -116,3 +127,9 @@ jobs:
             release/*.dmg
             release/*.zip
           if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: ${{ failure() && inputs.native_package_diagnostics && matrix.platform == 'darwin' }}
+        with:
+          name: Forhan-candidate-${{ matrix.platform }}-${{ matrix.arch }}
+          path: release/*.zip
+          if-no-files-found: warn

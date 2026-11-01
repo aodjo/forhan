@@ -65,8 +65,13 @@ export async function observeFallbackPlatformFonts(page:Page,selector:string):Pr
     try{
       await session.send('DOM.enable');await session.send('CSS.enable');
       /** The actual source node is resolved from the selected renderer's live DOM. */
-      const document=await session.send('DOM.getDocument'),node=await session.send('DOM.querySelector',{nodeId:document.root.nodeId,selector}),fonts=await session.send('CSS.getPlatformFontsForNode',{nodeId:node.nodeId});
-      return{available:true,...fonts};
+      const document=await session.send('DOM.getDocument'),node=await session.send('DOM.querySelector',{nodeId:document.root.nodeId,selector}),descendants=await session.send('DOM.querySelectorAll',{nodeId:node.nodeId,selector:'*:not(svg):not(svg *)'}),faces=new Map();
+      for(/** Native font metadata belongs to each original text-node parent rather than its structural paragraph. */const nodeId of [node.nodeId,...descendants.nodeIds]){
+        /** Source leaf faces are deduplicated independently from auxiliary vector copies. */
+        const used=await session.send('CSS.getPlatformFontsForNode',{nodeId});
+        for(/** One sampled face identity is sufficient to establish actual platform fallback. */const font of used.fonts)if(!faces.has(font.postScriptName||font.familyName))faces.set(font.postScriptName||font.familyName,font);
+      }
+      return{available:true,fonts:[...faces.values()]};
     }finally{await session.detach();}
   }catch(error){return{available:false,error:String(error)};}
 }

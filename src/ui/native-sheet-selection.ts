@@ -78,20 +78,21 @@ export function nativeSheetGoToPage(view:EditorView,page:number):boolean{
  * Genuine native focus affinity takes priority over a model DOM lookup.
  * @param {EditorView} view - Actual owning source editor.
  * @param {number} [position=view.state.selection.head] - Original model position to observe.
+ * @param {1|-1} [side] - Explicit original leaf affinity; omitted values preserve a matching live DOM caret before trying the preceding leaf.
  * @returns {{left:number;right:number;top:number;bottom:number}|null} Actual physical source caret, or no reliable text rectangle.
  * @throws {Error} If source mapping fails outside a transient range mismatch.
  * @example
  * nativeSheetCaretBounds(view); // A committed colored word retains its real second-sheet caret.
  */
-export function nativeSheetCaretBounds(view:EditorView,position=view.state.selection.head):{left:number;right:number;top:number;bottom:number}|null{
+export function nativeSheetCaretBounds(view:EditorView,position=view.state.selection.head,side?:1|-1):{left:number;right:number;top:number;bottom:number}|null{
   try{
     /** Native source endpoints retain soft-wrap affinity without reading generated paint. */
     const document=view.dom.ownerDocument,selection=document.getSelection(),focus=selection?.focusNode;
     let node:Node,offset:number;
-    if(focus&&view.dom.contains(focus)&&view.posAtDOM(focus,selection!.focusOffset)===position){node=focus;offset=selection!.focusOffset;}
+    if(side===undefined&&focus&&view.dom.contains(focus)&&view.posAtDOM(focus,selection!.focusOffset)===position){node=focus;offset=selection!.focusOffset;}
     else{
-      /** Backward source affinity reaches the actual preceding text leaf at a marked word end. */
-      const point=view.domAtPos(position,-1);node=point.node;offset=point.offset;
+      /** Explicit line-edge affinity or the default preceding leaf reaches genuine source rather than a spacing wrapper. */
+      const point=view.domAtPos(position,side??-1);node=point.node;offset=point.offset;
     }
     /** Auxiliary noneditable paint and caret spacers cannot become original source points. */
     const parent=node.nodeType===Node.ELEMENT_NODE?node as Element:node.parentElement;
@@ -375,9 +376,9 @@ export function nativeSheetKeyDown(view:EditorView,event:KeyboardEvent):boolean{
   let position=target.from,nearest=Infinity;
   for(/** Actual caret rectangles retain original fonts, alignment, tracking and bidirectional run placement. */const candidate of positions){
     /** A line-end boundary uses its preceding source fragment rather than the following soft-wrap line. */
-    const bounds=view.coordsAtPos(candidate,candidate===target.to?-1:1),delta=Math.abs(bounds.left-x);
+    const side=candidate===target.to?-1:1,bounds=nativeSheetCaretBounds(view,candidate,side)??view.coordsAtPos(candidate,side),delta=Math.abs(bounds.left-x);
     if(delta<nearest){nearest=delta;position=candidate;}
   }
-  view.dispatch(view.state.tr.setSelection(TextSelection.create(view.state.doc,event.shiftKey?selection.anchor:position,position)).setMeta('addToHistory',false).scrollIntoView());
+  commitNativeSourceCaret(view,event.shiftKey?selection.anchor:position,position,position===target.to?-1:1);
   cursor.goal={offset,head:position};return true;
 }

@@ -89,6 +89,8 @@ jobs:
           CSC_FOR_PULL_REQUEST: true
       - run: npm run test:packaged -- --platform ${{ matrix.platform }} --arch ${{ matrix.arch }}
         if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
+        env:
+          ELECTRON_ENABLE_LOGGING: ${{ matrix.platform == 'darwin' && '1' || '' }}
       - name: Retain actual Mac package signing and owned crash evidence
         if: ${{ always() && matrix.platform == 'darwin' && !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
         run: node scripts/collect-macos-package-diagnostics.ts --arch ${{ matrix.arch }}

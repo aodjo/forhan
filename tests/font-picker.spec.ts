@@ -16,6 +16,7 @@ import { localFontFixture } from "./fixtures/local-font";
  * @param {Page} page - Isolated browser page.
  * @param {boolean} [deny=false] - Whether enumeration should reject with permission denial.
  * @param {boolean} [delayed=false] - Whether the test explicitly releases enumeration later.
+ * @param {boolean} [metadataDelayed=false] - Whether actual fixture blobs wait after canonical enumeration succeeds.
  * @returns {Promise<void>} Resolves after the controlled capability is installed before page load.
  * @example
  * await installFontCatalog(page);
@@ -24,24 +25,43 @@ async function installFontCatalog(
   page: Page,
   deny = false,
   delayed = false,
+  metadataDelayed = false,
 ): Promise<void> {
   await page.addInitScript(
     /**
      * Expose synthetic browser-owned font descriptors for an isolated test page.
      *
      * No native permissions, filesystem paths or real font binaries are involved.
-     * @param {{first:number[],second:number[],deny:boolean,delayed:boolean}} data - Independent metadata fixtures and request behavior.
+     * @param {{first:number[],second:number[],deny:boolean,delayed:boolean,metadataDelayed:boolean}} data - Independent metadata fixtures and request behavior.
      * @returns {void} Installs one deterministic local-font query capability.
      * @example
      * // Two family choices include one Latin-only face and one localized Hangul face.
      */
-    ({ first, second, deny, delayed }) => {
+    ({ first, second, deny, delayed, metadataDelayed }) => {
       /** Isolated request state used only by this controlled browser test. */
       const state = window as unknown as {
         fontCatalogCalls: number;
         fontResolve?: () => void;
+        fontMetadataResolve?: () => void;
       };
       state.fontCatalogCalls = 0;
+      /** Optional blob gate leaves the successful canonical descriptor response independent of metadata timing. */
+      const metadataGate = metadataDelayed
+        ? new Promise<void>(
+            /**
+             * Retain the controlled metadata release callback before any blob is read.
+             *
+             * Canonical enumeration remains available while only optional fixture bytes wait.
+             * @param {() => void} resolve - Native Promise completion callback.
+             * @returns {void} Stores the isolated metadata gate resolver.
+             * @example
+             * window.fontMetadataResolve(); // Releases the real fixture metadata reads.
+             */
+            function captureMetadataGate(resolve) {
+              state.fontMetadataResolve = resolve;
+            },
+          )
+        : Promise.resolve();
       /**
        * Prepare a browser Blob provider for one independent metadata fixture.
        *
@@ -61,7 +81,10 @@ async function installFontCatalog(
          * @example
          * await provider(); // Controlled local font metadata.
          */
-        const provider = async () => new Blob([Uint8Array.from(bytes)]);
+        const provider = async () => {
+          await metadataGate;
+          return new Blob([Uint8Array.from(bytes)]);
+        };
         return provider;
       }
       Object.defineProperty(window, "queryLocalFonts", {
@@ -127,6 +150,7 @@ async function installFontCatalog(
       ],
       deny,
       delayed,
+      metadataDelayed,
     },
   );
 }
@@ -325,3 +349,86 @@ test(
   "denied local font capability preserves the source family and a working fallback menu",
   verifyFontDenial,
 );
+
+/**
+ * Release only the controlled optional font metadata request.
+ *
+ * The already fulfilled native-style descriptor response and selected document
+ * remain unchanged; production metadata parsing still reads the original fixtures.
+ * @async
+ * @param {Page} page - Actual isolated browser renderer with its controlled blob gate.
+ * @returns {Promise<void>} Resolves after the original fixture reads are released.
+ * @throws {Error} If the actual owning renderer has already closed.
+ * @example
+ * await releaseMetadata(page);
+ */
+async function releaseMetadata(page: Page): Promise<void> {
+  await page.evaluate(
+    /**
+     * Resolve the original metadata gate without replacing its bytes or source state.
+     *
+     * A second call has no additional effect on the native Promise resolver.
+     * @returns {void} Releases the optional local fixture blob reads.
+     * @example
+     * // Only metadata timing changes; actual document selection remains authoritative.
+     */
+    () => Reflect.get(window, "fontMetadataResolve")?.(),
+  );
+}
+
+test("actual installed families remain selectable while optional font metadata is pending", /**
+ * Select a genuinely enumerated canonical family before its optional metadata is ready.
+ *
+ * A later localized label must update both the real field and open menu while
+ * preserving the authored text and already selected canonical document family.
+ * @async
+ * @param {{page:Page}} context - Isolated real production browser renderer.
+ * @returns {Promise<void>} Resolves after early selection and late localization both preserve source.
+ * @throws {Error} If pending optional reads hide actual families or later change authored source.
+ * @example
+ * // A slow font blob never leaves a successful installed catalog empty.
+ */
+async ({ page }: { page: Page }) => {
+  await installFontCatalog(page, false, false, true);
+  await page.goto("/");
+  await page.locator(".tiptap").fill("선택 가능한 실제 글꼴과 원문");
+  await page.locator(".tiptap").press("ControlOrMeta+a");
+  await page.locator("#font-family").click();
+  try {
+    await expect(page.locator("#font-family")).toHaveAttribute(
+      "data-font-catalog",
+      "installed",
+    );
+    await expect(page.locator("#font-family")).toHaveAttribute(
+      "data-installed-families",
+      "2",
+    );
+    await expect(
+      page.locator('.nfp-row[data-font-family="Fixture Font"]'),
+    ).toContainText("Fixture Font");
+    await page.locator('.nfp-row[data-font-family="Fixture Font"]').click();
+    await expect(page.locator("#font-family")).toHaveValue("Fixture Font");
+    await expect(page.locator(".tiptap span")).toHaveCSS(
+      "font-family",
+      '"Fixture Font"',
+    );
+    await releaseMetadata(page);
+    await page.locator("#font-family").click();
+    await expect(
+      page.locator('.nfp-row[data-font-family="Fixture Font"]'),
+    ).toContainText("검증 글꼴");
+    await expect(page.locator("#font-family option:checked")).toHaveText(
+      "검증 글꼴",
+    );
+    await expect(page.locator("#font-family")).toHaveValue("Fixture Font");
+    await expect(page.locator(".tiptap")).toHaveText(
+      "선택 가능한 실제 글꼴과 원문",
+    );
+    await expect(page.locator(".tiptap span")).toHaveCSS(
+      "font-family",
+      '"Fixture Font"',
+    );
+  } finally {
+    await releaseMetadata(page);
+  }
+});

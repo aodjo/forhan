@@ -49,6 +49,26 @@ const FONT_COLLATOR = new Intl.Collator("ko", {
 const REGULAR_FACE = /^(?:regular|normal|roman|book|보통)$/i;
 
 /**
+ * Sort actual installed families using their available localized labels.
+ *
+ * Canonical names break equal-label ties without merging independent families.
+ * @param {InstalledFont} first - First browser-enumerated local family.
+ * @param {InstalledFont} second - Second browser-enumerated local family.
+ * @returns {number} Native Korean label order with a deterministic family tie-breaker.
+ * @example
+ * fonts.sort(compareInstalledFonts);
+ */
+function compareInstalledFonts(
+  first: InstalledFont,
+  second: InstalledFont,
+): number {
+  return (
+    FONT_COLLATOR.compare(first.label, second.label) ||
+    FONT_COLLATOR.compare(first.family, second.family)
+  );
+}
+
+/**
  * Enumerate local family choices and read bounded localized metadata.
  *
  * The request is shared across all font controls in the current application
@@ -57,6 +77,7 @@ const REGULAR_FACE = /^(?:regular|normal|roman|book|보통)$/i;
  * with unknown script support instead of hiding an installed font.
  * @async
  * @param {LocalFontWindow} capability - Feature-detected browser capability.
+ * @param {(fonts: InstalledFont[]) => void} [onCatalog] - Receives actual canonical families before optional metadata reads.
  * @returns {Promise<InstalledFont[]>} Deduplicated localized family choices.
  * @throws {DOMException} If enumeration is denied before any family list is returned.
  * @example
@@ -64,6 +85,7 @@ const REGULAR_FACE = /^(?:regular|normal|roman|book|보통)$/i;
  */
 export async function enumerateInstalledFonts(
   capability: LocalFontWindow,
+  onCatalog?: (fonts: InstalledFont[]) => void,
 ): Promise<InstalledFont[]> {
   if (!capability.queryLocalFonts) return [];
   /** The native browser returns face descriptors, not arbitrary renderer-supplied file paths. */
@@ -87,6 +109,18 @@ export async function enumerateInstalledFonts(
   const descriptors = [...families.values()];
   /** Result slots avoid race-dependent insertion order. */
   const result: InstalledFont[] = Array(descriptors.length);
+  for (let index = 0; index < descriptors.length; index++) {
+    /** Actual canonical descriptors remain selectable while optional name/cmap reads are pending. */
+    const face = descriptors[index];
+    result[index] = {
+      family: face.family,
+      label: face.family,
+      aliases: [face.family],
+      scripts: null,
+      decorative: null,
+    };
+  }
+  if (onCatalog) onCatalog([...result].sort(compareInstalledFonts));
   let next = 0;
   /**
    * Read pending font names and cmap tables through one bounded worker.
@@ -146,21 +180,7 @@ export async function enumerateInstalledFonts(
     }
   }
   await Promise.all([worker(), worker(), worker(), worker()]);
-  result.sort(
-    /**
-     * Sort localized native labels without altering canonical document font names.
-     *
-     * Canonical names break equal-label ties so independent families never merge.
-     * @param {InstalledFont} first - First local family.
-     * @param {InstalledFont} second - Second local family.
-     * @returns {number} Native Korean label order with a deterministic family tie-breaker.
-     * @example
-     * // 굴림 appears before 함초롬바탕; distinct equal labels remain separate choices.
-     */
-    (first, second) =>
-      FONT_COLLATOR.compare(first.label, second.label) ||
-      FONT_COLLATOR.compare(first.family, second.family),
-  );
+  result.sort(compareInstalledFonts);
   return result;
 }
 

@@ -117,8 +117,23 @@ export async function resizeOwnedDesktop(desktop: ElectronApplication, width: nu
       /** The first window belongs exclusively to this isolated regression application. */
       const window=BrowserWindow.getAllWindows()[0];
       if(!window)throw new Error('The owned desktop window is absent.');
+      /** Ephemeral Mac CI may provide a real secondary screen larger than its original primary screen. */
+      const before=window.getBounds(),contentBefore=window.getContentBounds(),chromeWidth=before.width-contentBefore.width,chromeHeight=before.height-contentBefore.height;
+      let destination:number|undefined;
+      if(process.platform==='darwin'&&process.env.GITHUB_ACTIONS==='true'){
+        /** The actual window must fit its native screen's usable points and original chrome. */
+        const current=screen.getDisplayMatching(before);
+        if(current.workArea.width<size.width+chromeWidth||current.workArea.height<size.height+chromeHeight){
+          for(/** Only actual unscaled native displays may host an oversized original fixture. */const candidate of screen.getAllDisplays()){
+            if(candidate.scaleFactor!==1||candidate.workArea.width<size.width+chromeWidth||candidate.workArea.height<size.height+chromeHeight)continue;
+            window.setPosition(candidate.workArea.x+Math.max(0,Math.floor((candidate.workArea.width-size.width-chromeWidth)/2)),candidate.workArea.y);
+            destination=candidate.id;break;
+          }
+          if(destination===undefined)throw new Error('No actual unscaled native screen can contain the original requested fixture.');
+        }
+      }
       window.setContentSize(size.width,size.height);
-      return {requested:size,contentBounds:window.getContentBounds(),bounds:window.getBounds(),display:screen.getDisplayMatching(window.getBounds())};
+      return {requested:size,before,destination,contentBounds:window.getContentBounds(),bounds:window.getBounds(),display:screen.getDisplayMatching(window.getBounds())};
     },{width,height});
   await test.info().attach('native-window-resize',{body:JSON.stringify(observation,null,2),contentType:'application/json'});
 }

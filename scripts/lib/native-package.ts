@@ -4,6 +4,9 @@ import path from "node:path";
 import asar from "@electron/asar";
 import { XMLParser, XMLValidator } from "fast-xml-parser";
 
+/** Minimum complete native distribution suite, shared by staging and extracted-payload verification. */
+export const MIN_NATIVE_REGRESSIONS = 31;
+
 /** Native platforms for which the project builds desktop distribution artifacts. */
 export type PackagePlatform = "win32" | "darwin";
 /** Independently packaged architectures, each tested on its corresponding native runner. */

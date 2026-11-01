@@ -91,6 +91,11 @@ jobs:
         if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
         env:
           ELECTRON_ENABLE_LOGGING: ${{ matrix.platform == 'darwin' && '1' || '' }}
+      - name: Verify actual ZIP-extracted and DMG-copied Mac runtimes
+        if: ${{ matrix.platform == 'darwin' && !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
+        run: node scripts/test-macos-distributions.ts --arch ${{ matrix.arch }}
+        env:
+          ELECTRON_ENABLE_LOGGING: 1
       - name: Retain actual Mac package signing and owned crash evidence
         if: ${{ always() && matrix.platform == 'darwin' && !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
         run: node scripts/collect-macos-package-diagnostics.ts --arch ${{ matrix.arch }}

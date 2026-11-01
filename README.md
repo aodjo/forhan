@@ -46,6 +46,8 @@ node scripts/build-korean-font.ts NotoSansKR-Bold.otf src/assets/FhanSansKR-Bold
 
 현재 빌더 26은 Mac 보조 앱의 파일 이름을 분해형 한글로 만듭니다. Mac 빌드의 `CFBundleName`도 같은 표현을 사용하도록 명시해 [보조 앱 이름 불일치 문제](https://github.com/electron-userland/electron-builder/pull/9962)를 피합니다. 사용자에게 보이는 `CFBundleDisplayName`과 문서 제목은 그대로 `포한`입니다. 패키지 검사는 표시 이름의 정규화된 일치와 별개로 런타임 이름의 정확한 일치도 확인합니다.
 
+Mac 배포 컨테이너 자체는 전체 배포 앱 검사를 마친 같은 Mac에서 `node scripts/test-macos-distributions.ts`로 추가 확인합니다. ZIP을 푼 앱과 읽기 전용 DMG에서 복사한 앱의 모든 파일·실행 권한·링크를 검증한 패키징 폴더와 비교하고, 각각 실제 실행해 설치 글꼴과 종료 동작을 검사합니다. DMG에서 복사한 앱은 볼륨을 분리한 뒤 실행합니다. 두 형식의 실행과 임시 파일 정리가 모두 성공해야 `release/validation/distributions-darwin-*.json`을 기록합니다.
+
 ## 문서 작업
 
 - HWPX, HWP 5, FHN(포한), TXT, HTML 문서 열기

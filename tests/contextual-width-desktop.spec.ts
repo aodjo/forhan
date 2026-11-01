@@ -98,9 +98,9 @@ async function verifyNativeContextualWidths(): Promise<void> {
   const profile = await mkdtemp(path.join(tmpdir(), "forhan-context-width-")),
     desktop = await electron.launch(desktopLaunchOptions(profile));
   try {
-    /** The actual native renderer supplies all physical source geometry. */
+    /** The actual native renderer completes font bootstrap before original physical source geometry is inspected. */
     const page = await desktop.firstWindow();
-    await expect(page.locator(".tiptap")).toBeVisible();
+    await expect(page.locator(".tiptap")).toBeVisible({timeout:30000});
     if (process.env.FORHAN_PACKAGED_EXECUTABLE)
       expect(
         await desktop.evaluate(

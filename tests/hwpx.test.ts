@@ -1,8 +1,8 @@
+import { nativeCorpusFixture } from "./helpers/native-corpus.ts";
 import type { EditorNode, HwpxPage } from "../src/formats/hwpx.ts";
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFile, writeFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 import { unzipSync, zipSync, strFromU8, strToU8 } from "fflate";
 import { readHwpx, writeHwpx } from "../src/formats/hwpx.ts";
 /**
@@ -312,11 +312,6 @@ async function verifyMergedAndNestedTableCellsSurviveExportImport(): Promise<voi
     ),
   );
   assert.ok(string(parsed.doc).includes("안쪽"));
-  if (existsSync("research/fixtures-private"))
-    await writeFile(
-      "research/fixtures-private/forhan-merged-table.hwpx",
-      bytes,
-    );
 }
 
 test(
@@ -365,8 +360,6 @@ async function verifyImageBytesAndDisplayDimensionsRoundTrip(): Promise<void> {
   assert.equal(image.attrs!.src, `data:image/png;base64,${png}`);
   assert.equal(image.attrs!.width, 120);
   assert.equal(image.attrs!.height, 60);
-  if (existsSync("research/fixtures-private"))
-    await writeFile("research/fixtures-private/forhan-image.hwpx", bytes);
 }
 
 test(
@@ -424,8 +417,6 @@ async function verifyNewBulletAndNumberedListsExportNativeListDefinitions(): Pro
   const files = unzipSync(bytes);
   assert.match(strFromU8(files["Contents/header.xml"]), /<hh:numbering /);
   assert.match(strFromU8(files["Contents/header.xml"]), /<hh:bullet /);
-  if (existsSync("research/fixtures-private"))
-    await writeFile("research/fixtures-private/forhan-lists.hwpx", bytes);
 }
 
 test(
@@ -794,100 +785,46 @@ test(
   verifyInvalidZIPXMLEntityDeclarationsExternalImagesAndRawForeignControlsFailClosed,
 );
 /**
- * Verify self-created native Hancom fixtures import and can be exported for oracle verification.
+ * Preserve edits and tables while exporting an independently authored native source.
  *
- * Reads locally generated native fixtures and writes independent and edited outputs for a separate Hancom interoperability oracle.
- *
- * @returns {Promise<void>} Completion of the documented interoperability assertions.
- * @throws {Error} If the expected document behavior is not preserved.
+ * The checked-in reference was reserialized and reopened by original Hancom.
+ * Exported bytes are read directly in memory, leaving completed research
+ * evidence and the caller's working directory untouched.
+ * @async
+ * @returns {Promise<void>} Resolves after the original table and explicit source edit survive export.
+ * @throws {AssertionError} If native content, editing or table preservation differs.
  * @example
  * await verifySelfCreatedNativeHancomFixturesImportAndCanBeExportedForOracleVerification();
  */
 async function verifySelfCreatedNativeHancomFixturesImportAndCanBeExportedForOracleVerification(): Promise<void> {
-  /**
-   * The imported document and retained source returned by the HWPX reader.
-   */
+  /** Required native source remains independent from the installed application and ignored files. */
   const parsed = await readHwpx(
-    new Uint8Array(await readFile("research/fixtures-private/rich.hwpx")),
+    await readFile(nativeCorpusFixture("rich.hwpx")),
   );
   assert.ok(string(parsed.doc).includes("포한"));
-  assert.ok(all(parsed.doc, "table").length);
-  /**
-   * The fixture paragraph selected for an explicit text edit.
-   */
-  const p = all(parsed.doc, "paragraph").find(
-    /**
-     * Evaluate the find callback.
-     *
-     * Processes the current collection item while preserving the surrounding operation ordering.
-     *
-     * @param {EditorNode} n - The n input.
-     * @returns {boolean | undefined} The computed result of this operation.
-     * @example
-     * collection.map(callback);
-     */
-    (n) =>
-      n.content?.some(
-        /**
-         * Evaluate the some callback.
-         *
-         * Processes the current collection item while preserving the surrounding operation ordering.
-         *
-         * @param {EditorNode} t - The t input.
-         * @returns {any} The computed result of this operation.
-         * @example
-         * collection.map(callback);
-         */
-        (t) => t.type === "text" && t.text.includes("포한"),
-      ),
-  );
-  if (p) p.content![0].text += " · 포한 수정";
-  await writeFile(
-    "research/fixtures-private/forhan-edited-native.hwpx",
-    await writeHwpx(parsed),
-  );
-  await writeFile(
-    "research/fixtures-private/forhan-export.hwpx",
-    await writeHwpx({
-      doc: doc(
-        para("포한 호환성 검증", { textAlign: "center" }, [
-          { type: "bold" },
-          {
-            type: "textStyle",
-            attrs: { fontSize: "16pt", fontFamily: "맑은 고딕" },
-          },
-        ]),
-        para("한글 설치 없이 만드는 독립 HWPX 문서"),
-        {
-          type: "table",
-          content: [
-            {
-              type: "tableRow",
-              content: [
-                {
-                  type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1 },
-                  content: [para("항목")],
-                },
-                {
-                  type: "tableCell",
-                  attrs: { colspan: 1, rowspan: 1 },
-                  content: [para("내용")],
-                },
-              ],
-            },
-          ],
-        },
-      ),
-      page,
-      title: "독립 HWPX 검증",
-    }),
-  );
+  assert.equal(all(parsed.doc, "table").length, 1);
+  let target: EditorNode | undefined;
+  for (/** Each original native paragraph keeps its own editable source ownership. */
+  const candidate of all(parsed.doc, "paragraph")) {
+    for (/** Actual native leaves, rather than generated preview text, receive the source edit. */
+    const leaf of candidate.content ?? [])
+      if (leaf.type === "text" && leaf.text?.includes("포한")) {
+        target = leaf;
+        break;
+      }
+    if (target) break;
+  }
+  assert.ok(target);
+  target.text += " · 포한 수정";
+  /** The independent export is verified without a persistent output-file side effect. */
+  const edited = await readHwpx(await writeHwpx(parsed));
+  assert.ok(string(edited.doc).includes(" · 포한 수정"));
+  assert.equal(all(edited.doc, "table").length, 1);
 }
 
 test(
-  "self-created native Hancom fixtures import and can be exported for oracle verification",
-  { skip: !existsSync("research/fixtures-private/rich.hwpx") },
+  "native authored corpus remains editable through independent HWPX export",
+
   verifySelfCreatedNativeHancomFixturesImportAndCanBeExportedForOracleVerification,
 );
 
@@ -954,11 +891,6 @@ async function verifyExplicitColumnWidths(): Promise<void> {
   const parsed = await readHwpx(bytes);
   assert.deepEqual(all(parsed.doc, "tableCell")[0].attrs!.colwidth, [82, 60]);
   assert.deepEqual(all(parsed.doc, "tableCell")[1].attrs!.colwidth, [100]);
-  if (existsSync("research/fixtures-private"))
-    await writeFile(
-      "research/fixtures-private/forhan-column-widths.hwpx",
-      bytes,
-    );
 }
 
 test(
@@ -1081,16 +1013,14 @@ test(
 async function verifyNativeHancomImageAndMergedCellFixturesRetainTheirMeasuredGeometry(): Promise<void> {
   /** The image decoded from a native file whose curSz values are both zero. */
   const image = all(
-    (await readHwpx(await readFile("research/fixtures-private/image.hwpx")))
-      .doc,
+    (await readHwpx(await readFile(nativeCorpusFixture("image.hwpx")))).doc,
     "image",
   )[0];
   assert.equal(image.attrs!.width, 32);
   assert.equal(image.attrs!.height, 16);
   /** Native table cells including a cell merged across its first two columns. */
   const cells = all(
-    (await readHwpx(await readFile("research/fixtures-private/table.hwpx")))
-      .doc,
+    (await readHwpx(await readFile(nativeCorpusFixture("table.hwpx")))).doc,
     "tableCell",
   );
   assert.equal(cells[0].attrs!.colspan, 2);
@@ -1100,11 +1030,7 @@ async function verifyNativeHancomImageAndMergedCellFixturesRetainTheirMeasuredGe
 
 test(
   "native Hancom image and merged-cell fixtures retain their measured geometry",
-  {
-    skip:
-      !existsSync("research/fixtures-private/image.hwpx") ||
-      !existsSync("research/fixtures-private/table.hwpx"),
-  },
+
   verifyNativeHancomImageAndMergedCellFixturesRetainTheirMeasuredGeometry,
 );
 
@@ -1147,15 +1073,6 @@ async function verifyInsertedImageDimensions(): Promise<void> {
     const image = all((await readHwpx(bytes)).doc, "image")[0];
     assert.equal(image.attrs!.width, scenario.expectedWidth);
     assert.equal(image.attrs!.height, scenario.expectedHeight);
-    if (
-      scenario.width === null &&
-      scenario.height === null &&
-      existsSync("research/fixtures-private")
-    )
-      await writeFile(
-        "research/fixtures-private/forhan-inserted-image.hwpx",
-        bytes,
-      );
   }
 }
 
@@ -1241,8 +1158,6 @@ async function verifyNativeHyperlinkRoundTrip(): Promise<void> {
     assert.equal(target, href);
   }
   assert.equal(nodes.at(-1)!.text, " 링크 뒤");
-  if (existsSync("research/fixtures-private"))
-    await writeFile("research/fixtures-private/forhan-hyperlink.hwpx", bytes);
 }
 
 test(
@@ -1301,11 +1216,6 @@ async function verifyEditedHyperlinkFieldPreservation(): Promise<void> {
   assert.ok(xml.includes("opaque-field-command"));
   assert.ok(xml.includes("https://example.com/edited?x=1&amp;y=2"));
   assert.ok(string((await readHwpx(bytes)).doc).includes("수정한 포한 링크"));
-  if (existsSync("research/fixtures-private"))
-    await writeFile(
-      "research/fixtures-private/forhan-hyperlink-edited.hwpx",
-      bytes,
-    );
 }
 
 test(
@@ -1393,43 +1303,45 @@ test(
   "command-only hyperlink fields decode safely and script URLs are rejected",
   verifyHyperlinkCommandAndSafety,
 );
-
 /**
- * Verify exact link scope in the independently generated native Hancom fixture.
+ * Retain an original native hyperlink through a real source-text edit and export.
  *
- * The fixture starts a hyperlink after plain prefix text, switches character
- * formatting in another run and ends the field in a third control-bearing run.
- * It is also exported after a real text edit for the native Open/Save oracle.
- *
- * @returns {Promise<void>} Completion of the optional native hyperlink fixture assertions.
- * @throws {Error} If native run boundaries change the linked range or target.
+ * Native field boundaries supply the reference label and exact query target.
+ * Exported bytes remain in memory and never overwrite research artifacts.
+ * @async
+ * @returns {Promise<void>} Resolves after the native link survives the explicit edit.
+ * @throws {AssertionError} If its label, target or edited export differs.
  * @example
  * await verifyNativeHyperlinkFixture();
  */
 async function verifyNativeHyperlinkFixture(): Promise<void> {
-  /** The native hyperlink document and original package retained for its edit. */
+  /** Required native source and independently decoded text runs retain their literal values. */
   const parsed = await readHwpx(
-    await readFile("research/fixtures-private/hyperlink-native.hwpx"),
-  );
-  /** Ordered native text fragments spanning the plain prefix and the linked label. */
-  const nodes = all(parsed.doc, "text");
+      await readFile(nativeCorpusFixture("hyperlink-native.hwpx")),
+    ),
+    nodes = all(parsed.doc, "text");
   assert.equal(nodes[0].text, "링크 앞 ");
   assert.equal(nodes[1].text, "포한 프로젝트");
   let href: string | undefined;
-  for (/** The native fixture's decoded hyperlink mark checked for its exact query target. */ const mark of nodes[1]
-    .marks || [])
+  for (/** Every native source mark is inspected without replacing its field boundary. */
+  const mark of nodes[1].marks ?? [])
     if (mark.type === "link") href = mark.attrs?.href;
   assert.equal(href, "https://example.com/forhan?x=1&y=2");
   nodes[1].text = "포한 프로젝트 수정";
-  await writeFile(
-    "research/fixtures-private/forhan-hyperlink-native-edited.hwpx",
-    await writeHwpx(parsed),
-  );
+  /** Independently serialized and imported bytes prove the edited native field remains intact. */
+  const edited = await readHwpx(await writeHwpx(parsed)),
+    revised = all(edited.doc, "text");
+  assert.equal(revised[1].text, "포한 프로젝트 수정");
+  let revisedHref: string | undefined;
+  for (/** The edited native mark retains the exact original query target. */
+  const mark of revised[1].marks ?? [])
+    if (mark.type === "link") revisedHref = mark.attrs?.href;
+  assert.equal(revisedHref, href);
 }
 
 test(
   "native Hancom hyperlink run boundaries remain editable and retain the exact query target",
-  { skip: !existsSync("research/fixtures-private/hyperlink-native.hwpx") },
+
   verifyNativeHyperlinkFixture,
 );
 
@@ -1518,7 +1430,7 @@ test(
  * 15mm reserved header area, preserving both components needed by the renderer
  * and PDF layout rather than collapsing them into one ambiguous margin.
  *
- * @returns {Promise<void>} Completion of optional native blank-page geometry assertions.
+ * @returns {Promise<void>} Completion of required native blank-page geometry assertions.
  * @throws {Error} If native header/footer areas or their body-text offset are misread.
  * @example
  * await verifyNativeBlankTextOffsets();
@@ -1526,7 +1438,7 @@ test(
 async function verifyNativeBlankTextOffsets(): Promise<void> {
   /** The native blank document whose pagePr defines separate body-text offsets. */
   const parsed = await readHwpx(
-    await readFile("research/fixtures-private/blank.hwpx"),
+    await readFile(nativeCorpusFixture("blank.hwpx")),
   );
   assert.ok(Math.abs(parsed.page.marginLeft - 30) < 0.01);
   assert.ok(Math.abs(parsed.page.marginRight - 30) < 0.01);
@@ -1539,6 +1451,6 @@ async function verifyNativeBlankTextOffsets(): Promise<void> {
 
 test(
   "native blank page preserves header/footer text-origin components",
-  { skip: !existsSync("research/fixtures-private/blank.hwpx") },
+
   verifyNativeBlankTextOffsets,
 );

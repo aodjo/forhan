@@ -1,0 +1,499 @@
+{
+  "version": 1,
+  "origin": "Fresh independently authored source reserialized by original installed Hancom 2024, followed by metadata and optional-preview removal.",
+  "nativeVersion": "13.0.0.4049",
+  "nativeExecutableSha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "nativeReopenVerified": true,
+  "records": [
+    {
+      "name": "sample.hwp",
+      "format": "HWP",
+      "sha256": "0f4a503da1df24142b0d675903b95f1f090051072942a2f549aa59793237c21e",
+      "bytes": 3584,
+      "originalNativeSha256": "c406b4afbb105f06d039739bba823c1ff770757830e33930d97621486f09c1c5",
+      "retainedCore": [
+        {
+          "path": "FileHeader",
+          "sha256": "df0dc45f14782693bfb9bd0e38b60695f06d426b85f7900dcee4dc1c89cf2b66"
+        },
+        {
+          "path": "DocInfo",
+          "sha256": "7d0950d3421272f99d8d2f9fa4f68c43bf87d5aa222b8a21ef5b165e1be9867e"
+        },
+        {
+          "path": "BodyText/Section0",
+          "sha256": "a3adc1e2d5220c5cc8b9266d9d5bbb50488d05060fd0f6854d16acbf7981ad8a"
+        }
+      ],
+      "removedAncillary": [
+        "\u0005HwpSummaryInformation",
+        "PrvImage",
+        "PrvText",
+        "Scripts/JScriptVersion",
+        "Scripts/DefaultJScript",
+        "DocOptions/_LinkDoc"
+      ],
+      "nativeReopen": {
+        "id": "sample",
+        "format": "HWP",
+        "name": "sample.hwp",
+        "sha256": "0f4a503da1df24142b0d675903b95f1f090051072942a2f549aa59793237c21e",
+        "nativeBodySha256": "304f31be80927bc0d57489850eb37819441e3a2c637653c70f2bdc406afee987",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "sample.hwpx",
+      "format": "HWPX",
+      "sha256": "e36c8579dce7bdc07457f8fc3585568900d945683c1085eb853c444e376ff425",
+      "bytes": 5673,
+      "originalNativeSha256": "4587c4a060f60b3aed6f74d0a2610c1166d6eaf653e6157527e67b2e660fd1c7",
+      "retainedCore": [
+        {
+          "path": "Contents/header.xml",
+          "sha256": "a0854f8a8cb86cf08db79bbc6b1d41f5864dfb6533ce77f75f5fca4b9429f117"
+        },
+        {
+          "path": "Contents/section0.xml",
+          "sha256": "a66ac53503ef0c2cbc53af30cbfad573a6dd3da012d3e4b92f74c3feebd176bd"
+        }
+      ],
+      "removedAncillary": [
+        "Preview/PrvText.txt",
+        "Preview/PrvImage.png"
+      ],
+      "nativeReopen": {
+        "id": "sample",
+        "format": "HWPX",
+        "name": "sample.hwpx",
+        "sha256": "e36c8579dce7bdc07457f8fc3585568900d945683c1085eb853c444e376ff425",
+        "nativeBodySha256": "304f31be80927bc0d57489850eb37819441e3a2c637653c70f2bdc406afee987",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "rich.hwp",
+      "format": "HWP",
+      "sha256": "a26a8027c27e45bc99516df0b7bac687f2c955153737cdab7914d5d1dd792e01",
+      "bytes": 4096,
+      "originalNativeSha256": "fe3985ef8d320964f71494c696c11bcd8d8820396fef656b5a0ea124dbc65502",
+      "retainedCore": [
+        {
+          "path": "FileHeader",
+          "sha256": "df0dc45f14782693bfb9bd0e38b60695f06d426b85f7900dcee4dc1c89cf2b66"
+        },
+        {
+          "path": "DocInfo",
+          "sha256": "5ddf3acea5b8e40182919d33bd257c7e9bfa4b9f2c91cd600bb0887acdbd83b8"
+        },
+        {
+          "path": "BodyText/Section0",
+          "sha256": "d16dbd58b6ee7b85cf0f61ae7adaebae605bfbb0d6cbc76d1240b60442624068"
+        }
+      ],
+      "removedAncillary": [
+        "\u0005HwpSummaryInformation",
+        "PrvImage",
+        "PrvText",
+        "Scripts/JScriptVersion",
+        "Scripts/DefaultJScript",
+        "DocOptions/_LinkDoc"
+      ],
+      "nativeReopen": {
+        "id": "rich",
+        "format": "HWP",
+        "name": "rich.hwp",
+        "sha256": "a26a8027c27e45bc99516df0b7bac687f2c955153737cdab7914d5d1dd792e01",
+        "nativeBodySha256": "f6072af2640c667407b60f179e6bfad6cec42d719a6a8b84ad3ae0799d6b144b",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "rich.hwpx",
+      "format": "HWPX",
+      "sha256": "f95138ed9a295ac30fbd7c9c8488373238717eee53de7767863d2f1aadab356a",
+      "bytes": 6271,
+      "originalNativeSha256": "1cb019515c7763d32c1e5c7b48e725b605922fa1ab7ae4623cfde3da7e0fb6e0",
+      "retainedCore": [
+        {
+          "path": "Contents/header.xml",
+          "sha256": "293a4c566868c50806abba3dd2df00b3405f01a0ede384f0d212d6483d0b7c7d"
+        },
+        {
+          "path": "Contents/section0.xml",
+          "sha256": "345042c558ae4daf9df0d0917410d938059210f7bda0a540ff76d13203e05aa8"
+        }
+      ],
+      "removedAncillary": [
+        "Preview/PrvText.txt",
+        "Preview/PrvImage.png"
+      ],
+      "nativeReopen": {
+        "id": "rich",
+        "format": "HWPX",
+        "name": "rich.hwpx",
+        "sha256": "f95138ed9a295ac30fbd7c9c8488373238717eee53de7767863d2f1aadab356a",
+        "nativeBodySha256": "f6072af2640c667407b60f179e6bfad6cec42d719a6a8b84ad3ae0799d6b144b",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "table.hwp",
+      "format": "HWP",
+      "sha256": "4603be5fd06e98730edab1efb0a0da4644a2c5a74e1c7c767f0dbbc5171dceee",
+      "bytes": 4096,
+      "originalNativeSha256": "fa28f304f32109471bb0d61d6b2f8da9455d9cad57ed1d189691b450d902f360",
+      "retainedCore": [
+        {
+          "path": "FileHeader",
+          "sha256": "df0dc45f14782693bfb9bd0e38b60695f06d426b85f7900dcee4dc1c89cf2b66"
+        },
+        {
+          "path": "DocInfo",
+          "sha256": "2597da93d3a45669bc634a14b4170b4473b1d3e5d6197351e6d258556f43f25b"
+        },
+        {
+          "path": "BodyText/Section0",
+          "sha256": "416bcf625b43b3b8dd1dd3db9e713566f23269da18c90855cc8d3adb8b4cc500"
+        }
+      ],
+      "removedAncillary": [
+        "\u0005HwpSummaryInformation",
+        "PrvImage",
+        "PrvText",
+        "Scripts/JScriptVersion",
+        "Scripts/DefaultJScript",
+        "DocOptions/_LinkDoc"
+      ],
+      "nativeReopen": {
+        "id": "table",
+        "format": "HWP",
+        "name": "table.hwp",
+        "sha256": "4603be5fd06e98730edab1efb0a0da4644a2c5a74e1c7c767f0dbbc5171dceee",
+        "nativeBodySha256": "4007534892ffde4579a900e2d64f370bb248b656a05aba1179d6846a3d03a9ad",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "table.hwpx",
+      "format": "HWPX",
+      "sha256": "b4fb1cc2c5872be56abf769fbc8f5b32c632e82fd17360ddd02556140c7a8cde",
+      "bytes": 6422,
+      "originalNativeSha256": "63c5f3f21933b2c56135379efe02d1368033a228fc4303e356250319a163bcbc",
+      "retainedCore": [
+        {
+          "path": "Contents/header.xml",
+          "sha256": "e4807cf050eb5f13c9f3d130273fb3a89b4760e2ccbbe092a0daaca370e1dd1b"
+        },
+        {
+          "path": "Contents/section0.xml",
+          "sha256": "ddb413ecf59f0b88c4ea41ad9f227abbc1c895824d10d047f553376379f347c3"
+        }
+      ],
+      "removedAncillary": [
+        "Preview/PrvText.txt",
+        "Preview/PrvImage.png"
+      ],
+      "nativeReopen": {
+        "id": "table",
+        "format": "HWPX",
+        "name": "table.hwpx",
+        "sha256": "b4fb1cc2c5872be56abf769fbc8f5b32c632e82fd17360ddd02556140c7a8cde",
+        "nativeBodySha256": "4007534892ffde4579a900e2d64f370bb248b656a05aba1179d6846a3d03a9ad",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "image.hwp",
+      "format": "HWP",
+      "sha256": "21508c206e187891c4919cfece1a2ec59bc2fe1e272f9a1c7771e07f49c694a1",
+      "bytes": 4096,
+      "originalNativeSha256": "1134f5d4056fc5fca8cd7db154a55f93283e17e08d978a7be19e6f2a968641b0",
+      "retainedCore": [
+        {
+          "path": "FileHeader",
+          "sha256": "df0dc45f14782693bfb9bd0e38b60695f06d426b85f7900dcee4dc1c89cf2b66"
+        },
+        {
+          "path": "DocInfo",
+          "sha256": "4993ca3050cd184dff724b3b30212fe24624c9b3ebd49bd8ace302f14ff19696"
+        },
+        {
+          "path": "BinData/BIN0001.PNG",
+          "sha256": "95cb421654fa0e21ac99f3afd23893d4d25166507c27335d883daf8887a1b843"
+        },
+        {
+          "path": "BodyText/Section0",
+          "sha256": "f187b1505de249bcb57944bddc28523f8b989bcd6d762aa79ab44181625b3f95"
+        }
+      ],
+      "removedAncillary": [
+        "\u0005HwpSummaryInformation",
+        "PrvImage",
+        "PrvText",
+        "Scripts/JScriptVersion",
+        "Scripts/DefaultJScript",
+        "DocOptions/_LinkDoc"
+      ],
+      "nativeReopen": {
+        "id": "image",
+        "format": "HWP",
+        "name": "image.hwp",
+        "sha256": "21508c206e187891c4919cfece1a2ec59bc2fe1e272f9a1c7771e07f49c694a1",
+        "nativeBodySha256": "063328969e16c205a4c81e079b4c43e960a977f0bbd513ad07088ab260577bc6",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "image.hwpx",
+      "format": "HWPX",
+      "sha256": "c3ec862a4b9a7b07bb2ca58fd94af35f19c3ae36617f2c158ab24c107b0b3af7",
+      "bytes": 6460,
+      "originalNativeSha256": "172da4b84286afa2d2a55757ac0b3ba92849a1611f132c407874cc31dd843445",
+      "retainedCore": [
+        {
+          "path": "Contents/header.xml",
+          "sha256": "a0854f8a8cb86cf08db79bbc6b1d41f5864dfb6533ce77f75f5fca4b9429f117"
+        },
+        {
+          "path": "BinData/image1.PNG",
+          "sha256": "6d5dc2d2c4bac5f43fb892b028d4afc42de9a7074948c6da9764e080d4b69266"
+        },
+        {
+          "path": "Contents/section0.xml",
+          "sha256": "c920536a5cac55e166491f44388c3746e4f60557878e4b6fa1e0436b1de0248d"
+        }
+      ],
+      "removedAncillary": [
+        "Preview/PrvText.txt",
+        "Preview/PrvImage.png"
+      ],
+      "nativeReopen": {
+        "id": "image",
+        "format": "HWPX",
+        "name": "image.hwpx",
+        "sha256": "c3ec862a4b9a7b07bb2ca58fd94af35f19c3ae36617f2c158ab24c107b0b3af7",
+        "nativeBodySha256": "063328969e16c205a4c81e079b4c43e960a977f0bbd513ad07088ab260577bc6",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "hyperlink-native.hwp",
+      "format": "HWP",
+      "sha256": "70374c2f7066bb04e06f377923ebc37ca0978d606bbccf6b932efe16be2d5113",
+      "bytes": 3584,
+      "originalNativeSha256": "db5bd657586416697d0f31bbf8b44509cfecdd1c86c0fad55495a087f2b19434",
+      "retainedCore": [
+        {
+          "path": "FileHeader",
+          "sha256": "df0dc45f14782693bfb9bd0e38b60695f06d426b85f7900dcee4dc1c89cf2b66"
+        },
+        {
+          "path": "DocInfo",
+          "sha256": "334f55a04bf5e5cbd986fb83eabcd3b8d5c4e68d438a1458eb5cb44f6cb72f99"
+        },
+        {
+          "path": "BodyText/Section0",
+          "sha256": "5de8cc9b1b0d8e04f27f2c48b4bd494b8af362bcbe9a0c1a876b4f3132d430b4"
+        }
+      ],
+      "removedAncillary": [
+        "\u0005HwpSummaryInformation",
+        "PrvImage",
+        "PrvText",
+        "Scripts/JScriptVersion",
+        "Scripts/DefaultJScript",
+        "DocOptions/_LinkDoc"
+      ],
+      "nativeReopen": {
+        "id": "hyperlink-native",
+        "format": "HWP",
+        "name": "hyperlink-native.hwp",
+        "sha256": "70374c2f7066bb04e06f377923ebc37ca0978d606bbccf6b932efe16be2d5113",
+        "nativeBodySha256": "d9ed426c01cccd63e72d05f3124535eedccce35d51e0207dded3e0e880226f83",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "hyperlink-native.hwpx",
+      "format": "HWPX",
+      "sha256": "1c43481ef5d707ab81b4e32ef2be3d1d33e8026aa1ab5b4ed38483ada064c370",
+      "bytes": 5916,
+      "originalNativeSha256": "98d1c91f99bb699b5d1532e20bce7d28225b91033b00d090c9abb9f932111339",
+      "retainedCore": [
+        {
+          "path": "Contents/header.xml",
+          "sha256": "4740be65d47832f764d5eb203ad2ec8f14c96c43eba94ebcd001d31e82e4f877"
+        },
+        {
+          "path": "Contents/section0.xml",
+          "sha256": "5ac5a32568c522c17e980f9efc392613735118717862e0dd690723f6dd4cf0d3"
+        }
+      ],
+      "removedAncillary": [
+        "Preview/PrvText.txt",
+        "Preview/PrvImage.png"
+      ],
+      "nativeReopen": {
+        "id": "hyperlink-native",
+        "format": "HWPX",
+        "name": "hyperlink-native.hwpx",
+        "sha256": "1c43481ef5d707ab81b4e32ef2be3d1d33e8026aa1ab5b4ed38483ada064c370",
+        "nativeBodySha256": "d9ed426c01cccd63e72d05f3124535eedccce35d51e0207dded3e0e880226f83",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "lists.hwp",
+      "format": "HWP",
+      "sha256": "baf1ce297272421d04d055a625e1cac1b41bf2a76c8c8e952d07a85cec8d64e5",
+      "bytes": 3584,
+      "originalNativeSha256": "8ed979e4c48aa2b1dad0945d95ae7ac687767ea0359f31b3005ed153a93e100d",
+      "retainedCore": [
+        {
+          "path": "FileHeader",
+          "sha256": "df0dc45f14782693bfb9bd0e38b60695f06d426b85f7900dcee4dc1c89cf2b66"
+        },
+        {
+          "path": "DocInfo",
+          "sha256": "596bf5b80599c9a05c52c6067ccb94b76af3053de8bddb16de2330b4172d5378"
+        },
+        {
+          "path": "BodyText/Section0",
+          "sha256": "a19ee0327f870438d1d5a3da824ccad06dadcf66a1efba7591f8e328dfa8d44f"
+        }
+      ],
+      "removedAncillary": [
+        "\u0005HwpSummaryInformation",
+        "PrvImage",
+        "PrvText",
+        "Scripts/JScriptVersion",
+        "Scripts/DefaultJScript",
+        "DocOptions/_LinkDoc"
+      ],
+      "nativeReopen": {
+        "id": "lists",
+        "format": "HWP",
+        "name": "lists.hwp",
+        "sha256": "baf1ce297272421d04d055a625e1cac1b41bf2a76c8c8e952d07a85cec8d64e5",
+        "nativeBodySha256": "98e72e58119866cadc7d122afee0864628d4b378568e2ae8de38d26927895109",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "lists.hwpx",
+      "format": "HWPX",
+      "sha256": "9767f6f8cdedd72977a5bbb9268a9e93ef2eb9baf68a46563ee4a3736b6e5137",
+      "bytes": 5997,
+      "originalNativeSha256": "987afd82010bde3ee8ebf9b30e604294ddc091c600a2a75eda546b828153e05a",
+      "retainedCore": [
+        {
+          "path": "Contents/header.xml",
+          "sha256": "ecddf8ac9e5b306760c4148fe4f1753a39625d2b83791d3607b097a036f336fd"
+        },
+        {
+          "path": "Contents/section0.xml",
+          "sha256": "14279030ae46434c23f651dc7442028ba5b715556e91e676cebfd2bc0d4deef6"
+        }
+      ],
+      "removedAncillary": [
+        "Preview/PrvText.txt",
+        "Preview/PrvImage.png"
+      ],
+      "nativeReopen": {
+        "id": "lists",
+        "format": "HWPX",
+        "name": "lists.hwpx",
+        "sha256": "9767f6f8cdedd72977a5bbb9268a9e93ef2eb9baf68a46563ee4a3736b6e5137",
+        "nativeBodySha256": "98e72e58119866cadc7d122afee0864628d4b378568e2ae8de38d26927895109",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "blank.hwp",
+      "format": "HWP",
+      "sha256": "667305fe6f2d5bddbf147f5009fff7b7e98c4465811347c521b78cd87630ccef",
+      "bytes": 3584,
+      "originalNativeSha256": "35bcc2063cde1705ef01f3c189647fcd5874d1c9adbe6a01063b00b98fed5a57",
+      "retainedCore": [
+        {
+          "path": "FileHeader",
+          "sha256": "df0dc45f14782693bfb9bd0e38b60695f06d426b85f7900dcee4dc1c89cf2b66"
+        },
+        {
+          "path": "DocInfo",
+          "sha256": "56d879861ab5e2cea40a77db4b44cd09404a1bfd106c0148ed05b91c2ac95884"
+        },
+        {
+          "path": "BodyText/Section0",
+          "sha256": "5179e412e012cbf9ac534d8aa3866c6cd398b47fb11519f5a5c6acacabb0fe44"
+        }
+      ],
+      "removedAncillary": [
+        "\u0005HwpSummaryInformation",
+        "PrvImage",
+        "PrvText",
+        "Scripts/JScriptVersion",
+        "Scripts/DefaultJScript",
+        "DocOptions/_LinkDoc"
+      ],
+      "nativeReopen": {
+        "id": "blank",
+        "format": "HWP",
+        "name": "blank.hwp",
+        "sha256": "667305fe6f2d5bddbf147f5009fff7b7e98c4465811347c521b78cd87630ccef",
+        "nativeBodySha256": "d3f924e26c165847aaef2e53c17ac1b7844abccf60878783c91abb91acc18d16",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "blank.hwpx",
+      "format": "HWPX",
+      "sha256": "03dc7a620145b5f42d412b3f6beb07cd9ad8e840f7c348e425b77a3f0f851068",
+      "bytes": 5394,
+      "originalNativeSha256": "871db5f34b89b5ec2a0e09ed62182324f8c3e36aaf73c30b0a3ddf805c08c776",
+      "retainedCore": [
+        {
+          "path": "Contents/header.xml",
+          "sha256": "f6dc2b1b82b32bfa1a697a87801732c9c76e0351c598bd8d512df5b947c99810"
+        },
+        {
+          "path": "Contents/section0.xml",
+          "sha256": "f79993204e123310205cceed4edb49ae8741a8fcb21fb70ba2da96e24f15e84c"
+        }
+      ],
+      "removedAncillary": [
+        "Preview/PrvText.txt",
+        "Preview/PrvImage.png"
+      ],
+      "nativeReopen": {
+        "id": "blank",
+        "format": "HWPX",
+        "name": "blank.hwpx",
+        "sha256": "03dc7a620145b5f42d412b3f6beb07cd9ad8e840f7c348e425b77a3f0f851068",
+        "nativeBodySha256": "d3f924e26c165847aaef2e53c17ac1b7844abccf60878783c91abb91acc18d16",
+        "nativeMarginElement": "<PAGEMARGIN Bottom=\"4252\" Footer=\"4252\" Gutter=\"0\" Header=\"4252\" Left=\"8504\" Right=\"8504\" Top=\"5669\"/>",
+        "sourceBytesUnchangedAfterOwnedClose": true
+      }
+    },
+    {
+      "name": "pattern.png",
+      "format": "PNG",
+      "sha256": "6d5dc2d2c4bac5f43fb892b028d4afc42de9a7074948c6da9764e080d4b69266",
+      "bytes": 125
+    }
+  ]
+}

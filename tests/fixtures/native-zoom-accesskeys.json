@@ -1,0 +1,496 @@
+{
+  "nativeSha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "scope": "Fourteen actual original native Alt-key and numeric-entry conditions. Original COM accepted view properties and complete unchanged image identities establish expected behavior. WPF omits numeric and wheel controls from its UIA control tree; raw screenshots retain their selection and focus. This is ordinary owned runtime observation, not REA runtime evidence or a whole-dialog pixel-parity claim.",
+  "source": {
+    "page": {
+      "width": 210,
+      "height": 297,
+      "marginTop": 20,
+      "marginBottom": 15,
+      "marginLeft": 30,
+      "marginRight": 30,
+      "header": 15,
+      "footer": 15,
+      "lineGrid": 3288
+    },
+    "doc": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "attrs": {
+            "lineHeight": "100%",
+            "nativeSnapToGrid": true,
+            "marginTop": "0pt",
+            "marginBottom": "0pt"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "row000",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "X i",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "X iiiiii",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "X WWW",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "X row000 row000",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "fontFamily": "Arial",
+                    "fontSize": "16pt",
+                    "nativeUseFontSpace": false,
+                    "nativeUseKerning": false,
+                    "backgroundColor": "#fff1a8"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "sourceRows": [
+      "row000",
+      "X i",
+      "X iiiiii",
+      "X WWW",
+      "X row000 row000"
+    ],
+    "sha256": "7486eb87e2a81b614624b590f02c9071705b095c149aa23a9706bc074580e221"
+  },
+  "rows": [
+    {
+      "id": "disabled-custom-u",
+      "choices": [],
+      "actions": [
+        {
+          "key": "U"
+        }
+      ],
+      "expected": {
+        "choice": "125",
+        "shape": "single",
+        "ratio": 125,
+        "columns": 1,
+        "rows": 1,
+        "direction": "vertical",
+        "horizontalWheel": false
+      },
+      "originalDialogCaptureSha256": "94b26d0e62acdfb0bf6b018cf7e287775562cee260af5062eedced703b6194e8",
+      "originalViewportCaptureSha256": "85ac7c159eebdd31af9c6ce7068ec794898a8f44a870853124bc2c2c4ffca671"
+    },
+    {
+      "id": "enabled-custom-u",
+      "choices": [
+        [
+          "native-zoom-mode",
+          "custom"
+        ]
+      ],
+      "actions": [
+        {
+          "key": "U",
+          "digits": "137"
+        }
+      ],
+      "expected": {
+        "choice": "custom",
+        "shape": "single",
+        "ratio": 137,
+        "columns": 1,
+        "rows": 1,
+        "direction": "vertical",
+        "horizontalWheel": false
+      },
+      "originalDialogCaptureSha256": "103838046ee7211b3bbfa4328e68adce92beea2d2090a7fae6b3a272a21762f9",
+      "originalViewportCaptureSha256": "5717f56f35acc2d2c0cd1c8642f7bf8796fd61ec3f910be810fbd41915b1fc58"
+    },
+    {
+      "id": "disabled-columns-n",
+      "choices": [],
+      "actions": [
+        {
+          "key": "N"
+        }
+      ],
+      "expected": {
+        "choice": "125",
+        "shape": "single",
+        "ratio": 125,
+        "columns": 1,
+        "rows": 1,
+        "direction": "vertical",
+        "horizontalWheel": false
+      },
+      "originalDialogCaptureSha256": "94b26d0e62acdfb0bf6b018cf7e287775562cee260af5062eedced703b6194e8",
+      "originalViewportCaptureSha256": "3b7abe2bf7b329d0db44c4f5e1e63294695fc58da80a42c4749ffa6a0092b9a8"
+    },
+    {
+      "id": "enabled-columns-n",
+      "choices": [
+        [
+          "native-page-shape",
+          "multiple"
+        ]
+      ],
+      "actions": [
+        {
+          "key": "N",
+          "digits": "3"
+        }
+      ],
+      "expected": {
+        "choice": "page",
+        "shape": "multiple",
+        "ratio": 57,
+        "columns": 3,
+        "rows": 1,
+        "direction": "vertical",
+        "horizontalWheel": false
+      },
+      "originalDialogCaptureSha256": "c7edacc0a2d0bbfaa0b743b93fcdab7463ef7622d11a888778b7af73d1c5c932",
+      "originalViewportCaptureSha256": "5d30b1da9333a9039a6739c7ab47b25b3bef127f162cc11dbd9810fd02515c5c"
+    },
+    {
+      "id": "disabled-rows-y",
+      "choices": [],
+      "actions": [
+        {
+          "key": "Y"
+        }
+      ],
+      "expected": {
+        "choice": "125",
+        "shape": "single",
+        "ratio": 125,
+        "columns": 1,
+        "rows": 1,
+        "direction": "vertical",
+        "horizontalWheel": false
+      },
+      "originalDialogCaptureSha256": "94b26d0e62acdfb0bf6b018cf7e287775562cee260af5062eedced703b6194e8",
+      "originalViewportCaptureSha256": "3b7abe2bf7b329d0db44c4f5e1e63294695fc58da80a42c4749ffa6a0092b9a8"
+    },
+    {
+      "id": "enabled-rows-y",
+      "choices": [
+        [
+          "native-page-shape",
+          "multiple"
+        ]
+      ],
+      "actions": [
+        {
+          "key": "Y",
+          "digits": "4"
+        }
+      ],
+      "expected": {
+        "choice": "page",
+        "shape": "multiple",
+        "ratio": 15,
+        "columns": 1,
+        "rows": 4,
+        "direction": "vertical",
+        "horizontalWheel": false
+      },
+      "originalDialogCaptureSha256": "c0a50fd0d03127b3ddb30566b5e7ece923d6b42f6ba313ee47830659c6d2ecfb",
+      "originalViewportCaptureSha256": "595165d0cc7bbb741786d884a39a71c27736a92442c153c5ccb45dd2091c0084"
+    },
+    {
+      "id": "disabled-wheel-c",
+      "choices": [],
+      "actions": [
+        {
+          "key": "C"
+        }
+      ],
+      "expected": {
+        "choice": "125",
+        "shape": "single",
+        "ratio": 125,
+        "columns": 1,
+        "rows": 1,
+        "direction": "vertical",
+        "horizontalWheel": false
+      },
+      "originalDialogCaptureSha256": "94b26d0e62acdfb0bf6b018cf7e287775562cee260af5062eedced703b6194e8",
+      "originalViewportCaptureSha256": "3b7abe2bf7b329d0db44c4f5e1e63294695fc58da80a42c4749ffa6a0092b9a8"
+    },
+    {
+      "id": "enabled-wheel-c",
+      "choices": [
+        [
+          "native-page-direction",
+          "horizontal"
+        ]
+      ],
+      "actions": [
+        {
+          "key": "C"
+        }
+      ],
+      "expected": {
+        "choice": "125",
+        "shape": "single",
+        "ratio": 125,
+        "columns": 1,
+        "rows": 1,
+        "direction": "horizontal",
+        "horizontalWheel": false
+      },
+      "originalDialogCaptureSha256": "ad0a9795320f2d04ac1207ef5e75eeed1792e23e86b937d6d365d66c7841d034",
+      "originalViewportCaptureSha256": "3b7abe2bf7b329d0db44c4f5e1e63294695fc58da80a42c4749ffa6a0092b9a8"
+    },
+    {
+      "id": "repeated-wheel-c",
+      "choices": [
+        [
+          "native-page-direction",
+          "horizontal"
+        ]
+      ],
+      "actions": [
+        {
+          "key": "C"
+        },
+        {
+          "key": "C"
+        }
+      ],
+      "expected": {
+        "choice": "125",
+        "shape": "single",
+        "ratio": 125,
+        "columns": 1,
+        "rows": 1,
+        "direction": "horizontal",
+        "horizontalWheel": true
+      },
+      "originalDialogCaptureSha256": "148ec23f502e228eb47891fcbf26b8633f6554718fd56ce38523fe57ead0a2b0",
+      "originalViewportCaptureSha256": "3b7abe2bf7b329d0db44c4f5e1e63294695fc58da80a42c4749ffa6a0092b9a8"
+    },
+    {
+      "id": "enabled-counts-n-y",
+      "choices": [
+        [
+          "native-page-shape",
+          "multiple"
+        ]
+      ],
+      "actions": [
+        {
+          "key": "N",
+          "digits": "3"
+        },
+        {
+          "key": "Y",
+          "digits": "4"
+        }
+      ],
+      "expected": {
+        "choice": "page",
+        "shape": "multiple",
+        "ratio": 15,
+        "columns": 3,
+        "rows": 4,
+        "direction": "vertical",
+        "horizontalWheel": false
+      },
+      "originalDialogCaptureSha256": "150dd41612720832c0731c626b35d527e8f00c2bd16f8a93e93ce787d1e100e8",
+      "originalViewportCaptureSha256": "85f0fdc1f083032f891d1a5ef3489469dc66082e96dfb85491c97541d48370b6"
+    },
+    {
+      "id": "disabled-custom-after-preset",
+      "choices": [
+        [
+          "native-zoom-mode",
+          "custom"
+        ],
+        [
+          "native-zoom-mode",
+          "125"
+        ]
+      ],
+      "actions": [
+        {
+          "key": "U"
+        }
+      ],
+      "expected": {
+        "choice": "125",
+        "shape": "single",
+        "ratio": 125,
+        "columns": 1,
+        "rows": 1,
+        "direction": "vertical",
+        "horizontalWheel": false
+      },
+      "originalDialogCaptureSha256": "5ffe3e5246154abaaf74115c48ce30ea97fe9e58d2e99a2dcffb458780f8997c",
+      "originalViewportCaptureSha256": "3b7abe2bf7b329d0db44c4f5e1e63294695fc58da80a42c4749ffa6a0092b9a8"
+    },
+    {
+      "id": "disabled-counts-after-single",
+      "choices": [
+        [
+          "native-page-shape",
+          "multiple"
+        ],
+        [
+          "native-page-shape",
+          "single"
+        ]
+      ],
+      "actions": [
+        {
+          "key": "N"
+        },
+        {
+          "key": "Y"
+        }
+      ],
+      "expected": {
+        "choice": "page",
+        "shape": "single",
+        "ratio": 59,
+        "columns": 1,
+        "rows": 1,
+        "direction": "vertical",
+        "horizontalWheel": false
+      },
+      "originalDialogCaptureSha256": "37310e0aa8abb4756a5768421feaef5ff81456ee107deb5a15c6a97ebf892646",
+      "originalViewportCaptureSha256": "b76bce25b65f0f314c948bdf83bc4723321720f93e7f17c2e8c40e7759ab1a7a"
+    },
+    {
+      "id": "disabled-wheel-after-vertical",
+      "choices": [
+        [
+          "native-page-direction",
+          "horizontal"
+        ],
+        [
+          "native-page-direction",
+          "vertical"
+        ]
+      ],
+      "actions": [
+        {
+          "key": "C"
+        }
+      ],
+      "expected": {
+        "choice": "125",
+        "shape": "single",
+        "ratio": 125,
+        "columns": 1,
+        "rows": 1,
+        "direction": "vertical",
+        "horizontalWheel": true
+      },
+      "originalDialogCaptureSha256": "d7e50f29450fb5d0e00e411fa593c6dffe80d573c3f7c2f152e591389dda0e93",
+      "originalViewportCaptureSha256": "3b7abe2bf7b329d0db44c4f5e1e63294695fc58da80a42c4749ffa6a0092b9a8"
+    },
+    {
+      "id": "repeated-custom-u-selection",
+      "choices": [
+        [
+          "native-zoom-mode",
+          "custom"
+        ]
+      ],
+      "actions": [
+        {
+          "key": "U",
+          "digits": "137"
+        },
+        {
+          "key": "U",
+          "digits": "151"
+        }
+      ],
+      "expected": {
+        "choice": "custom",
+        "shape": "single",
+        "ratio": 151,
+        "columns": 1,
+        "rows": 1,
+        "direction": "vertical",
+        "horizontalWheel": false
+      },
+      "originalDialogCaptureSha256": "e26108b8b83ba441e0b6918f42fe2eb71151c802463fa44d551f2607dedf8c89",
+      "originalViewportCaptureSha256": "f9395422d1ba039174550b1dec31d5f0ca8c23d8df943b40e13f66c604a2d7ab"
+    }
+  ]
+}

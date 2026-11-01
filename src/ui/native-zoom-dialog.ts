@@ -215,6 +215,15 @@ export function bindNativeZoomDialog(root:HTMLElement,initial:NativeZoomDraft):N
       if(!event.altKey||event.ctrlKey||event.metaKey)return;
       /** Native access keys retain the observed original options and groups. */
       const shortcuts:Record<string,[string,string]>={'1':['native-zoom-mode','100'],'2':['native-zoom-mode','125'],'3':['native-zoom-mode','150'],'4':['native-zoom-mode','200'],'5':['native-zoom-mode','300'],'6':['native-zoom-mode','500'],w:['native-zoom-mode','width'],p:['native-zoom-mode','page'],j:['native-zoom-mode','custom'],o:['native-page-shape','auto'],s:['native-page-shape','single'],t:['native-page-shape','two'],a:['native-page-shape','facing'],m:['native-page-shape','multiple'],v:['native-page-direction','vertical'],h:['native-page-direction','horizontal']},key=event.key.toLowerCase(),target=shortcuts[key];
+      /** Original field mnemonics retain their own enabled state and never select a different radio choice. */
+      const fields:Record<string,string>={u:'#native-zoom-value',n:'#native-zoom-columns',y:'#native-zoom-rows',c:'[name="native-zoom-wheel"]'},field=fields[key];
+      if(field){
+        event.preventDefault();
+        /** Numeric access keys select the complete independent draft; the enabled wheel shortcut toggles its real checkbox. */
+        const input=root.querySelector<HTMLInputElement>(field)!;
+        if(!input.disabled){input.focus();if(input.type==='checkbox')input.click();else input.select();}
+        return;
+      }
       if(key==='d'){event.preventDefault();root.querySelector<HTMLButtonElement>('[data-modal-value="apply"]')!.click();}
       else if(target){event.preventDefault();root.querySelector<HTMLInputElement>(`[name="${target[0]}"][value="${target[1]}"]`)!.click();}
     },{signal:listeners.signal});

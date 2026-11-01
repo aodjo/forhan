@@ -5,6 +5,7 @@ import {createHash,randomUUID} from 'node:crypto';
 import path from 'node:path';
 import {desktopLaunchOptions} from './helpers/desktop-launch.ts';
 import {exerciseNativePageViewFrames,exerciseNativeZoomBehavior} from './helpers/native-page-view-scenarios.ts';
+import {exerciseNativeZoomFieldAccessKeys} from './helpers/native-zoom-accesskeys.ts';
 
 /**
  * Verify original native page-view frames and source behavior in the selected application.
@@ -12,7 +13,7 @@ import {exerciseNativePageViewFrames,exerciseNativeZoomBehavior} from './helpers
  * Actual native execution retains complete screenshot bytes and executable/archive
  * identities. Public controls own every source import, view choice and navigation.
  * @async
- * @returns {Promise<void>} Resolves after thirty-four original frames and actual source behavior agree.
+ * @returns {Promise<void>} Resolves after thirty-four original frames, fourteen field mnemonic conditions and actual source behavior agree.
  * @throws {Error} If native execution, physical paper pixels or original source behavior differs.
  * @example
  * // The packaged gate cannot substitute the preview server for the archived application.
@@ -69,9 +70,12 @@ async function verifyDesktopNativePageView():Promise<void>{
     };
     /** Complete native observations retain their unchanged image bytes and independent resource identities. */
     const records=await exerciseNativePageViewFrames(page,resize,outputRoot);await exerciseNativeZoomBehavior(page);
+    await resize(1440,960);
+    /** Actual field access keys retain independently observed native numeric replacement and disabled preferences. */
+    const accessKeyRecords=await exerciseNativeZoomFieldAccessKeys(page,path.join(outputRoot,'field-accesskeys'));
     /** The archived executable and resource bundle must match this actual observed run. */
     const hashes=identity.packaged?{executableSha256:createHash('sha256').update(await readFile(identity.executable)).digest('hex'),archiveSha256:createHash('sha256').update(await readFile(identity.application)).digest('hex')}:{};
-    await writeFile(path.join(outputRoot,'run.json'),JSON.stringify({kind:'actual-native-page-view-and-source-observation-not-REA',identity,...hashes,records},null,2)+'\n');
+    await writeFile(path.join(outputRoot,'run.json'),JSON.stringify({kind:'actual-native-page-view-and-source-observation-not-REA',identity,...hashes,records,accessKeyRecords},null,2)+'\n');
   }finally{
     try{
       await desktop.evaluate(
@@ -91,4 +95,4 @@ async function verifyDesktopNativePageView():Promise<void>{
   }
 }
 
-test('actual native application retains 34 original page-view frames, zoom drafts, source caret navigation and wheel behavior',verifyDesktopNativePageView);
+test('actual native application retains 34 original page-view frames, field mnemonics, source caret navigation and wheel behavior',verifyDesktopNativePageView);

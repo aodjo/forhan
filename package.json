@@ -81,6 +81,9 @@
       "artifactName": "Forhan-${version}-Windows.${ext}"
     },
     "mac": {
+      "extendInfo": {
+        "CFBundleName": "\u1111\u1169\u1112\u1161\u11ab"
+      },
       "hardenedRuntime": true,
       "entitlements": "build/entitlements.mac.plist",
       "entitlementsInherit": "build/entitlements.mac.inherit.plist",

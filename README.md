@@ -42,6 +42,8 @@ node scripts/build-korean-font.ts NotoSansKR-Bold.otf src/assets/FhanSansKR-Bold
 
 수동 축소 보기에서는 원본 쪽 간격에 따라 긴 문서의 첫 용지 최소 여백을 유지합니다. 7쪽·49쪽 문서의 원본 48조건을 브라우저와 실제 데스크톱 앱에서 검사하며, 원문과 쪽 수·저장 상태도 확인합니다. 뒤쪽 용지에 남은 1픽셀 그리기 차이와 전체 UI 일치는 추가 작업이 필요합니다.
 
+현재 빌더 26은 Mac 보조 앱의 파일 이름을 분해형 한글로 만듭니다. Mac 빌드의 `CFBundleName`도 같은 표현을 사용하도록 명시해 [보조 앱 이름 불일치 문제](https://github.com/electron-userland/electron-builder/pull/9962)를 피합니다. 사용자에게 보이는 `CFBundleDisplayName`과 문서 제목은 그대로 `포한`입니다. 패키지 검사는 표시 이름의 정규화된 일치와 별개로 런타임 이름의 정확한 일치도 확인합니다.
+
 ## 문서 작업
 
 - HWPX, HWP 5, FHN(포한), TXT, HTML 문서 열기

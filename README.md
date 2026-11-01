@@ -40,6 +40,8 @@ node scripts/build-korean-font.ts NotoSansKR-Bold.otf src/assets/FhanSansKR-Bold
 
 실제 Windows 한국어 입력기 검사는 `npm run test:ime:windows`로 실행합니다. 빌드된 Windows x64 배포 앱, 설치된 한국어 입력기와 대화형 세션이 필요합니다. 검사에서 만든 전경 창에만 운영체제 키 입력을 보내며 창의 소유권이나 포커스가 바뀌면 중단합니다. 시스템 입력기 설정을 변경하지 않으며, 전제 조건이 없으면 실패로 보고합니다. 결과는 `release/validation/windows-ime-win32-x64.json`과 해당 실행의 개별 원문·입력·출력 기록에 남습니다.
 
+수동 축소 보기에서는 원본 쪽 간격에 따라 긴 문서의 첫 용지 최소 여백을 유지합니다. 7쪽·49쪽 문서의 원본 48조건을 브라우저와 실제 데스크톱 앱에서 검사하며, 원문과 쪽 수·저장 상태도 확인합니다. 뒤쪽 용지에 남은 1픽셀 그리기 차이와 전체 UI 일치는 추가 작업이 필요합니다.
+
 ## 문서 작업
 
 - HWPX, HWP 5, FHN(포한), TXT, HTML 문서 열기

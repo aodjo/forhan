@@ -1,0 +1,2952 @@
+{
+  "version": 1,
+  "evidence": {
+    "kind": "controlled-installed-native-first-paper-pixels-not-REA",
+    "executableSha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+    "sourceCounts": [
+      7,
+      49
+    ],
+    "captions": [
+      12,
+      19,
+      23,
+      31
+    ],
+    "candidateFrozenBeforeOriginalCapture": true
+  },
+  "sources": [
+    {
+      "id": "compact-unseen-7-pages",
+      "pageCount": 7,
+      "sourceSha256": "7d79ca8787acb3c47fbd5ed300150e9399fd0a2665499d88aa978ffed34b3369",
+      "page": {
+        "width": 210.00155555555554,
+        "height": 90.00066666666666,
+        "marginTop": 19.99897222222222,
+        "marginBottom": 15.00011111111111,
+        "marginLeft": 30.00022222222222,
+        "marginRight": 30.00022222222222,
+        "header": 15.00011111111111,
+        "footer": 15.00011111111111,
+        "lineGrid": 3288
+      },
+      "doc": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "sourceId": "hwpx-0"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout001",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-1"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout002",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-2"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout003",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-3"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout004",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-4"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout005",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-5"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout006",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-6"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout007",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "text": "holdout001holdout002holdout003holdout004holdout005holdout006holdout007"
+    },
+    {
+      "id": "compact-unseen-49-pages",
+      "pageCount": 49,
+      "sourceSha256": "f8ab0562d6dca49ab60aa9b849169f9e407849960f0ddce61d3f02718031863e",
+      "page": {
+        "width": 210.00155555555554,
+        "height": 90.00066666666666,
+        "marginTop": 19.99897222222222,
+        "marginBottom": 15.00011111111111,
+        "marginLeft": 30.00022222222222,
+        "marginRight": 30.00022222222222,
+        "header": 15.00011111111111,
+        "footer": 15.00011111111111,
+        "lineGrid": 3288
+      },
+      "doc": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "sourceId": "hwpx-0"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout001",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-1"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout002",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-2"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout003",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-3"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout004",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-4"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout005",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-5"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout006",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-6"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout007",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-7"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout008",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-8"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout009",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-9"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout010",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-10"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout011",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-11"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout012",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-12"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout013",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-13"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout014",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-14"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout015",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-15"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout016",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-16"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout017",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-17"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout018",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-18"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout019",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-19"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout020",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-20"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout021",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-21"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout022",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-22"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout023",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-23"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout024",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-24"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout025",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-25"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout026",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-26"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout027",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-27"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout028",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-28"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout029",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-29"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout030",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-30"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout031",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-31"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout032",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-32"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout033",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-33"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout034",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-34"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout035",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-35"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout036",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-36"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout037",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-37"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout038",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-38"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout039",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-39"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout040",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-40"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout041",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-41"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout042",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-42"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout043",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-43"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout044",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-44"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout045",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-45"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout046",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-46"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout047",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-47"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout048",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": "left",
+              "nativeParagraphCondense": 0,
+              "nativeSnapToGrid": true,
+              "nativeBreakLatinWord": 0,
+              "nativeBreakNonLatinWord": 1,
+              "lineHeight": "1",
+              "pageBreakBefore": true,
+              "sourceId": "hwpx-48"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "holdout049",
+                "marks": [
+                  {
+                    "type": "textStyle",
+                    "attrs": {
+                      "fontSize": "16pt",
+                      "color": "#000000",
+                      "nativeUseFontSpace": false,
+                      "nativeUseKerning": false,
+                      "nativeOutlineType": 0,
+                      "nativeEmphasisType": 0,
+                      "nativeShadowType": "NONE",
+                      "nativeShadowOffsetX": 10,
+                      "nativeShadowOffsetY": 10,
+                      "nativeShadowColor": "#c0c0c0",
+                      "fontFamily": "Arial"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "text": "holdout001holdout002holdout003holdout004holdout005holdout006holdout007holdout008holdout009holdout010holdout011holdout012holdout013holdout014holdout015holdout016holdout017holdout018holdout019holdout020holdout021holdout022holdout023holdout024holdout025holdout026holdout027holdout028holdout029holdout030holdout031holdout032holdout033holdout034holdout035holdout036holdout037holdout038holdout039holdout040holdout041holdout042holdout043holdout044holdout045holdout046holdout047holdout048holdout049"
+    }
+  ],
+  "frames": [
+    {
+      "id": "compact-unseen-7-pages-manual-12-columns-1-1440x960",
+      "source": "compact-unseen-7-pages",
+      "ratio": 12,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 677,
+        "right": 775,
+        "top": 395,
+        "bottom": 436
+      },
+      "captureSha256": "475cd5b5982f19c5d5cebe00950b1ff020aefad277ca29663523098bd2f476c3"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-12-columns-1-1440x961",
+      "source": "compact-unseen-7-pages",
+      "ratio": 12,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 677,
+        "right": 775,
+        "top": 395,
+        "bottom": 437
+      },
+      "captureSha256": "530677eb1d827d853e0417b9ecc07670eee9906335dd3f5b3e1bee4d0313f741"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-12-columns-1-1280x1000",
+      "source": "compact-unseen-7-pages",
+      "ratio": 12,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 597,
+        "right": 695,
+        "top": 415,
+        "bottom": 456
+      },
+      "captureSha256": "2ea8734e4733951dd17a82a49199a4bdedf444855835cc2ee4e7d91b2e0b7b7e"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-12-columns-2-1440x960",
+      "source": "compact-unseen-7-pages",
+      "ratio": 12,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 625,
+        "right": 723,
+        "top": 466,
+        "bottom": 508
+      },
+      "captureSha256": "3185155b9bee8cf4f5c61788ec83666b1c6aca73e92a2c0fa890dd4665f191d1"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-12-columns-2-1440x961",
+      "source": "compact-unseen-7-pages",
+      "ratio": 12,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 625,
+        "right": 723,
+        "top": 467,
+        "bottom": 508
+      },
+      "captureSha256": "9dc936651dc4b5c2841afd2e9f274fce5cb238f3d365525d9160e57ee3e87b3a"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-12-columns-2-1280x1000",
+      "source": "compact-unseen-7-pages",
+      "ratio": 12,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 545,
+        "right": 643,
+        "top": 486,
+        "bottom": 528
+      },
+      "captureSha256": "4b2ae84264e294fc987ad26882cef8a30b76c348fdc90735310ea4fdd444cf28"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-19-columns-1-1440x960",
+      "source": "compact-unseen-7-pages",
+      "ratio": 19,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 652,
+        "right": 800,
+        "top": 320,
+        "bottom": 382
+      },
+      "captureSha256": "6cf4d7cb9d22279a1345f96cd775e8bb56c7048cabf7ea0eef0169774e59857d"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-19-columns-1-1440x961",
+      "source": "compact-unseen-7-pages",
+      "ratio": 19,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 652,
+        "right": 800,
+        "top": 320,
+        "bottom": 383
+      },
+      "captureSha256": "7937624fc8b4b471b0f5f35bff918b757e84d84708f97bc740f0b154bbdee363"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-19-columns-1-1280x1000",
+      "source": "compact-unseen-7-pages",
+      "ratio": 19,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 572,
+        "right": 720,
+        "top": 340,
+        "bottom": 402
+      },
+      "captureSha256": "4a154a685b5a2866048eaaf32ccc87fe8a156f45dd26541d8c26e845f3fbcaa7"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-19-columns-2-1440x960",
+      "source": "compact-unseen-7-pages",
+      "ratio": 19,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 575,
+        "right": 723,
+        "top": 423,
+        "bottom": 486
+      },
+      "captureSha256": "d51398aea20ddc662d393884b4c1708689047cc4cf0dfcd1a9aa1443e23843db"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-19-columns-2-1440x961",
+      "source": "compact-unseen-7-pages",
+      "ratio": 19,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 575,
+        "right": 723,
+        "top": 424,
+        "bottom": 487
+      },
+      "captureSha256": "6363aa2d7e7c116ef5ec9fafd966d68ad6a23f3be3b1c41725778a174b357a6f"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-19-columns-2-1280x1000",
+      "source": "compact-unseen-7-pages",
+      "ratio": 19,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 495,
+        "right": 643,
+        "top": 443,
+        "bottom": 506
+      },
+      "captureSha256": "aa694d160cd2ec64c1ebbdf45cee2efff18e295560dc7a0d8f0fc07c193a4e95"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-23-columns-1-1440x960",
+      "source": "compact-unseen-7-pages",
+      "ratio": 23,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 636,
+        "right": 816,
+        "top": 271,
+        "bottom": 348
+      },
+      "captureSha256": "ced719f6b2be88e5328a8e071f18967d73ed57b27eb9f650675e82b09037ea0f"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-23-columns-1-1440x961",
+      "source": "compact-unseen-7-pages",
+      "ratio": 23,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 636,
+        "right": 816,
+        "top": 271,
+        "bottom": 348
+      },
+      "captureSha256": "6ee6e3fd1b9c423beb537d9719133c362867939ce4fe06d5d7060ab6f09ee9da"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-23-columns-1-1280x1000",
+      "source": "compact-unseen-7-pages",
+      "ratio": 23,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 556,
+        "right": 736,
+        "top": 291,
+        "bottom": 368
+      },
+      "captureSha256": "a65a60c7e82c31293f50020d4187b93753d4021323905f560e114c6ebeeda13e"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-23-columns-2-1440x960",
+      "source": "compact-unseen-7-pages",
+      "ratio": 23,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 542,
+        "right": 723,
+        "top": 396,
+        "bottom": 473
+      },
+      "captureSha256": "6b49ed18e83b3829cb2eb9f39c24a22bbd022da441e42037f8552820f3b9849a"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-23-columns-2-1440x961",
+      "source": "compact-unseen-7-pages",
+      "ratio": 23,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 542,
+        "right": 723,
+        "top": 396,
+        "bottom": 473
+      },
+      "captureSha256": "ad794c9ec1940aed30e82454ab585aa7a6747a6ba23e5270280e71ca82490b31"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-23-columns-2-1280x1000",
+      "source": "compact-unseen-7-pages",
+      "ratio": 23,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 462,
+        "right": 643,
+        "top": 416,
+        "bottom": 493
+      },
+      "captureSha256": "3c1955abc4d8e48c4d50998d9d7bde4eab4e29e9beb89b132b8eafe7976124f7"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-31-columns-1-1440x960",
+      "source": "compact-unseen-7-pages",
+      "ratio": 31,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 602,
+        "right": 850,
+        "top": 219,
+        "bottom": 324
+      },
+      "captureSha256": "e2571e00d7b93f5d5f7e754ebaf5859680261c0aa6e7f7192b56e978e0155d98"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-31-columns-1-1440x961",
+      "source": "compact-unseen-7-pages",
+      "ratio": 31,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 602,
+        "right": 850,
+        "top": 219,
+        "bottom": 324
+      },
+      "captureSha256": "8092b3e06ed7c68c2234e3d89c7366505ad548496d0bb53bf68c9834a4a73834"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-31-columns-1-1280x1000",
+      "source": "compact-unseen-7-pages",
+      "ratio": 31,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 522,
+        "right": 770,
+        "top": 219,
+        "bottom": 324
+      },
+      "captureSha256": "c028610cec92f8867690162aaadae2641a80334f3ea98acd6bc18aa245596de0"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-31-columns-2-1440x960",
+      "source": "compact-unseen-7-pages",
+      "ratio": 31,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 476,
+        "right": 723,
+        "top": 339,
+        "bottom": 445
+      },
+      "captureSha256": "99f927ef91fa18a12ff88e4cd4160626c907cded02f3585c97e3a6bf0d3e15e2"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-31-columns-2-1440x961",
+      "source": "compact-unseen-7-pages",
+      "ratio": 31,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 476,
+        "right": 723,
+        "top": 340,
+        "bottom": 445
+      },
+      "captureSha256": "3303a1915273ff2eb3db506ae230688ca785920ff65c8f80b452aeddc8f03630"
+    },
+    {
+      "id": "compact-unseen-7-pages-manual-31-columns-2-1280x1000",
+      "source": "compact-unseen-7-pages",
+      "ratio": 31,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 396,
+        "right": 643,
+        "top": 359,
+        "bottom": 465
+      },
+      "captureSha256": "e3a5fd45df69532ebcd8000205d9821ac60858611c5025f1d55169753621ccc3"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-12-columns-1-1440x960",
+      "source": "compact-unseen-49-pages",
+      "ratio": 12,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 677,
+        "right": 775,
+        "top": 218,
+        "bottom": 260
+      },
+      "captureSha256": "8f6b5b8d892e37a2f626ec426e9f388b0bb8661815c399e7891f0c4e49ac7903"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-12-columns-1-1440x961",
+      "source": "compact-unseen-49-pages",
+      "ratio": 12,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 677,
+        "right": 775,
+        "top": 218,
+        "bottom": 260
+      },
+      "captureSha256": "0a225ebdd9b57dce00d9f51faba17a67d80710016d3684b7013c49b9111a10d1"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-12-columns-1-1280x1000",
+      "source": "compact-unseen-49-pages",
+      "ratio": 12,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 597,
+        "right": 695,
+        "top": 218,
+        "bottom": 260
+      },
+      "captureSha256": "ac9971e607dab719c9d01c32f4acdce1dd740380a5a4bd9e9c274fdb36075b4f"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-12-columns-2-1440x960",
+      "source": "compact-unseen-49-pages",
+      "ratio": 12,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 625,
+        "right": 723,
+        "top": 218,
+        "bottom": 260
+      },
+      "captureSha256": "13143f892ad4507d50c10b37aae9ed29265aa52c794e900c763ee71193e08786"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-12-columns-2-1440x961",
+      "source": "compact-unseen-49-pages",
+      "ratio": 12,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 625,
+        "right": 723,
+        "top": 218,
+        "bottom": 260
+      },
+      "captureSha256": "163d872081bd58fa56e7a662fba4189ee4f6eafafa5b729fd2f89c92ccfb706d"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-12-columns-2-1280x1000",
+      "source": "compact-unseen-49-pages",
+      "ratio": 12,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 545,
+        "right": 643,
+        "top": 218,
+        "bottom": 260
+      },
+      "captureSha256": "85bf22254c77566df5799e879b2c09bef7b53cf72a3d79f7d3805fe5febf5914"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-19-columns-1-1440x960",
+      "source": "compact-unseen-49-pages",
+      "ratio": 19,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 652,
+        "right": 800,
+        "top": 218,
+        "bottom": 281
+      },
+      "captureSha256": "2efe47334c4003447302b1716d937aace3b549936f67be69ec4900749c525354"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-19-columns-1-1440x961",
+      "source": "compact-unseen-49-pages",
+      "ratio": 19,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 652,
+        "right": 800,
+        "top": 218,
+        "bottom": 281
+      },
+      "captureSha256": "ae1554a9b85f3e859176d8132f77a7d047c3d6b69db2adf0816373287be68544"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-19-columns-1-1280x1000",
+      "source": "compact-unseen-49-pages",
+      "ratio": 19,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 572,
+        "right": 720,
+        "top": 218,
+        "bottom": 281
+      },
+      "captureSha256": "ec486e33f770e35341608da0c0239ae85d4260bca1fad4220b1923f310eeb1ae"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-19-columns-2-1440x960",
+      "source": "compact-unseen-49-pages",
+      "ratio": 19,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 575,
+        "right": 723,
+        "top": 218,
+        "bottom": 281
+      },
+      "captureSha256": "596e2efb075ca393649f657e4bcfb5bce90a2a9ece31c311cf0d7eb1bbb195b5"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-19-columns-2-1440x961",
+      "source": "compact-unseen-49-pages",
+      "ratio": 19,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 575,
+        "right": 723,
+        "top": 218,
+        "bottom": 281
+      },
+      "captureSha256": "797d212f421e7a1bf54bbc1e160ad81554f1b718ff2cf54897b767076975e1bb"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-19-columns-2-1280x1000",
+      "source": "compact-unseen-49-pages",
+      "ratio": 19,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 495,
+        "right": 643,
+        "top": 218,
+        "bottom": 281
+      },
+      "captureSha256": "34f8eac0a11a877e9074fa08aa05eaa233a1c6ed063f7e48f8131e301be5a0d4"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-23-columns-1-1440x960",
+      "source": "compact-unseen-49-pages",
+      "ratio": 23,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 636,
+        "right": 816,
+        "top": 218,
+        "bottom": 295
+      },
+      "captureSha256": "6962c5f8f399464e187150a41ad121cb506615c005d9b486086fa91e14b3e05b"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-23-columns-1-1440x961",
+      "source": "compact-unseen-49-pages",
+      "ratio": 23,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 636,
+        "right": 816,
+        "top": 218,
+        "bottom": 295
+      },
+      "captureSha256": "125936c0d7cc3aa05a2f33de077108d84bc6eb7f1a678d5c126144aa9888b57e"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-23-columns-1-1280x1000",
+      "source": "compact-unseen-49-pages",
+      "ratio": 23,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 556,
+        "right": 736,
+        "top": 218,
+        "bottom": 295
+      },
+      "captureSha256": "9c78bcfc802a5337d8016477156fa0a273665a123997376c04eb405cb3e65491"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-23-columns-2-1440x960",
+      "source": "compact-unseen-49-pages",
+      "ratio": 23,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 542,
+        "right": 723,
+        "top": 218,
+        "bottom": 295
+      },
+      "captureSha256": "fe0a8017e4cf3e4a04b8a7a42764c05d688b30fd42febca1b55711883cf9ff18"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-23-columns-2-1440x961",
+      "source": "compact-unseen-49-pages",
+      "ratio": 23,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 542,
+        "right": 723,
+        "top": 218,
+        "bottom": 295
+      },
+      "captureSha256": "07cc4823551250dd2b5aa309b4f40be5581d4b1461e1ebe0d36c23843c646f5b"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-23-columns-2-1280x1000",
+      "source": "compact-unseen-49-pages",
+      "ratio": 23,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 462,
+        "right": 643,
+        "top": 218,
+        "bottom": 295
+      },
+      "captureSha256": "d6d5154cac938c95706ae3b2d9d9022ce817fcb86a2d94ac4267a1ca46f08688"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-31-columns-1-1440x960",
+      "source": "compact-unseen-49-pages",
+      "ratio": 31,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 602,
+        "right": 850,
+        "top": 219,
+        "bottom": 324
+      },
+      "captureSha256": "47636a42d19d6efff35165ff2c05bf230cb81f3d31ea1cd38538d5c062564222"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-31-columns-1-1440x961",
+      "source": "compact-unseen-49-pages",
+      "ratio": 31,
+      "columns": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 602,
+        "right": 850,
+        "top": 219,
+        "bottom": 324
+      },
+      "captureSha256": "83726b9a88361def2668eacd566a88f9797e3756d1a1783dbe79f19b39b9e963"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-31-columns-1-1280x1000",
+      "source": "compact-unseen-49-pages",
+      "ratio": 31,
+      "columns": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 522,
+        "right": 770,
+        "top": 219,
+        "bottom": 324
+      },
+      "captureSha256": "f9de1e24569e679be7dbe06e31ce8ffe3fd17a68d25b0ef146b60c7186dbb053"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-31-columns-2-1440x960",
+      "source": "compact-unseen-49-pages",
+      "ratio": 31,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "paper": {
+        "left": 476,
+        "right": 723,
+        "top": 219,
+        "bottom": 324
+      },
+      "captureSha256": "7f01ebbf376a126acc1e1358cb6dfd387a468f9213edb3b3f13c3d4a1db5a391"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-31-columns-2-1440x961",
+      "source": "compact-unseen-49-pages",
+      "ratio": 31,
+      "columns": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 961
+      },
+      "paper": {
+        "left": 476,
+        "right": 723,
+        "top": 219,
+        "bottom": 324
+      },
+      "captureSha256": "0129b371d14b37aa4e1cf86f841a9c88d3d40d5370bb2aad015cb4c94e767121"
+    },
+    {
+      "id": "compact-unseen-49-pages-manual-31-columns-2-1280x1000",
+      "source": "compact-unseen-49-pages",
+      "ratio": 31,
+      "columns": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "paper": {
+        "left": 396,
+        "right": 643,
+        "top": 219,
+        "bottom": 324
+      },
+      "captureSha256": "de5aa211a139421987120191cc0eed39cebf75d97352d367e26c8c2f15cea516"
+    }
+  ]
+}

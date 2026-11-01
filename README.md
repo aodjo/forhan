@@ -27,7 +27,7 @@ macOS에서 `npm run dist:mac`으로 DMG/ZIP을 만듭니다. `.github/workflows
 
 배포한 앱 자체의 검사는 빌드 후 `npm run test:packaged`로 실행합니다. 이 검사는 실제 실행 파일의 CPU 종류와 현재 빌드 파일의 일치를 먼저 확인하고, 개발 서버 없이 배포 앱으로 저장·재실행·인쇄 콜백·PDF·설치 글꼴을 검사합니다. 결과는 `release/validation/`에 기록합니다. CI는 Windows x64, macOS Intel x64, Apple Silicon arm64를 각각 같은 CPU의 실행 환경에서 검사하며, 통과해야 배포 파일을 업로드합니다. Mac CI 빌드는 임시 서명과 `codesign` 무결성 검사를 사용하며 Developer ID 서명·공증을 의미하지 않습니다. 세 환경의 실제 실행 검사를 진행 중이며, `391b6ec`의 입력 위치·장평 편집 집중 검사 3개씩은 [실제 CI 실행](https://github.com/aodjo/forhan/actions/runs/41342813689)에서 통과했습니다. 이 결과는 전체 UI·글꼴·배포 앱 호환성 통과를 뜻하지 않습니다.
 
-Mac CI는 원본 `1440×1100` 창을 담을 수 있는 실제 비례 배율 1의 화면을 준비합니다. 기존 화면 모드가 부족하면 작업이 소유한 CoreGraphics 화면 보조 프로세스를 사용하고, 종료 시 원래 화면 배치와 프로세스 종료를 독립적으로 확인합니다. 실제 화면 생성·복원 실패는 검사 실패로 남기며, 기대 좌표나 테스트 창 크기를 줄이지 않습니다. 이 보조 코드는 CI에서만 컴파일되고 배포 앱에는 포함되지 않습니다. 네이티브 API 선언의 출처는 Chromium이며 [해당 BSD 라이선스](licenses/chromium-display-tests-LICENSE.txt)를 보관합니다.
+Mac CI는 원본 `1440×1100` 창을 담을 수 있는 실제 비례 배율 1의 화면을 준비합니다. 기존 화면 모드가 부족하면 작업이 소유한 CoreGraphics 보조 화면을 만들고 검사 창을 해당 화면으로 이동합니다. 원래 주 화면을 유지하며, 종료 시 원래 화면 배치와 프로세스 종료를 독립적으로 확인합니다. 실제 화면 생성·복원 실패는 검사 실패로 남기며, 기대 좌표나 테스트 창 크기를 줄이지 않습니다. 이 보조 코드는 CI에서만 컴파일되고 배포 앱에는 포함되지 않습니다. 네이티브 API 선언의 출처는 Chromium이며 [해당 BSD 라이선스](licenses/chromium-display-tests-LICENSE.txt)를 보관합니다.
 
 실제 Windows 한국어 입력기 검사는 `npm run test:ime:windows`로 실행합니다. 빌드된 Windows x64 배포 앱, 설치된 한국어 입력기와 대화형 세션이 필요합니다. 검사에서 만든 전경 창에만 운영체제 키 입력을 보내며 창의 소유권이나 포커스가 바뀌면 중단합니다. 시스템 입력기 설정을 변경하지 않으며, 전제 조건이 없으면 실패로 보고합니다. 결과는 `release/validation/windows-ime-win32-x64.json`과 해당 실행의 개별 원문·입력·출력 기록에 남습니다.
 

@@ -1,7 +1,6 @@
 import {execFileSync} from 'node:child_process';
 import {mkdir,writeFile} from 'node:fs/promises';
 import path from 'node:path';
-import {setTimeout as wait} from 'node:timers/promises';
 import {startVirtualMacDisplay,type VirtualDisplayReady} from './macos-virtual-display.ts';
 
 /** Native viewport fixtures reach 1440x1100; the CI display also needs room for system chrome. */
@@ -29,21 +28,22 @@ function runDisplayCommand(args:string[]):string{
 }
 
 /**
- * Read the actual primary screen and its available unscaled native modes.
+ * Read an actual primary or explicitly identified owned native screen.
  *
  * The utility enumerates each display before its modes. Scaling-enabled modes
  * are excluded because their physical pixel count cannot establish enough
  * usable points for the original native window fixtures. Unknown output fails
  * explicitly instead of changing the expected viewport or skipping tests.
  * @param {string} listing - Unmodified output from displayplacer list.
- * @returns {NativeDisplay} Actual primary screen and its unscaled modes.
- * @throws {Error} If the actual primary screen or its geometry is unavailable.
+ * @param {number} [contextualId] - Exact owned native display ID; omitted values select the original primary screen.
+ * @returns {NativeDisplay} Actual selected screen and its unscaled modes.
+ * @throws {Error} If the selected actual screen or its geometry is unavailable.
  * @example
  * const screen=readPrimaryDisplay(runDisplayCommand(['list']));
  */
-function readPrimaryDisplay(listing:string):NativeDisplay{
+function readPrimaryDisplay(listing:string,contextualId?:number):NativeDisplay{
   for(/** Each original display block retains its own identifiers and mode indices. */const block of listing.split(/(?=^Persistent screen id:)/mu)){
-    if(!/^Origin:.*- main display\s*$/mu.test(block))continue;
+    if(contextualId===undefined?!/^Origin:.*- main display\s*$/mu.test(block):Number(/^Contextual screen id:\s*(\d+)\s*$/mu.exec(block)?.[1])!==contextualId)continue;
     /** Screen identity and current native mode are parsed independently from requested fixture sizes. */
     const id=/^Persistent screen id:\s*([A-Fa-f0-9-]+)\s*$/mu.exec(block)?.[1],resolution=/^Resolution:\s*(\d+)x(\d+)\s*$/mu.exec(block),scaling=/^Scaling:\s*(on|off)\s*$/mu.exec(block),modes:NativeDisplayMode[]=[];
     if(!id||!resolution||!scaling)throw new Error('The actual primary display metadata is incomplete.');
@@ -90,22 +90,11 @@ async function prepareNativeMacDisplay():Promise<void>{
         if(!selected||mode.width*mode.height<selected.width*selected.height)selected=mode;
       }
       if(selected)runDisplayCommand([`id:${display.id} mode:${selected.index}`]);
-      else{
-        virtual=await startVirtualMacDisplay();
-        /** A separately launched utility observes the actual published virtual screen identity. */
-        const registered=runDisplayCommand(['list']);
-        let virtualId:string|undefined;
-        for(/** Window-server hotplug preferences can restore an earlier arrangement after initial creation. */const block of registered.split(/(?=^Persistent screen id:)/mu)){
-          if(Number(/^Contextual screen id:\s*(\d+)\s*$/mu.exec(block)?.[1])===virtual.displayId)virtualId=/^Persistent screen id:\s*([A-Fa-f0-9-]+)\s*$/mu.exec(block)?.[1];
-        }
-        if(!virtualId)throw new Error('The independent native utility did not observe the owned virtual display.');
-        runDisplayCommand([`id:${display.id} origin:(${virtual.width},0)`,`id:${virtualId} origin:(0,0)`]);
-        await wait(500);
-      }
+      else virtual=await startVirtualMacDisplay();
     }
     after=runDisplayCommand(['list']);
     /** The actual final native mode must satisfy the setup contract independently of the command request. */
-    const observed=readPrimaryDisplay(after);
+    const observed=readPrimaryDisplay(after,virtual?.displayId);
     if(observed.scaled||observed.width<MINIMUM_DISPLAY_WIDTH||observed.height<MINIMUM_DISPLAY_HEIGHT)throw new Error('The actual native display did not apply a sufficiently large unscaled mode.');
     success=true;
     console.log(`Native macOS display: ${observed.width}x${observed.height}, scaling off.`);

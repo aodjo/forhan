@@ -102,7 +102,7 @@ static NSDictionary *inspectNativeDisplays(void) {
  * Maintain one real temporary macOS CI screen until its owner requests cleanup.
  *
  * The helper refuses ordinary local machines, retains the display object while
- * tests run, and restores original native display origins during normal cleanup.
+ * tests run while preserving the existing primary screen and native origins.
  * A private stop file and a ninety-minute deadline bound the process lifetime.
  * @param {int} argc - Argument count, including the executable name.
  * @param {char **} argv - Private owner directory and unique invocation nonce.
@@ -139,12 +139,6 @@ int main(int argc, const char *argv[]) {
     if (!descriptorClass || !displayClass || !modeClass || !settingsClass) return 12;
     /** Native screen dimensions exceed the largest 1440-by-1100 fixture plus system chrome. */
     unsigned int const width = 1920, height = 1440;
-    /** The original native screen layout remains available for normal restoration. */
-    CGDirectDisplayID originals[32];
-    uint32_t originalCount = 0;
-    if (CGGetActiveDisplayList(32, originals, &originalCount) != kCGErrorSuccess) return 13;
-    CGRect originalBounds[32];
-    for (uint32_t index = 0; index < originalCount; index++) originalBounds[index] = CGDisplayBounds(originals[index]);
     /** Only this invocation owns the descriptor, display, mode and lifecycle marker. */
     CGVirtualDisplayDescriptor *const descriptor = [[descriptorClass alloc] init];
     descriptor.name = [@"Forhan CI " stringByAppendingString:nonce];
@@ -173,23 +167,11 @@ int main(int argc, const char *argv[]) {
     if (![display applySettings:settings]) return 15;
     /** Native display identity is observed from the actual system-owned object. */
     CGDirectDisplayID const identifier = display.displayID;
-    BOOL configured = NO;
-    int result = 0;
-    @try {
       /** The window server may publish a new screen asynchronously after mode admission. */
       NSDate *const admissionDeadline = [NSDate dateWithTimeIntervalSinceNow:15];
       while (!CGDisplayIsActive(identifier) && [admissionDeadline timeIntervalSinceNow] > 0)
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
       if (!CGDisplayIsActive(identifier)) return 16;
-      CGDisplayConfigRef configuration = NULL;
-      if (CGBeginDisplayConfiguration(&configuration) != kCGErrorSuccess) return 17;
-      CGError configurationError = CGConfigureDisplayMirrorOfDisplay(configuration, identifier, kCGNullDirectDisplay);
-      if (configurationError == kCGErrorSuccess) configurationError = CGConfigureDisplayOrigin(configuration, identifier, 0, 0);
-      for (uint32_t index = 0; index < originalCount && configurationError == kCGErrorSuccess; index++)
-        configurationError = CGConfigureDisplayOrigin(configuration, originals[index], (int)originalBounds[index].origin.x + (int)width, (int)originalBounds[index].origin.y);
-      if (configurationError != kCGErrorSuccess) { CGCancelDisplayConfiguration(configuration); return 18; }
-      if (CGCompleteDisplayConfiguration(configuration, kCGConfigureForSession) != kCGErrorSuccess) return 19;
-      configured = YES;
       /** Actual native dimensions and scale must be established independently of requested settings. */
       CGDisplayModeRef const observed = CGDisplayCopyDisplayMode(identifier);
       if (!observed) return 20;
@@ -203,7 +185,7 @@ int main(int argc, const char *argv[]) {
       };
       CGDisplayModeRelease(observed);
       if ([observation[@"width"] unsignedIntValue] != width || [observation[@"height"] unsignedIntValue] != height ||
-          [observation[@"pixelWidth"] unsignedIntValue] != width || [observation[@"pixelHeight"] unsignedIntValue] != height || CGMainDisplayID() != identifier) return 21;
+          [observation[@"pixelWidth"] unsignedIntValue] != width || [observation[@"pixelHeight"] unsignedIntValue] != height) return 21;
       /** The owner sees readiness only after independent actual window-server verification. */
       NSData *const ready = [NSJSONSerialization dataWithJSONObject:observation options:0 error:nil];
       if (![ready writeToFile:[directory stringByAppendingPathComponent:@"ready.json"] atomically:YES]) return 22;
@@ -213,18 +195,6 @@ int main(int argc, const char *argv[]) {
       NSDate *const lifetimeDeadline = [NSDate dateWithTimeIntervalSinceNow:90 * 60];
       while (![[NSFileManager defaultManager] fileExistsAtPath:stop] && [lifetimeDeadline timeIntervalSinceNow] > 0)
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.25]];
-    } @finally {
-      if (configured) {
-        CGDisplayConfigRef restoration = NULL;
-        if (CGBeginDisplayConfiguration(&restoration) == kCGErrorSuccess) {
-          CGError restorationError = CGConfigureDisplayOrigin(restoration, identifier, (int)width, 0);
-          for (uint32_t index = 0; index < originalCount && restorationError == kCGErrorSuccess; index++)
-            restorationError = CGConfigureDisplayOrigin(restoration, originals[index], (int)originalBounds[index].origin.x, (int)originalBounds[index].origin.y);
-          if (restorationError == kCGErrorSuccess) result = CGCompleteDisplayConfiguration(restoration, kCGConfigureForSession) == kCGErrorSuccess ? 0 : 23;
-          else { CGCancelDisplayConfiguration(restoration); result = 24; }
-        } else result = 25;
-      }
-    }
-    return result;
+    return 0;
   }
 }

@@ -78,7 +78,7 @@ async function waitForDisplayObservation():Promise<void>{
  *
  * An invocation-specific helper retains the CoreGraphics display object while
  * tests run. Independent native queries establish its original bounds, actual
- * pixel dimensions and primary ownership; no renderer or reference is changed.
+ * pixel dimensions and unchanged primary ownership; no renderer or reference is changed.
  * @async
  * @returns {Promise<VirtualDisplayReady>} Original verified native readiness record.
  * @throws {Error} If compilation, private native API support, ownership or readiness fails.
@@ -124,7 +124,7 @@ export async function startVirtualMacDisplay():Promise<VirtualDisplayReady>{
     try{ready=JSON.parse(await readFile(path.join(directory,'ready.json'),'utf8')) as VirtualDisplayReady;}
     catch(error){if((error as NodeJS.ErrnoException).code!=='ENOENT')throw error;}
     if(ready){
-      if(ready.pid!==owner.pid||ready.nonce!==nonce||ready.width!==1920||ready.height!==1440||ready.pixelWidth!==ready.width||ready.pixelHeight!==ready.height||ready.primaryDisplayId!==ready.displayId)throw new Error('The actual native display readiness record does not match its original owner or unscaled dimensions.');
+      if(ready.pid!==owner.pid||ready.nonce!==nonce||ready.width!==1920||ready.height!==1440||ready.pixelWidth!==ready.width||ready.pixelHeight!==ready.height||ready.primaryDisplayId!==before.primaryDisplayId)throw new Error('The actual native display readiness record does not match its original owner, unscaled dimensions or unchanged primary screen.');
       if(!owner.fingerprint||readDisplayProcessFingerprint(owner.pid)!==owner.fingerprint)throw new Error('The verified native display actor lost its process ownership.');
       owner.ready=ready;await writeFile(OWNER_FILE,JSON.stringify(owner,null,2)+'\n');
       return ready;

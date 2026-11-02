@@ -168,6 +168,21 @@ svg.native-icon {
   filter: brightness(0) invert(1);
 }
 
+html[data-native-platform="darwin"] .native-app-mark {
+  left: 84px;
+}
+html[data-native-platform="darwin"] .native-caption-title {
+  left: 115px;
+  right: 140px;
+}
+html[data-native-platform="darwin"] .native-caption-controls {
+  width: 128px;
+}
+html[data-native-platform="darwin"] .native-caption-controls [data-window],
+html[data-native-platform="darwin"] .native-caption-divider {
+  display: none;
+}
+
 .native-menubar {
   position: relative;
   background: #fff;

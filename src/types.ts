@@ -250,6 +250,8 @@ export type AppAction =
   | "close"
   | { type: "open-file"; payload: OpenedFile };
 export interface DesktopBridge extends AsyncBridge {
+  /** Actual desktop host supplied by the isolated preload; browser-only sessions omit this field. */
+  readonly platform?:string;
   /**
    * Apply a native window command from the custom application caption.
    *

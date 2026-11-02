@@ -1,6 +1,9 @@
 import { expect, type ElectronApplication, type Page } from "@playwright/test";
 import { readFile, access } from "node:fs/promises";
 
+/** Maximum wait for one actual native output completion on cold or busy desktop hosts. */
+export const NATIVE_OUTPUT_TIMEOUT_MS = 30000;
+
 /**
  * Save actual native application output to an exact test-owned destination.
  *
@@ -75,7 +78,7 @@ export async function saveDesktopOutput(
           throw error;
         }
       },
-      {timeout:30000},
+      { timeout: NATIVE_OUTPUT_TIMEOUT_MS },
     )
     .toBe(true);
   await expect(page.locator("#save-document")).toBeEnabled();

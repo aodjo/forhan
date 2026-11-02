@@ -26,7 +26,7 @@ import {
 /** Only the two actual user-distributed Mac containers participate in this native gate. */
 const DISTRIBUTION_KINDS = ["zip", "dmg"] as const;
 /** Each ZIP extraction and DMG copy verifies actual identity/fonts, complete native quit and app-session format copying. */
-const REQUIRED_PAYLOAD_TESTS = 6;
+const REQUIRED_PAYLOAD_TESTS = 7;
 
 /**
  * Execute a native macOS tool with direct arguments and bounded diagnostics.
@@ -147,6 +147,7 @@ async function exercisePayload(
       path.join(root, "playwright.packaged.config.ts"),
       "packaged-runtime.packaged.ts",
       "native-quit-desktop.spec.ts",
+      "native-window-caption-desktop.spec.ts",
       "native-format-copy-memory-desktop.spec.ts",
       "native-cell-format-copy-desktop.spec.ts",
       "native-table-cell-dialog-desktop.spec.ts",

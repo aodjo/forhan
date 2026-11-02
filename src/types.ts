@@ -1,4 +1,6 @@
 import type { JSONContent } from "@tiptap/core";
+import type {FormatCopySession} from './format-copy-session.ts';
+export type {FormatCopySession} from './format-copy-session.ts';
 import type { HwpxSource } from "./formats/hwpx";
 import type { SectionGridSettings } from "./section-grid.ts";
 
@@ -59,6 +61,31 @@ export type BridgeResult<T> =
   { ok: true; value: T } | { ok: false; error: string };
 /** The complete, intentionally narrow renderer-to-main process contract. */
 export interface AsyncBridge {
+  /**
+   * Read copied appearance belonging to the current native application lifetime.
+   *
+   * Independent source snapshots survive renderer replacement without being
+   * written to document files, recovery storage or the system clipboard.
+   * @async
+   * @returns {Promise<BridgeResult<FormatCopySession|null>>} Current accepted appearance or no copied source.
+   * @throws {Error} If the isolated native transport cannot complete the request.
+   * @example
+   * const result=await window.forhan?.readFormatCopy();
+   */
+  readFormatCopy():Promise<BridgeResult<FormatCopySession|null>>;
+  /**
+   * Remember an explicitly accepted appearance snapshot for the current app session.
+   *
+   * The native process validates the bounded source before replacing prior
+   * memory. Closing the final Mac window retains it; actual app exit clears it.
+   * @async
+   * @param {FormatCopySession} value - Independent copied source and accepted native choices.
+   * @returns {Promise<BridgeResult<boolean>>} Whether the native application accepted the snapshot.
+   * @throws {Error} If the isolated native transport cannot complete the request.
+   * @example
+   * await window.forhan?.writeFormatCopy({version:1,source,options});
+   */
+  writeFormatCopy(value:FormatCopySession):Promise<BridgeResult<boolean>>;
   /**
    * Open a document with the native file chooser.
    *

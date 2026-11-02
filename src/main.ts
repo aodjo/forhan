@@ -3549,7 +3549,7 @@ async function nativeFormatSettings(
 /** Browser-only appearance memory stays outside document content and recovery storage. */
 const browserFormatCopyMemory=new FormatCopyMemory();
 /** An application with no accepted source starts with the original native character-only choice. */
-const defaultFormatCopyOptions:FormatPainterOptions={mode:'character',cellBackground:false,cellOnly:false};
+const defaultFormatCopyOptions:FormatPainterOptions={mode:'character',cellProperties:false,cellBackground:false,cellOnly:false};
 
 /**
  * Copy cursor appearance or apply the remembered source to an actual selection.
@@ -3586,7 +3586,7 @@ async function formatPainter():Promise<void>{
     const source=captureFormatPainter(editor);
     if(!source)return;
     /** An actual non-cell source cannot borrow previous table-only choices. */
-    const draft={...(copied?.options??defaultFormatCopyOptions),...(source.cellBackground===undefined?{cellBackground:false,cellOnly:false}:{})},
+    const draft={...(copied?.options??defaultFormatCopyOptions),...(source.cellBackground===undefined?{cellProperties:false,cellBackground:false,cellOnly:false}:{})},
       decision=modal('모양 복사','',[],renderNativeFormatPainterDialog(draft,source.cellBackground!==undefined)),
       binding=bindNativeFormatPainterDialog($('.native-dialog-format-painter'),draft);
     try{

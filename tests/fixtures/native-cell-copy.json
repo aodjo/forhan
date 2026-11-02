@@ -1,0 +1,258 @@
+{
+  "kind": "owned-original-native-cell-property-copy-observations",
+  "sourceBinarySha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "scope": "Three actual original single-cell copies across fresh source and destination documents. Original copy choices were restored and each owned process quit normally. Width requests in the protected-target probe were not honored by the original table layout, so these rows do not establish copying behavior for differing original widths. Heights can reflow after cell property changes.",
+  "rows": [
+    {
+      "id": "source-margin-0",
+      "source": {
+        "cell": {
+          "MarginRight": 456,
+          "MarginBottom": 789,
+          "Width": 6122,
+          "MarginLeft": 123,
+          "Header": 1,
+          "Height": 1900,
+          "TextDirection": 2,
+          "LineWrap": 1,
+          "Editable": 1,
+          "VertAlign": 2,
+          "MarginTop": 0,
+          "Protected": 0,
+          "HasMargin": 0
+        },
+        "table": {
+          "Left": 100,
+          "Right": 200,
+          "Bottom": 400,
+          "Top": 300
+        },
+        "height": 1200
+      },
+      "before": {
+        "cell": {
+          "MarginRight": 18,
+          "MarginBottom": 20,
+          "Width": 6122,
+          "MarginLeft": 17,
+          "Header": 0,
+          "Height": 11639,
+          "TextDirection": 0,
+          "LineWrap": 0,
+          "Editable": 0,
+          "VertAlign": 0,
+          "MarginTop": 19,
+          "Protected": 0,
+          "HasMargin": 1
+        },
+        "table": {
+          "Left": 600,
+          "Right": 700,
+          "Bottom": 900,
+          "Top": 800
+        },
+        "height": 2000
+      },
+      "after": {
+        "cell": {
+          "MarginRight": 456,
+          "MarginBottom": 789,
+          "Width": 6122,
+          "MarginLeft": 123,
+          "Header": 1,
+          "Height": 3700,
+          "TextDirection": 2,
+          "LineWrap": 1,
+          "Editable": 1,
+          "VertAlign": 2,
+          "MarginTop": 0,
+          "Protected": 0,
+          "HasMargin": 0
+        },
+        "table": {
+          "Left": 600,
+          "Right": 700,
+          "Bottom": 900,
+          "Top": 800
+        },
+        "height": 2000
+      },
+      "sourceTextUnchanged": true,
+      "bodyHeightUnchanged": true
+    },
+    {
+      "id": "source-margin-1",
+      "source": {
+        "cell": {
+          "MarginRight": 456,
+          "MarginBottom": 789,
+          "Width": 6122,
+          "MarginLeft": 123,
+          "Header": 1,
+          "Height": 1989,
+          "TextDirection": 2,
+          "LineWrap": 1,
+          "Editable": 1,
+          "VertAlign": 2,
+          "MarginTop": 0,
+          "Protected": 0,
+          "HasMargin": 1
+        },
+        "table": {
+          "Left": 100,
+          "Right": 200,
+          "Bottom": 400,
+          "Top": 300
+        },
+        "height": 1200
+      },
+      "before": {
+        "cell": {
+          "MarginRight": 18,
+          "MarginBottom": 20,
+          "Width": 6122,
+          "MarginLeft": 17,
+          "Header": 0,
+          "Height": 13300,
+          "TextDirection": 0,
+          "LineWrap": 0,
+          "Editable": 0,
+          "VertAlign": 0,
+          "MarginTop": 19,
+          "Protected": 0,
+          "HasMargin": 0
+        },
+        "table": {
+          "Left": 600,
+          "Right": 700,
+          "Bottom": 900,
+          "Top": 800
+        },
+        "height": 2000
+      },
+      "after": {
+        "cell": {
+          "MarginRight": 456,
+          "MarginBottom": 789,
+          "Width": 6122,
+          "MarginLeft": 123,
+          "Header": 1,
+          "Height": 2789,
+          "TextDirection": 2,
+          "LineWrap": 1,
+          "Editable": 1,
+          "VertAlign": 2,
+          "MarginTop": 0,
+          "Protected": 0,
+          "HasMargin": 1
+        },
+        "table": {
+          "Left": 600,
+          "Right": 700,
+          "Bottom": 900,
+          "Top": 800
+        },
+        "height": 2000
+      },
+      "sourceTextUnchanged": true,
+      "bodyHeightUnchanged": true
+    },
+    {
+      "id": "source-margin-1-protected-target",
+      "source": {
+        "cell": {
+          "MarginRight": 456,
+          "MarginBottom": 789,
+          "Width": 6122,
+          "MarginLeft": 123,
+          "Header": 1,
+          "Height": 1989,
+          "TextDirection": 2,
+          "LineWrap": 1,
+          "Editable": 1,
+          "VertAlign": 2,
+          "MarginTop": 0,
+          "Protected": 0,
+          "HasMargin": 1
+        },
+        "table": {
+          "Left": 100,
+          "Right": 200,
+          "Bottom": 400,
+          "Top": 300
+        },
+        "height": 1200
+      },
+      "before": {
+        "cell": {
+          "MarginRight": 18,
+          "MarginBottom": 20,
+          "Width": 6122,
+          "MarginLeft": 17,
+          "Header": 0,
+          "Height": 13300,
+          "TextDirection": 0,
+          "LineWrap": 0,
+          "Editable": 0,
+          "VertAlign": 0,
+          "MarginTop": 19,
+          "Protected": 1,
+          "HasMargin": 0
+        },
+        "table": {
+          "Left": 600,
+          "Right": 700,
+          "Bottom": 900,
+          "Top": 800
+        },
+        "height": 2000
+      },
+      "after": {
+        "cell": {
+          "MarginRight": 456,
+          "MarginBottom": 789,
+          "Width": 6122,
+          "MarginLeft": 123,
+          "Header": 1,
+          "Height": 2789,
+          "TextDirection": 2,
+          "LineWrap": 1,
+          "Editable": 1,
+          "VertAlign": 2,
+          "MarginTop": 0,
+          "Protected": 0,
+          "HasMargin": 1
+        },
+        "table": {
+          "Left": 600,
+          "Right": 700,
+          "Bottom": 900,
+          "Top": 800
+        },
+        "height": 2000
+      },
+      "sourceTextUnchanged": true,
+      "bodyHeightUnchanged": true
+    }
+  ],
+  "protectedSource": {
+    "cell": {
+      "MarginRight": 456,
+      "MarginBottom": 789,
+      "Width": 6122,
+      "MarginLeft": 123,
+      "Header": 1,
+      "Height": 1989,
+      "TextDirection": 2,
+      "LineWrap": 1,
+      "Editable": 1,
+      "VertAlign": 2,
+      "MarginTop": 0,
+      "Protected": 1,
+      "HasMargin": 1
+    },
+    "sourceCopyAccepted": false,
+    "normalExit": true,
+    "copyOptionsRestored": true
+  }
+}

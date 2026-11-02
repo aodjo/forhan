@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { nativeCellProperties } from "../src/cell-properties.ts";
 import {
   FormatCopyMemory,
   FORMAT_COPY_PARAGRAPH_FIELDS,
@@ -44,9 +45,101 @@ function sessionSource(): FormatCopySession {
       ],
       paragraph,
     },
-    options: { mode: "both", cellBackground: false, cellOnly: false },
+    options: {
+      mode: "both",
+      cellProperties: false,
+      cellBackground: false,
+      cellOnly: false,
+    },
   };
 }
+
+/**
+ * Preserve complete native cell appearance without admitting source ownership or malformed nested fields.
+ *
+ * The same process-memory boundary retains exact inherited zero-margin state,
+ * false title flags and independent cell-only choices after renderer replacement.
+ * @returns {void} Completes native cell source independence and rejected replacement assertions.
+ * @throws {Error} If malformed cell metadata replaces accepted source appearance.
+ * @example
+ * // A cell's top margin of zero and inherited table state remain distinct from an absent cell.
+ */
+function verifyNativeCellMemory(): void {
+  /** Actual copied native cell appearance contains no document text, dimensions or source identifiers. */
+  const source = sessionSource(),
+    memory = new FormatCopyMemory();
+  source.source.cellBackground = null;
+  source.source.cellProperties = {
+    ...nativeCellProperties(),
+    margins: { left: 123, right: 456, top: 0, bottom: 789 },
+    hasMargin: false,
+    editable: true,
+  };
+  source.source.cellHeader = false;
+  source.options.cellProperties = true;
+  source.options.cellOnly = true;
+  memory.write(source);
+  /** Returned snapshots cannot mutate the source accepted by the native application process. */
+  const returned = memory.read()!;
+  returned.source.cellProperties!.margins.top = 999;
+  assert.deepEqual(memory.read(), source);
+  assert.equal(memory.read()!.source.cellHeader, false);
+  for (/** Source ownership, missing real cell context and malformed physical fields cannot become accepted appearance. */ const changed of [
+    { ...source, source: { ...source.source, cellHeader: undefined } },
+    { ...source, source: { ...source.source, cellBackground: undefined } },
+    {
+      ...source,
+      source: {
+        ...source.source,
+        cellProperties: {
+          ...source.source.cellProperties,
+          sourceId: "another-cell",
+        },
+      },
+    },
+    {
+      ...source,
+      source: {
+        ...source.source,
+        cellProperties: {
+          ...source.source.cellProperties,
+          margins: { ...source.source.cellProperties.margins, left: "0" },
+        },
+      },
+    },
+    {
+      ...source,
+      source: {
+        ...source.source,
+        cellProperties: {
+          ...source.source.cellProperties,
+          margins: {
+            ...source.source.cellProperties.margins,
+            sourceId: "another-table",
+          },
+        },
+      },
+    },
+  ]) {
+    assert.throws(
+      /**
+       * Attempt one malformed original cell snapshot through the actual process-memory validator.
+       *
+       * Validation must finish before replacing the previously accepted source.
+       * @returns {void} Attempts to replace current copied appearance.
+       * @throws {TypeError|RangeError} For the supplied malformed native cell metadata.
+       * @example
+       * // A source identifier cannot be hidden inside the cell's physical margins.
+       */
+      () => memory.write(changed),
+    );
+    assert.deepEqual(memory.read(), source);
+  }
+}
+test(
+  "native cell appearance remains independent and rejects malformed nested app-session replacements",
+  verifyNativeCellMemory,
+);
 
 /**
  * Preserve complete appearance independently from both writer and reader mutations.

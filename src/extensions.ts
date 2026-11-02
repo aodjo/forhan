@@ -3,6 +3,7 @@ import { renderParagraphMargin, readParagraphMargin } from "./paragraph-layout";
 import {renderParagraphWordBreaks,readParagraphWordBreaks} from './paragraph-word-break.ts';
 import {readParagraphCondense,renderParagraphCondense} from './paragraph-minimum-space.ts';
 import {readParagraphGrid,renderParagraphGrid} from './paragraph-line-grid.ts';
+import {readNativeCellProperties,renderNativeCellProperties,readNativeCellMargins,renderNativeCellMargins,readNativeCellFlags,renderNativeCellFlags} from './ui/native-cell-properties.ts';
 import {
   renderParagraphDistance,
   readParagraphDistance,
@@ -216,16 +217,16 @@ export const DocumentAttributes = Extension.create({
         types: ['table'],
         attributes: {
           /** Exact table defaults remain separate from each cell's own optional physical margins. */
-          nativeCellMargins: {default:null,rendered:false},
+          nativeCellMargins: {default:null,parseHTML:readNativeCellMargins,renderHTML:renderNativeCellMargins},
         },
       },
       {
         types: ["tableCell", "tableHeader"],
         attributes: {
           /** Complete neutral native properties remain in editor JSON and every native document save. */
-          nativeCellProperties: {default:null,rendered:false},
+          nativeCellProperties: {default:null,parseHTML:readNativeCellProperties,renderHTML:renderNativeCellProperties},
           /** Original native flag bits survive alongside the explicitly represented cell properties. */
-          nativeCellFlags: {default:null,rendered:false},
+          nativeCellFlags: {default:null,parseHTML:readNativeCellFlags,renderHTML:renderNativeCellFlags},
           backgroundColor: {
             default: null,
             /**

@@ -1,10 +1,15 @@
 import type { JSONContent } from "@tiptap/core";
+import {
+  nativeCellProperties,
+  type NativeCellProperties,
+} from "./cell-properties.ts";
 
 /** Body-format choices represented independently from the copied source document. */
 export type FormatPainterMode = "character" | "paragraph" | "both";
 /** Explicit accepted copy choices remain independent from every destination document. */
 export interface FormatPainterOptions {
   mode: FormatPainterMode;
+  cellProperties: boolean;
   cellBackground: boolean;
   cellOnly: boolean;
 }
@@ -13,6 +18,8 @@ export interface FormatPainterSource {
   marks: NonNullable<JSONContent["marks"]>;
   paragraph: Record<string, unknown>;
   cellBackground?: string | null;
+  cellProperties?: NativeCellProperties;
+  cellHeader?: boolean;
 }
 /** Versioned appearance-only session data belongs to one application process. */
 export interface FormatCopySession {
@@ -143,10 +150,13 @@ export function serializeFormatCopySession(value: unknown): string {
       "marks",
       "paragraph",
       "cellBackground",
+      "cellProperties",
+      "cellHeader",
     ]),
     options = appearanceRecord(session.options, [
       "mode",
       "cellBackground",
+      "cellProperties",
       "cellOnly",
     ]),
     paragraph = appearanceRecord(
@@ -186,8 +196,9 @@ export function serializeFormatCopySession(value: unknown): string {
     typeof options.mode !== "string" ||
     !["character", "paragraph", "both"].includes(options.mode) ||
     typeof options.cellBackground !== "boolean" ||
+    typeof options.cellProperties !== "boolean" ||
     typeof options.cellOnly !== "boolean" ||
-    (options.cellOnly && !options.cellBackground)
+    (options.cellOnly && !options.cellBackground && !options.cellProperties)
   )
     throw new TypeError("모양 복사 선택 정보가 올바르지 않습니다.");
   if (
@@ -198,6 +209,26 @@ export function serializeFormatCopySession(value: unknown): string {
     throw new TypeError("모양 복사의 셀 배경이 올바르지 않습니다.");
   if (options.cellBackground && source.cellBackground === undefined)
     throw new TypeError("복사할 셀 배경 정보가 없습니다.");
+  if (source.cellProperties !== undefined) {
+    /** Cell appearance contains only the independently represented native property record. */
+    const properties = appearanceRecord(source.cellProperties, [
+      "textDirection",
+      "lineWrap",
+      "verticalAlign",
+      "hasMargin",
+      "margins",
+      "protected",
+      "editable",
+    ]);
+    appearanceRecord(properties.margins, ["left", "right", "top", "bottom"]);
+    nativeCellProperties(properties);
+    if (
+      typeof source.cellHeader !== "boolean" ||
+      source.cellBackground === undefined
+    )
+      throw new TypeError("복사할 셀 속성의 원본 정보가 없습니다.");
+  } else if (source.cellHeader !== undefined || options.cellProperties)
+    throw new TypeError("복사할 셀 속성 정보가 없습니다.");
   return json;
 }
 

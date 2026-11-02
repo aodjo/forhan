@@ -1,0 +1,46 @@
+name: Verify actual Apple Korean input
+on:
+  push:
+    branches: [test/macos-native-ime]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-ime:
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            arch: arm64
+          - os: macos-15-intel
+            arch: x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          architecture: ${{ matrix.arch }}
+          cache: npm
+      - run: npm ci
+      - run: node node_modules/electron/install.js
+      - run: npm run build
+      - name: Build the actual matching native application
+        run: node node_modules/electron-builder/cli.js --mac --dir --${{ matrix.arch }} --config.mac.identity=- --config.mac.entitlements=build/entitlements.mac.adhoc.plist --config.mac.entitlementsInherit=build/entitlements.mac.adhoc.plist --publish never
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: false
+          CSC_FOR_PULL_REQUEST: true
+      - name: Type through the installed Apple Korean two-set input method
+        run: node scripts/test-macos-ime.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Forhan-actual-Apple-Korean-input-${{ matrix.arch }}
+          path: |
+            release/validation/macos-ime-*/
+            release/validation/macos-ime-*.json
+            test-results/macos-ime/
+          if-no-files-found: error
+          retention-days: 7

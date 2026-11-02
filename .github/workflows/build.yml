@@ -17,7 +17,7 @@ on:
       platform_diagnostic_pattern:
         description: Optional test title filter for focused native platform diagnostics
         type: string
-        default: ''
+        default: ""
         required: false
       observe_native_keys:
         description: Retain passive source-key event observations for explicit diagnostics
@@ -36,7 +36,7 @@ on:
         required: false
 jobs:
   desktop:
-    if: ${{ github.ref != 'refs/heads/test/macos-native-input-capabilities' }}
+    if: ${{ github.ref != 'refs/heads/test/macos-native-input-capabilities' && github.ref != 'refs/heads/test/macos-native-ime' }}
     strategy:
       fail-fast: false
       matrix:

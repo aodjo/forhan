@@ -1,4 +1,5 @@
 import type { JSONContent } from "@tiptap/core";
+import {nativeTableProperties,readHwpxTableProperties,hwpxTableProperties} from '../table-properties.ts';
 import {CELL_UNITS_PER_PIXEL,nativeColumnMeasurements,nativeCellDimension,type NativeColumnMeasurement} from '../cell-geometry.ts';
 import {cellFieldName} from '../cell-field-name.ts';
 import {readHwpxCellProperties,readHwpxCellMargins,hwpxCellProperties,nativeCellMargins} from '../cell-properties.ts';
@@ -1632,7 +1633,7 @@ export async function readHwpx(
     );
     activeLinkIds.length = 0;
     activeLinkIds.push(...parentLinks);
-    return remember({ type: "table", attrs:{nativeCellMargins:readHwpxCellMargins(child(tbl,'inMargin')?.attrs)}, content }, tbl, { object: true });
+    return remember({ type: "table", attrs:{nativeTableProperties:readHwpxTableProperties(tbl.attrs),nativeCellMargins:readHwpxCellMargins(child(tbl,'inMargin')?.attrs)}, content }, tbl, { object: true });
   }
   /**
    * Advance a recognized hyperlink field scope while reading ordered controls.
@@ -3513,15 +3514,17 @@ export async function writeHwpx({
         );
       },
     );
+    /** Explicit source properties take precedence over older retained XML-only metadata. */
+    const priorProperties=readHwpxTableProperties(table.attrs),properties=nativeTableProperties(node.attrs?.nativeTableProperties??priorProperties),spacingChanged=properties.cellSpacing!==priorProperties.cellSpacing;
     /** Explicit editor column measurements, with page-width fallback only for missing slots. */
     const columnWidths = editableColumnWidths(
       coords,
       maxCols,
-      unit(page.width - page.marginLeft - page.marginRight),
+      Math.max(1,unit(page.width - page.marginLeft - page.marginRight)-properties.cellSpacing*(maxCols+1)),
     );
     /** Native table dimensions derived from resolved columns rather than forced page-body width. */
-    const width = columnSpanWidth(columnWidths),
-      height = rows.length * 2400;
+    const width = columnSpanWidth(columnWidths)+properties.cellSpacing*(maxCols+1),
+      height = rows.length * 2400+properties.cellSpacing*(rows.length+1);
     let geometryChanged = !src || src.original.content?.length !== rows.length;
     for (/** The positioned row checked for explicit cell-geometry changes. */ const row of coords) {
       for (/** The positioned cell compared with its retained native geometry. */ const cell of row) {
@@ -3536,8 +3539,12 @@ export async function writeHwpx({
           geometryChanged = true;
       }
     }
+    /** A spacing-only edit retains the original fitted object height plus the independent perimeter/inter-row gaps. */
+    const cellsChanged=geometryChanged;
+    geometryChanged ||= spacingChanged;
     table.attrs = {
       ...table.attrs,
+      ...hwpxTableProperties(properties),
       rowCnt: String(rows.length),
       colCnt: String(maxCols),
     };
@@ -3569,8 +3576,10 @@ export async function writeHwpx({
     else if (geometryChanged) {
       /** The retained native table-size record whose width follows edited column measurements. */
       const tableSize = child(table, "sz");
-      if (tableSize) tableSize.attrs.width = String(width);
-      else
+      if (tableSize) {
+        tableSize.attrs.width = String(width);
+        if(spacingChanged&&!cellsChanged)tableSize.attrs.height=String(Math.max(0,number(tableSize.attrs.height)+(properties.cellSpacing-priorProperties.cellSpacing)*(rows.length+1)));
+      } else
         table.children.unshift(
           el("hp:sz", {
             width,

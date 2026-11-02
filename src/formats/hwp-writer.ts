@@ -1,4 +1,5 @@
 import CFB from "cfb";
+import {retainedTableProperties,hwpTableFlags,hwpTableSpacing,type NativeTableProperties} from '../table-properties.ts';
 import {nativeCellDimension} from '../cell-geometry.ts';
 import {writeHwpCellField} from '../cell-field-name.ts';
 import {hwpCellFlags,nativeCellProperties,nativeCellMargins,type NativeCellMargins} from '../cell-properties.ts';
@@ -40,6 +41,7 @@ export interface HwpWriteOptions {
   page?: PageSettings;
   title?: string;
   original?: DocumentPayload["original"];
+  source?: DocumentPayload['source'];
 }
 interface CharacterStyle {
   fonts: string[];
@@ -89,6 +91,8 @@ interface CellLayout {
   fill: number;
 }
 interface TableLayout {
+  properties:NativeTableProperties;
+  flags:unknown;
   margins: NativeCellMargins;
   rows: number;
   columns: number;
@@ -945,6 +949,8 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
    * tableLayout(tableNode, 42520).columns // Number of logical table columns.
    */
   function tableLayout(node: JSONContent, available: number): TableLayout {
+    /** Older retained XML shells supply properties only for the actual owning source table. */
+    const originalTable=options.source?.nodes[String(node.attrs?.sourceId)],properties=retainedTableProperties(node.attrs?.nativeTableProperties,originalTable?.original.type==='table'?originalTable.xml:undefined);
     /** Editor rows to serialize into the native table. */
     const rows = node.content || [];
     /** Logical cell-coverage matrix used to reject overlapping or missing merges. */
@@ -1043,7 +1049,7 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
     for (/** Current source entry in the ordered byte, style or table iteration. */
     const cell of cells)
       if (!cell.width)
-        cell.width = Math.round((available * cell.colspan) / columns);
+        cell.width = Math.round((Math.max(1,available-properties.cellSpacing*(columns+1)) * cell.colspan) / columns);
     /** Decoded raster or table width used by the current source structure. */
     const width = Math.max(
       ...Array.from(
@@ -1090,12 +1096,14 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
       ),
     );
     return {
+      properties,
+      flags:node.attrs?.nativeTableFlags,
       rows: rows.length,
       margins:nativeCellMargins(node.attrs?.nativeCellMargins),
       columns,
       cells,
-      width,
-      height: rows.length * 3000,
+      width:width+properties.cellSpacing*(columns+1),
+      height: rows.length * 3000+properties.cellSpacing*(rows.length+1),
       rowCounts,
     };
   }
@@ -1190,9 +1198,10 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
       if(margin>0xffff)throw new RangeError('셀 기본 여백이 HWP 저장 범위를 벗어났습니다.');
     /** Native table definition with row counts and border references. */
     const definition = fields(22 + layout.rows * 2, [
-      [0, 6],
+      [0, hwpTableFlags(layout.properties,layout.flags)],
       [4, layout.rows, 2],
       [6, layout.columns, 2],
+      [8, hwpTableSpacing(layout.properties), 2],
       [10, layout.margins.left, 2],
       [12, layout.margins.right, 2],
       [14, layout.margins.top, 2],

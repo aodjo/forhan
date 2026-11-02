@@ -1,4 +1,5 @@
 import { Extension, Node, Mark, mergeAttributes } from "@tiptap/core";
+import {readNativeTableProperties,renderNativeTableProperties,readNativeTableFlags,renderNativeTableFlags} from './ui/native-table-properties.ts';
 import {readNativeCellHeight,renderNativeCellHeight} from './cell-geometry.ts';
 import {readHtmlCellFieldName,renderHtmlCellFieldName,readHtmlCellFieldData,renderHtmlCellFieldData} from './cell-field-name.ts';
 import { renderParagraphMargin, readParagraphMargin } from "./paragraph-layout";
@@ -218,6 +219,10 @@ export const DocumentAttributes = Extension.create({
       {
         types: ['table'],
         attributes: {
+          /** Independent source table page and spacing properties survive JSON and actual HTML saves. */
+          nativeTableProperties: {default:null,parseHTML:readNativeTableProperties,renderHTML:renderNativeTableProperties},
+          /** Unknown binary table flag bits remain independent from the represented source properties. */
+          nativeTableFlags: {default:null,parseHTML:readNativeTableFlags,renderHTML:renderNativeTableFlags},
           /** Exact table defaults remain separate from each cell's own optional physical margins. */
           nativeCellMargins: {default:null,parseHTML:readNativeCellMargins,renderHTML:renderNativeCellMargins},
         },

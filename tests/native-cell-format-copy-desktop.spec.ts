@@ -57,12 +57,26 @@ async function verifyNativeCellPropertyCopy(): Promise<void> {
         ),
       ).toBe(true);
     /** Source appearance and destination field identity have independent original ownership. */
-    const source=cellDocument(true),target=cellDocument(false),targetName='포한_<TARGET>&"🙂';
-    source.content![0].content![0].content![0].attrs!.nativeCellFieldName='SOURCE_FIELD';
-    target.content![0].content![0].content![0].attrs!.nativeCellFieldName=targetName;
-    source.content![0].content![0].content![0].attrs!.nativeCellHeight=1001;
-    target.content![0].content![0].content![0].attrs!.nativeCellHeight=6123;
-    target.content![0].content![0].content![0].attrs!.colwidth=[18037/75];
+    const source = cellDocument(true),
+      target = cellDocument(false),
+      targetName = '포한_<TARGET>&"🙂';
+    source.content![0].content![0].content![0].attrs!.nativeCellFieldName =
+      "SOURCE_FIELD";
+    target.content![0].content![0].content![0].attrs!.nativeCellFieldName =
+      targetName;
+    source.content![0].content![0].content![0].attrs!.nativeCellHeight = 1001;
+    target.content![0].content![0].content![0].attrs!.nativeCellHeight = 6123;
+    target.content![0].content![0].content![0].attrs!.colwidth = [18037 / 75];
+    source.content![0].attrs!.nativeTableProperties = {
+      pageBreak: 2,
+      repeatHeader: true,
+      cellSpacing: 0,
+    };
+    target.content![0].attrs!.nativeTableProperties = {
+      pageBreak: 0,
+      repeatHeader: false,
+      cellSpacing: 37,
+    };
     await importSource(page, "native-cell-original.fhn", source);
     await selectSource(page, ".tiptap th p", 1);
     await ribbonCopy(page);
@@ -75,11 +89,7 @@ async function verifyNativeCellPropertyCopy(): Promise<void> {
     await page.locator('[data-modal-value="apply"]').click();
     await page.reload();
     await expect(page.locator(".tiptap")).toBeVisible();
-    await importSource(
-      page,
-      "native-cell-destination.fhn",
-      target,
-    );
+    await importSource(page, "native-cell-destination.fhn", target);
     /** Actual FHN output establishes target source identity and content before the native operation. */
     const before = await saveNativeCopy(
       desktop,
@@ -118,10 +128,15 @@ async function verifyNativeCellPropertyCopy(): Promise<void> {
         )!,
         cell = table.content![0].content![0];
       expect(table.attrs!.nativeCellMargins).toEqual(TARGET_MARGINS);
+      expect(table.attrs!.nativeTableProperties).toEqual({
+        pageBreak: 0,
+        repeatHeader: false,
+        cellSpacing: 37,
+      });
       expect(cell.type).toBe("tableHeader");
       expect(cell.attrs!.nativeCellFieldName).toBe(targetName);
       expect(cell.attrs!.nativeCellHeight).toBe(6123);
-      expect(cell.attrs!.colwidth).toEqual([18037/75]);
+      expect(cell.attrs!.colwidth).toEqual([18037 / 75]);
       expect(cell.attrs!.nativeCellProperties).toEqual(SOURCE_PROPERTIES);
       expect(cell.attrs!.backgroundColor).toBe("#112233");
       expect(cell.content![0].content![0].text).toBe("대상 형식 유지 ABC");

@@ -1,0 +1,751 @@
+{
+  "kind": "independent-original-native-table-properties",
+  "binarySha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "scope": "Twenty-four actual original states across one- and three-column tables. Accepted original COM reads, literal original HWP definition fields and actual HWPX property/size fields agree independently. Native table width includes a spacing gap at each perimeter and between columns.",
+  "rows": [
+    {
+      "id": "1-columns-page-0-repeat-0-spacing-0",
+      "columns": 1,
+      "properties": {
+        "pageBreak": 0,
+        "repeatHeader": false,
+        "cellSpacing": 0
+      },
+      "hwp": {
+        "flags": 0,
+        "spacing": 0,
+        "tableDefinitionHex": "00000000010001000000fe01fe018d008d00010003000000"
+      },
+      "hwpx": {
+        "pageBreak": "NONE",
+        "repeatHeader": "0",
+        "cellSpacing": "0"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122
+        ],
+        "cellHeights": [
+          282
+        ],
+        "tableWidth": 6122,
+        "tableHeight": 6082
+      }
+    },
+    {
+      "id": "1-columns-page-0-repeat-0-spacing-37",
+      "columns": 1,
+      "properties": {
+        "pageBreak": 0,
+        "repeatHeader": false,
+        "cellSpacing": 37
+      },
+      "hwp": {
+        "flags": 0,
+        "spacing": 37,
+        "tableDefinitionHex": "00000000010001002500fe01fe018d008d00010003000000"
+      },
+      "hwpx": {
+        "pageBreak": "NONE",
+        "repeatHeader": "0",
+        "cellSpacing": "37"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122
+        ],
+        "cellHeights": [
+          282
+        ],
+        "tableWidth": 6196,
+        "tableHeight": 6156
+      }
+    },
+    {
+      "id": "1-columns-page-0-repeat-1-spacing-0",
+      "columns": 1,
+      "properties": {
+        "pageBreak": 0,
+        "repeatHeader": true,
+        "cellSpacing": 0
+      },
+      "hwp": {
+        "flags": 4,
+        "spacing": 0,
+        "tableDefinitionHex": "04000000010001000000fe01fe018d008d00010003000000"
+      },
+      "hwpx": {
+        "pageBreak": "NONE",
+        "repeatHeader": "1",
+        "cellSpacing": "0"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122
+        ],
+        "cellHeights": [
+          282
+        ],
+        "tableWidth": 6122,
+        "tableHeight": 6082
+      }
+    },
+    {
+      "id": "1-columns-page-0-repeat-1-spacing-37",
+      "columns": 1,
+      "properties": {
+        "pageBreak": 0,
+        "repeatHeader": true,
+        "cellSpacing": 37
+      },
+      "hwp": {
+        "flags": 4,
+        "spacing": 37,
+        "tableDefinitionHex": "04000000010001002500fe01fe018d008d00010003000000"
+      },
+      "hwpx": {
+        "pageBreak": "NONE",
+        "repeatHeader": "1",
+        "cellSpacing": "37"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122
+        ],
+        "cellHeights": [
+          282
+        ],
+        "tableWidth": 6196,
+        "tableHeight": 6156
+      }
+    },
+    {
+      "id": "1-columns-page-1-repeat-0-spacing-0",
+      "columns": 1,
+      "properties": {
+        "pageBreak": 1,
+        "repeatHeader": false,
+        "cellSpacing": 0
+      },
+      "hwp": {
+        "flags": 1,
+        "spacing": 0,
+        "tableDefinitionHex": "01000000010001000000fe01fe018d008d00010003000000"
+      },
+      "hwpx": {
+        "pageBreak": "TABLE",
+        "repeatHeader": "0",
+        "cellSpacing": "0"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122
+        ],
+        "cellHeights": [
+          282
+        ],
+        "tableWidth": 6122,
+        "tableHeight": 6082
+      }
+    },
+    {
+      "id": "1-columns-page-1-repeat-0-spacing-37",
+      "columns": 1,
+      "properties": {
+        "pageBreak": 1,
+        "repeatHeader": false,
+        "cellSpacing": 37
+      },
+      "hwp": {
+        "flags": 1,
+        "spacing": 37,
+        "tableDefinitionHex": "01000000010001002500fe01fe018d008d00010003000000"
+      },
+      "hwpx": {
+        "pageBreak": "TABLE",
+        "repeatHeader": "0",
+        "cellSpacing": "37"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122
+        ],
+        "cellHeights": [
+          282
+        ],
+        "tableWidth": 6196,
+        "tableHeight": 6156
+      }
+    },
+    {
+      "id": "1-columns-page-1-repeat-1-spacing-0",
+      "columns": 1,
+      "properties": {
+        "pageBreak": 1,
+        "repeatHeader": true,
+        "cellSpacing": 0
+      },
+      "hwp": {
+        "flags": 5,
+        "spacing": 0,
+        "tableDefinitionHex": "05000000010001000000fe01fe018d008d00010003000000"
+      },
+      "hwpx": {
+        "pageBreak": "TABLE",
+        "repeatHeader": "1",
+        "cellSpacing": "0"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122
+        ],
+        "cellHeights": [
+          282
+        ],
+        "tableWidth": 6122,
+        "tableHeight": 6082
+      }
+    },
+    {
+      "id": "1-columns-page-1-repeat-1-spacing-37",
+      "columns": 1,
+      "properties": {
+        "pageBreak": 1,
+        "repeatHeader": true,
+        "cellSpacing": 37
+      },
+      "hwp": {
+        "flags": 5,
+        "spacing": 37,
+        "tableDefinitionHex": "05000000010001002500fe01fe018d008d00010003000000"
+      },
+      "hwpx": {
+        "pageBreak": "TABLE",
+        "repeatHeader": "1",
+        "cellSpacing": "37"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122
+        ],
+        "cellHeights": [
+          282
+        ],
+        "tableWidth": 6196,
+        "tableHeight": 6156
+      }
+    },
+    {
+      "id": "1-columns-page-2-repeat-0-spacing-0",
+      "columns": 1,
+      "properties": {
+        "pageBreak": 2,
+        "repeatHeader": false,
+        "cellSpacing": 0
+      },
+      "hwp": {
+        "flags": 2,
+        "spacing": 0,
+        "tableDefinitionHex": "02000000010001000000fe01fe018d008d00010003000000"
+      },
+      "hwpx": {
+        "pageBreak": "CELL",
+        "repeatHeader": "0",
+        "cellSpacing": "0"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122
+        ],
+        "cellHeights": [
+          282
+        ],
+        "tableWidth": 6122,
+        "tableHeight": 6082
+      }
+    },
+    {
+      "id": "1-columns-page-2-repeat-0-spacing-37",
+      "columns": 1,
+      "properties": {
+        "pageBreak": 2,
+        "repeatHeader": false,
+        "cellSpacing": 37
+      },
+      "hwp": {
+        "flags": 2,
+        "spacing": 37,
+        "tableDefinitionHex": "02000000010001002500fe01fe018d008d00010003000000"
+      },
+      "hwpx": {
+        "pageBreak": "CELL",
+        "repeatHeader": "0",
+        "cellSpacing": "37"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122
+        ],
+        "cellHeights": [
+          282
+        ],
+        "tableWidth": 6196,
+        "tableHeight": 6156
+      }
+    },
+    {
+      "id": "1-columns-page-2-repeat-1-spacing-0",
+      "columns": 1,
+      "properties": {
+        "pageBreak": 2,
+        "repeatHeader": true,
+        "cellSpacing": 0
+      },
+      "hwp": {
+        "flags": 6,
+        "spacing": 0,
+        "tableDefinitionHex": "06000000010001000000fe01fe018d008d00010003000000"
+      },
+      "hwpx": {
+        "pageBreak": "CELL",
+        "repeatHeader": "1",
+        "cellSpacing": "0"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122
+        ],
+        "cellHeights": [
+          282
+        ],
+        "tableWidth": 6122,
+        "tableHeight": 6082
+      }
+    },
+    {
+      "id": "1-columns-page-2-repeat-1-spacing-37",
+      "columns": 1,
+      "properties": {
+        "pageBreak": 2,
+        "repeatHeader": true,
+        "cellSpacing": 37
+      },
+      "hwp": {
+        "flags": 6,
+        "spacing": 37,
+        "tableDefinitionHex": "06000000010001002500fe01fe018d008d00010003000000"
+      },
+      "hwpx": {
+        "pageBreak": "CELL",
+        "repeatHeader": "1",
+        "cellSpacing": "37"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122
+        ],
+        "cellHeights": [
+          282
+        ],
+        "tableWidth": 6196,
+        "tableHeight": 6156
+      }
+    },
+    {
+      "id": "3-columns-page-0-repeat-0-spacing-0",
+      "columns": 3,
+      "properties": {
+        "pageBreak": 0,
+        "repeatHeader": false,
+        "cellSpacing": 0
+      },
+      "hwp": {
+        "flags": 67108864,
+        "spacing": 0,
+        "tableDefinitionHex": "00000004010003000000fe01fe018d008d00030003000000"
+      },
+      "hwpx": {
+        "pageBreak": "NONE",
+        "repeatHeader": "0",
+        "cellSpacing": "0"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122,
+          6122,
+          6122
+        ],
+        "cellHeights": [
+          282,
+          282,
+          282
+        ],
+        "tableWidth": 18366,
+        "tableHeight": 6082
+      }
+    },
+    {
+      "id": "3-columns-page-0-repeat-0-spacing-37",
+      "columns": 3,
+      "properties": {
+        "pageBreak": 0,
+        "repeatHeader": false,
+        "cellSpacing": 37
+      },
+      "hwp": {
+        "flags": 67108864,
+        "spacing": 37,
+        "tableDefinitionHex": "00000004010003002500fe01fe018d008d00030003000000"
+      },
+      "hwpx": {
+        "pageBreak": "NONE",
+        "repeatHeader": "0",
+        "cellSpacing": "37"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122,
+          6122,
+          6122
+        ],
+        "cellHeights": [
+          282,
+          282,
+          282
+        ],
+        "tableWidth": 18514,
+        "tableHeight": 6156
+      }
+    },
+    {
+      "id": "3-columns-page-0-repeat-1-spacing-0",
+      "columns": 3,
+      "properties": {
+        "pageBreak": 0,
+        "repeatHeader": true,
+        "cellSpacing": 0
+      },
+      "hwp": {
+        "flags": 67108868,
+        "spacing": 0,
+        "tableDefinitionHex": "04000004010003000000fe01fe018d008d00030003000000"
+      },
+      "hwpx": {
+        "pageBreak": "NONE",
+        "repeatHeader": "1",
+        "cellSpacing": "0"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122,
+          6122,
+          6122
+        ],
+        "cellHeights": [
+          282,
+          282,
+          282
+        ],
+        "tableWidth": 18366,
+        "tableHeight": 6082
+      }
+    },
+    {
+      "id": "3-columns-page-0-repeat-1-spacing-37",
+      "columns": 3,
+      "properties": {
+        "pageBreak": 0,
+        "repeatHeader": true,
+        "cellSpacing": 37
+      },
+      "hwp": {
+        "flags": 67108868,
+        "spacing": 37,
+        "tableDefinitionHex": "04000004010003002500fe01fe018d008d00030003000000"
+      },
+      "hwpx": {
+        "pageBreak": "NONE",
+        "repeatHeader": "1",
+        "cellSpacing": "37"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122,
+          6122,
+          6122
+        ],
+        "cellHeights": [
+          282,
+          282,
+          282
+        ],
+        "tableWidth": 18514,
+        "tableHeight": 6156
+      }
+    },
+    {
+      "id": "3-columns-page-1-repeat-0-spacing-0",
+      "columns": 3,
+      "properties": {
+        "pageBreak": 1,
+        "repeatHeader": false,
+        "cellSpacing": 0
+      },
+      "hwp": {
+        "flags": 67108865,
+        "spacing": 0,
+        "tableDefinitionHex": "01000004010003000000fe01fe018d008d00030003000000"
+      },
+      "hwpx": {
+        "pageBreak": "TABLE",
+        "repeatHeader": "0",
+        "cellSpacing": "0"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122,
+          6122,
+          6122
+        ],
+        "cellHeights": [
+          282,
+          282,
+          282
+        ],
+        "tableWidth": 18366,
+        "tableHeight": 6082
+      }
+    },
+    {
+      "id": "3-columns-page-1-repeat-0-spacing-37",
+      "columns": 3,
+      "properties": {
+        "pageBreak": 1,
+        "repeatHeader": false,
+        "cellSpacing": 37
+      },
+      "hwp": {
+        "flags": 67108865,
+        "spacing": 37,
+        "tableDefinitionHex": "01000004010003002500fe01fe018d008d00030003000000"
+      },
+      "hwpx": {
+        "pageBreak": "TABLE",
+        "repeatHeader": "0",
+        "cellSpacing": "37"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122,
+          6122,
+          6122
+        ],
+        "cellHeights": [
+          282,
+          282,
+          282
+        ],
+        "tableWidth": 18514,
+        "tableHeight": 6156
+      }
+    },
+    {
+      "id": "3-columns-page-1-repeat-1-spacing-0",
+      "columns": 3,
+      "properties": {
+        "pageBreak": 1,
+        "repeatHeader": true,
+        "cellSpacing": 0
+      },
+      "hwp": {
+        "flags": 67108869,
+        "spacing": 0,
+        "tableDefinitionHex": "05000004010003000000fe01fe018d008d00030003000000"
+      },
+      "hwpx": {
+        "pageBreak": "TABLE",
+        "repeatHeader": "1",
+        "cellSpacing": "0"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122,
+          6122,
+          6122
+        ],
+        "cellHeights": [
+          282,
+          282,
+          282
+        ],
+        "tableWidth": 18366,
+        "tableHeight": 6082
+      }
+    },
+    {
+      "id": "3-columns-page-1-repeat-1-spacing-37",
+      "columns": 3,
+      "properties": {
+        "pageBreak": 1,
+        "repeatHeader": true,
+        "cellSpacing": 37
+      },
+      "hwp": {
+        "flags": 67108869,
+        "spacing": 37,
+        "tableDefinitionHex": "05000004010003002500fe01fe018d008d00030003000000"
+      },
+      "hwpx": {
+        "pageBreak": "TABLE",
+        "repeatHeader": "1",
+        "cellSpacing": "37"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122,
+          6122,
+          6122
+        ],
+        "cellHeights": [
+          282,
+          282,
+          282
+        ],
+        "tableWidth": 18514,
+        "tableHeight": 6156
+      }
+    },
+    {
+      "id": "3-columns-page-2-repeat-0-spacing-0",
+      "columns": 3,
+      "properties": {
+        "pageBreak": 2,
+        "repeatHeader": false,
+        "cellSpacing": 0
+      },
+      "hwp": {
+        "flags": 67108866,
+        "spacing": 0,
+        "tableDefinitionHex": "02000004010003000000fe01fe018d008d00030003000000"
+      },
+      "hwpx": {
+        "pageBreak": "CELL",
+        "repeatHeader": "0",
+        "cellSpacing": "0"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122,
+          6122,
+          6122
+        ],
+        "cellHeights": [
+          282,
+          282,
+          282
+        ],
+        "tableWidth": 18366,
+        "tableHeight": 6082
+      }
+    },
+    {
+      "id": "3-columns-page-2-repeat-0-spacing-37",
+      "columns": 3,
+      "properties": {
+        "pageBreak": 2,
+        "repeatHeader": false,
+        "cellSpacing": 37
+      },
+      "hwp": {
+        "flags": 67108866,
+        "spacing": 37,
+        "tableDefinitionHex": "02000004010003002500fe01fe018d008d00030003000000"
+      },
+      "hwpx": {
+        "pageBreak": "CELL",
+        "repeatHeader": "0",
+        "cellSpacing": "37"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122,
+          6122,
+          6122
+        ],
+        "cellHeights": [
+          282,
+          282,
+          282
+        ],
+        "tableWidth": 18514,
+        "tableHeight": 6156
+      }
+    },
+    {
+      "id": "3-columns-page-2-repeat-1-spacing-0",
+      "columns": 3,
+      "properties": {
+        "pageBreak": 2,
+        "repeatHeader": true,
+        "cellSpacing": 0
+      },
+      "hwp": {
+        "flags": 67108870,
+        "spacing": 0,
+        "tableDefinitionHex": "06000004010003000000fe01fe018d008d00030003000000"
+      },
+      "hwpx": {
+        "pageBreak": "CELL",
+        "repeatHeader": "1",
+        "cellSpacing": "0"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122,
+          6122,
+          6122
+        ],
+        "cellHeights": [
+          282,
+          282,
+          282
+        ],
+        "tableWidth": 18366,
+        "tableHeight": 6082
+      }
+    },
+    {
+      "id": "3-columns-page-2-repeat-1-spacing-37",
+      "columns": 3,
+      "properties": {
+        "pageBreak": 2,
+        "repeatHeader": true,
+        "cellSpacing": 37
+      },
+      "hwp": {
+        "flags": 67108870,
+        "spacing": 37,
+        "tableDefinitionHex": "06000004010003002500fe01fe018d008d00030003000000"
+      },
+      "hwpx": {
+        "pageBreak": "CELL",
+        "repeatHeader": "1",
+        "cellSpacing": "37"
+      },
+      "geometry": {
+        "cellWidths": [
+          6122,
+          6122,
+          6122
+        ],
+        "cellHeights": [
+          282,
+          282,
+          282
+        ],
+        "tableWidth": 18514,
+        "tableHeight": 6156
+      }
+    }
+  ]
+}

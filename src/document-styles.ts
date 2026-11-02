@@ -36,6 +36,7 @@ ${scope} strong [data-forhan-normal-weight],${scope} b [data-forhan-normal-weigh
 ${scope} img{display:block;max-width:100%;height:auto;margin:0}
 ${scope} table{border-collapse:collapse;border-color:#808080;table-layout:fixed;margin:0;width:auto;overflow:hidden;break-inside:auto}
 ${scope} td,${scope} th{border:1px solid #555;padding:2pt 5pt;vertical-align:top;position:relative;min-width:1em}
+${scope} table tr{break-inside:var(--forhan-table-row-break,auto)}
 ${scope} th{background:#f1f1f1;font-weight:700}
 ${scope} td>p:last-child,${scope} th>p:last-child{margin:0}
 ${scope} code{border-radius:0;background:#eee;padding:1px 3px}

@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
 import {
   inspectPackagedApplication,
-  MIN_NATIVE_REGRESSIONS,
+  MIN_MAC_NATIVE_REGRESSIONS,
   type PackageArchitecture,
   type PackageExpectation,
 } from "./lib/native-package.ts";
@@ -25,8 +25,8 @@ import {
 
 /** Only the two actual user-distributed Mac containers participate in this native gate. */
 const DISTRIBUTION_KINDS = ["zip", "dmg"] as const;
-/** A ZIP extraction and a DMG copy must each pass actual identity/fonts and complete native quit behavior. */
-const REQUIRED_PAYLOAD_TESTS = 2;
+/** Each copied container must pass actual identity/fonts, native quit and genuine OS document requests. */
+const REQUIRED_PAYLOAD_TESTS = 3;
 
 /**
  * Execute a native macOS tool with direct arguments and bounded diagnostics.
@@ -110,7 +110,8 @@ function ownedMountedImage(mount: string): Record<string, unknown> | null {
  *
  * The full staging suite has already validated identical bundle bytes. These
  * additional tests establish that the actual relocated user payload launches,
- * enumerates installed fonts and terminates normally on the matching Mac host.
+ * enumerates installed fonts, handles genuine operating-system document requests
+ * and terminates normally on the matching Mac host.
  * @async
  * @param {string} root - Current project with its original production tests.
  * @param {string} executable - Actual ZIP-extracted or DMG-copied executable.
@@ -147,6 +148,7 @@ async function exercisePayload(
       path.join(root, "playwright.packaged.config.ts"),
       "packaged-runtime.packaged.ts",
       "native-quit-desktop.spec.ts",
+      "macos-file-open.packaged.ts",
       "--output",
       path.join(root, "test-results", "distributions-" + kind),
     ],
@@ -253,7 +255,7 @@ async function main(): Promise<void> {
     staging.arch !== arch ||
     staging.signature?.verified !== true ||
     !Number.isSafeInteger(staging.tests?.expected) ||
-    staging.tests.expected < MIN_NATIVE_REGRESSIONS ||
+    staging.tests.expected < MIN_MAC_NATIVE_REGRESSIONS ||
     staging.tests.unexpected !== 0 ||
     staging.tests.skipped !== 0 ||
     staging.tests.flaky !== 0

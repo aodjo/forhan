@@ -11,6 +11,7 @@ export default defineConfig({
     "native-quit-desktop.spec.ts",
     "print-layout.spec.ts",
     "packaged-runtime.packaged.ts",
+    ...(process.platform === "darwin" ? ["macos-file-open.packaged.ts"] : []),
     "width-drag-desktop.spec.ts",
     "joined-lines-desktop.spec.ts",
     "contextual-width-desktop.spec.ts",

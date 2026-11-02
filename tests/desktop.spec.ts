@@ -433,9 +433,9 @@ test("reactivated windows never reuse a previous document save destination",
     expect(JSON.stringify((await readHwpx(await readFile(targets[1]))).doc)).toContain('새 창 문서');
   });
 
-test("operating-system file requests reopen an editor after its last window closes",
+test("the production file-open listener recreates an editor after its last window closes",
   /**
-   * Verify the macOS-style file-opening lifecycle in an already running application.
+   * Exercise the production file-open listener in an already running application.
    *
    * Closes the clean editor while retaining the process, then supplies an owned
    * document through the same event used by Finder to reopen a document window.
@@ -444,7 +444,7 @@ test("operating-system file requests reopen an editor after its last window clos
    * @returns {Promise<void>} Resolves when the recreated editor contains the requested document.
    * @throws {Error} If the document remains queued without a window or cannot be loaded.
    * @example
-   * // Opening a document from Finder recreates its editor even when no windows remain.
+   * // Supplying the documented event exercises the listener's recreate-window path.
    */
   async () => {
     /** Portable document requested through the operating-system file-open event. */

@@ -6,6 +6,7 @@ import {
   inspectPackagedApplication,
   packageDigest,
   MIN_NATIVE_REGRESSIONS,
+  MIN_MAC_NATIVE_REGRESSIONS,
   type PackagePlatform,
   type PackageArchitecture,
   type PackageExpectation,
@@ -149,7 +150,7 @@ async function main(): Promise<void> {
   const summary = JSON.parse(await readFile(results, "utf8")).stats;
   if (
     !summary ||
-    summary.expected < MIN_NATIVE_REGRESSIONS ||
+    summary.expected < (platform === "darwin" ? MIN_MAC_NATIVE_REGRESSIONS : MIN_NATIVE_REGRESSIONS) ||
     summary.unexpected !== 0 ||
     summary.skipped !== 0 ||
     summary.flaky !== 0

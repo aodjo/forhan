@@ -6,6 +6,8 @@ import { XMLParser, XMLValidator } from "fast-xml-parser";
 
 /** Minimum complete native distribution suite, shared by staging and extracted-payload verification. */
 export const MIN_NATIVE_REGRESSIONS = 31;
+/** Mac distributions additionally require genuine Launch Services reopening for HWPX, HWP and FHN. */
+export const MIN_MAC_NATIVE_REGRESSIONS = 32;
 
 /** Native platforms for which the project builds desktop distribution artifacts. */
 export type PackagePlatform = "win32" | "darwin";

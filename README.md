@@ -48,6 +48,8 @@ node scripts/build-korean-font.ts NotoSansKR-Bold.otf src/assets/FhanSansKR-Bold
 
 Mac 배포 컨테이너 자체는 전체 배포 앱 검사를 마친 같은 Mac에서 `node scripts/test-macos-distributions.ts`로 추가 확인합니다. ZIP을 푼 앱과 읽기 전용 DMG에서 복사한 앱의 모든 파일·실행 권한·링크를 검증한 패키징 폴더와 비교하고, 각각 실제 실행해 설치 글꼴과 종료 동작을 검사합니다. DMG에서 복사한 앱은 볼륨을 분리한 뒤 실행합니다. 두 형식의 실행과 임시 파일 정리가 모두 성공해야 `release/validation/distributions-darwin-*.json`을 기록합니다.
 
+Mac의 추가 검사는 실행 중인 앱의 창을 닫은 뒤 실제 `/usr/bin/open -a`로 HWPX·HWP·FHN 파일을 전달합니다. 같은 프로세스에서 창이 다시 열리는지, 한글·결합 악센트 파일명과 본문이 유지되는지, 원본 파일이 바뀌지 않는지 확인합니다. 다른 포한 앱이 실행 중이면 요청을 보내지 않습니다. 기존의 이벤트 직접 전달 검사는 리스너 단위 검사로 구분합니다.
+
 ## 문서 작업
 
 - HWPX, HWP 5, FHN(포한), TXT, HTML 문서 열기

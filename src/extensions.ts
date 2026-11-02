@@ -213,8 +213,19 @@ export const DocumentAttributes = Extension.create({
         },
       },
       {
+        types: ['table'],
+        attributes: {
+          /** Exact table defaults remain separate from each cell's own optional physical margins. */
+          nativeCellMargins: {default:null,rendered:false},
+        },
+      },
+      {
         types: ["tableCell", "tableHeader"],
         attributes: {
+          /** Complete neutral native properties remain in editor JSON and every native document save. */
+          nativeCellProperties: {default:null,rendered:false},
+          /** Original native flag bits survive alongside the explicitly represented cell properties. */
+          nativeCellFlags: {default:null,rendered:false},
           backgroundColor: {
             default: null,
             /**

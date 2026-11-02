@@ -1,4 +1,5 @@
 import CFB from "cfb";
+import {hwpCellFlags,nativeCellProperties,nativeCellMargins,type NativeCellMargins} from '../cell-properties.ts';
 import { characterDecoration, type CharacterDecoration } from "../character-decorations.ts";
 import { characterFonts } from "../character-fonts.ts";
 import { nativeSpacingFlag } from "../font-space.ts";
@@ -86,6 +87,7 @@ interface CellLayout {
   fill: number;
 }
 interface TableLayout {
+  margins: NativeCellMargins;
   rows: number;
   columns: number;
   width: number;
@@ -1087,6 +1089,7 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
     );
     return {
       rows: rows.length,
+      margins:nativeCellMargins(node.attrs?.nativeCellMargins),
       columns,
       cells,
       width,
@@ -1181,15 +1184,17 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
    * tableControl(layout, 1) // Table header, definition, cell-list and paragraph records.
    */
   function tableControl(layout: TableLayout, level: number): Uint8Array[] {
+    for(/** Native table defaults cannot silently truncate when encoded in unsigned 16-bit fields. */const margin of Object.values(layout.margins))
+      if(margin>0xffff)throw new RangeError('셀 기본 여백이 HWP 저장 범위를 벗어났습니다.');
     /** Native table definition with row counts and border references. */
     const definition = fields(22 + layout.rows * 2, [
       [0, 6],
       [4, layout.rows, 2],
       [6, layout.columns, 2],
-      [10, 510, 2],
-      [12, 510, 2],
-      [14, 141, 2],
-      [16, 141, 2],
+      [10, layout.margins.left, 2],
+      [12, layout.margins.right, 2],
+      [14, layout.margins.top, 2],
+      [16, layout.margins.bottom, 2],
       [18 + layout.rows * 2, 2, 2],
     ]);
     /** View used to write the per-row native cell-list counts. */
@@ -1207,20 +1212,22 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
       const blocks = cell.node.content?.length
         ? cell.node.content
         : [{ type: "paragraph" }];
+      /** Exact source cell properties remain independent from the destination geometry and border reference. */
+      const properties=nativeCellProperties(cell.node.attrs?.nativeCellProperties),flags=hwpCellFlags(properties,cell.node.type==='tableHeader',cell.node.attrs?.nativeCellFlags??0),margins=properties.hasMargin?properties.margins:layout.margins;
       /** Modern cell-list header containing paragraph count and explicit geometry. */
       const cellHeader = fields(47, [
         [0, blocks.length],
-        [4, 32],
+        [4, flags],
         [8, cell.column, 2],
         [10, cell.row, 2],
         [12, cell.colspan, 2],
         [14, cell.rowspan, 2],
         [16, cell.width],
         [20, cell.height],
-        [24, 510, 2],
-        [26, 510, 2],
-        [28, 141, 2],
-        [30, 141, 2],
+        [24, properties.margins.left, 2],
+        [26, properties.margins.right, 2],
+        [28, properties.margins.top, 2],
+        [30, properties.margins.bottom, 2],
         [32, cell.fill, 2],
         [34, cell.width],
       ]);
@@ -1230,7 +1237,7 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
           ...blockRecords(
             blocks[index],
             level + 1,
-            Math.max(1000, cell.width - 1020),
+            Math.max(1000, cell.width - margins.left - margins.right),
             index === blocks.length - 1,
           ),
         );

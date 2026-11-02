@@ -71,6 +71,51 @@ async function main(): Promise<void> {
     /** Retained native JSON remains unmodified beside explicit observer provenance and limitations. */
     const output = path.resolve("release/validation");
     await mkdir(output, { recursive: true });
+    /** The actual installed SDK supplies the primary native API contract for the observed enable/selection behavior. */
+    const sdk = execFileSync("/usr/bin/xcrun", ["--show-sdk-path"], {
+        encoding: "utf8",
+        timeout: 15000,
+      }).trim(),
+      header = path.join(
+        sdk,
+        "System/Library/Frameworks/Carbon.framework/Frameworks/HIToolbox.framework/Headers/TextInputSources.h",
+      ),
+      headerBytes = await readFile(header),
+      headerText = headerBytes.toString("utf8"),
+      contracts: Record<string, string> = {};
+    for (/** Only the three relevant public input-source contracts are retained from the actual installed SDK. */ const name of [
+      "TISEnableInputSource",
+      "TISDisableInputSource",
+      "TISSelectInputSource",
+    ]) {
+      /** The actual declaration anchors the original preceding documentation rather than a guessed web description. */
+      const match = new RegExp("^" + name + "\\s*\\(", "mu").exec(headerText);
+      assert.ok(
+        match,
+        "The actual SDK does not expose the expected declaration: " + name,
+      );
+      /** Complete preceding native documentation remains verbatim and content-bound to the original SDK header. */
+      const begin = headerText.lastIndexOf("/*", match.index),
+        end = headerText.indexOf(";", match.index) + 1;
+      assert.ok(begin >= 0 && end > match.index && end - begin < 30000);
+      contracts[name] = headerText.slice(begin, end);
+    }
+    await writeFile(
+      path.join(output, `macos-input-capabilities-${expected}-contracts.json`),
+      JSON.stringify(
+        {
+          kind: "actual-installed-macos-input-source-sdk-contracts",
+          arch: expected,
+          sdk,
+          header,
+          headerSha256: createHash("sha256").update(headerBytes).digest("hex"),
+          contracts,
+          nativeTypingVerified: false,
+        },
+        null,
+        2,
+      ) + "\n",
+    );
     await writeFile(
       path.join(output, `macos-input-capabilities-${expected}-native.json`),
       stdout,

@@ -14,6 +14,7 @@ import {
   type NativeTableProperties,
 } from "../table-properties.ts";
 import { cellFieldName, writeHwpCellField } from "../cell-field-name.ts";
+import { nativeCellDimension } from "../cell-geometry.ts";
 
 /** A selected original cell retains its own immutable source identity and absolute position. */
 export interface TablePropertyCell {
@@ -36,6 +37,7 @@ export interface TablePropertyChanges {
   cellMargins?: Partial<NativeCellMargins>;
   header?: boolean;
   fieldName?: string;
+  size?: { width: number; height: number };
 }
 
 /**
@@ -115,6 +117,14 @@ export function applyTableProperties(
   changes: TablePropertyChanges,
 ): boolean {
   if (editor.view.composing || editor.state.doc !== context.doc) return false;
+  if (changes.size) {
+    if (
+      nativeCellDimension(changes.size.width) === null ||
+      changes.size.width < 0 ||
+      nativeCellDimension(changes.size.height) === null
+    )
+      throw new RangeError("셀의 너비와 높이가 올바르지 않습니다.");
+  }
   /** Validation completes before a document transaction can be dispatched. */
   const transaction = closeHistory(editor.state.tr),
     tableAttrs = { ...context.table.attrs };
@@ -138,6 +148,30 @@ export function applyTableProperties(
     /** Each selected cell keeps its independent untouched property values and raw source identity. */
     const attrs = { ...selected.node.attrs },
       properties = nativeCellProperties(attrs.nativeCellProperties);
+    if (changes.size) {
+      /** An explicit native size decision applies both visible distances to every actual selected cell. */
+      const span = Math.max(1, Number(attrs.colspan) || 1),
+        original = attrs.colwidth as number[] | null,
+        width = changes.size.width;
+      let total = 0;
+      if (original?.length === span)
+        for (/** Existing logical column proportions remain independent from neighboring source cells. */ const part of original)
+          total += Number(part) || 0;
+      if (original?.length === span && Math.round(total * 75) === width)
+        attrs.colwidth = original.slice();
+      else {
+        /** Per-column editor slots retain the exact complete native total across a horizontal merge. */
+        const widths: number[] = [];
+        for (let column = 0; column < span; column++)
+          widths.push(
+            ((total > 0 ? (Number(original![column]) || 0) / total : 1 / span) *
+              width) /
+              75,
+          );
+        attrs.colwidth = widths;
+      }
+      attrs.nativeCellHeight = changes.size.height;
+    }
     if (changes.cell || changes.cellMargins)
       attrs.nativeCellProperties = nativeCellProperties({
         ...properties,

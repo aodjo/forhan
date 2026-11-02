@@ -33,16 +33,18 @@ export interface TableCellDialogBinding {
  * Blank mixed values never become zero. Only actual edits pass through this
  * conversion; untouched rounded controls retain their original integers.
  * @param {string} text - Explicit user-entered native millimeter draft.
+ * @param {boolean} [truncate=false] - Whether native cell sizing truncates fractional source units.
  * @returns {number} Integral nonnegative native source distance.
  * @throws {RangeError} If the input is malformed, negative or outside source limits.
  * @example
  * tableDialogUnits('1.80'); // 510
  */
-function tableDialogUnits(text: string): number {
+function tableDialogUnits(text: string, truncate = false): number {
   if (!/^\d+(?:\.\d{0,2})?$/u.test(text.trim()))
     throw new RangeError("0 이상의 숫자를 소수점 둘째 자리까지 입력하세요.");
   /** Native source precision remains independent from the rounded control display. */
-  const units = Math.round((Number(text) * 7200) / 25.4);
+  const physical = (Number(text) * 7200) / 25.4,
+    units = truncate ? Math.floor(physical) : Math.round(physical);
   if (!Number.isSafeInteger(units) || units < 0 || units > 0x7fffffff)
     throw new RangeError("입력한 길이가 저장 범위를 벗어났습니다.");
   return units;
@@ -130,6 +132,15 @@ export function bindNativeTableCellDialog(
    * // NONE mode leaves the original repeat flag checked but unavailable.
    */
   function availability(): void {
+    for (/** Native dimensions become editable only for an explicit cell-size application. */ const input of root.querySelectorAll<HTMLInputElement>(
+      '[name="width"],[name="height"]',
+    )) {
+      input.disabled = !value("sizeApply");
+      for (/** Both spinner arrows share their owning physical dimension's enabled state. */ const button of input
+        .closest(".ntc-number")!
+        .querySelectorAll<HTMLButtonElement>("button"))
+        button.disabled = input.disabled;
+    }
     for (/** Own margins are editable only while their actual native override is enabled. */ const input of root.querySelectorAll<HTMLInputElement>(
       '[name^="margin"]',
     )) {
@@ -185,7 +196,15 @@ export function bindNativeTableCellDialog(
       /** The actual edited control receives its own native validation message. */
       const input = root.querySelector<HTMLInputElement>(`[name="${name}"]`)!;
       try {
-        if (name === "pageBreak")
+        if (name === "sizeApply" || name === "width" || name === "height") {
+          if (!value("sizeApply")) continue;
+          patch.size ??= {
+            width: Number(initial.fields.width),
+            height: Number(initial.fields.height),
+          };
+          if (name === "width" || name === "height")
+            patch.size[name] = tableDialogUnits(String(value(name)), true);
+        } else if (name === "pageBreak")
           patch.table = { ...patch.table, pageBreak: value(name) as 0 | 1 | 2 };
         else if (name === "repeatHeader")
           patch.table = { ...patch.table, repeatHeader: !!value(name) };
@@ -362,6 +381,8 @@ export function bindNativeTableCellDialog(
           : event.key.toLowerCase(),
         cellKeys: Record<string, string> = {
           c: "sizeApply",
+          w: "width",
+          h: "height",
           m: "hasMargin",
           s: "oneLine",
           p: "protected",

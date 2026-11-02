@@ -1442,7 +1442,7 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
         colwidth:
           width > 0
             ? Array<number>(colspan).fill(width / CELL_UNITS_PER_PIXEL / colspan)
-            : null,
+            : [0],
       };
       if (cell.bytes.length >= offset + 26) {
         /** Referenced solid background definition for the current cell. */

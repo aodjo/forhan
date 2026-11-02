@@ -992,20 +992,20 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
         }
         /** Explicit per-column widths or one older total spanning the complete merged cell. */
         const colwidth = cell.attrs?.colwidth as number[] | null;
-        /** Decoded raster or table width used by the current source structure. */
+        /** Explicit native source width, including zero, or a negative sentinel for an absent measurement. */
         const width =
           (colwidth?.length === colspan || colwidth?.length === 1) &&
           colwidth.every(
             /**
              * Validate an explicit table-column width.
              *
-             * The logical table grid and width calculations retain cell spans without introducing missing or overlapping positions.
+             * An explicit zero retains the original native source value; absent or invalid widths use the page fallback separately.
              * @param {number} value Source entry supplied by the enclosing record mapping or assertion.
              * @returns {boolean} Whether the source entry satisfies the compatibility condition described above.
              * @example
              * tableGeometry(entry) // The corresponding validated width or row-cell contribution.
              */
-            (value) => value > 0,
+            (value) => typeof value==='number'&&Number.isFinite(value)&&value>=0,
           )
             ? Math.round(
                 colwidth.reduce(
@@ -1023,7 +1023,7 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
                   0,
                 ) * 75,
               )
-            : 0;
+            : -1;
         cells.push({
           node: cell,
           row,
@@ -1048,7 +1048,7 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
           throw new Error("HWP table has an uncovered cell position.");
     for (/** Current source entry in the ordered byte, style or table iteration. */
     const cell of cells)
-      if (!cell.width)
+      if (cell.width<0)
         cell.width = Math.round((Math.max(1,available-properties.cellSpacing*(columns+1)) * cell.colspan) / columns);
     /** Decoded raster or table width used by the current source structure. */
     const width = Math.max(

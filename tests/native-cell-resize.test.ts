@@ -101,13 +101,13 @@ function assertResizedSource(doc: JSONContent, expected: ResizedCell[]): void {
  * Actual XML cellSz fields are inspected independently before their reader.
  * Later cross-format regeneration cannot normalize individual native widths.
  * @async
- * @returns {Promise<void>} Resolves after twenty-one actual original geometry outcomes retain their source.
+ * @returns {Promise<void>} Resolves after twenty-seven actual original geometry outcomes retain their source.
  * @throws {Error} If a source width, height or merged ownership changes.
  * @example
  * // A horizontally merged5669-unit total remains5669 despite wider cells below it.
  */
 async function verifyNativeResizeConversions(): Promise<void> {
-  assert.equal(observations.rows.length, 21);
+  assert.equal(observations.rows.length, 27);
   for (/** Every literal original native numeric decision is independently exercised. */ const original of observations.rows) {
     /** Fresh authored source prevents an unchanged imported package from supplying the output. */
     const payload = { doc: resizedSource(original.after) },

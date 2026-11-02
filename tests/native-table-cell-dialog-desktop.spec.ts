@@ -13,6 +13,10 @@ import {
   assertIndependentCellWidths,
 } from "./helpers/cell-size.ts";
 import {
+  editNativeCellSize,
+  assertSingleCellSize,
+} from "./helpers/cell-size-editing.ts";
+import {
   tableDialogDocument,
   openTableDialog,
   editTableDialog,
@@ -24,6 +28,8 @@ import {
  *
  * The selected packaged application must own the dialog, its source and all
  * outputs. Development Electron cannot substitute when a package is supplied.
+ * Independent widths, explicit numeric sizes, zero and half-millimeter source
+ * values also retain all actual native files and one-step undo.
  * @async
  * @returns {Promise<void>} Resolves after real native files and one-step undo preserve original source ownership.
  * @throws {Error} If package identity, accepted properties, native output or history differs.
@@ -106,6 +112,100 @@ async function verifyNativeTableDialogFiles(): Promise<void> {
         ),
         format,
       );
+    await importSource(
+      page,
+      "native-explicit-cell-size.fhn",
+      cellSizeDocument(),
+    );
+    /** Actual native source output remains the independent one-step history baseline for cell sizing. */
+    const sizeBefore = await saveNativeCopy(
+      desktop,
+      page,
+      profile,
+      "before-cell-size",
+      "forhan",
+    );
+    await selectSource(page, ".tiptap tr:first-child td:first-child p", 1);
+    await openTableDialog(page);
+    await editNativeCellSize(page);
+    for (/** Actual copied native applications must preserve both explicit original distances in all source formats. */ const format of [
+      "forhan",
+      "hwpx",
+      "hwp",
+    ] as const)
+      assertSingleCellSize(
+        await saveNativeCopy(
+          desktop,
+          page,
+          profile,
+          "explicit-cell-size",
+          format,
+        ),
+        format,
+      );
+    await page.locator(".tiptap").focus();
+    await page.keyboard.press("ControlOrMeta+z");
+    expect(
+      await saveNativeCopy(
+        desktop,
+        page,
+        profile,
+        "undone-cell-size",
+        "forhan",
+      ),
+    ).toEqual(sizeBefore);
+    for (/** Actual copied native payloads must also retain original zero and fractional native control values. */ const [
+      display,
+      units,
+    ] of [
+      ["0.00", 0],
+      ["0.50", 141],
+    ] as const) {
+      await importSource(
+        page,
+        "native-boundary-" + units + ".fhn",
+        cellSizeDocument(),
+      );
+      /** Each original native import supplies its own independently saved history baseline. */
+      const boundaryBefore = await saveNativeCopy(
+        desktop,
+        page,
+        profile,
+        "before-boundary-" + units,
+        "forhan",
+      );
+      await selectSource(page, ".tiptap tr:first-child td:first-child p", 1);
+      await openTableDialog(page);
+      await editNativeCellSize(page, display, display);
+      for (/** Real atomic native files preserve explicit zero and fractional units without changing any unselected cell. */ const format of [
+        "forhan",
+        "hwpx",
+        "hwp",
+      ] as const)
+        assertSingleCellSize(
+          await saveNativeCopy(
+            desktop,
+            page,
+            profile,
+            "boundary-" + units,
+            format,
+          ),
+          format,
+          units,
+          units,
+        );
+      await page.locator(".tiptap").focus();
+      await page.keyboard.press("ControlOrMeta+z");
+      expect(
+        await saveNativeCopy(
+          desktop,
+          page,
+          profile,
+          "undone-boundary-" + units,
+          "forhan",
+        ),
+      ).toEqual(boundaryBefore);
+    }
   } finally {
     await closeOwnedDesktop(desktop);
     expect(path.dirname(profile)).toBe(path.resolve(tmpdir()));

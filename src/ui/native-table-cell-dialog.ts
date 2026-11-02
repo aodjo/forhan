@@ -159,6 +159,22 @@ export function tableCellDialogValues(
     tableWidth += width;
     if (width <= 0) complete = false;
   }
+  /** Native size controls represent the current fitted logical allocation rather than an inconsistent raw owning-cell total. */
+  const selectedBox = map.findCell(
+    context.cells[0].position - context.position - 1,
+  );
+  let fittedWidth = 0;
+  for (let column = selectedBox.left; column < selectedBox.right; column++)
+    fittedWidth += columns[column] || 0;
+  if (fittedWidth > 0) fields.width = Math.round(fittedWidth);
+  for (/** Native explicit size application uses visible representative distances even when raw selected sizes differ. */ const name of [
+    "width",
+    "height",
+  ]) {
+    /** Native dimension drafts display their representative physical allocation rather than a mixed-value blank. */
+    const index = mixed.indexOf(name);
+    if (index >= 0) mixed.splice(index, 1);
+  }
   return {
     fields,
     mixed,
@@ -455,9 +471,9 @@ export function renderNativeTableCellDialog(
     alignment += `<label class="ntc-align" style="${tableDialogPosition(301 + index * 46, 278)}"><input type="radio" name="align" value="${index}" ${values.fields.align === index ? "checked" : ""}><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.5 1.5h21v21h-21z" fill="none" stroke="#999"/><path d="M4 ${5 + index * 5}h16m-16 3h16m-16 3h16" fill="none" stroke="#666"/></svg><span class="ntc-sr">${["위", "가운데", "아래"][index]}</span></label>`;
   for (let index = 1; index <= 2; index++)
     direction += `<label class="ntc-direction" style="${tableDialogPosition(65 + (index - 1) * 86, 341)}"><input type="radio" name="direction" value="${index}" ${values.fields.direction === index ? "checked" : ""} ${values.fields.vertical ? "" : "disabled"}><span class="ntc-direction-symbol">다${index === 1 ? "ᴬᴮᶜ" : "A B C"}</span><span>${index === 1 ? "영문 눕힘" : "영문 세움"}</span></label>`;
-  /** Cell geometry controls are reserved until native resize scope is independently verified. */
+  /** Original native size application is opt-in and applies both visible dimensions to the real selected cells. */
   const cell =
-    tableDialogCheck("sizeApply", "셀 크기 적용", 33, 88, values, true) +
+    tableDialogCheck("sizeApply", "셀 크기 적용", 33, 88, values) +
     tableDialogDistance(
       "width",
       "너비",

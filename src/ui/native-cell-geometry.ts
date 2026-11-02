@@ -112,12 +112,12 @@ export const NativeTable = Table.extend({
  * Physical units convert to CSS pixels; percentages remain unresolved rather
  * than becoming invented absolute widths in the imported document.
  * @param {string|null} value - Original authored HTML width.
- * @returns {number|null} Positive physical CSS-pixel length or no resolved width.
+ * @returns {number|null} Nonnegative physical CSS-pixel length or no resolved width.
  * @example
  * columnPixels('81.6266666667'); // 81.6266666667
  */
 function columnPixels(value: string | null): number | null {
-  /** Only explicit positive physical lengths can become model column widths. */
+  /** Explicit zero remains a real native source distance instead of becoming an absent width. */
   const match = /^\s*(\d+(?:\.\d+)?)\s*(px|pt|mm|cm|in)?\s*$/iu.exec(
       value ?? "",
     ),
@@ -131,7 +131,7 @@ function columnPixels(value: string | null): number | null {
   if (!match) return null;
   /** Source numeric precision survives independently from browser layout rounding. */
   const width = Number(match[1]) * factors[(match[2] || "px").toLowerCase()];
-  return Number.isFinite(width) && width > 0 ? width : null;
+  return Number.isFinite(width) && width >= 0 ? width : null;
 }
 
 /**

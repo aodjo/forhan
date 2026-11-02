@@ -1602,11 +1602,12 @@ export async function readHwpx(
                 nativeCellHeight:nativeCellDimension(size.height===undefined?null:Number(size.height)),
                 nativeCellFieldName:cellFieldName(tc.attrs.name??''),
                 nativeCellProperties:readHwpxCellProperties(tc.attrs,child(tc,'subList')?.attrs??{},child(tc,'cellMargin')?.attrs),
-                colwidth: size.width ? [] : null,
+                colwidth: size.width===undefined ? null : [],
               },
               content: kids(child(tc, "subList"), "p").flatMap(paragraph),
             };
-            if (size.width) {
+            if(size.width!==undefined&&number(size.width)===0)cell.attrs.colwidth=[0];
+            else if (size.width!==undefined) {
               /** The first logical column occupied by this native cell. */
               const start = Math.max(
                 0,
@@ -3727,10 +3728,10 @@ export async function writeHwpx({
                 if(Array.isArray(suppliedWidths)&&(suppliedWidths.length===cs||suppliedWidths.length===1)){
                   let total=0,valid=true;
                   for(/** Both per-column arrays and retained one-slot merged totals belong to this actual source cell. */const part of suppliedWidths){
-                    if(typeof part!=='number'||!Number.isFinite(part)||part<=0){valid=false;break;}
+                    if(typeof part!=='number'||!Number.isFinite(part)||part<0){valid=false;break;}
                     total+=part*CELL_UNITS_PER_PIXEL;
                   }
-                  if(valid)ownWidth=Math.max(1,Math.round(total));
+                  if(valid)ownWidth=Math.round(total);
                 }
                 /**
                  * The retained native cell size reused when imported geometry remains applicable.

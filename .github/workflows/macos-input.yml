@@ -1,0 +1,35 @@
+name: Actual macOS Korean Input
+on:
+  push:
+    branches: [fix/native-macos-input]
+  workflow_dispatch:
+jobs:
+  keyboard:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node node_modules/electron/install.js
+      - run: npm run build
+      - name: Compile the actual macOS input-source and physical-key observer
+        run: |
+          mkdir -p release/validation
+          swiftc tests/helpers/macos-keyboard.swift -o release/validation/macos-keyboard
+      - name: Verify actual Apple two-set Korean composition
+        run: npx playwright test --config playwright.macos-input.config.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Forhan-actual-macos-input-${{ matrix.os }}
+          path: |
+            release/validation/macos-input-*.json
+            test-results/macos-input/
+          if-no-files-found: warn

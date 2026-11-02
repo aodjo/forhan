@@ -19,6 +19,7 @@
     "playwright.config.ts",
     "playwright.packaged.config.ts",
     "playwright.ime.config.ts",
+    "playwright.macos-input.config.ts",
     "tests/**/*.ts"
   ]
 }

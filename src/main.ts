@@ -15,6 +15,7 @@ import type {
 } from "./types";
 import StarterKit from "@tiptap/starter-kit";
 import { TableKit } from "@tiptap/extension-table";
+import {NativeTableCell,NativeTableHeader} from './ui/native-cell-geometry.ts';
 import { TextStyleKit } from "@tiptap/extension-text-style";
 import {
   NativeCharacterFormatting,
@@ -416,7 +417,9 @@ const editor = new Editor({
         isAllowedUri: isSafeDocumentLink,
       },
     }),
-    TableKit.configure({ table: { resizable: true } }),
+    TableKit.configure({ table: { resizable: true },tableCell:false,tableHeader:false }),
+    NativeTableCell,
+    NativeTableHeader,
     TextStyleKit.configure({ fontSize: false, fontFamily: false }),
     NativeFontFamily,
     NativeCharacterFormatting,

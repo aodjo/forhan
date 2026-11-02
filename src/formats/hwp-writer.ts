@@ -1,4 +1,5 @@
 import CFB from "cfb";
+import {nativeCellDimension} from '../cell-geometry.ts';
 import {writeHwpCellField} from '../cell-field-name.ts';
 import {hwpCellFlags,nativeCellProperties,nativeCellMargins,type NativeCellMargins} from '../cell-properties.ts';
 import { characterDecoration, type CharacterDecoration } from "../character-decorations.ts";
@@ -983,11 +984,11 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
             grid[y][x] = true;
           }
         }
-        /** Optional explicit editor column widths for the current cell. */
+        /** Explicit per-column widths or one older total spanning the complete merged cell. */
         const colwidth = cell.attrs?.colwidth as number[] | null;
         /** Decoded raster or table width used by the current source structure. */
         const width =
-          colwidth?.length === colspan &&
+          (colwidth?.length === colspan || colwidth?.length === 1) &&
           colwidth.every(
             /**
              * Validate an explicit table-column width.
@@ -1024,7 +1025,7 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
           colspan,
           rowspan,
           width,
-          height: Math.max(2400 * (cell.content?.length || 1), 2400 * rowspan),
+          height: nativeCellDimension(cell.attrs?.nativeCellHeight)??Math.max(2400 * (cell.content?.length || 1), 2400 * rowspan),
           fill: borderId(cell.attrs?.backgroundColor),
         });
         rowCounts[row] = (rowCounts[row] || 0) + 1;

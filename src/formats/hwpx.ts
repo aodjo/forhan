@@ -1,4 +1,5 @@
 import type { JSONContent } from "@tiptap/core";
+import {CELL_UNITS_PER_PIXEL,nativeColumnMeasurements,nativeCellDimension,type NativeColumnMeasurement} from '../cell-geometry.ts';
 import {cellFieldName} from '../cell-field-name.ts';
 import {readHwpxCellProperties,readHwpxCellMargins,hwpxCellProperties,nativeCellMargins} from '../cell-properties.ts';
 import { characterDecoration, nativeDecorationPattern, NATIVE_LINE_PATTERNS, type CharacterDecoration, type DecorationKind } from "../character-decorations.ts";
@@ -880,62 +881,15 @@ function imageDimension(pic: XmlNode, axis: "width" | "height"): number | null {
  * nativeColumnWidths(table);
  */
 function nativeColumnWidths(table: XmlNode): number[] {
-  /** The declared logical column count used to allocate native width slots. */
-  const count = Math.max(1, Math.trunc(number(table.attrs.colCnt, 1)));
-  if (count > 4096) throw new Error("표의 열 개수가 너무 큽니다.");
-  /** Exact native column measurements, populated before merged-cell inference. */
-  const widths = new Array<number>(count).fill(0);
-  for (/** The direct native row whose unmerged cells provide exact column widths. */ const row of kids(
-    table,
-    "tr",
-  )) {
-    for (/** The direct native cell being inspected for a single-column measurement. */ const cell of kids(
-      row,
-      "tc",
-    )) {
-      /** The native column address, merge span and width of the current cell. */
-      const column = number(child(cell, "cellAddr")?.attrs.colAddr),
-        span = number(child(cell, "cellSpan")?.attrs.colSpan, 1),
-        width = number(child(cell, "cellSz")?.attrs.width);
-      if (span === 1 && column >= 0 && column < count && width > 0)
-        widths[column] = width;
-    }
+  /** The original native column count retains the existing allocation bound. */
+  const count=Math.max(1,Math.trunc(number(table.attrs.colCnt,1)));
+  if(count>4096)throw new Error("표의 열 개수가 너무 큽니다.");
+  /** Actual source cell sizes constrain logical columns before pixel conversion. */
+  const measurements:NativeColumnMeasurement[]=[];
+  for(/** Only direct table cells supply this table's independent physical measurements. */const row of kids(table,'tr'))for(/** Nested child tables cannot replace their owning cell's geometry. */const cell of kids(row,'tc')){
+    measurements.push({column:number(child(cell,'cellAddr')?.attrs.colAddr),span:number(child(cell,'cellSpan')?.attrs.colSpan,1),width:number(child(cell,'cellSz')?.attrs.width)});
   }
-  for (/** The native row containing merged cells that can fill unresolved column slots. */ const row of kids(
-    table,
-    "tr",
-  )) {
-    for (/** The merged cell whose total width constrains its logical columns. */ const cell of kids(
-      row,
-      "tc",
-    )) {
-      /** The bounded column range and total native width of this merged cell. */
-      const start = Math.max(0, number(child(cell, "cellAddr")?.attrs.colAddr)),
-        span = Math.max(1, number(child(cell, "cellSpan")?.attrs.colSpan, 1)),
-        total = number(child(cell, "cellSz")?.attrs.width),
-        end = Math.min(count, start + span);
-      let known = 0,
-        missing = 0;
-      for (let column = start; column < end; column++) {
-        if (widths[column] > 0) known += widths[column];
-        else missing++;
-      }
-      if (missing && total > 0) {
-        /** The residual merged-cell width assigned to each unresolved logical column. */
-        const inferred = Math.max(
-          1,
-          total > known ? (total - known) / missing : total / span,
-        );
-        for (let column = start; column < end; column++)
-          if (!widths[column]) widths[column] = inferred;
-      }
-    }
-  }
-  /** The native table-width fallback for columns with no measurable cell record. */
-  const fallback = number(child(table, "sz")?.attrs.width) / count;
-  for (let column = 0; column < count; column++)
-    if (!widths[column]) widths[column] = fallback;
-  return widths;
+  return nativeColumnMeasurements(count,measurements,number(child(table,'sz')?.attrs.width));
 }
 /**
  * Resolve editable table widths without stretching explicit column measurements.
@@ -972,7 +926,7 @@ function editableColumnWidths(
         /** The positive pixel width supplied for the current logical column. */
         const pixels = number(supplied[offset]);
         if (pixels > 0 && (supplied.length >= cell.cs || cell.cs === 1))
-          widths[cell.start + offset] = Math.max(1, Math.round(pixels * 75));
+          widths[cell.start + offset] = pixels * CELL_UNITS_PER_PIXEL;
       }
     }
   }
@@ -998,17 +952,12 @@ function editableColumnWidths(
       if (missing)
         for (let offset = 0; offset < cell.cs; offset++)
           if (!widths[cell.start + offset])
-            widths[cell.start + offset] = Math.max(
-              1,
-              Math.round(
-                total > known ? (total - known) / missing : total / cell.cs,
-              ),
-            );
+            widths[cell.start + offset] = total > known ? (total - known) / missing : total / cell.cs;
     }
   }
   for (let column = 0; column < columnCount; column++)
     if (!widths[column])
-      widths[column] = Math.max(1, Math.round(fallbackWidth / columnCount));
+      widths[column] = Math.max(1, fallbackWidth / columnCount);
   return widths;
 }
 /**
@@ -1036,7 +985,7 @@ function columnSpanWidth(
     column++
   )
     total += widths[column];
-  return total;
+  return Math.round(total);
 }
 /**
  * Import an HWPX document.
@@ -1649,6 +1598,7 @@ export async function readHwpx(
               attrs: {
                 colspan: number(span.colSpan, 1),
                 rowspan: number(span.rowSpan, 1),
+                nativeCellHeight:nativeCellDimension(size.height===undefined?null:Number(size.height)),
                 nativeCellFieldName:cellFieldName(tc.attrs.name??''),
                 nativeCellProperties:readHwpxCellProperties(tc.attrs,child(tc,'subList')?.attrs??{},child(tc,'cellMargin')?.attrs),
                 colwidth: size.width ? [] : null,
@@ -1663,12 +1613,7 @@ export async function readHwpx(
               );
               for (let offset = 0; offset < number(span.colSpan, 1); offset++)
                 cell.attrs.colwidth.push(
-                  Math.round(
-                    ((columnWidths[start + offset] ||
-                      number(size.width) / number(span.colSpan, 1)) *
-                      96) /
-                      7200,
-                  ),
+                  (columnWidths[start + offset] ||number(size.width)/number(span.colSpan,1))/CELL_UNITS_PER_PIXEL,
                 );
             }
             /**
@@ -3780,6 +3725,9 @@ export async function writeHwpx({
                   cellSize.attrs.width = String(
                     columnSpanWidth(columnWidths, start, cs),
                   );
+                /** Explicit source height remains exact even when text changes or a cell is resized. */
+                const cellHeight=nativeCellDimension(c.attrs?.nativeCellHeight);
+                if(cellHeight!==null)cellSize.attrs.height=String(cellHeight);
                 tc.children.push(
                   sub,
                   el("hp:cellAddr", { colAddr: start, rowAddr: ri }),

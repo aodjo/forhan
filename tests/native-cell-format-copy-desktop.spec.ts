@@ -60,6 +60,9 @@ async function verifyNativeCellPropertyCopy(): Promise<void> {
     const source=cellDocument(true),target=cellDocument(false),targetName='포한_<TARGET>&"🙂';
     source.content![0].content![0].content![0].attrs!.nativeCellFieldName='SOURCE_FIELD';
     target.content![0].content![0].content![0].attrs!.nativeCellFieldName=targetName;
+    source.content![0].content![0].content![0].attrs!.nativeCellHeight=1001;
+    target.content![0].content![0].content![0].attrs!.nativeCellHeight=6123;
+    target.content![0].content![0].content![0].attrs!.colwidth=[18037/75];
     await importSource(page, "native-cell-original.fhn", source);
     await selectSource(page, ".tiptap th p", 1);
     await ribbonCopy(page);
@@ -117,6 +120,8 @@ async function verifyNativeCellPropertyCopy(): Promise<void> {
       expect(table.attrs!.nativeCellMargins).toEqual(TARGET_MARGINS);
       expect(cell.type).toBe("tableHeader");
       expect(cell.attrs!.nativeCellFieldName).toBe(targetName);
+      expect(cell.attrs!.nativeCellHeight).toBe(6123);
+      expect(cell.attrs!.colwidth).toEqual([18037/75]);
       expect(cell.attrs!.nativeCellProperties).toEqual(SOURCE_PROPERTIES);
       expect(cell.attrs!.backgroundColor).toBe("#112233");
       expect(cell.content![0].content![0].text).toBe("대상 형식 유지 ABC");
@@ -131,7 +136,6 @@ async function verifyNativeCellPropertyCopy(): Promise<void> {
       );
       if (format === "forhan") {
         expect(cell.attrs!.sourceId).toBe("target-cell");
-        expect(cell.attrs!.colwidth).toEqual([240]);
       }
     }
     await page.locator(".tiptap").focus();

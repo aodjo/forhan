@@ -1,0 +1,185 @@
+{
+  "kind": "owned-original-native-cell-geometry-observations",
+  "binarySha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "scope": "Original Hancom 2024 accepted independently authored HWPML geometry and saved HWP/HWPX. Each literal cell header and XML dimension matched the independent original HWPML observation. Widths are exact HWP units, not rounded screen pixels.",
+  "rows": [
+    {
+      "id": "unequal",
+      "columnWidths": [4001, 6122, 8003],
+      "cells": [
+        {
+          "column": 0,
+          "row": 0,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 4001,
+          "height": 1001,
+          "text": "A",
+          "headerHex": "01000000200000000000000001000100a10f0000e9030000fe01fe018d008d000300a10f0000000000000000000000"
+        },
+        {
+          "column": 1,
+          "row": 0,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 6122,
+          "height": 1001,
+          "text": "B",
+          "headerHex": "01000000200000000100000001000100ea170000e9030000fe01fe018d008d000300ea170000000000000000000000"
+        },
+        {
+          "column": 2,
+          "row": 0,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 8003,
+          "height": 1001,
+          "text": "C",
+          "headerHex": "01000000200000000200000001000100431f0000e9030000fe01fe018d008d000300431f0000000000000000000000"
+        },
+        {
+          "column": 0,
+          "row": 1,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 4001,
+          "height": 1777,
+          "text": "D",
+          "headerHex": "01000000200000000000010001000100a10f0000f1060000fe01fe018d008d000300a10f0000000000000000000000"
+        },
+        {
+          "column": 1,
+          "row": 1,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 6122,
+          "height": 1777,
+          "text": "E",
+          "headerHex": "01000000200000000100010001000100ea170000f1060000fe01fe018d008d000300ea170000000000000000000000"
+        },
+        {
+          "column": 2,
+          "row": 1,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 8003,
+          "height": 1777,
+          "text": "F",
+          "headerHex": "01000000200000000200010001000100431f0000f1060000fe01fe018d008d000300431f0000000000000000000000"
+        }
+      ]
+    },
+    {
+      "id": "merged",
+      "columnWidths": [4001, 6122, 8003],
+      "cells": [
+        {
+          "column": 0,
+          "row": 0,
+          "colspan": 2,
+          "rowspan": 1,
+          "width": 10123,
+          "height": 1001,
+          "text": "A",
+          "headerHex": "010000002000000000000000020001008b270000e9030000fe01fe018d008d0003008b270000000000000000000000"
+        },
+        {
+          "column": 2,
+          "row": 0,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 8003,
+          "height": 1001,
+          "text": "C",
+          "headerHex": "01000000200000000200000001000100431f0000e9030000fe01fe018d008d000300431f0000000000000000000000"
+        },
+        {
+          "column": 0,
+          "row": 1,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 4001,
+          "height": 1777,
+          "text": "D",
+          "headerHex": "01000000200000000000010001000100a10f0000f1060000fe01fe018d008d000300a10f0000000000000000000000"
+        },
+        {
+          "column": 1,
+          "row": 1,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 6122,
+          "height": 1777,
+          "text": "E",
+          "headerHex": "01000000200000000100010001000100ea170000f1060000fe01fe018d008d000300ea170000000000000000000000"
+        },
+        {
+          "column": 2,
+          "row": 1,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 8003,
+          "height": 1777,
+          "text": "F",
+          "headerHex": "01000000200000000200010001000100431f0000f1060000fe01fe018d008d000300431f0000000000000000000000"
+        }
+      ]
+    },
+    {
+      "id": "rowspan",
+      "columnWidths": [4001, 6122, 8003],
+      "cells": [
+        {
+          "column": 0,
+          "row": 0,
+          "colspan": 1,
+          "rowspan": 2,
+          "width": 4001,
+          "height": 2778,
+          "text": "A",
+          "headerHex": "01000000200000000000000001000200a10f0000da0a0000fe01fe018d008d000300a10f0000000000000000000000"
+        },
+        {
+          "column": 1,
+          "row": 0,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 6122,
+          "height": 1001,
+          "text": "B",
+          "headerHex": "01000000200000000100000001000100ea170000e9030000fe01fe018d008d000300ea170000000000000000000000"
+        },
+        {
+          "column": 2,
+          "row": 0,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 8003,
+          "height": 1001,
+          "text": "C",
+          "headerHex": "01000000200000000200000001000100431f0000e9030000fe01fe018d008d000300431f0000000000000000000000"
+        },
+        {
+          "column": 1,
+          "row": 1,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 6122,
+          "height": 1777,
+          "text": "E",
+          "headerHex": "01000000200000000100010001000100ea170000f1060000fe01fe018d008d000300ea170000000000000000000000"
+        },
+        {
+          "column": 2,
+          "row": 1,
+          "colspan": 1,
+          "rowspan": 1,
+          "width": 8003,
+          "height": 1777,
+          "text": "F",
+          "headerHex": "01000000200000000200010001000100431f0000f1060000fe01fe018d008d000300431f0000000000000000000000"
+        }
+      ]
+    }
+  ]
+}

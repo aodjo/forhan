@@ -142,7 +142,9 @@ public static class ForhanImeNative {
  /**
   * Raise the owned frame without changing size, position or activation.
   *
-  * Only HWND_TOP with no-move, no-size and no-activate flags is used.
+  * Normal raising and temporary owned topmost exposure both preserve frame
+  * geometry and avoid requesting activation. Any temporary topmost state is
+  * restored before the caller accepts keyboard ownership.
   * @param {IntPtr} window - Verified generated frame.
   * @param {IntPtr} after - Requested native stacking position.
   * @param {int} x - Unused horizontal coordinate.

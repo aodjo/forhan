@@ -1,3 +1,4 @@
+import {DOCUMENT_START_KEY,DOCUMENT_END_KEY} from './native-keyboard.ts';
 import {expect,type Page} from '@playwright/test';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -66,7 +67,7 @@ export async function exerciseNativePageViewFrames(page:Page,resize:NativeViewpo
     await expect(page.locator('#toast')).toContainText(group.id);await expect(page.locator('#toast')).toBeHidden();
     for(/** Every frame uses actual public controls and an independent original complete-image oracle. */const frame of group.frames){
       await resize(frame.width,frame.height);await applyNativePageViewFrame(page,frame);
-      await page.locator('.tiptap').press('ControlOrMeta+Home');await page.keyboard.press('ArrowRight');
+      await page.locator('.tiptap').press(DOCUMENT_START_KEY);await page.keyboard.press('ArrowRight');
       let completed:Buffer|undefined;
       await expect(
         /**
@@ -134,7 +135,7 @@ export async function exerciseNativeZoomBehavior(page:Page):Promise<void>{
   await page.locator('[name="native-zoom-mode"][value="125"]').check();await expect(page.locator('[name="native-page-shape"][value="multiple"]')).toBeChecked();
   await page.locator('[data-modal-value="cancel"]').press('Enter');await expect(page.locator('.native-dialog-zoom')).toHaveCount(0);await expect(page.locator('#zoom-reset')).toHaveText('125%');
   await applyNativePageViewFrame(page,{...initial,requestedZoom:50,zoom:50,view:{...initial.view,shape:'two',columns:2}});
-  await page.locator('.tiptap').press('ControlOrMeta+Home');await page.locator('[data-scroll-command="next"]').click();
+  await page.locator('.tiptap').press(DOCUMENT_START_KEY);await page.locator('[data-scroll-command="next"]').click();
   await expect(page.locator('.native-status-page')).toHaveText('2/9쪽');
   /** The ruler and native source caret follow the actual right-hand page rather than a vertical stride. */
   const ruler=(await page.locator('.ruler').boundingBox())!,second=(await page.locator('.native-sheet-background').nth(1).boundingBox())!;
@@ -146,7 +147,7 @@ export async function exerciseNativeZoomBehavior(page:Page):Promise<void>{
   await applyNativePageViewFrame(page,{...initial,requestedZoom:75,zoom:75,view:{...initial.view,shape:'facing',columns:2}});
   await page.locator('.tiptap').press('ControlOrMeta+z');expect(await page.locator('.tiptap').textContent()).toBe(source);await expect(page.locator('#zoom-reset')).toHaveText('75%');
   await applyNativePageViewFrame(page,{...initial,requestedZoom:50,zoom:50,view:{...initial.view,direction:'horizontal',horizontalWheel:true}});
-  await page.locator('.tiptap').press('ControlOrMeta+Home');await page.mouse.move(100,500);
+  await page.locator('.tiptap').press(DOCUMENT_START_KEY);await page.mouse.move(100,500);
   /** Native wheel input must move the real canvas rather than merely retaining a checkbox draft. */
   const before=await page.locator('.canvas').evaluate(readNativeCanvasScroll);await page.mouse.wheel(0,360);
   await expect.poll(
@@ -162,7 +163,7 @@ export async function exerciseNativeZoomBehavior(page:Page):Promise<void>{
     async()=>(await page.locator('.canvas').evaluate(readNativeCanvasScroll)).left).toBeGreaterThan(before.left);
   await page.locator('#zoom-reset').click();await page.locator('[name="native-page-direction"][value="vertical"]').check();
   await expect(page.locator('[name="native-zoom-wheel"]')).toBeChecked();await expect(page.locator('[name="native-zoom-wheel"]')).toBeDisabled();
-  await page.locator('[data-modal-value="apply"]').click();await page.locator('.tiptap').press('ControlOrMeta+Home');await page.mouse.move(100,500);await page.mouse.wheel(0,360);
+  await page.locator('[data-modal-value="apply"]').click();await page.locator('.tiptap').press(DOCUMENT_START_KEY);await page.mouse.move(100,500);await page.mouse.wheel(0,360);
   await expect.poll(
     /**
      * Observe restored ordinary vertical wheel behavior.
@@ -176,7 +177,7 @@ export async function exerciseNativeZoomBehavior(page:Page):Promise<void>{
     async()=>(await page.locator('.canvas').evaluate(readNativeCanvasScroll)).top).toBeGreaterThan(0);
   expect(await page.locator('.tiptap').textContent()).toBe(source);
   await applyNativePageViewFrame(page,{...initial,requestedZoom:50,zoom:50,view:{...initial.view,shape:'two',columns:2}});
-  await page.locator('.tiptap').press('ControlOrMeta+End');await page.keyboard.press('Shift+Enter');
+  await page.locator('.tiptap').press(DOCUMENT_END_KEY);await page.keyboard.press('Shift+Enter');
   await expect(page.locator('.native-sheet-background')).toHaveCount(10);await expect(page.locator('.native-status-page')).toHaveText('10/10쪽');
   await page.keyboard.type('N');await expect(page.locator('.tiptap')).toContainText('N');
   await expect(

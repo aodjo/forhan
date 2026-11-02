@@ -3,8 +3,9 @@ import {mkdtemp,mkdir,readFile,writeFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {createHash,randomUUID} from 'node:crypto';
 import path from 'node:path';
-import {desktopLaunchOptions} from './helpers/desktop-launch.ts';
+import {desktopLaunchOptions,closeOwnedDesktop,resizeOwnedDesktop} from './helpers/desktop-launch.ts';
 import {exerciseNativePaperFrames,exerciseNativePaperResize} from './helpers/native-paper-scenarios.ts';
+import {observeNativeKeySource,retainNativeKeySource} from './helpers/native-key-source-observation.ts';
 
 /**
  * Verify original paper viewport pixels and source behavior in the selected native application.
@@ -56,18 +57,7 @@ async function verifyDesktopNativePaperViewport():Promise<void>{
      * await resize(1440,961); // No source transaction supplies expected pixel geometry.
      */
     const resize=async(width:number,height:number):Promise<void>=>{
-      await desktop.evaluate(
-        /**
-         * Set real content dimensions on the owned native editor window.
-         *
-         * The selected test application owns this window and no unrelated process is targeted.
-         * @param {typeof import('electron')} context - Native exports from the actual running main process.
-         * @param {{width:number;height:number}} size - Requested actual viewport dimensions.
-         * @returns {void} Applies native window geometry without editing source or changing document zoom.
-         * @example
-         * // A centered page moves through actual native resizing rather than injected renderer coordinates.
-         */
-        ({BrowserWindow},size)=>{BrowserWindow.getAllWindows()[0].setContentSize(size.width,size.height);},{width,height});
+      await resizeOwnedDesktop(desktop,width,height);
     };
     /** Completed original frame comparisons retain their actual unmodified screenshot identities. */
     const records=await exerciseNativePaperFrames(page,resize,outputRoot);await exerciseNativePaperResize(page,resize);
@@ -75,9 +65,70 @@ async function verifyDesktopNativePaperViewport():Promise<void>{
     const hashes=identity.packaged?{executableSha256:createHash('sha256').update(await readFile(identity.executable)).digest('hex'),archiveSha256:createHash('sha256').update(await readFile(identity.application)).digest('hex')}:{};
     await writeFile(path.join(outputRoot,'run.json'),JSON.stringify({kind:'actual-native-paper-viewport-and-source-resize-observation-not-REA',identity,...hashes,records},null,2)+'\n');
   }finally{
-    await desktop.close();expect(path.dirname(path.resolve(profile))).toBe(path.resolve(tmpdir()));expect(path.basename(profile).startsWith('forhan-native-paper-')).toBe(true);
+    await closeOwnedDesktop(desktop);expect(path.dirname(path.resolve(profile))).toBe(path.resolve(tmpdir()));expect(path.basename(profile).startsWith('forhan-native-paper-')).toBe(true);
     await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:200});
   }
 }
 
 test('actual native application retains 82 original paper viewport frames and source behavior through real resizing',verifyDesktopNativePaperViewport);
+
+/**
+ * Isolate native source columns from the longer original paper-frame matrix.
+ *
+ * The same original document, five independent resize frames and exact source
+ * offsets remain covered by the complete eighty-two-frame case above. This
+ * focused native regression makes the immediate arrow/resize failure observable
+ * without replacing the full matrix or changing any original expected position.
+ * @async
+ * @returns {Promise<void>} Resolves after actual native source offsets9 and13 survive movement and resize.
+ * @throws {Error} If original native frames, actual source columns or runtime ownership differ.
+ * @example
+ * // A pending source caret after a native word-spacing wrapper must retain its true column.
+ */
+async function verifyDesktopNativePaperCaretColumns():Promise<void>{
+  test.setTimeout(60000);
+  /** One original native application and unique disposable profile own this focused regression. */
+  const profile=await mkdtemp(path.join(tmpdir(),'forhan-native-source-columns-')),options=desktopLaunchOptions(profile);
+  options.args!.push('--force-device-scale-factor=1');
+  /** Actual native execution remains independent from a browser viewport substitute. */
+  const desktop=await electron.launch(options);
+  try{
+    /** Public document controls and original source inputs belong to this actual renderer. */
+    const page=await desktop.firstWindow();await expect(page.locator('.tiptap')).toBeVisible();
+    /** Actual native runtime identity is retained separately from requested launch arguments. */
+    const identity=await desktop.evaluate(
+      /**
+       * Observe identity from the actual selected native main process.
+       *
+       * Packaged regressions require the real archived application instead of a development substitute.
+       * @param {typeof import('electron')} context - Actual selected native exports.
+       * @returns {{packaged:boolean;executable:string;application:string}} Original native process identity.
+       * @example
+       * // The packaged gate supplies an executable whose app.isPackaged must be true.
+       */
+      ({app})=>({packaged:app.isPackaged,executable:process.execPath,application:app.getAppPath()}));
+    await test.info().attach('native-source-column-runtime',{body:JSON.stringify(identity),contentType:'application/json'});
+    if(process.env.FORHAN_PACKAGED_EXECUTABLE)expect(identity.packaged).toBe(true);
+    if(process.env.FORHAN_KEY_SOURCE_OBSERVE==='1')await page.evaluate(observeNativeKeySource);
+    /**
+     * Resize the original owning native window before inspecting its real source.
+     *
+     * Existing native observers retain both requested and actual display/window bounds.
+     * @async
+     * @param {number} width - Original requested content width in pixels.
+     * @param {number} height - Original requested content height in pixels.
+     * @returns {Promise<void>} Resolves after the actual native resize and its independent observation.
+     * @example
+     * await resize(1200,960); // The source caret must retain its original unzoomed column.
+     */
+    const resize=async(width:number,height:number):Promise<void>=>{await resizeOwnedDesktop(desktop,width,height);};
+    try{await exerciseNativePaperResize(page,resize);}
+    finally{if(process.env.FORHAN_KEY_SOURCE_OBSERVE==='1')await retainNativeKeySource(page);}
+  }finally{
+    await closeOwnedDesktop(desktop);
+    expect(path.dirname(path.resolve(profile))).toBe(path.resolve(tmpdir()));expect(path.basename(profile).startsWith('forhan-native-source-columns-')).toBe(true);
+    await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:200});
+  }
+}
+
+test('native source caret columns survive real native resize after immediate arrow movement',verifyDesktopNativePaperCaretColumns);

@@ -3,7 +3,7 @@ import {mkdtemp,mkdir,readFile,writeFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {createHash,randomUUID} from 'node:crypto';
 import path from 'node:path';
-import {desktopLaunchOptions} from './helpers/desktop-launch.ts';
+import {desktopLaunchOptions,closeOwnedDesktop} from './helpers/desktop-launch.ts';
 import {saveDesktopOutput} from './helpers/native-output.ts';
 import {observePdf} from './helpers/pdf.ts';
 import {verifyNativePaginationPdf} from './helpers/native-pagination.ts';
@@ -77,7 +77,7 @@ async function verifyDesktopNativeBodyOrigins():Promise<void>{
       }
     }
     await writeFile(path.join(outputRoot,'run.json'),JSON.stringify({kind:'actual-native-shaded-first-body-origin-and-independent-source-insets-not-REA',identity,...hashes,records},null,2)+'\n');
-  }finally{await desktop.close();await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:200});}
+  }finally{await closeOwnedDesktop(desktop);await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:200});}
 }
 
 test('18 actual native shaded documents preserve physical print pages, opaque background paths and stable first-body origins',verifyDesktopNativeBodyOrigins);

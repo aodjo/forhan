@@ -1,3 +1,6 @@
+import {DOCUMENT_START_KEY} from './helpers/native-keyboard.ts';
+import {nativeSourceCaretOffset} from './helpers/native-paper-viewport.ts';
+import {observeNativeKeySource,retainNativeKeySource} from './helpers/native-key-source-observation.ts';
 import { test, expect, type Page } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import {createHash} from 'node:crypto';
@@ -9,6 +12,79 @@ import { contextualInk, contextualPositions, contextualCaret } from "./helpers/c
 
 /** Two raster-edge pixels allow sparse mark antialiasing while source font height remains exactly invariant. */
 const CONTEXTUAL_INK_EDGE_TOLERANCE = 2;
+
+/**
+ * Enable passive native source ordering observations for explicitly selected diagnostics.
+ *
+ * Normal regression runs preserve their original event timing. Explicit diagnostic
+ * runs retain the same original events and expected text without changing source.
+ * @async
+ * @param {{page:Page}} context - Current isolated regression renderer.
+ * @returns {Promise<void>} Resolves after registering the read-only observer.
+ * @example
+ * // Actual Command-arrow and subsequent typing share one untouched source trace.
+ */
+async function installKeySourceObservation({page}:{page:Page}):Promise<void>{if(process.env.FORHAN_KEY_SOURCE_OBSERVE==='1')await page.addInitScript(observeNativeKeySource);}
+
+/**
+ * Preserve genuine source observations after the original assertion outcome.
+ *
+ * Successful and failed original cases retain the same diagnostic evidence.
+ * @async
+ * @param {{page:Page}} context - Current test-owned application renderer.
+ * @returns {Promise<void>} Resolves after retaining the original observation buffer.
+ * @example
+ * // A failed immediate typing assertion retains its preceding real caret endpoints.
+ */
+async function attachKeySourceObservation({page}:{page:Page}):Promise<void>{if(process.env.FORHAN_KEY_SOURCE_OBSERVE==='1')await retainNativeKeySource(page);}
+
+test.beforeEach(installKeySourceObservation);
+test.afterEach(attachKeySourceObservation);
+
+/**
+ * Keep Command-arrow navigation anchored in original native-width source.
+ *
+ * Browser default movement can target drawing wrappers while a source caret
+ * still points elsewhere. Real key chords must commit line/document edges
+ * before immediate typing, preserve Shift selection and retain ordinary undo.
+ * @async
+ * @param {{page:Page}} context - Actual isolated public document renderer.
+ * @returns {Promise<void>} Resolves after source edges, typing, selection and undo agree.
+ * @throws {Error} If a Command-arrow gesture leaves the caret in drawing DOM or at a stale source endpoint.
+ * @example
+ * // Command-Up, Right and C produce MCMMMMMMM rather than MMMMMMMMC.
+ */
+async function verifyNativeCommandEdges({page}:{page:Page}):Promise<void>{
+  await page.goto('/');await loadWidth(page,50);await page.locator('.tiptap').focus();
+  await test.info().attach('command-source-before-input',{body:await page.locator('#paper').evaluate(/**
+   * Retain the actual original source and drawing geometry before navigation.
+   *
+   * @param {HTMLElement} paper - Actual unmodified rendered paper.
+   * @returns {string} Original paper markup for diagnosing source caret ownership.
+   * @example
+   * // A missing native flow stays observable instead of being assumed ready.
+   */paper=>paper.outerHTML),contentType:'text/html'});
+  for(/** Every native document or line edge is observed through its real source DOM caret. */const [key,expected]of [['Meta+ArrowDown',8],['Meta+ArrowUp',0],['Meta+ArrowRight',8],['Meta+ArrowLeft',0]] as const){
+    await page.keyboard.press(key);
+    expect(await page.locator('.tiptap').evaluate(nativeSourceCaretOffset),key).toBe(expected);
+  }
+  await page.keyboard.press('ArrowRight');await page.keyboard.type('C');
+  expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe('MCMMMMMMM');
+  await page.keyboard.press('ControlOrMeta+z');expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe('MMMMMMMM');
+  await page.keyboard.press('Meta+ArrowDown');await page.keyboard.press('Shift+Meta+ArrowUp');await page.keyboard.type('C');
+  expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe('C');
+  await page.keyboard.press('ControlOrMeta+z');expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe('MMMMMMMM');
+  /** Independent Unicode source has three graphemes and seven UTF-16 positions. */
+  const joined='A👩‍💻B';
+  await loadWidth(page,50,0,joined);await page.locator('.tiptap').focus();await page.keyboard.press('Meta+ArrowUp');
+  await page.keyboard.press('ArrowRight');expect(await page.locator('.tiptap').evaluate(nativeSourceCaretOffset)).toBe(1);
+  await page.keyboard.press('ArrowRight');expect(await page.locator('.tiptap').evaluate(nativeSourceCaretOffset)).toBe(6);
+  await page.keyboard.press('Shift+ArrowLeft');await page.keyboard.type('X');
+  expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe('AXB');
+  await page.keyboard.press('ControlOrMeta+z');expect(widthSourceText(JSON.parse((await saveWidth(page,'forhan')).toString()).doc)).toBe(joined);
+}
+
+test('Command-arrow edges commit native-width source before immediate typing and Shift replacement',verifyNativeCommandEdges);
 
 /**
  * Load native width source through the ordinary document input.
@@ -316,7 +392,7 @@ async function verifyWidthEditing({ page }: { page: Page }): Promise<void> {
   const half = await page.locator(".tiptap").evaluate(widthGeometry);
   expect(half.width / baseline.width).toBeCloseTo(0.5, 2);
   expect(half.height).toBeCloseTo(baseline.height, 3);
-  await page.locator(".tiptap").press("ControlOrMeta+Home");
+  await page.locator(".tiptap").press(DOCUMENT_START_KEY);
   await page.locator(".tiptap").press("ArrowRight");
   await page.locator(".tiptap").pressSequentially("C");
   /** One real typed character changes the authored source and never edits drawing text. */
@@ -778,7 +854,7 @@ async function verifyContextualEffects({page}:{page:Page}):Promise<void>{
   await expect(page.locator('.tiptap svg g[data-emphasis-kind="1"]')).not.toHaveCount(0);
   await page.locator('.tiptap').press('ControlOrMeta+a');
   await expect(glyph).toHaveAttribute('stroke','#ffffff');await expect(glyph).toHaveCSS('text-shadow','none');
-  await page.locator('.tiptap').press('ControlOrMeta+Home');await expect(glyph).toHaveCSS('text-shadow',/192, 0, 0/);
+  await page.locator('.tiptap').press(DOCUMENT_START_KEY);await expect(glyph).toHaveCSS('text-shadow',/192, 0, 0/);
   for(
     /** Both native formats are inspected independently after their real GUI output path. */
     const format of ['hwp','hwpx'] as const
@@ -1025,7 +1101,7 @@ async function verifyHebrewWidth({page}:{page:Page}):Promise<void> {
   await page.locator('#file-input').setInputFiles({name:'hebrew-width.html',mimeType:'text/html',buffer:html});
   await expect(page.locator('#toast')).toContainText('hebrew-width.html');
   await expect(page.locator('.tiptap svg text[direction="rtl"]')).toHaveCount(5);
-  await page.locator('.tiptap').press('ControlOrMeta+Home');
+  await page.locator('.tiptap').press(DOCUMENT_START_KEY);
   await page.keyboard.type('X');
   /** Source output proves keyboard input remains outside the inaccessible RTL drawing. */
   const edited=JSON.parse((await saveWidth(page,'forhan')).toString('utf8'));

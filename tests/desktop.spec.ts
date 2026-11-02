@@ -1,3 +1,4 @@
+import {DOCUMENT_END_KEY} from './helpers/native-keyboard.ts';
 import {
   test,
   expect,
@@ -15,7 +16,7 @@ import { readHwpx } from "../src/formats/hwpx";
 import { spawnSync } from 'node:child_process';
 import { desktopArguments, desktopLaunchOptions } from './helpers/desktop-launch';
 /** Collected options and isolated document markup from a stubbed native print call. */
-interface NativePrintCall { options: Electron.WebContentsPrintOptions; html: string }
+interface NativePrintCall { options: Electron.WebContentsPrintOptions; html: string; url: string }
 /** Test-owned main-process state; actual printer submission is always intercepted. */
 interface NativePrintHarness { calls: NativePrintCall[]; mode: 'success' | 'cancel' | 'failure'; saves: number }
 /**
@@ -495,6 +496,7 @@ test("operating-system file requests reopen an editor after its last window clos
         }, target);
       }, filename);
     window = await reopened;
+    await expect(window.locator('.tiptap')).toBeVisible({timeout:30000});
     await expect(window.locator('.tiptap')).toContainText('파일 연결로 다시 열린 문서');
     await expect(window.locator('#document-title')).toHaveValue('다시 연 문서');
   });
@@ -591,16 +593,28 @@ async function verifyInteractivePrinting(): Promise<void> {
             /**
              * Record print options and return the configured native outcome.
              *
-             * The loaded data document is captured to verify layout and its
-             * resource policy at the point of printer submission.
+             * The actual loaded document is captured to verify layout and its
+             * resource policy at submission, independently of its transport URL.
+             * The owned temporary HTML must already have been removed.
+             * @async
              * @param {Electron.WebContentsPrintOptions} [options] - Submitted print settings.
              * @param {(success: boolean, reason: string) => void} [callback] - Native job continuation.
-             * @returns {void} Records the operation and settles its callback.
+             * @returns {Promise<void>} Records actual loaded markup and settles its callback.
              * @example
              * // A simulated cancellation uses the native Print job canceled reason.
              */
-            (options, callback) => {
-              state.calls.push({ options: options || {}, html: decodeURIComponent(created.webContents.getURL().split(',').slice(1).join(',')) });
+            async (options, callback) => {
+              /** DOM protocol inspection works with document JavaScript disabled and leaves the source unchanged. */
+              const debuggerClient = created.webContents.debugger;
+              debuggerClient.attach('1.3');
+              let html: string;
+              try {
+                /** Actual loaded markup is read independently of file contents and transport encoding. */
+                const { root } = await debuggerClient.sendCommand('DOM.getDocument'),
+                  observed = await debuggerClient.sendCommand('DOM.getOuterHTML', { nodeId: root.nodeId });
+                html = observed.outerHTML;
+              } finally { debuggerClient.detach(); }
+              state.calls.push({ options: options || {}, html, url: created.webContents.getURL() });
               if (state.mode === 'success') callback?.(true, '');
               else callback?.(false, state.mode === 'cancel' ? 'Print job canceled' : 'Printer unavailable');
             };
@@ -628,6 +642,8 @@ async function verifyInteractivePrinting(): Promise<void> {
   const first = await desktop.evaluate(inspect);
   expect(first.state.calls).toHaveLength(1);
   expect(first.state.saves).toBe(0);
+  await expect(access(fileURLToPath(first.state.calls[0].url))).rejects.toMatchObject({code:'ENOENT'});
+  await expect(access(path.dirname(fileURLToPath(first.state.calls[0].url)))).rejects.toMatchObject({code:'ENOENT'});
   expect(first.windows).toBe(1);
   expect(first.state.calls[0].options).toMatchObject({ silent: false, printBackground: true, landscape: false, pageSize: { width: 210000, height: 297000 } });
   expect(first.state.calls[0].html).toContain("default-src 'none'; style-src 'unsafe-inline'; img-src data:;");
@@ -708,7 +724,7 @@ async function verifyPaginatedPreview(): Promise<void> {
   const buffer = Buffer.from(JSON.stringify({ application: 'forhan', version: 1, title: '두 쪽 미리 보기', doc: { type: 'doc', content: [{type:'paragraph',content:[{type:'text',text:'첫째 쪽'}]},{type:'pageBreak'},{type:'paragraph',content:[{type:'text',text:'둘째 쪽'}]}] } }));
   await window.locator('#file-input').setInputFiles({ name: '두 쪽.forhan', mimeType: 'application/json', buffer });
   await expect(window.locator('.tiptap')).toContainText('둘째 쪽');
-  await window.locator('.tiptap').press('ControlOrMeta+End');
+  await window.locator('.tiptap').press(DOCUMENT_END_KEY);
   await window.keyboard.insertText(' 수정');
   /** Dirty-state caption captured before generating the independent snapshot. */
   const before = await window.locator('#save-state').textContent();
@@ -738,7 +754,7 @@ async function verifyPaginatedPreview(): Promise<void> {
   const pdf = await readFile(file);
   expect(pdf.subarray(0,5).toString()).toBe('%PDF-');
   expect(pdf.toString('latin1').match(/\/Type\s*\/Page\b/g)).toHaveLength(2);
-  await window.locator('.tiptap').press('ControlOrMeta+End');
+  await window.locator('.tiptap').press(DOCUMENT_END_KEY);
   await window.keyboard.insertText(' 이후 변경');
   expect(await readFile(file)).toEqual(pdf);
   /**
@@ -862,7 +878,18 @@ async function verifyPaginatedPreview(): Promise<void> {
    */
   async function removed(): Promise<boolean> { try { await access(file); return false; } catch(error) { if((error as NodeJS.ErrnoException).code==='ENOENT') return true; throw error; } }
   await expect.poll(removed).toBe(true);
-  expect(desktop.windows()).toHaveLength(1);
+  await expect.poll(
+    /**
+     * Observe completion of the native preview window's asynchronous close event.
+     *
+     * Private PDF removal and the Playwright window list arrive through separate
+     * event paths. The original single-window requirement remains unchanged.
+     * @returns {number} Actual currently registered application windows.
+     * @example
+     * // A preview that remains open still fails the original one-window condition.
+     */
+    ()=>desktop.windows().length,
+  ).toBe(1);
   await expect(window.locator('.tiptap')).toContainText('둘째 쪽 수정 이후 변경');
   await expect(window.locator('#save-state')).toHaveText(before!);
   await expect(window.locator('#zoom-reset')).toHaveText(zoom!);

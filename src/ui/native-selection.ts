@@ -1,4 +1,4 @@
-import { TextSelection, type Transaction } from "@tiptap/pm/state";
+import { AllSelection, TextSelection, type Transaction } from "@tiptap/pm/state";
 import type { EditorView } from "@tiptap/pm/view";
 
 /**
@@ -8,8 +8,10 @@ import type { EditorView } from "@tiptap/pm/view";
  * the editor receives its selectionchange event. Replacing drawing decorations
  * with the previous model selection would move that caret back. Valid original
  * source endpoints are mapped into the same non-history layout transaction.
- * Composing text, explicit selections, document edits, auxiliary drawings and
- * selections outside the active editor retain their normal input handling.
+ * A genuine source caret can also precede replacement of an earlier whole-document
+ * selection. Root-level whole-document endpoints remain unchanged. Composing
+ * text, node selections, document edits, auxiliary drawings and selections
+ * outside the active editor retain their normal input handling.
  * @param {EditorView} view - Actual owning editable source view.
  * @param {Transaction} transaction - Unchanged-document layout transaction excluded from history.
  * @returns {Transaction} The same layout transaction retaining genuine current native source selection.
@@ -29,7 +31,7 @@ export function preserveNativeTextSelection(
     transaction.selectionSet ||
     transaction.doc !== view.state.doc ||
     transaction.getMeta("addToHistory") !== false ||
-    !(view.state.selection instanceof TextSelection)
+    !(view.state.selection instanceof TextSelection || view.state.selection instanceof AllSelection)
   )
     return transaction;
   /** Actual browser source endpoints remain independent of stored model selection and drawing coordinates. */

@@ -5,11 +5,12 @@ import {
   type Page,
   type PlaywrightWorkerArgs,
 } from "@playwright/test";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { desktopLaunchOptions } from './helpers/desktop-launch';
+import {observeFallbackGlyphs,observeFallbackPlatformFonts} from './helpers/fallback-glyph-observation.ts';
 
 /**
  * Measure actual document-content styles without depending on stylesheet text.
@@ -120,8 +121,8 @@ function measureDocumentStyles(
 /**
  * Capture the actual isolated print HTML without replacing the PDF engine.
  *
- * The listener belongs exclusively to the test-owned main process. Only loaded
- * data documents are observed; the editor and PDF viewer remain untouched.
+ * The listener belongs exclusively to the test-owned main process. Only actual
+ * native PDF submissions are observed; the editor and PDF viewer remain untouched.
  * @param {typeof import('electron')} runtime - Owned Electron module.
  * @returns {void} Registers a read-only print-document observation.
  * @example
@@ -142,29 +143,37 @@ function observePrintHtml({ app }: typeof import("electron")): void {
      * @param {Electron.BrowserWindow} created - Newly created application window.
      * @returns {void} Attaches a single read-only load observation.
      * @example
-     * // A generated PDF viewer does not match the data-document filter.
+     * // The PDF viewer never submits a new printToPDF operation.
      */
     (_event, created) => {
-      created.webContents.once(
-        "did-finish-load",
+      /** The real native method retains its receiver, options and Chromium-produced output. */
+      const original=created.webContents.printToPDF.bind(created.webContents);
+      created.webContents.printToPDF=
         /**
          * Retain the fully loaded print document for computed-style comparison.
          *
-         * Does not execute code inside the sandboxed print renderer or intercept
-         * its native PDF generation and lifecycle.
-         * @returns {void} Stores only an owned printable data document.
+         * Read-only DOM protocol inspection works with document JavaScript
+         * disabled and does not depend on a data URL or a removed temporary
+         * file. The original native method still generates every output byte.
+         * @async
+         * @param {Electron.PrintToPDFOptions} [options] - Unchanged native print options.
+         * @returns {Promise<Buffer>} Actual native PDF after its original loaded markup is observed.
+         * @throws {Error} If inspecting the loaded document or native PDF generation fails.
          * @example
          * // The stored markup is the same document submitted to Chromium PDF.
          */
-        () => {
-          /** Completed document URL after production loading succeeds. */
-          const url = created.webContents.getURL();
-          if (url.startsWith("data:text/html;charset=utf-8,"))
-            state.forhanLayoutHtml = decodeURIComponent(
-              url.slice(url.indexOf(",") + 1),
-            );
-        },
-      );
+        async (options) => {
+          /** The sandboxed print renderer is inspected at submission before its owned window can close. */
+          const client=created.webContents.debugger;
+          client.attach('1.3');
+          try {
+            /** Original loaded HTML remains independent from expected computed styles and emitted PDF glyphs. */
+            const {root}=await client.sendCommand('DOM.getDocument'),
+              {outerHTML}=await client.sendCommand('DOM.getOuterHTML',{nodeId:root.nodeId});
+            state.forhanLayoutHtml=outerHTML;
+          }finally{client.detach();}
+          return original(options);
+        };
     },
   );
 }
@@ -176,6 +185,8 @@ function observePrintHtml({ app }: typeof import("electron")): void {
  * export and native preview. Forty ordinary paragraphs must fit on one A4 page;
  * accidental default after-spacing used to force a second page. A plain rule
  * must also remain a rule rather than silently becoming a page break.
+ * Cold native PDF generation has its own readiness budget before completed
+ * output bytes and physical pagination are checked.
  * @async
  * @param {PlaywrightWorkerArgs} context - Browser bindings for independent style probes.
  * @returns {Promise<void>} Resolves after export, style and PDF pagination assertions.
@@ -186,6 +197,9 @@ function observePrintHtml({ app }: typeof import("electron")): void {
 async function verifySharedDocumentLayout({
   browser,
 }: PlaywrightWorkerArgs): Promise<void> {
+  test.setTimeout(90000);
+  /** Completed standalone bytes and native window state remain available after a CI failure. */
+  const diagnosticRoot=test.info().outputPath('layout-diagnostics');await mkdir(diagnosticRoot,{recursive:true});
   /** Isolated application profile, removed after the owned process exits. */
   const profile = await mkdtemp(path.join(tmpdir(), "forhan-layout-test-"));
   /** Owned desktop application with the real sandboxed bridge and PDF renderer. */
@@ -413,6 +427,11 @@ async function verifySharedDocumentLayout({
     );
     /** Actual settled editing styles used as the source of output fidelity assertions. */
     const editing = await editor.evaluate(measureDocumentStyles, ".tiptap");
+    /** Read-only source observations distinguish actual font fallback from output-parity assertions. */
+    const editorGlyphs=await editor.evaluate(observeFallbackGlyphs,'.tiptap p'),editorFonts=await observeFallbackPlatformFonts(editor,'.tiptap p');
+    /** The short mixed-script source fits one authored 18.25pt line even when its primary Korean face is unavailable. */
+    const firstParagraphHeight=Number.parseFloat(editing.p.height);
+    expect(Math.abs(firstParagraphHeight-18.25*96/72)).toBeLessThanOrEqual(1/64);
     expect(Object.keys(editing)).toHaveLength(29);
     expect(editing['[data-forhan-paragraph-alignment="distribute"]']['text-justify']).toBe('inter-character');
     expect(editing['[data-forhan-paragraph-alignment="split"]']['text-justify']).toBe('inter-word');
@@ -450,11 +469,18 @@ async function verifySharedDocumentLayout({
     await expect(editor.locator("#toast")).toContainText("html 저장 완료");
     /** Exported bytes, including their production content stylesheet. */
     const html = await readFile(htmlFile, "utf8");
+    await writeFile(path.join(diagnosticRoot,'standalone.html'),html);
     await probe.setContent(html);
-    expect(await probe.evaluate(measureDocumentStyles, "body")).toEqual(
-      editing,
-    );
+    /** Real output styles remain an independent observation rather than an expected-value injection. */
+    const standalone=await probe.evaluate(measureDocumentStyles,"body");
+    /** Both source documents retain independently observed platform faces and glyph baselines. */
+    const standaloneGlyphs=await probe.evaluate(observeFallbackGlyphs,'body p'),standaloneFonts=await observeFallbackPlatformFonts(probe,'body p');
+    await writeFile(path.join(diagnosticRoot,'fallback-source.json'),JSON.stringify({editorGlyphs,editorFonts,standaloneGlyphs,standaloneFonts},null,2));
+    await writeFile(path.join(diagnosticRoot,'content-styles.json'),JSON.stringify({editing,standalone},null,2));
+    expect(standalone).toEqual(editing);
     await desktop.evaluate(observePrintHtml);
+    /** Native generation time begins before the public preview command is invoked. */
+    const previewRequestedAt=Date.now();
     await editor.locator('[data-native-tab="file"]').click();
     await editor
       .locator('#native-file-menu [data-native-action="preview"]')
@@ -482,7 +508,7 @@ async function verifySharedDocumentLayout({
             .forhanLayoutHtml,
       );
     }
-    await expect.poll(capturedHtml).toContain("data-forhan-character-fonts");
+    await expect.poll(capturedHtml,{timeout:30000}).toContain("data-forhan-character-fonts");
     await probe.setContent(await capturedHtml());
     expect(await probe.evaluate(measureDocumentStyles, "body")).toEqual(
       editing,
@@ -500,7 +526,38 @@ async function verifySharedDocumentLayout({
         if (page.url().endsWith(".forhan-preview.pdf")) return page;
       return undefined;
     }
-    await expect.poll(currentPreview).toBeTruthy();
+    try{await expect.poll(currentPreview,{timeout:30000}).toBeTruthy();}
+    finally{
+      /** Native windows distinguish pending generation from an untracked PDF browser target. */
+      const nativeWindows=await desktop.evaluate(
+        /**
+         * Observe actual owned native windows without changing PDF generation.
+         *
+         * Inline print source URLs are summarized to avoid copying complete documents
+         * into window metadata. Actual PDF paths and loading states remain visible.
+         * @param {typeof import('electron')} runtime - Selected native application runtime.
+         * @returns {Array<{id:number;url:string;visible:boolean;loading:boolean}>} Actual native window state.
+         * @example
+         * // A generated PDF can be distinguished from a still-loading hidden renderer.
+         */
+        ({BrowserWindow})=>{
+          /** Every entry belongs to this isolated regression application's main process. */
+          const records=[];
+          for(/** Destroyed windows cannot provide a live generated viewer. */const window of BrowserWindow.getAllWindows()){
+            if(window.isDestroyed())continue;
+            /** Full data-document markup is retained separately from concise native lifecycle metadata. */
+            const url=window.webContents.getURL();
+            records.push({id:window.id,url:url.startsWith('data:')?'data:text/html':url,visible:window.isVisible(),loading:window.webContents.isLoading()});
+          }
+          return records;
+        });
+      /** Playwright targets are compared with native ownership rather than assumed identical across platforms. */
+      const pageUrls=[];for(/** Each observed target belongs to the selected native application. */const page of desktop.windows()){
+        /** Large inline print documents remain in their dedicated artifact instead of window metadata. */
+        const url=page.url();pageUrls.push(url.startsWith('data:')?'data:text/html':url);
+      }
+      await writeFile(path.join(diagnosticRoot,'native-preview-windows.json'),JSON.stringify({elapsedMilliseconds:Date.now()-previewRequestedAt,nativeWindows,pageUrls},null,2));
+    }
     /** First generated PDF must not gain a page merely from an ordinary rule. */
     const richPreview = currentPreview()!;
     /** Real Chromium PDF bytes from the private generated snapshot. */
@@ -532,7 +589,7 @@ async function verifySharedDocumentLayout({
     await editor
       .locator('#native-file-menu [data-native-action="preview"]')
       .click();
-    await expect.poll(currentPreview).toBeTruthy();
+    await expect.poll(currentPreview,{timeout:30000}).toBeTruthy();
     /** The second real snapshot tests physical pagination, not stylesheet strings. */
     const paragraphsPdf = await readFile(
       fileURLToPath(currentPreview()!.url()),

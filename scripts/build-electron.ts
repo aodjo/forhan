@@ -10,5 +10,6 @@ await build({
   target: "node22",
   format: "cjs",
   external: ["electron"],
+  loader: {".otf":"dataurl"},
   sourcemap: true,
 });

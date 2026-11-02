@@ -5,6 +5,7 @@ import * as path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { documentContentStyles, documentPageStyles } from '../src/document-styles.ts';
+import {portableFontStyles} from '../src/portable-font-styles.ts';
 import { showPdfPreview, clearStalePreviews, isPreviewWindow } from './preview.cts';
 import type { AppAction, BridgeResult, DocumentPayload, ExportFormat, OpenedFile, PageSettings, RecentFile, SavedFile } from '../src/types';
 
@@ -26,6 +27,10 @@ let currentPath: string | null = null;
 let currentKind: SaveKind | null = null;
 let dirty = false;
 let confirmedClose = false;
+/** Application quit intent survives the asynchronous document close handshake until confirmation or cancellation. */
+let quitRequested = false;
+/** Each actual document window owns at most one outstanding close decision. */
+const pendingWindowCloses = new WeakSet<BrowserWindow>();
 let queuedFile: string | null = null;
 /** Whether initial startup has already created an editor window. */
 let hasCreatedEditor = false;
@@ -423,8 +428,10 @@ async function exportPdf(value: unknown): Promise<SavedFile | null> {
 /**
  * Create and load the isolated document renderer shared by PDF and printing.
  *
- * Scripts, external resources, popups and navigation are disabled. The caller
- * owns the returned window and must destroy it after its print job completes.
+ * Scripts, external resources, popups and navigation are disabled. An owned
+ * temporary HTML file avoids Chromium's data-URL length limit for embedded
+ * fonts and is removed after loading. The caller owns the returned window and
+ * must destroy it after its print job completes.
  * @param {PrintRequest} request - Validated markup, title and physical geometry.
  * @returns {Promise<BrowserWindow>} Fully loaded sandboxed print window.
  * @throws {Error} If loading fails; the failed window is destroyed first.
@@ -465,9 +472,18 @@ async function createPrintWindow(request: PrintRequest): Promise<BrowserWindow> 
   /** Escaped job caption, kept literal even when a document title contains markup. */
   const title = request.title.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
   /** Shared print stylesheet and document markup, with all external resources blocked. */
-  const content = `<!doctype html><meta charset="utf-8"><title>${title}</title><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:;"><style>${documentPageStyles(p)}body{margin:0;}${documentContentStyles('body')}</style><body>${request.html}</body>`;
+  const content = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>${title}</title><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src data:;"><style>${portableFontStyles(request.html)}${documentPageStyles(p)}body{margin:0;}${documentContentStyles('body')}</style></head><body>${request.html}</body></html>`;
   try {
-    await print.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(content));
+    /** The generated directory and its single HTML file belong exclusively to this print operation. */
+    const directory = await fs.mkdtemp(path.join(app.getPath('temp'), 'forhan-print-')),
+      filename = path.join(directory, 'document.html');
+    try {
+      await fs.writeFile(filename, content, { encoding: 'utf8', flag: 'wx', mode: 0o600 });
+      await print.loadFile(filename);
+    } finally {
+      try { await fs.rm(filename, { force: true }); }
+      finally { await fs.rmdir(directory); }
+    }
     return print;
   } catch (error) { print.destroy(); throw error; }
 }
@@ -645,10 +661,12 @@ async function createWindow(): Promise<void> {
         type: 'question', title: '포한', message: '편집 화면이 종료되었습니다. 창을 닫을까요?',
         detail: '저장하지 못한 변경 내용이 있을 수 있습니다.',
         buttons: ['돌아가기', '창 닫기'], defaultId: 0, cancelId: 0,
-      }) === 0) event.preventDefault();
+      }) === 0) { event.preventDefault(); quitRequested = false; }
       return;
     }
     event.preventDefault();
+    if (pendingWindowCloses.has(owner)) return;
+    pendingWindowCloses.add(owner);
     owner.webContents.send('action', 'close');
   });
   owner.on('closed', /**
@@ -905,18 +923,25 @@ async function initialize(): Promise<void> {
   ipcMain.on('window:close-confirmed', /**
    * Handle the window:close-confirmed application operation.
    *
-   * Keep this callback scoped to the registered window:close-confirmed lifecycle or IPC event.
+   * A rejected document close cancels application quit intent. Approval closes
+   * the authenticated window, allowing an earlier application quit to resume.
    *
    * @param {IpcMainEvent} event - Electron IPC event used to authenticate the sending main frame.
+   * @param {boolean} [confirmed=true] - Whether the renderer approved closing its current document.
    * @returns {void} The operation result or completion signal.
    * @example
    * // Invoked by the registered Electron event or collection operation.
    */
-  (event: IpcMainEvent) => {
+  (event: IpcMainEvent, confirmed: boolean = true) => {
     try { /**
      * The authenticated live editor window.
      */
-    const window = requireSender(event); confirmedClose = true; window.close(); } catch { /* Ignore messages from untrusted frames. */ }
+    const window = requireSender(event);
+    if (confirmed !== true && confirmed !== false) return;
+    pendingWindowCloses.delete(window);
+    if (!confirmed) { quitRequested = false; return; }
+    confirmedClose = true;
+    if (quitRequested) app.quit(); else window.close(); } catch { /* Ignore messages from untrusted frames. */ }
   });
   /**
    * The recent-document entry matching the requested opaque identifier.
@@ -1099,6 +1124,17 @@ app.on('second-instance',
     else if (app.isReady() && hasCreatedEditor) void createWindow().catch(reportError);
   });
 if (primaryInstance) void app.whenReady().then(initialize).catch(reportError);
+app.on('before-quit', /**
+ * Retain an application quit request while the editor resolves unsaved work.
+ *
+ * Native application quitting can be cancelled by the first asynchronous close
+ * handshake. macOS then needs to resume that request when the renderer approves,
+ * while an ordinary last-window close must continue to leave the app resident.
+ * @returns {void} Records application quit intent until the renderer accepts or rejects closing.
+ * @example
+ * // Both Cmd+Q and app.quit() enter the same document confirmation flow.
+ */
+() => { quitRequested = true; });
 app.on('window-all-closed', /**
  * Handle the window-all-closed application operation.
  *
@@ -1108,4 +1144,4 @@ app.on('window-all-closed', /**
  * @example
  * // Invoked by the registered Electron event or collection operation.
  */
-() => { if (process.platform !== 'darwin') app.quit(); });
+() => { if (process.platform !== 'darwin' || quitRequested) app.quit(); });

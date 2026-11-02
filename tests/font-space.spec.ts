@@ -1,3 +1,4 @@
+import {DOCUMENT_START_KEY} from './helpers/native-keyboard.ts';
 import { test, expect, type Page } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 
@@ -358,7 +359,7 @@ async function verifySpaceHtmlClipboard({
       buffer: Buffer.from(JSON.stringify(table)),
     });
   await expect(page.locator(".tiptap td")).toHaveText("A A");
-  await page.locator(".tiptap").press("ControlOrMeta+Home");
+  await page.locator(".tiptap").press(DOCUMENT_START_KEY);
   await page.locator(".tiptap").press("ControlOrMeta+a");
   await page.locator(".tiptap").press("ControlOrMeta+a");
   /** The actual copied table contains explicit defaults at its nested source text. */

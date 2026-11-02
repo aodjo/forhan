@@ -157,11 +157,14 @@ async function verifyImportedTinySizes({
         ],
       },
     };
+    /** Distinct public import completion precedes selecting the current original tiny-font source. */
+    const filename=`tiny-${size}.fhn`;
     await page.locator("#file-input").setInputFiles({
-      name: "tiny.forhan",
+      name: filename,
       mimeType: "application/json",
       buffer: Buffer.from(JSON.stringify(payload)),
     });
+    await expect(page.locator('#toast')).toContainText(filename);
     await page.locator(".tiptap").press("ControlOrMeta+a");
     await page.locator('button[data-native-tab="format"]').click();
     await page

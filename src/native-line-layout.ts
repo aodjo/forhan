@@ -259,7 +259,9 @@ export function nativeLineBaseSize(element: HTMLElement, displayed: number): num
 /**
  * Measure a paragraph's real browser lines and plan native baseline/flow geometry.
  *
- * Canvas font-box metrics locate actual browser baselines. Hard breaks remain
+ * Canvas font-box metrics locate actual browser baselines. Detached metric
+ * canvases use the source language so unavailable faces resolve through the
+ * same fallback as the actual paragraph. Hard breaks remain
  * distinct even at zero spacing; ordinary wraps are grouped by baseline and
  * edge reset. Rendering-only ranges retain all original text and mark boundaries.
  * Atomic objects and unmeasured superscript contexts keep browser layout
@@ -284,9 +286,13 @@ export function measureNativeParagraph(
     spacing = nativeLineSpacing(paragraph.style.lineHeight);
   if (!spacing || paragraph.querySelector("img:not(.ProseMirror-separator),sup,sub"))
     return null;
+  /** Detached canvas elements must receive the source language before resolving fallback font metrics. */
+  const canvas=document.createElement('canvas');
+  canvas.lang=paragraph.closest<HTMLElement>('[lang]')?.lang||document.documentElement.lang;
   /** Existing browser fallback remains available when a platform lacks actual font-box metrics. */
-  const context = document.createElement("canvas").getContext("2d");
+  const context = canvas.getContext("2d");
   if (!context) return null;
+  if('lang'in context)(context as CanvasRenderingContext2D&{lang:string}).lang=canvas.lang;
   /** Original paragraph geometry is independent of later native height correction. */
   const bounds = paragraph.getBoundingClientRect(),
     zoom = nativeDocumentZoom(paragraph),

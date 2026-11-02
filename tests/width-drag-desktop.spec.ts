@@ -1,3 +1,4 @@
+import {DOCUMENT_START_KEY} from './helpers/native-keyboard.ts';
 import {
   test,
   expect,
@@ -252,7 +253,7 @@ async function verifyDesktopSourceDrag(): Promise<void> {
           desktopDragText(JSON.parse(await readFile(file, "utf8")).doc),
       )
       .toBe(original);
-    await page.locator(".tiptap").press("ControlOrMeta+Home");
+    await page.locator(".tiptap").press(DOCUMENT_START_KEY);
     await desktopSourceDrag(page, "י", "left", "ב", "right");
     await page.keyboard.type("Q");
     for (

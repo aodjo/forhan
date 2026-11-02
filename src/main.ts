@@ -123,6 +123,8 @@ import {
   stepFontSize,
 } from "./formatting";
 import { documentContentStyles, documentPageStyles } from "./document-styles";
+import {portableOutputFontStyles} from './portable-font-output.ts';
+import {PORTABLE_EDITOR_FONT_CSS,loadPortableKoreanFonts} from './portable-editor-font-styles.ts';
 import { prepareNativeLayout } from "./native-layout-export";
 import { NativeLineLayout } from "./ui/native-line-layout";
 import { normalizeHtmlFontSpaces } from "./font-space";
@@ -371,15 +373,17 @@ let recoveryTimer: ReturnType<typeof setTimeout> | undefined,
 /** Text ranges matching the current case-insensitive query. */
 let matches: { from: number; to: number }[] = [];
 
+/** One content stylesheet shared with standalone HTML, PDF and native printing. */
+const documentStyle = document.createElement("style");
+documentStyle.textContent = PORTABLE_EDITOR_FONT_CSS+documentContentStyles(".native-shell .tiptap");
+document.head.append(documentStyle);
+await loadPortableKoreanFonts(document);
+
 $("#app").innerHTML = buildNativeShell(state.title);
 /** One delegated native color picker survives ribbon and dialog replacements. */
 const colorPalettes = new NativeColorPalette();
 /** Local font enumeration and native dropdowns are shared by quick, ribbon and dialog controls. */
 const fontPicker = new NativeFontPicker();
-/** One content stylesheet shared with standalone HTML, PDF and native printing. */
-const documentStyle = document.createElement("style");
-documentStyle.textContent = documentContentStyles(".native-shell .tiptap");
-document.head.append(documentStyle);
 
 /**
  * Replace decorative icon placeholders.
@@ -1566,10 +1570,13 @@ async function saveDocument(
       bytes = new TextEncoder().encode(
         "\ufeff" + editor.getText({ blockSeparator: "\n" }),
       );
-    else if (kind === "html")
+    else if (kind === "html") {
+      /** One original source revision supplies both asynchronously loaded fonts and physical output layout. */
+      const html=editor.getHTML();
       bytes = new TextEncoder().encode(
-        `<!doctype html><html lang="ko"><meta charset="utf-8"><title>${escape(title)}</title><style>${documentPageStyles(page)}${documentContentStyles("body")}body{width:${page.width}mm;margin:0 auto;padding:${page.marginTop + (page.header ?? 0)}mm ${page.marginRight}mm ${page.marginBottom + (page.footer ?? 0)}mm ${page.marginLeft}mm}@media print{body{width:auto;margin:0;padding:0}}</style><body data-forhan-native-space-default="0" data-forhan-native-kerning-default="0"${sectionGridHtml(page)}>${await prepareNativeLayout(editor.getHTML(), page)}</body></html>`,
+        `<!doctype html><html lang="ko"><meta charset="utf-8"><title>${escape(title)}</title><style>${await portableOutputFontStyles(html)}${documentPageStyles(page)}${documentContentStyles("body")}body{width:${page.width}mm;margin:0 auto;padding:${page.marginTop + (page.header ?? 0)}mm ${page.marginRight}mm ${page.marginBottom + (page.footer ?? 0)}mm ${page.marginLeft}mm}@media print{body{width:auto;margin:0;padding:0}}</style><body data-forhan-native-space-default="0" data-forhan-native-kerning-default="0"${sectionGridHtml(page)}>${await prepareNativeLayout(html, page)}</body></html>`,
       );
+    }
     else throw new Error("저장 형식을 확인하세요.");
     /** File-system-safe base name for the selected export format. */
     const base =
@@ -3007,10 +3014,12 @@ async function action(value: AppAction) {
      * runAction() // Completes the selected document operation.
      */
     close: async () => {
-      if (await canLeave()) {
-        await clearRecovery();
-        native?.close();
-      }
+      try {
+        if (await canLeave()) {
+          await clearRecovery();
+          native?.close();
+        } else native?.close(false);
+      } catch (error) { native?.close(false); throw error; }
     },
   };
   await actions[value]?.();

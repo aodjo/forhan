@@ -6,6 +6,24 @@ const NATIVE_BIDI = bidiFactory();
 /** Installed Hangul displays these newer isolate controls as neutral labelled glyphs rather than invisible bidi scope changes. */
 const NATIVE_VISIBLE_ISOLATES = /[\u2066-\u2069]/g;
 
+/**
+ * Detect original source that retains right-to-left visual caret ownership.
+ *
+ * Unicode embedding levels include mixed scripts, neutral text and explicit
+ * direction controls. Native-labelled isolate glyphs use the same neutral
+ * analysis placeholders as the existing native shaping pipeline.
+ * @param {string} text - Unchanged original logical source paragraph.
+ * @returns {boolean} Whether any source unit has an odd directional embedding level.
+ * @example
+ * nativeHasRightToLeftText('ABC עברית'); // true; browser bidi caret handling remains active.
+ */
+export function nativeHasRightToLeftText(text:string):boolean{
+  /** Direction analysis never replaces or normalizes the original authored text. */
+  const embedding=NATIVE_BIDI.getEmbeddingLevels(text.replace(NATIVE_VISIBLE_ISOLATES,'\ufffc'),'ltr');
+  for(/** Odd resolved levels retain their existing visual source navigation. */const level of embedding.levels)if(level%2)return true;
+  return false;
+}
+
 /** Original text offsets bridge transparent native layout and character-style boundaries. */
 interface NativeBidiPart {
   node: Text;

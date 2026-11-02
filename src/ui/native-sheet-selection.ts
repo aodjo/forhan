@@ -1,7 +1,8 @@
-import {TextSelection} from '@tiptap/pm/state';
+import {AllSelection,TextSelection} from '@tiptap/pm/state';
 import type {EditorView} from '@tiptap/pm/view';
 import {preserveNativeTextSelection} from './native-selection.ts';
 import {nativeDocumentZoom} from '../native-line-layout.ts';
+import {nativeHasRightToLeftText} from '../native-bidi.ts';
 
 /** Original editable positions identify a visual line without splitting source paragraphs. */
 export interface NativeSheetCursorLine {
@@ -77,20 +78,21 @@ export function nativeSheetGoToPage(view:EditorView,page:number):boolean{
  * Genuine native focus affinity takes priority over a model DOM lookup.
  * @param {EditorView} view - Actual owning source editor.
  * @param {number} [position=view.state.selection.head] - Original model position to observe.
+ * @param {1|-1} [side] - Explicit original leaf affinity; omitted values preserve a matching live DOM caret before trying the preceding leaf.
  * @returns {{left:number;right:number;top:number;bottom:number}|null} Actual physical source caret, or no reliable text rectangle.
  * @throws {Error} If source mapping fails outside a transient range mismatch.
  * @example
  * nativeSheetCaretBounds(view); // A committed colored word retains its real second-sheet caret.
  */
-export function nativeSheetCaretBounds(view:EditorView,position=view.state.selection.head):{left:number;right:number;top:number;bottom:number}|null{
+export function nativeSheetCaretBounds(view:EditorView,position=view.state.selection.head,side?:1|-1):{left:number;right:number;top:number;bottom:number}|null{
   try{
     /** Native source endpoints retain soft-wrap affinity without reading generated paint. */
     const document=view.dom.ownerDocument,selection=document.getSelection(),focus=selection?.focusNode;
     let node:Node,offset:number;
-    if(focus&&view.dom.contains(focus)&&view.posAtDOM(focus,selection!.focusOffset)===position){node=focus;offset=selection!.focusOffset;}
+    if(side===undefined&&focus&&view.dom.contains(focus)&&view.posAtDOM(focus,selection!.focusOffset)===position){node=focus;offset=selection!.focusOffset;}
     else{
-      /** Backward source affinity reaches the actual preceding text leaf at a marked word end. */
-      const point=view.domAtPos(position,-1);node=point.node;offset=point.offset;
+      /** Explicit line-edge affinity or the default preceding leaf reaches genuine source rather than a spacing wrapper. */
+      const point=view.domAtPos(position,side??-1);node=point.node;offset=point.offset;
     }
     /** Auxiliary noneditable paint and caret spacers cannot become original source points. */
     const parent=node.nodeType===Node.ELEMENT_NODE?node as Element:node.parentElement;
@@ -134,12 +136,103 @@ export function flushNativeSheetScroll(view:EditorView):void{
  * nativeSheetBeforeInput(view,event); // Replacing two physical rows with CHANGED retains its first C.
  */
 export function nativeSheetBeforeInput(view:EditorView,event:InputEvent):boolean{
-  if(!cursors.has(view)||view.composing||event.isComposing||event.defaultPrevented||event.inputType!=='insertText'||!event.data)return false;
+  if((!cursors.has(view)&&!view.dom.querySelector('forhan-width,[data-forhan-width-ratio]'))||view.composing||event.isComposing||event.defaultPrevented||event.inputType!=='insertText'||!event.data)return false;
   /** Pending genuine DOM endpoints are resolved before replacing their unchanged source. */
   const transaction=preserveNativeTextSelection(view,view.state.tr.setMeta('addToHistory',false));
-  if(transaction.selection.empty||!(transaction.selection instanceof TextSelection))return false;
+  if(!(transaction.selection instanceof TextSelection))return false;
+  if(transaction.selection.empty){
+    if(!transaction.selection.eq(view.state.selection))view.dispatch(transaction);
+    return false;
+  }
   event.preventDefault();
   view.dispatch(view.state.tr.setSelection(transaction.selection).insertText(event.data).setMeta('uiEvent','input').scrollIntoView());return true;
+}
+
+/**
+ * Commit an original source caret with explicit text-leaf affinity.
+ *
+ * Native vector copies can leave an equivalent model endpoint before an
+ * auxiliary drawing. Source-side DOM affinity keeps immediate arrows and
+ * typing in actual editable text without adding source or undo history.
+ * @param {EditorView} view - Actual owning original source editor.
+ * @param {number} anchor - Valid original source selection anchor.
+ * @param {number} head - Valid original source selection head.
+ * @param {1|-1} side - Preferred source leaf at the destination boundary.
+ * @returns {void} Commits one history-free source selection and its genuine DOM endpoints.
+ * @throws {RangeError} If an original model endpoint is invalid.
+ * @example
+ * commitNativeSourceCaret(view,2,2,1); // The next ordinary key follows the first original glyph.
+ */
+function commitNativeSourceCaret(view:EditorView,anchor:number,head:number,side:1|-1):void{
+  view.dispatch(view.state.tr.setSelection(TextSelection.create(view.state.doc,anchor,head)).setMeta('addToHistory',false).scrollIntoView());
+  /** Actual source DOM lookup never uses a drawing's text or an expected screen coordinate. */
+  const focus=view.domAtPos(head,side),start=anchor===head?focus:view.domAtPos(anchor,anchor<=head?1:-1);
+  view.dom.ownerDocument.getSelection()?.setBaseAndExtent(start.node,start.offset,focus.node,focus.offset);
+}
+
+/**
+ * Synchronize genuine pending source endpoints before keymaps and keypress input.
+ *
+ * A browser caret can move away from a prior AllSelection before its asynchronous
+ * selectionchange notification reaches the model. Some platforms insert text
+ * from keypress before beforeinput, so the original source selection must be
+ * committed at the initial DOM keydown phase. The key itself remains unconsumed.
+ * @param {EditorView} view - Actual owning original source editor.
+ * @param {KeyboardEvent} event - Original editor keydown event.
+ * @returns {false} Always preserves normal ownership of the original keyboard event.
+ * @example
+ * nativeSheetKeySelection(view,event); // Typing at a pending C caret cannot replace the previously selected whole document.
+ */
+export function nativeSheetKeySelection(view:EditorView,event:KeyboardEvent):false{
+  if(view.composing||event.isComposing||event.defaultPrevented||event.keyCode===229)return false;
+  /** Only independently observed genuine source endpoints can replace an older model selection. */
+  const transaction=preserveNativeTextSelection(view,view.state.tr.setMeta('addToHistory',false)),selection=transaction.selection;
+  if(transaction.selectionSet&&selection instanceof TextSelection&&!selection.eq(view.state.selection))commitNativeSourceCaret(view,selection.anchor,selection.head,selection.head>=selection.anchor?1:-1);
+  return false;
+}
+
+/**
+ * Advance native-width left-to-right source by complete original graphemes.
+ *
+ * Negative native letter spacing and interleaved vector copies can make a
+ * browser arrow enter a wrapper or jump an entire source word. Ordinary
+ * unmodified arrows in an eligible original text block commit logical source
+ * boundaries directly. Unicode bidi runs, objects, word shortcuts, cross-block
+ * selections and active composition retain their existing native handling.
+ * @param {EditorView} view - Actual owning original source editor.
+ * @param {KeyboardEvent} event - Original source keyboard event.
+ * @returns {boolean} Whether one complete original grapheme movement was committed.
+ * @example
+ * nativeWidthHorizontalKeyDown(view,event); // A, woman-technologist and B retain three source graphemes.
+ */
+function nativeWidthHorizontalKeyDown(view:EditorView,event:KeyboardEvent):boolean{
+  if(!['ArrowLeft','ArrowRight'].includes(event.key)||event.metaKey||event.ctrlKey||event.altKey||event.isComposing||view.composing)return false;
+  /** A pending genuine DOM caret can follow an earlier whole-document selection. */
+  const selection=preserveNativeTextSelection(view,view.state.tr.setMeta('addToHistory',false)).selection;
+  if(!(selection instanceof TextSelection)||!selection.$head.depth||!selection.$head.parent.inlineContent||selection.$from.parent!==selection.$to.parent)return false;
+  /** Only the current original text block's owned width wrappers request source navigation. */
+  const parent=selection.$head.parent,element=view.nodeDOM(selection.$head.before());
+  if(!(element instanceof HTMLElement)||!element.querySelector('forhan-width,[data-forhan-width-ratio]')||getComputedStyle(element).direction==='rtl')return false;
+  for(let index=0;index<parent.childCount;index++){
+    /** Source objects keep ordinary object-selection semantics rather than being skipped as text. */
+    const child=parent.child(index);if(!child.isText&&child.type.name!=='hardBreak')return false;
+  }
+  /** Original UTF-16 source positions remain independent from rendered glyph widths. */
+  const text=parent.textBetween(0,parent.content.size,'\n','\ufffc');
+  if(text.length!==parent.content.size||nativeHasRightToLeftText(text))return false;
+  let position:number|undefined;
+  if(!selection.empty&&!event.shiftKey)position=event.key==='ArrowLeft'?selection.from:selection.to;
+  else{
+    /** Browser-independent grapheme boundaries preserve surrogate pairs, combining marks and joiners. */
+    const offset=selection.$head.parentOffset,start=selection.$head.start(),segmenter=new Intl.Segmenter('ko',{granularity:'grapheme'});
+    if(event.key==='ArrowRight'){
+      for(/** The next complete source cluster is never split into UTF-16 units. */const part of segmenter.segment(text))if(part.index+part.segment.length>offset){position=start+part.index+part.segment.length;break;}
+    }else{
+      for(/** Only complete source cluster starts can become a backward caret destination. */const part of segmenter.segment(text))if(part.index<offset)position=start+part.index;else break;
+    }
+  }
+  if(position===undefined)return false;
+  commitNativeSourceCaret(view,event.shiftKey?selection.anchor:position,position,event.key==='ArrowRight'?-1:1);return true;
 }
 
 /**
@@ -212,6 +305,8 @@ export function setNativeSheetCursorLines(view:EditorView,lines:NativeSheetCurso
  * grapheme. Shift retains the original anchor and source history is untouched.
  * Home and End commit their actual source line edge synchronously, so an
  * immediate following Enter or IME key cannot reuse a pending browser caret.
+ * Command-arrow line and document edges use the same source path, including
+ * Shift selections, instead of leaving native-width drawings to browser flow.
  * Genuine DOM endpoints are resolved before choosing a line because native
  * pointer selection can precede the editor's selectionchange notification.
  * @param {EditorView} view - Actual live source editor view.
@@ -221,15 +316,29 @@ export function setNativeSheetCursorLines(view:EditorView,lines:NativeSheetCurso
  * nativeSheetKeyDown(view,event); // ArrowDown crosses the physical page margin without inserting text.
  */
 export function nativeSheetKeyDown(view:EditorView,event:KeyboardEvent):boolean{
-  /** Unsupported flow and platform word/document shortcuts retain their existing native handling. */
-  const cursor=cursors.get(view);
+  if(nativeWidthHorizontalKeyDown(view,event))return true;
+  /** Command-arrow source edges distinguish a whole-document jump from a current-line edge. */
+  const cursor=cursors.get(view),commandArrow=event.metaKey&&!event.ctrlKey&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key),
+    edgeKey=commandArrow?(event.key==='ArrowUp'||event.key==='ArrowLeft'?'Home':'End'):event.key,
+    documentEdge=commandArrow?(event.key==='ArrowUp'||event.key==='ArrowDown'):(event.ctrlKey||event.metaKey);
   if(!cursor)return false;
-  if(!['ArrowUp','ArrowDown','Home','End'].includes(event.key)){cursor.goal=null;return false;}
-  if(view.composing||event.isComposing||event.altKey||!(view.state.selection instanceof TextSelection))return false;
-  if((event.ctrlKey||event.metaKey)&&event.key!=='Home'&&event.key!=='End')return false;
+  if(!['ArrowUp','ArrowDown','Home','End'].includes(edgeKey)){cursor.goal=null;return false;}
+  if(view.composing||event.isComposing||event.altKey||!(view.state.selection instanceof TextSelection||view.state.selection instanceof AllSelection))return false;
+  if((event.ctrlKey||event.metaKey)&&edgeKey!=='Home'&&edgeKey!=='End')return false;
   /** The real source DOM endpoint resolves soft-wrap affinity without generated document attributes. */
-  const selection=preserveNativeTextSelection(view,view.state.tr.setMeta('addToHistory',false)).selection,
-    domSelection=view.dom.ownerDocument.getSelection(),focus=domSelection?.focusNode,
+  const selection=preserveNativeTextSelection(view,view.state.tr.setMeta('addToHistory',false)).selection;
+  if(!(selection instanceof TextSelection)){
+    if(documentEdge&&(edgeKey==='Home'||edgeKey==='End')&&cursor.lines.length){
+      /** Whole-document navigation must collapse an earlier AllSelection before browser input can reuse it. */
+      const position=edgeKey==='Home'?cursor.lines[0].from:cursor.lines[cursor.lines.length-1].to;
+      cursor.goal=null;commitNativeSourceCaret(view,event.shiftKey?cursor.lines[0].from:position,position,edgeKey==='Home'?1:-1);
+      if(edgeKey==='Home'){/** A real document-begin command retains the complete first-paper inset. */const canvas=view.dom.closest<HTMLElement>('.canvas');if(canvas)canvas.scrollTop=0;}
+      return true;
+    }
+    return false;
+  }
+  /** The real source DOM endpoint retains its original soft-wrap line affinity. */
+  const domSelection=view.dom.ownerDocument.getSelection(),focus=domSelection?.focusNode,
     element=focus?.nodeType===Node.ELEMENT_NODE?focus as Element:focus?.parentElement,
     key=element?.closest('[data-forhan-visual-line]')?.getAttribute('data-forhan-visual-line'),paper=view.dom.closest<HTMLElement>('#paper');
   if(!paper)return false;
@@ -245,13 +354,13 @@ export function nativeSheetKeyDown(view:EditorView,event:KeyboardEvent):boolean{
     const next=Math.abs(candidate.top-top);if(next<distance){distance=next;index=line;}
   }
   if(index<0)return false;
-  if(event.key==='Home'||event.key==='End'){
+  if(edgeKey==='Home'||edgeKey==='End'){
     /** Synchronous source selection keeps an immediate following Enter or IME key at the intended visual line edge. */
-    const line=event.ctrlKey||event.metaKey?cursor.lines[event.key==='Home'?0:cursor.lines.length-1]:cursor.lines[index],
-      position=event.key==='Home'?line.from:line.to;
+    const line=documentEdge?cursor.lines[edgeKey==='Home'?0:cursor.lines.length-1]:cursor.lines[index],
+      position=edgeKey==='Home'?line.from:line.to;
     cursor.goal=null;
-    view.dispatch(view.state.tr.setSelection(TextSelection.create(view.state.doc,event.shiftKey?selection.anchor:position,position)).setMeta('addToHistory',false).scrollIntoView());
-    if((event.ctrlKey||event.metaKey)&&event.key==='Home'){
+    commitNativeSourceCaret(view,event.shiftKey?selection.anchor:position,position,edgeKey==='Home'?1:-1);
+    if(documentEdge&&edgeKey==='Home'){
       /** Original document-begin navigation restores the first paper's complete initial inset. */
       const canvas=view.dom.closest<HTMLElement>('.canvas');if(canvas)canvas.scrollTop=0;
     }
@@ -267,9 +376,9 @@ export function nativeSheetKeyDown(view:EditorView,event:KeyboardEvent):boolean{
   let position=target.from,nearest=Infinity;
   for(/** Actual caret rectangles retain original fonts, alignment, tracking and bidirectional run placement. */const candidate of positions){
     /** A line-end boundary uses its preceding source fragment rather than the following soft-wrap line. */
-    const bounds=view.coordsAtPos(candidate,candidate===target.to?-1:1),delta=Math.abs(bounds.left-x);
+    const side=candidate===target.to?-1:1,bounds=nativeSheetCaretBounds(view,candidate,side)??view.coordsAtPos(candidate,side),delta=Math.abs(bounds.left-x);
     if(delta<nearest){nearest=delta;position=candidate;}
   }
-  view.dispatch(view.state.tr.setSelection(TextSelection.create(view.state.doc,event.shiftKey?selection.anchor:position,position)).setMeta('addToHistory',false).scrollIntoView());
+  commitNativeSourceCaret(view,event.shiftKey?selection.anchor:position,position,position===target.to?-1:1);
   cursor.goal={offset,head:position};return true;
 }

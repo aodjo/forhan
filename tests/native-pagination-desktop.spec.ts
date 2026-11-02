@@ -19,6 +19,8 @@ import {readHwpx} from '../src/formats/hwpx.ts';
  * HWPX/HWP/FHN bytes for independent source checks and original native reopens.
  * Retained file identities bind the complete observation to the actual running
  * executable and archive rather than to a development print substitute.
+ * The six-minute case budget covers sixty-three independent native print jobs
+ * on Intel while each output retains its original readiness and geometry checks.
  * @async
  * @returns {Promise<void>} Resolves after all sixty-three actual native PDFs and retained source files agree.
  * @throws {Error} If physical page membership, absolute source baselines, runtime identity or source output differs.
@@ -26,7 +28,7 @@ import {readHwpx} from '../src/formats/hwpx.ts';
  * // npm run test:packaged uses the exact validated native distribution.
  */
 async function verifyDesktopNativePagination():Promise<void>{
-  test.setTimeout(180000);
+  test.setTimeout(360000);
   /** The actual selected application owns one unique profile and retained output directory. */
   const profile=await mkdtemp(path.join(tmpdir(),'forhan-native-pagination-')),desktop=await electron.launch(desktopLaunchOptions(profile)),
     outputRoot=process.env.FORHAN_PACKAGED_EXECUTABLE?path.resolve('release/validation/native-pagination',randomUUID()):path.join(profile,'outputs');

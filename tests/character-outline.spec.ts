@@ -1,3 +1,4 @@
+import {DOCUMENT_END_KEY} from './helpers/native-keyboard.ts';
 import { test, expect, type Page } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
@@ -421,7 +422,7 @@ async function verifyOutlineRendering({ page }: { page: Page }): Promise<void> {
       )
       .join(""),
   );
-  await page.locator(".tiptap").press("ControlOrMeta+End");
+  await page.locator(".tiptap").press(DOCUMENT_END_KEY);
   await page.keyboard.insertText("검증");
   await page.locator(".tiptap").press("ControlOrMeta+z");
   /** Real source after one undo must exactly retain its pre-typing document. */

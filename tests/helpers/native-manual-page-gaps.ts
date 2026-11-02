@@ -1,3 +1,4 @@
+import {DOCUMENT_END_KEY} from './native-keyboard.ts';
 import {expect,type Page} from '@playwright/test';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -100,7 +101,7 @@ export async function exerciseNativeManualPageGaps(page:Page,outputRoot:string):
       records.push({width,shape,percentage:condition.percentage,file,sha256:createHash('sha256').update(bytes).digest('hex'),expectedStride:expected,originalCaptureSha256:observation.captureSha256});
     }
   }
-  await page.locator('.tiptap').press('ControlOrMeta+End');await page.keyboard.type('Z');await expect(page.locator('.tiptap')).toContainText('Z');await page.keyboard.press('ControlOrMeta+z');expect(await page.locator('.tiptap').textContent()).toBe(fixture.source.sourceRows.join(''));expect(records).toHaveLength(92);return records;
+  await page.locator('.tiptap').press(DOCUMENT_END_KEY);await page.keyboard.type('Z');await expect(page.locator('.tiptap')).toContainText('Z');await page.keyboard.press('ControlOrMeta+z');expect(await page.locator('.tiptap').textContent()).toBe(fixture.source.sourceRows.join(''));expect(records).toHaveLength(92);return records;
 }
 
 /**

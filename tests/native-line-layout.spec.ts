@@ -300,33 +300,39 @@ test(
  *
  * Native pointer selection can reach the source DOM before selectionchange
  * updates the immutable editor state. A same-turn End event must use that
- * actual source endpoint rather than the previous model caret on line A.
+ * actual source endpoint rather than the previous model caret on line A or
+ * a preceding whole-document AllSelection. Direct typing without a line-end
+ * command must also retain the genuine collapsed source caret.
  * @async
  * @param {{page:Page}} context - Actual isolated public browser application.
- * @returns {Promise<void>} Resolves after immediate source-edge movement inserts only after line C.
+ * @returns {Promise<void>} Resolves after source navigation and direct typing retain their genuine original caret positions.
  * @throws {Error} If pending browser selection is replaced by an older model position.
  * @example
  * // Pending selection on C followed immediately by End produces ABCX, never AXBC.
  */
 async function verifyPendingLineEnd({page}:{page:Page}):Promise<void>{
+  for(/** Source navigation and direct typing both yield to genuine pending endpoints after whole-document selection. */const scenario of [{wholeDocument:false,useLineEnd:true},{wholeDocument:true,useLineEnd:true},{wholeDocument:true,useLineEnd:false}]){
   await page.goto('/');await loadLines(page,'1.6',[20,10,20]);await page.locator('.tiptap').focus();
+  if(scenario.wholeDocument)await page.keyboard.press('ControlOrMeta+a');
   await page.evaluate(
     /**
      * Queue a genuine source DOM endpoint and its same-turn line-end command.
      *
      * No editor state or source text is injected. The command deliberately
      * precedes the browser's asynchronous selectionchange notification.
+     * @param {boolean} useLineEnd - Whether the same-turn original source edge command precedes typing.
      * @returns {void} Presents the original pending-selection ordering to the real editor handler.
      * @example
      * // Subsequent real browser text input verifies the handler's selected source position.
      */
-    ()=>{
+    useLineEnd=>{
       /** The actual source C text node supplies both unchanged DOM selection endpoints. */
       const root=document.querySelector<HTMLElement>('.tiptap')!,last=root.querySelectorAll('forhan-line')[2],walker=document.createTreeWalker(last,NodeFilter.SHOW_TEXT);
       walker.nextNode();getSelection()!.setBaseAndExtent(walker.currentNode,0,walker.currentNode,0);
-      root.dispatchEvent(new KeyboardEvent('keydown',{key:'End',code:'End',bubbles:true,cancelable:true}));
-    });
-  await page.keyboard.type('X');await expect(page.locator('.tiptap p')).toHaveText('ABCX');
+      if(useLineEnd)root.dispatchEvent(new KeyboardEvent('keydown',{key:'End',code:'End',bubbles:true,cancelable:true}));
+    },scenario.useLineEnd);
+  await page.keyboard.type('X');await expect(page.locator('.tiptap p')).toHaveText(scenario.useLineEnd?'ABCX':'ABXC');
+  }
 }
 
 test('a pending native DOM selection remains authoritative for an immediate source line-end command',verifyPendingLineEnd);
@@ -494,9 +500,12 @@ function hebrewLineGeometry(paragraph:HTMLElement):{height:number;baselines:numb
     const node=walker.currentNode as Text,
       style=getComputedStyle(node.parentElement!),
       range=document.createRange();
-    range.selectNodeContents(node);
     context.font=`${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
-    baselines.push((range.getBoundingClientRect().top-box.top)/zoom+context.measureText(node.data).fontBoundingBoxAscent);
+    let offset=0;
+    for(/** Each Unicode source glyph is observed independently of platform-dependent text-node segmentation. */const glyph of node.data){
+      range.setStart(node,offset);offset+=glyph.length;range.setEnd(node,offset);
+      baselines.push((range.getBoundingClientRect().top-box.top)/zoom+context.measureText(glyph).fontBoundingBoxAscent);
+    }
   }
   return{height:box.height/zoom,baselines};
 }
@@ -540,28 +549,32 @@ async function verifyHebrewLineFlow({page}:{page:Page}):Promise<void>{
          */
         size=>fixed??size*4/3*1.6),
       height=advances[0]+advances[1]+advances[2];
-    await expect.poll(
+    await expect(
       /**
-       * Await actual physical source progress independently from rendering metadata.
+       * Await complete physical glyph placement independently from rendering metadata.
        *
-       * Native drawing quantizes at the effective display scale. An internal
-       * unzoomed height string cannot establish the actual paragraph's progress.
-       * The existing physical-height bound remains unchanged.
+       * Paragraph progress can settle before dependent inline glyph offsets.
+       * Every retry retains all original baselines and the existing height bound;
+       * persistent platform geometry differences cannot pass this condition.
        * @async
-       * @returns {Promise<number>} Absolute original source-height error in unzoomed CSS pixels.
+       * @returns {Promise<void>} Resolves only after all actual original glyph baselines and height agree.
+       * @throws {Error} If source glyph count, baselines or physical height differs.
        * @example
        * // Three original intervals must retain their physical total at the actual display scale.
        */
-      async()=>Math.abs((await page.locator('.tiptap p').evaluate(hebrewLineGeometry)).height-height)).toBeLessThan(.05);
-    /** Every original two-letter word must have one shared baseline, including fixed-zero overlap. */
-    const actual=await page.locator('.tiptap p').evaluate(hebrewLineGeometry);
-    expect(actual.baselines).toHaveLength(6);
-    let top=0;
-    for(let line=0;line<sizes.length;line++){
-      for(let glyph=0;glyph<2;glyph++)expect(actual.baselines[line*2+glyph]).toBeCloseTo(top+sizes[line]*4/3*.85,1);
-      top+=advances[line];
-    }
-    expect(actual.height).toBeCloseTo(height,1);
+      async()=>{
+        /** Every original two-letter word must have one shared baseline, including fixed-zero overlap. */
+        const actual=await page.locator('.tiptap p').evaluate(hebrewLineGeometry);
+        expect(Math.abs(actual.height-height)).toBeLessThan(.05);
+        expect(actual.baselines).toHaveLength(6);
+        let top=0;
+        for(let line=0;line<sizes.length;line++){
+          for(let glyph=0;glyph<2;glyph++)expect(actual.baselines[line*2+glyph]).toBeCloseTo(top+sizes[line]*4/3*.85,1);
+          top+=advances[line];
+        }
+        expect(actual.height).toBeCloseTo(height,1);
+      },
+    ).toPass({timeout:5000,intervals:[16,32,64,100]});
   }
   /** Mixed bidi words retain their authored order as actual content width changes. */
   const text='ABC אבגד הוזח 123 טיכל מנסע 한글 פצקר שתאב גדוה',

@@ -262,13 +262,15 @@ export interface DesktopBridge extends AsyncBridge {
    * Complete a renderer-approved native window close.
    *
    * Notifies the main process after the renderer has resolved the unsaved-work
-   * dialog, allowing the owned editor window to close.
+   * dialog, allowing the owned editor window to close. A rejected close cancels
+   * pending application quit intent while retaining the document and process.
    *
+   * @param {boolean} [confirmed=true] - Whether the current document may close.
    * @returns {void} Sends the approved close notification.
    * @example
    * window.forhan?.close();
    */
-  close(): void;
+  close(confirmed?: boolean): void;
   /**
    * Subscribe to native menu and document actions.
    *

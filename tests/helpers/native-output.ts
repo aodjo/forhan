@@ -7,7 +7,9 @@ import { readFile, access } from "node:fs/promises";
  * Only the chooser response is supplied. Production file serialization, static
  * layout, native IPC and atomic writing create every actual output byte. The
  * public save control must also finish recovery/recent-file bookkeeping before
- * a subsequent source import can be accepted by the application.
+ * a subsequent source import can be accepted by the application. Native print
+ * jobs have a thirty-second completion budget on cold or busy desktop hosts;
+ * their emitted content and geometry checks remain unchanged.
  * @async
  * @param {ElectronApplication} desktop - Actual selected desktop application.
  * @param {Page} page - Actual owning native renderer.
@@ -73,6 +75,7 @@ export async function saveDesktopOutput(
           throw error;
         }
       },
+      {timeout:30000},
     )
     .toBe(true);
   await expect(page.locator("#save-document")).toBeEnabled();

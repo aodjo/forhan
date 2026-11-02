@@ -8,6 +8,7 @@ export default defineConfig({
   testDir: "./tests",
   testMatch: [
     "desktop.spec.ts",
+    "native-quit-desktop.spec.ts",
     "print-layout.spec.ts",
     "packaged-runtime.packaged.ts",
     "width-drag-desktop.spec.ts",
@@ -27,6 +28,8 @@ export default defineConfig({
     "native-fit-viewport-desktop.spec.ts",
     "native-page-view-desktop.spec.ts",
     "native-paper-framing-desktop.spec.ts",
+    "native-paper-minimum-insets-desktop.spec.ts",
+    "native-manual-paper-edges-desktop.spec.ts",
   ],
   fullyParallel: false,
   workers: 1,

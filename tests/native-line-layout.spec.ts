@@ -635,9 +635,27 @@ async function verifyHebrewLineFlow({page}:{page:Page}):Promise<void>{
   await page.locator('#file-input').setInputFiles({name:'hebrew-soft-zero.forhan',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({application:'forhan',version:1,doc:{type:'doc',content:[{type:'paragraph',attrs:{textAlign:'left',lineHeight:'0pt'},content}]}}))});
   await expect(page.locator('#toast')).toContainText('hebrew-soft-zero.forhan');
   await expect(page.locator('.tiptap p')).toHaveAttribute('data-forhan-layout-height','0');
-  /** Wrapped equal-height lines overlap at the same real baseline under native fixed-zero progress. */
-  const zero=await page.locator('.tiptap p').evaluate(hebrewLineGeometry);
-  for(/** Original editable source remains complete even when all drawn lines coincide. */const baseline of zero.baselines)expect(baseline).toBeCloseTo(32*4/3*.85,1);
+  await expect(
+    /**
+     * Await the complete physical source layout after fixed-zero document replacement.
+     *
+     * A zero paragraph height can precede dependent width and line decorations.
+     * Every original glyph must converge on the same native baseline without
+     * relaxing the existing physical tolerance or accepting missing source.
+     * @async
+     * @returns {Promise<void>} Resolves after actual source height and every glyph baseline agree.
+     * @throws {Error} If source glyph count, physical height or any baseline differs.
+     * @example
+     * // The paragraph height marker alone cannot establish completed source glyph placement.
+     */
+    async()=>{
+      /** Real editable source ranges establish complete native fixed-zero placement. */
+      const zero=await page.locator('.tiptap p').evaluate(hebrewLineGeometry);
+      expect(Math.abs(zero.height)).toBeLessThan(.05);
+      expect(zero.baselines).toHaveLength(Array.from(text).length);
+      for(/** Original editable source remains complete even when all drawn lines coincide. */const baseline of zero.baselines)expect(baseline).toBeCloseTo(32*4/3*.85,1);
+    },
+  ).toPass({timeout:5000,intervals:[16,32,64,100]});
   /** Source serialization must retain one original paragraph with no layout characters or drawings. */
   const pending=page.waitForEvent('download');
   await page.locator('#save-document').click();

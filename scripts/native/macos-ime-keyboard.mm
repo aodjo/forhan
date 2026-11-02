@@ -129,13 +129,13 @@ int main(void){
       for(/** Every key is validated before any source state changes or input is posted. */ id const key in keys)
         if(![key isKindOfClass:[NSString class]]||!codes[key])@throw [NSException exceptionWithName:@"InvalidKey" reason:@"An unknown physical key was requested." userInfo:nil];
       requireOwner(pid,executable,bundle);
-      /** The exact IDs were observed in both real Mac capability reports before this gate was written. */
+      /** The exact mode ID was observed in both real Mac capability reports before this gate was written. */
       TISInputSourceRef target=NULL;
       for(CFIndex index=0;index<CFArrayGetCount(sources);index++){
-        /** Only the installed Apple Korean parent and its observed two-set mode can be enabled. */
+        /** Modern macOS manages keyboard input modes as individual sources; the parent method is not enabled separately. */
         TISInputSourceRef const source=(TISInputSourceRef)CFArrayGetValueAtIndex(sources,index);
         NSString* const name=identifier(source);
-        if(![name isEqualToString:@"com.apple.inputmethod.Korean"]&&![name isEqualToString:@"com.apple.inputmethod.Korean.2SetKorean"])continue;
+        if(![name isEqualToString:@"com.apple.inputmethod.Korean.2SetKorean"])continue;
         if(!enabled(source)){
           /** Original status and identity are retained before interpreting a native enable result. */
           OSStatus const status=TISEnableInputSource(source);

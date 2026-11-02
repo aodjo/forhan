@@ -41,7 +41,7 @@
      * @example
      * // Completed Unicode is never supplied by the calibration observer.
      */
-    ^NSEvent*(NSEvent* event){[self.events addObject:@{@"keyCode":@(event.keyCode),@"characters":event.characters?:@""}];return event;}
+    ^NSEvent*(NSEvent* event){[self.events addObject:@{@"keyCode":@(event.keyCode),@"characters":event.characters?:@"",@"contextSource":self.text.inputContext.selectedKeyboardInputSource?:[NSNull null],@"markedBeforeEvent":@(self.text.hasMarkedText)}];return event;}
   ];
   [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(observe:) userInfo:nil repeats:YES];
   [self observe:nil];

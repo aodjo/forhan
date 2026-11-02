@@ -94,6 +94,7 @@ async function openContext(
  * // npm run test:packaged exercises real Arabic/Indic/Thai source widths without a development server.
  */
 async function verifyNativeContextualWidths(): Promise<void> {
+  test.setTimeout(60000);
   /** Every native action and output belongs to this generated profile. */
   const profile = await mkdtemp(path.join(tmpdir(), "forhan-context-width-")),
     desktop = await electron.launch(desktopLaunchOptions(profile));
@@ -189,6 +190,7 @@ async function verifyNativeContextualWidths(): Promise<void> {
     ).toHaveCount(2);
     for (/** Every production output path must retain original contextual source. */
     const format of ["hwp", "hwpx", "html", "pdf"]) {
+      await expect(page.locator("#save-document")).toBeEnabled();
       /** Only an exact generated-profile path is offered to the owned native chooser. */
       const output = path.join(profile, "contextual-native." + format);
       expect(path.dirname(output)).toBe(profile);
@@ -221,6 +223,10 @@ async function verifyNativeContextualWidths(): Promise<void> {
       );
       await page.locator("#export-menu-toggle").click();
       await page.locator(`[data-export="${format}"]`).click();
+      await expect(
+        page.locator("#save-document"),
+        `Actual ${format.toUpperCase()} export must finish before its output is inspected`,
+      ).toBeEnabled({timeout:30000});
       await expect
         .poll(
           /**

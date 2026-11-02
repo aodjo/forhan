@@ -176,6 +176,8 @@ for (/** Each native scenario owns its process, profile, original observations a
         );
         if (result.error) throw result.error;
         native = JSON.parse(result.stdout);
+        events = await imeEvents(page);
+        source = await root.evaluate(imeSourceText);
         expect(result.status, result.stderr + "\n" + result.stdout).toBe(0);
         expect(native).toMatchObject({
           success: true,

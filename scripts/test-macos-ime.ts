@@ -12,6 +12,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { randomUUID } from "node:crypto";
+import { calibrateMacInput } from "./calibrate-macos-ime.ts";
 import {
   inspectPackagedApplication,
   packageDigest,
@@ -92,6 +93,7 @@ async function main(): Promise<void> {
       ],
       { stdio: "inherit", timeout: 60000 },
     );
+    await calibrateMacInput(root, temporary, helper, directory);
     /** The real native application and compiled helper are supplied explicitly to the serial input suite. */
     const reporter = path.join(directory, "tests.json"),
       result = spawnSync(

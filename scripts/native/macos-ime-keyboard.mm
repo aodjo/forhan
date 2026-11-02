@@ -74,7 +74,7 @@ static void requireOwner(pid_t pid,NSString* executable,NSString* bundle){
   if(!application||application.terminated||proc_pidpath(pid,buffer,sizeof(buffer))<=0||
      ![[[NSString stringWithUTF8String:buffer] stringByResolvingSymlinksInPath] isEqualToString:executable]||
      ![[application.bundleURL.path stringByResolvingSymlinksInPath] isEqualToString:bundle]||
-     ![application.bundleIdentifier isEqualToString:@"org.forhan.editor"]||
+     (![application.bundleIdentifier isEqualToString:@"org.forhan.editor"]&&![application.bundleIdentifier isEqualToString:@"org.forhan.ime-control"])||
      NSWorkspace.sharedWorkspace.frontmostApplication.processIdentifier!=pid)
     @throw [NSException exceptionWithName:@"OwnedInputTargetUnavailable" reason:@"The exact owned Forhan application is not frontmost." userInfo:nil];
   /** Duplicate registrations prevent an input-source change from ambiguously targeting another editor. */
@@ -156,10 +156,16 @@ int main(void){
       if(selected!=noErr||![report[@"selectedSource"] isEqualToString:@"com.apple.inputmethod.Korean.2SetKorean"])
         @throw [NSException exceptionWithName:@"SelectInputSourceFailed" reason:@"Actual Korean input-source selection did not agree with the native request." userInfo:nil];
       report[@"ownerPid"]=@(pid);report[@"executable"]=executable;report[@"bundle"]=bundle;report[@"keys"]=keys;
+      /** Original selected-source observations distinguish actual transport state from a requested selection. */
+      NSMutableArray* const selectedDuringInput=[NSMutableArray array];
+      report[@"selectedDuringInput"]=selectedDuringInput;
       eventSource=CGEventSourceCreate(kCGEventSourceStatePrivate);
       if(!eventSource)@throw [NSException exceptionWithName:@"EventSourceUnavailable" reason:@"A native keyboard event source could not be allocated." userInfo:nil];
       for(/** Native physical key pairs never contain expected Unicode text. */ NSString* const key in keys){
         requireOwner(pid,executable,bundle);
+        /** Current native selection is read before each original physical key pair. */
+        TISInputSourceRef const beforeKey=TISCopyCurrentKeyboardInputSource();
+        [selectedDuringInput addObject:identifier(beforeKey)];if(beforeKey)CFRelease(beforeKey);
         /** Both events are allocated before keydown so a failed allocation cannot leave a key held. */
         CGEventRef const down=CGEventCreateKeyboardEvent(eventSource,[codes[key] unsignedShortValue],true);
         CGEventRef const up=CGEventCreateKeyboardEvent(eventSource,[codes[key] unsignedShortValue],false);
@@ -188,10 +194,22 @@ int main(void){
         /** Native source status is observed after restoring the original selection. */
         TISInputSourceRef const source=(TISInputSourceRef)[item[@"source"] pointerValue];
         OSStatus const disabled=enabled(source)?TISDisableInputSource(source):noErr;
-        bool const reverted=!enabled(source);
-        [changes addObject:@{@"id":item[@"id"],@"enableStatus":item[@"status"],@"disableStatus":@(disabled),@"originalDisabledStateRestored":@(reverted)}];
-        cleanup=cleanup&&disabled==noErr&&reverted;
+        [changes addObject:[@{@"id":item[@"id"],@"enableStatus":item[@"status"],@"disableStatus":@(disabled)} mutableCopy]];
+        cleanup=cleanup&&disabled==noErr;
       }
+      settle(0.3);
+      /** Fresh enumeration after all cleanup avoids interpreting an intermediate parent/mode state as final restoration. */
+      CFArrayRef const finalSources=TISCreateInputSourceList(NULL,true);
+      for(NSMutableDictionary* const change in changes){
+        bool reverted=false;
+        if(finalSources)for(CFIndex index=0;index<CFArrayGetCount(finalSources);index++){
+          /** A fresh original installed source establishes the final native enabled state. */
+          TISInputSourceRef const source=(TISInputSourceRef)CFArrayGetValueAtIndex(finalSources,index);
+          if([identifier(source) isEqualToString:change[@"id"]]){reverted=!enabled(source);break;}
+        }
+        change[@"originalDisabledStateRestored"]=@(reverted);cleanup=cleanup&&reverted;
+      }
+      if(finalSources)CFRelease(finalSources);
       report[@"sourceChanges"]=changes;report[@"restored"]=@(cleanup);report[@"success"]=@(succeeded&&cleanup);
       if(original)CFRelease(original);if(sources)CFRelease(sources);
     }

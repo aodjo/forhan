@@ -20,8 +20,9 @@ public static class ForhanImeNative {
  /**
   * Activate only the verified generated application through its visible title bar.
   *
-  * Raising the owned frame does not prove that the native window manager has
-  * exposed its title bar yet. A bounded wait observes the exact native hit
+  * Requesting foreground activation targets only the verified owned frame and
+  * succeeds only after actual foreground ownership agrees. Raising a background
+  * frame alone does not prove that its title bar is exposed. A bounded wait observes the exact native hit
   * owner before any click; all process, root-frame and focus guards remain
   * mandatory. Cursor restoration respects intervening user pointer movement.
   * @param {IntPtr} window - Previously verified generated application frame.
@@ -35,6 +36,12 @@ public static class ForhanImeNative {
   uint actual;GetWindowThreadProcessId(window,out actual);
   if(actual!=expected)throw new InvalidOperationException("Owned activation process changed.");
   if(GetForegroundWindow()==window)return;
+  if(SetForegroundWindow(window)){
+   for(int attempt=0;attempt<20;attempt++){
+    if(GetForegroundWindow()==window)return;
+    System.Threading.Thread.Sleep(10);
+   }
+  }
   Rect bounds;Point previous;
   if(!GetWindowRect(window,out bounds)||bounds.Right-bounds.Left<200||bounds.Bottom-bounds.Top<100||!GetCursorPos(out previous))throw new InvalidOperationException("Owned frame geometry is unavailable.");
   if(!SetWindowPos(window,IntPtr.Zero,0,0,0,0,0x13))throw new InvalidOperationException("Owned frame could not be raised.");
@@ -71,6 +78,17 @@ public static class ForhanImeNative {
   * ForhanImeNative.GetWindowRect(window,out bounds);
   */
  [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr window,out Rect bounds);
+ /**
+  * Request foreground activation for the exact verified owned application.
+  *
+  * Windows may deny activation. The caller still observes actual foreground
+  * ownership and retains its exact guarded owned-title-bar fallback.
+  * @param {IntPtr} window - Previously verified isolated application frame.
+  * @returns {bool} Whether Windows accepted the foreground request.
+  * @example
+  * ForhanImeNative.SetForegroundWindow(window); // Observe GetForegroundWindow before accepting focus.
+  */
+ [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr window);
  /**
   * Raise the owned frame without changing size, position or activation.
   *

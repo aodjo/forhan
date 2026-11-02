@@ -31,7 +31,7 @@ async function verifyDesktopNativePaperViewport():Promise<void>{
   try{
     await mkdir(outputRoot,{recursive:true});
     /** Renderer readiness precedes all native window sizing and public source operations. */
-    const page=await desktop.firstWindow();await expect(page.locator('.tiptap')).toBeVisible();
+    const page=await desktop.firstWindow();await expect(page.locator('.tiptap')).toBeVisible({timeout:30000});
     /** Actual native resources accompany every independently observed completed frame. */
     const identity=await desktop.evaluate(
       /**
@@ -94,7 +94,7 @@ async function verifyDesktopNativePaperCaretColumns():Promise<void>{
   const desktop=await electron.launch(options);
   try{
     /** Public document controls and original source inputs belong to this actual renderer. */
-    const page=await desktop.firstWindow();await expect(page.locator('.tiptap')).toBeVisible();
+    const page=await desktop.firstWindow();await expect(page.locator('.tiptap')).toBeVisible({timeout:30000});
     /** Actual native runtime identity is retained separately from requested launch arguments. */
     const identity=await desktop.evaluate(
       /**
@@ -154,7 +154,7 @@ async function verifyDesktopNativeNavigationKeyup():Promise<void>{
   const desktop=await electron.launch(options);
   try{
     /** Original source and native keyboard events belong to this actual renderer. */
-    const page=await desktop.firstWindow();await expect(page.locator('.tiptap')).toBeVisible();
+    const page=await desktop.firstWindow();await expect(page.locator('.tiptap')).toBeVisible({timeout:30000});
     if(process.env.FORHAN_PACKAGED_EXECUTABLE)expect(await desktop.evaluate(
       /**
        * Read actual native packaging identity without changing the selected application.

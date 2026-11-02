@@ -9,6 +9,7 @@ export default defineConfig({
   testMatch: [
     "desktop.spec.ts",
     "native-quit-desktop.spec.ts",
+    "native-format-painter-desktop.spec.ts",
     "print-layout.spec.ts",
     "packaged-runtime.packaged.ts",
     "width-drag-desktop.spec.ts",

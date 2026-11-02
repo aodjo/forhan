@@ -1,0 +1,59 @@
+.native-dialog-format-painter .modal-body {
+  left:12px; right:101px; top:41px; bottom:12px; padding:0;
+}
+.native-dialog-format-painter .nf-group {
+  position:absolute; left:13px; width:218px; margin:0; padding:0;
+  border:0; min-width:0;
+}
+.native-dialog-format-painter .nf-group::before {
+  content:""; position:absolute; top:11px; left:0; right:0; height:1px; background:#e5e5e5;
+}
+.native-dialog-format-painter .nf-group legend {
+  position:absolute; left:0; top:0; padding:0 3px 0 2px; margin:0;
+  background:white; line-height:20px; z-index:1;
+}
+.native-dialog-format-painter .nf-body {top:9px;height:145px;}
+.native-dialog-format-painter .nf-cell {top:154px;height:97px;}
+.native-dialog-format-painter .nf-target {top:251px;height:73px;}
+.native-dialog-format-painter .nf-option {
+  position:absolute; left:15px; display:flex; align-items:center; height:18px;
+  gap:6px; white-space:nowrap; cursor:default; line-height:18px;
+}
+.native-dialog-format-painter .modal-body,
+.native-dialog-format-painter .modal-body :is(input,span,legend),
+.native-dialog-format-painter .modal-actions button {
+  font-family:"Segoe UI","Malgun Gothic",sans-serif; font-size:11px; color:#3e3e3e;
+}
+.native-dialog-format-painter .nf-option:has(:disabled) span {color:#b2b2b2;}
+.native-dialog-format-painter .nf-option input {
+  appearance:none; position:relative; flex:none; margin:0; width:14px; height:14px;
+  border:1px solid #cacaca; background:white;
+}
+.native-dialog-format-painter .nf-option input[type="radio"] {border-radius:50%;}
+.native-dialog-format-painter .nf-option input[type="checkbox"] {border-radius:3px;}
+.native-dialog-format-painter .nf-option input[type="radio"]:checked::after {
+  content:""; position:absolute; inset:3px; border-radius:50%; background:#477aff;
+}
+.native-dialog-format-painter .nf-option input[type="checkbox"]:checked::after {
+  content:""; position:absolute; left:3px; top:1px; width:5px; height:8px;
+  border:solid #477aff; border-width:0 2px 2px 0; transform:rotate(45deg);
+}
+.native-dialog-format-painter .nf-option input:disabled {border-color:#e5e5e5;}
+.native-dialog-format-painter .nf-option input:disabled:checked::after {background:#b6ccff;}
+.native-dialog-format-painter .nf-option input:focus {outline:none;}
+.native-dialog-format-painter .nf-option input:focus-visible + span {
+  outline:1px dotted #777; outline-offset:2px;
+}
+.native-dialog-format-painter .nf-quick-help,
+.native-dialog-format-painter .nf-help {
+  position:absolute; top:0; height:28px; width:34px; padding:0; border:0;
+  border-radius:0; background:transparent; color:#777; display:grid; place-items:center;
+}
+.native-dialog-format-painter .nf-quick-help {right:68px;}
+.native-dialog-format-painter .nf-help {right:34px;}
+.native-dialog-format-painter .modal-x {right:0;width:34px;font-size:18px;}
+.native-dialog-format-painter .modal-actions .nd-apply {border-color:#2367ff;}
+.native-dialog-format-painter .nf-help-text {
+  position:absolute; left:15px; right:10px; top:31px; z-index:5; padding:8px;
+  background:#ffffe7; border:1px solid #ababab; color:#222; line-height:1.5;
+}

@@ -32,6 +32,7 @@ ${scope} li p{margin:0}
 ${scope} li::marker{color:#000}
 ${scope} blockquote{margin:10pt 0;padding:0 10pt;border-left:2px solid #aaa;color:#333}
 ${scope} a{color:#0000ff;text-decoration:underline}
+${scope} strong [data-forhan-normal-weight],${scope} b [data-forhan-normal-weight]{font-weight:700!important}
 ${scope} img{display:block;max-width:100%;height:auto;margin:0}
 ${scope} table{border-collapse:collapse;border-color:#808080;table-layout:fixed;margin:0;width:auto;overflow:hidden;break-inside:auto}
 ${scope} td,${scope} th{border:1px solid #555;padding:2pt 5pt;vertical-align:top;position:relative;min-width:1em}

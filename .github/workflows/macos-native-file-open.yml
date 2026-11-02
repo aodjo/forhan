@@ -1,0 +1,60 @@
+name: Verify actual Mac native document opening
+on:
+  push:
+    branches: [test/macos-native-file-open]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  native-file-open:
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            arch: arm64
+          - os: macos-15-intel
+            arch: x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          architecture: ${{ matrix.arch }}
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          repository: aodjo/forhan
+          run-id: 41408280436
+          name: Forhan-darwin-${{ matrix.arch }}
+          path: .tools/original-artifacts
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          repository: aodjo/forhan
+          run-id: 41408280436
+          name: Forhan-validation-darwin-${{ matrix.arch }}
+          path: .tools/original-validation
+      - name: Exercise real cold, warm and resident document delivery to the original ZIP application
+        run: node scripts/test-macos-file-open.ts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FORHAN_ORIGINAL_RUN: 41408280436
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Forhan-actual-native-file-open-${{ matrix.arch }}
+          path: |
+            release/validation/macos-file-open-*/
+            release/validation/macos-file-open-*.json
+            test-results/macos-file-open/
+          if-no-files-found: error
+          retention-days: 7

@@ -35,20 +35,22 @@ export async function importSource(page:Page,name:string,doc:JSONContent):Promis
 /**
  * Select actual original DOM text without editing its source or using editor internals.
  *
- * Auxiliary drawings are excluded from character offsets. The next real Shift
- * key synchronizes an otherwise asynchronous browser selection before clicking
- * a selection-preserving native command button.
+ * Auxiliary drawings are excluded from character offsets. The actual editing
+ * ribbon is mounted before source selection. Its ordinary Copy command must
+ * acknowledge the requested nonempty or collapsed selection before a later
+ * selection-preserving native command can be invoked.
  * @async
  * @param {Page} page - Actual application renderer.
  * @param {string} selector - One actual original source paragraph.
  * @param {number} from - Original UTF-16 anchor inside that paragraph.
  * @param {number} [to=from] - Original head, or the same position for a cursor.
- * @returns {Promise<void>} Resolves with the actual source range selected and editor focused.
+ * @returns {Promise<void>} Resolves after the actual editor selection is acknowledged by its real Copy command.
  * @throws {RangeError} If either requested original source endpoint is absent.
  * @example
  * await selectSource(page,'.tiptap > p:first-child',1);
  */
 export async function selectSource(page:Page,selector:string,from:number,to=from):Promise<void>{
+  await page.locator('button[data-native-tab="edit"]').click();
   await page.locator('.tiptap').focus();
   await page.locator(selector).evaluate(
     /**
@@ -80,6 +82,8 @@ export async function selectSource(page:Page,selector:string,from:number,to=from
     },{from,to},
   );
   await page.keyboard.press('Shift');
+  if(from!==to)await expect(page.locator('.native-ribbon [data-native-action="copy"]')).toBeEnabled();
+  else await expect(page.locator('.native-ribbon [data-native-action="copy"]')).toBeDisabled();
 }
 
 /**

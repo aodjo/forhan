@@ -267,6 +267,23 @@ async function verifyFormatCopySession(): Promise<void> {
     ownedProcess = desktop.process();
     expect(ownedProcess.pid).not.toBe(firstPid);
     await expect(page.locator(".tiptap")).toBeVisible({ timeout: 30000 });
+    expect(await page.evaluate(
+      /**
+       * Read actual fresh-process copy memory independently from any source-selection UI command.
+       *
+       * This is the real isolated native bridge after a confirmed normal quit
+       * and a genuinely different process launch, not a substituted memory result.
+       * @async
+       * @returns {Promise<import('../src/types.ts').BridgeResult<import('../src/types.ts').FormatCopySession|null>>} Actual accepted native process-memory snapshot.
+       * @throws {Error} If the real native bridge is unavailable.
+       * @example
+       * // A fresh native process must return a genuine null appearance snapshot.
+       */
+      async()=>{
+        if(!window.forhan)throw new Error('Actual native format-copy bridge is unavailable.');
+        return await window.forhan.readFormatCopy();
+      },
+    )).toEqual({ok:true,value:null});
     await importSource(page, "fresh-session.fhn", TARGET);
     /** The new actual process supplies its original source before any remembered-paste attempt. */
     const before = await saveNativeCopy(

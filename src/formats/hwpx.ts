@@ -1,4 +1,5 @@
 import type { JSONContent } from "@tiptap/core";
+import {cellFieldName} from '../cell-field-name.ts';
 import {readHwpxCellProperties,readHwpxCellMargins,hwpxCellProperties,nativeCellMargins} from '../cell-properties.ts';
 import { characterDecoration, nativeDecorationPattern, NATIVE_LINE_PATTERNS, type CharacterDecoration, type DecorationKind } from "../character-decorations.ts";
 import { characterShadow } from "../character-shadow.ts";
@@ -1648,6 +1649,7 @@ export async function readHwpx(
               attrs: {
                 colspan: number(span.colSpan, 1),
                 rowspan: number(span.rowSpan, 1),
+                nativeCellFieldName:cellFieldName(tc.attrs.name??''),
                 nativeCellProperties:readHwpxCellProperties(tc.attrs,child(tc,'subList')?.attrs??{},child(tc,'cellMargin')?.attrs),
                 colwidth: size.width ? [] : null,
               },
@@ -3708,6 +3710,7 @@ export async function writeHwpx({
                 /** Complete retained cell appearance is serialized independently of its unchanged source shell. */
                 const properties=hwpxCellProperties(c.attrs?.nativeCellProperties);
                 Object.assign(tc.attrs,properties.cell,{header:String(Number(c.type==='tableHeader'))});
+                if(c.attrs?.nativeCellFieldName!==undefined&&c.attrs.nativeCellFieldName!==null)tc.attrs.name=cellFieldName(c.attrs.nativeCellFieldName);
                 if (
                   prior &&
                   (c.attrs?.backgroundColor || null) !==

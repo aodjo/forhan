@@ -56,7 +56,11 @@ async function verifyNativeCellPropertyCopy(): Promise<void> {
           ({ app }) => app.isPackaged,
         ),
       ).toBe(true);
-    await importSource(page, "native-cell-original.fhn", cellDocument(true));
+    /** Source appearance and destination field identity have independent original ownership. */
+    const source=cellDocument(true),target=cellDocument(false),targetName='포한_<TARGET>&"🙂';
+    source.content![0].content![0].content![0].attrs!.nativeCellFieldName='SOURCE_FIELD';
+    target.content![0].content![0].content![0].attrs!.nativeCellFieldName=targetName;
+    await importSource(page, "native-cell-original.fhn", source);
     await selectSource(page, ".tiptap th p", 1);
     await ribbonCopy(page);
     await expect(page.locator(".native-dialog-format-painter")).toBeVisible();
@@ -71,7 +75,7 @@ async function verifyNativeCellPropertyCopy(): Promise<void> {
     await importSource(
       page,
       "native-cell-destination.fhn",
-      cellDocument(false),
+      target,
     );
     /** Actual FHN output establishes target source identity and content before the native operation. */
     const before = await saveNativeCopy(
@@ -112,6 +116,7 @@ async function verifyNativeCellPropertyCopy(): Promise<void> {
         cell = table.content![0].content![0];
       expect(table.attrs!.nativeCellMargins).toEqual(TARGET_MARGINS);
       expect(cell.type).toBe("tableHeader");
+      expect(cell.attrs!.nativeCellFieldName).toBe(targetName);
       expect(cell.attrs!.nativeCellProperties).toEqual(SOURCE_PROPERTIES);
       expect(cell.attrs!.backgroundColor).toBe("#112233");
       expect(cell.content![0].content![0].text).toBe("대상 형식 유지 ABC");

@@ -1,4 +1,5 @@
 import { Extension, Node, Mark, mergeAttributes } from "@tiptap/core";
+import {readHtmlCellFieldName,renderHtmlCellFieldName,readHtmlCellFieldData,renderHtmlCellFieldData} from './cell-field-name.ts';
 import { renderParagraphMargin, readParagraphMargin } from "./paragraph-layout";
 import {renderParagraphWordBreaks,readParagraphWordBreaks} from './paragraph-word-break.ts';
 import {readParagraphCondense,renderParagraphCondense} from './paragraph-minimum-space.ts';
@@ -223,6 +224,10 @@ export const DocumentAttributes = Extension.create({
       {
         types: ["tableCell", "tableHeader"],
         attributes: {
+          /** Cell field identity is separate from cell appearance and never copied by the format painter. */
+          nativeCellFieldName: {default:null,parseHTML:readHtmlCellFieldName,renderHTML:renderHtmlCellFieldName},
+          /** Unknown original HWP cell extensions remain available for lossless native saves. */
+          nativeCellFieldData: {default:null,parseHTML:readHtmlCellFieldData,renderHTML:renderHtmlCellFieldData},
           /** Complete neutral native properties remain in editor JSON and every native document save. */
           nativeCellProperties: {default:null,parseHTML:readNativeCellProperties,renderHTML:renderNativeCellProperties},
           /** Original native flag bits survive alongside the explicitly represented cell properties. */

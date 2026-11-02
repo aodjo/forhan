@@ -1,4 +1,5 @@
 import CFB from "cfb";
+import {writeHwpCellField} from '../cell-field-name.ts';
 import {hwpCellFlags,nativeCellProperties,nativeCellMargins,type NativeCellMargins} from '../cell-properties.ts';
 import { characterDecoration, type CharacterDecoration } from "../character-decorations.ts";
 import { characterFonts } from "../character-fonts.ts";
@@ -1215,7 +1216,7 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
       /** Exact source cell properties remain independent from the destination geometry and border reference. */
       const properties=nativeCellProperties(cell.node.attrs?.nativeCellProperties),flags=hwpCellFlags(properties,cell.node.type==='tableHeader',cell.node.attrs?.nativeCellFlags??0),margins=properties.hasMargin?properties.margins:layout.margins;
       /** Modern cell-list header containing paragraph count and explicit geometry. */
-      const cellHeader = fields(47, [
+      const cellHeader = join([fields(38, [
         [0, blocks.length],
         [4, flags],
         [8, cell.column, 2],
@@ -1230,7 +1231,7 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
         [30, properties.margins.bottom, 2],
         [32, cell.fill, 2],
         [34, cell.width],
-      ]);
+      ]),writeHwpCellField(cell.node.attrs?.nativeCellFieldName,cell.node.attrs?.nativeCellFieldData)]);
       result.push(record(72, level + 1, cellHeader));
       for (let index = 0; index < blocks.length; index++)
         result.push(

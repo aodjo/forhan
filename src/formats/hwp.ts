@@ -3,6 +3,7 @@
  * https://cdn.hancom.com/link/docs/한글문서파일형식_5.0_revision1.3.pdf
  */
 import CFB from "cfb";
+import {readHwpCellField} from '../cell-field-name.ts';
 import {readHwpCellProperties,type NativeCellProperties,type NativeCellMargins} from '../cell-properties.ts';
 import { characterDecoration } from "../character-decorations.ts";
 import { NATIVE_SHADOW_TYPES } from "../character-shadow.ts";
@@ -70,6 +71,8 @@ export interface HwpNodeAttributes extends HwpParagraphAttributes {
   nativeCellProperties?: NativeCellProperties;
   nativeCellFlags?: number;
   nativeCellMargins?: NativeCellMargins;
+  nativeCellFieldName?: string | null;
+  nativeCellFieldData?: string;
   src?: string;
   alt?: string;
   width?: number;
@@ -1421,6 +1424,7 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
       const attrs: HwpNodeAttributes = {
         colspan,
         rowspan,
+        ...readHwpCellField(cell.bytes.subarray(offset+30)),
         nativeCellFlags: cd.getUint32(offset-4,true),
         nativeCellProperties: readHwpCellProperties(cd.getUint32(offset-4,true),{
           left:cd.getUint16(offset+16,true),right:cd.getUint16(offset+18,true),

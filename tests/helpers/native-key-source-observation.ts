@@ -28,7 +28,7 @@ export function observeNativeKeySource():void{
   function snapshot(phase:string,event?:Event):void{
     if(records.length>=256)return;
     /** Only the current original editable source is eligible for observation. */
-    const root=document.querySelector<HTMLElement>('.tiptap'),selection=document.getSelection(),focus=selection?.focusNode,anchor=selection?.anchorNode;
+    const root=document.querySelector<HTMLElement&{editor?:import('@tiptap/core').Editor}>('.tiptap'),selection=document.getSelection(),focus=selection?.focusNode,anchor=selection?.anchorNode;
     if(!root||!selection||!focus||!anchor||!root.contains(focus)||!root.contains(anchor))return;
     /** Native event flags remain original rather than inferred from a requested shortcut string. */
     const key=event as KeyboardEvent|undefined,input=event as InputEvent|undefined,element=focus.nodeType===Node.ELEMENT_NODE?focus as Element:focus.parentElement,range=document.createRange();
@@ -39,7 +39,7 @@ export function observeNativeKeySource():void{
     /** The actual focused source style can reveal platform font or wrapper differences. */
     const style=element?getComputedStyle(element):null;
     records.push({phase,time:performance.now(),event:event?.type,key:key?.key,code:key?.code,meta:key?.metaKey,control:key?.ctrlKey,shift:key?.shiftKey,alt:key?.altKey,trusted:event?.isTrusted,defaultPrevented:event?.defaultPrevented,inputType:input?.inputType,data:input?.data,composing:input?.isComposing,
-      collapsed:selection.isCollapsed,sourceOffset:fragment.textContent?.length??0,focusNode:focus.nodeName,focusOffset:selection.focusOffset,focusText:focus.nodeType===Node.TEXT_NODE?focus.textContent?.slice(0,64):null,anchorNode:anchor.nodeName,anchorOffset:selection.anchorOffset,parentTag:element?.tagName,parentClass:element?.getAttribute('class'),parentStyle:element?.getAttribute('style'),lineKey:element?.closest('[data-forhan-visual-line]')?.getAttribute('data-forhan-visual-line'),font:style?.fontFamily,fontSize:style?.fontSize,rootFont:getComputedStyle(root).fontFamily,activeElement:document.activeElement?.tagName});
+      collapsed:selection.isCollapsed,sourceOffset:fragment.textContent?.length??0,modelSelection:root.editor?.state.selection.toJSON(),focusNode:focus.nodeName,focusOffset:selection.focusOffset,focusText:focus.nodeType===Node.TEXT_NODE?focus.textContent?.slice(0,64):null,anchorNode:anchor.nodeName,anchorOffset:selection.anchorOffset,parentTag:element?.tagName,parentClass:element?.getAttribute('class'),parentStyle:element?.getAttribute('style'),lineKey:element?.closest('[data-forhan-visual-line]')?.getAttribute('data-forhan-visual-line'),font:style?.fontFamily,fontSize:style?.fontSize,rootFont:getComputedStyle(root).fontFamily,activeElement:document.activeElement?.tagName});
   }
   /**
    * Observe original key and input events before their source handlers finish.
@@ -65,7 +65,7 @@ export function observeNativeKeySource():void{
      * // An arrow can be observed separately from the following insertText event.
      */()=>snapshot('after-'+event.type,event));
   }
-  for(/** Passive event observation never alters browser ownership or editor behavior. */const name of ['keydown','keyup','beforeinput','input'])document.addEventListener(name,observe,true);
+  for(/** Passive event observation never alters browser ownership or editor behavior. */const name of ['focus','focusin','keydown','keyup','beforeinput','input'])document.addEventListener(name,observe,true);
   document.addEventListener('selectionchange',/**
    * Observe an actual asynchronous source selection notification.
    *

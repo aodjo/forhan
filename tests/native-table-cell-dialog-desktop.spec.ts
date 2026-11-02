@@ -17,6 +17,10 @@ import {
   assertSingleCellSize,
 } from "./helpers/cell-size-editing.ts";
 import {
+  editNativeTableDistances,
+  assertNativeTableDistances,
+} from "./helpers/table-distance.ts";
+import {
   tableDialogDocument,
   openTableDialog,
   editTableDialog,
@@ -154,6 +158,54 @@ async function verifyNativeTableDialogFiles(): Promise<void> {
         "forhan",
       ),
     ).toEqual(sizeBefore);
+    for (/** Native copied payloads must preserve both original fractional margin ownership scopes. */ const scope of [
+      "cell",
+      "table",
+    ] as const) {
+      await importSource(
+        page,
+        "native-margin-" + scope + ".fhn",
+        tableDialogDocument(),
+      );
+      /** Each actual native margin import supplies its own source and one-step history baseline. */
+      const marginBefore = await saveNativeCopy(
+        desktop,
+        page,
+        profile,
+        "before-margin-" + scope,
+        "forhan",
+      );
+      await selectSource(page, ".tiptap td:first-child p", 1);
+      await openTableDialog(page);
+      await editNativeTableDistances(page, scope);
+      for (/** All actual native source formats must match original141-unit physical margin values. */ const format of [
+        "forhan",
+        "hwpx",
+        "hwp",
+      ] as const)
+        assertNativeTableDistances(
+          await saveNativeCopy(
+            desktop,
+            page,
+            profile,
+            "margin-" + scope,
+            format,
+          ),
+          scope,
+          format,
+        );
+      await page.locator(".tiptap").focus();
+      await page.keyboard.press("ControlOrMeta+z");
+      expect(
+        await saveNativeCopy(
+          desktop,
+          page,
+          profile,
+          "undone-margin-" + scope,
+          "forhan",
+        ),
+      ).toEqual(marginBefore);
+    }
     for (/** Actual copied native payloads must also retain original zero and fractional native control values. */ const [
       display,
       units,

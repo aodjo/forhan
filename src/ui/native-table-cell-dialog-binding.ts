@@ -31,20 +31,20 @@ export interface TableCellDialogBinding {
  * Convert an explicitly entered native millimeter distance to exact source units.
  *
  * Blank mixed values never become zero. Only actual edits pass through this
- * conversion; untouched rounded controls retain their original integers.
+ * conversion, truncating fractional native units as the original controls do.
+ * Untouched rounded controls retain their original integers.
  * @param {string} text - Explicit user-entered native millimeter draft.
- * @param {boolean} [truncate=false] - Whether native cell sizing truncates fractional source units.
  * @returns {number} Integral nonnegative native source distance.
  * @throws {RangeError} If the input is malformed, negative or outside source limits.
  * @example
  * tableDialogUnits('1.80'); // 510
  */
-function tableDialogUnits(text: string, truncate = false): number {
+function tableDialogUnits(text: string): number {
   if (!/^\d+(?:\.\d{0,2})?$/u.test(text.trim()))
     throw new RangeError("0 이상의 숫자를 소수점 둘째 자리까지 입력하세요.");
   /** Native source precision remains independent from the rounded control display. */
   const physical = (Number(text) * 7200) / 25.4,
-    units = truncate ? Math.floor(physical) : Math.round(physical);
+    units = Math.floor(physical);
   if (!Number.isSafeInteger(units) || units < 0 || units > 0x7fffffff)
     throw new RangeError("입력한 길이가 저장 범위를 벗어났습니다.");
   return units;
@@ -203,7 +203,7 @@ export function bindNativeTableCellDialog(
             height: Number(initial.fields.height),
           };
           if (name === "width" || name === "height")
-            patch.size[name] = tableDialogUnits(String(value(name)), true);
+            patch.size[name] = tableDialogUnits(String(value(name)));
         } else if (name === "pageBreak")
           patch.table = { ...patch.table, pageBreak: value(name) as 0 | 1 | 2 };
         else if (name === "repeatHeader")

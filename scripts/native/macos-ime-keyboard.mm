@@ -126,6 +126,8 @@ int main(void){
     CFArrayRef const sources=TISCreateInputSourceList(NULL,true);
     /** Only sources actually enabled by this invocation may be disabled during cleanup. */
     NSMutableArray* const newlyEnabled=[NSMutableArray array];
+    /** Original parent and mode states are captured before any implicit native enable behavior can change them. */
+    NSMutableDictionary* const originalStates=[NSMutableDictionary dictionary];
     CGEventSourceRef eventSource=NULL;
     TISInputSourceRef freshTarget=NULL;
     bool succeeded=false;
@@ -153,22 +155,36 @@ int main(void){
       for(/** Every key is validated before any source state changes or input is posted. */ id const key in keys)
         if(![key isKindOfClass:[NSString class]]||!codes[key])@throw [NSException exceptionWithName:@"InvalidKey" reason:@"An unknown physical key was requested." userInfo:nil];
       requireOwner(pid,executable,bundle);
-      /** The exact mode ID was observed in both real Mac capability reports before this gate was written. */
+      /** Both actual installed identities were observed before this helper was written. */
       TISInputSourceRef target=NULL;
+      TISInputSourceRef parent=NULL;
       for(CFIndex index=0;index<CFArrayGetCount(sources);index++){
-        /** Modern macOS manages keyboard input modes as individual sources; the parent method is not enabled separately. */
+        /** The original complete Korean family state detects implicit native mode changes during restoration. */
         TISInputSourceRef const source=(TISInputSourceRef)CFArrayGetValueAtIndex(sources,index);
         NSString* const name=identifier(source);
-        if(![name isEqualToString:@"com.apple.inputmethod.Korean.2SetKorean"])continue;
-        if(!enabled(source)){
-          /** Original status and identity are retained before interpreting a native enable result. */
-          OSStatus const status=TISEnableInputSource(source);
-          [newlyEnabled addObject:@{@"id":name,@"status":@(status),@"source":[NSValue valueWithPointer:source]}];
-          if(status!=noErr)@throw [NSException exceptionWithName:@"EnableInputSourceFailed" reason:[NSString stringWithFormat:@"Native enable failed for %@: %d",name,(int)status] userInfo:nil];
-        }
+        if([name hasPrefix:@"com.apple.inputmethod.Korean"])originalStates[name]=@(enabled(source));
+        if([name isEqualToString:@"com.apple.inputmethod.Korean"])parent=source;
         if([name isEqualToString:@"com.apple.inputmethod.Korean.2SetKorean"])target=source;
       }
-      if(!target)@throw [NSException exceptionWithName:@"KoreanInputSourceUnavailable" reason:@"The installed Apple Korean two-set source was not found." userInfo:nil];
+      report[@"originalKoreanSourceStates"]=originalStates;
+      if(!target||!parent)@throw [NSException exceptionWithName:@"KoreanInputSourceUnavailable" reason:@"The installed Apple Korean parent or two-set source was not found." userInfo:nil];
+      /** The actual SDK requires an enabled parent before an input mode can be enabled or selected. */
+      for(NSString* const name in @[@"com.apple.inputmethod.Korean",@"com.apple.inputmethod.Korean.2SetKorean"]){
+        if([originalStates[name] boolValue])continue;
+        /** Planned restoration includes a formerly disabled mode implicitly enabled by its parent. */
+        NSMutableDictionary* const change=[@{@"id":name,@"status":[NSNull null],@"enableCalled":@NO} mutableCopy];
+        [newlyEnabled addObject:change];
+        TISInputSourceRef const currentSource=freshSource(name);
+        if(!currentSource)@throw [NSException exceptionWithName:@"InputSourceDisappeared" reason:@"An installed input source disappeared before activation." userInfo:nil];
+        if(!enabled(currentSource)){
+          /** Native return codes remain distinct from independently observed enabled state. */
+          OSStatus const status=TISEnableInputSource(currentSource);
+          change[@"status"]=@(status);change[@"enableCalled"]=@YES;
+          CFRelease(currentSource);
+          if(status!=noErr)@throw [NSException exceptionWithName:@"EnableInputSourceFailed" reason:[NSString stringWithFormat:@"Native enable failed for %@: %d",name,(int)status] userInfo:nil];
+          settle(0.3);
+        }else CFRelease(currentSource);
+      }
       for(int attempt=0;attempt<20;attempt++){
         if(freshTarget)CFRelease(freshTarget);
         freshTarget=freshSource(@"com.apple.inputmethod.Korean.2SetKorean");
@@ -226,12 +242,15 @@ int main(void){
       bool cleanup=restored==noErr&&[report[@"restoredSource"] isEqualToString:report[@"originalSource"]];
       /** Cleanup only disables sources whose previously disabled state was recorded by this invocation. */
       NSMutableArray* const changes=[NSMutableArray array];
-      for(NSDictionary* const item in [newlyEnabled reverseObjectEnumerator]){
-        /** Native source status is observed after restoring the original selection. */
-        TISInputSourceRef const source=(TISInputSourceRef)[item[@"source"] pointerValue];
-        OSStatus const disabled=enabled(source)?TISDisableInputSource(source):noErr;
-        [changes addObject:[@{@"id":item[@"id"],@"enableStatus":item[@"status"],@"disableStatus":@(disabled)} mutableCopy]];
+      for(NSDictionary* const item in newlyEnabled){
+        /** Restore the parent before verifying modes, using fresh state rather than pre-enable objects. */
+        TISInputSourceRef const source=freshSource(item[@"id"]);
+        bool const called=enabled(source);
+        OSStatus const disabled=called?TISDisableInputSource(source):noErr;
+        [changes addObject:[@{@"id":item[@"id"],@"enableStatus":item[@"status"],@"enableCalled":item[@"enableCalled"],@"disableStatus":called?@(disabled):[NSNull null],@"disableCalled":@(called)} mutableCopy]];
+        if(source)CFRelease(source);
         cleanup=cleanup&&disabled==noErr;
+        settle(0.1);
       }
       settle(0.3);
       /** Fresh enumeration after all cleanup avoids interpreting an intermediate parent/mode state as final restoration. */
@@ -246,6 +265,14 @@ int main(void){
         change[@"originalDisabledStateRestored"]=@(reverted);cleanup=cleanup&&reverted;
       }
       if(finalSources)CFRelease(finalSources);
+      /** Every originally installed Korean mode must retain its exact original state after cleanup. */
+      NSMutableDictionary* const finalStates=[NSMutableDictionary dictionary];
+      for(NSString* const name in originalStates){
+        TISInputSourceRef const source=freshSource(name);
+        finalStates[name]=@(enabled(source));cleanup=cleanup&&source&&[finalStates[name] isEqual:originalStates[name]];
+        if(source)CFRelease(source);
+      }
+      report[@"finalKoreanSourceStates"]=finalStates;
       report[@"sourceChanges"]=changes;report[@"restored"]=@(cleanup);report[@"success"]=@(succeeded&&cleanup);
       if(original)CFRelease(original);if(sources)CFRelease(sources);
     }

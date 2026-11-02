@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron';
 import type { IpcRendererEvent } from 'electron';
-import type { AppAction, BridgeResult, DesktopBridge, PageSettings } from '../src/types';
+import type { AppAction, BridgeResult, DesktopBridge, PageSettings, FormatCopySession } from '../src/types';
 
 /** Native actions received before the asynchronously initialized editor subscribes retain their order. */
 const pendingActions: AppAction[] = [];
@@ -41,6 +41,27 @@ async function invoke<T>(channel: string, ...args: unknown[]): Promise<BridgeRes
 
 /** Expose only document operations supported by the isolated main process. */
 const bridge: DesktopBridge = {
+  /**
+   * Read appearance remembered by the authenticated native application process.
+   *
+   * Raw IPC handles remain private to the isolated preload sandbox.
+   * @async
+   * @returns {Promise<BridgeResult<FormatCopySession|null>>} Independent current copied appearance or no source.
+   * @example
+   * const result=await window.forhan?.readFormatCopy();
+   */
+  readFormatCopy:()=>invoke('format-copy:read'),
+  /**
+   * Remember a bounded accepted appearance snapshot for this native app lifetime.
+   *
+   * The main process validates the source without writing a settings file.
+   * @async
+   * @param {FormatCopySession} value - Independent copied appearance and accepted choices.
+   * @returns {Promise<BridgeResult<boolean>>} Whether the native snapshot was accepted.
+   * @example
+   * await window.forhan?.writeFormatCopy({version:1,source,options});
+   */
+  writeFormatCopy:value=>invoke('format-copy:write',value),
   /**
    * Apply an allowed caption-button operation to the native editor window.
    *

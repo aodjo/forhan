@@ -6,6 +6,7 @@ import { randomUUID } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { documentContentStyles, documentPageStyles } from '../src/document-styles.ts';
 import {portableFontStyles} from '../src/portable-font-styles.ts';
+import {FormatCopyMemory} from '../src/format-copy-session.ts';
 import { showPdfPreview, clearStalePreviews, isPreviewWindow } from './preview.cts';
 import type { AppAction, BridgeResult, DocumentPayload, ExportFormat, OpenedFile, PageSettings, RecentFile, SavedFile } from '../src/types';
 
@@ -31,6 +32,8 @@ let confirmedClose = false;
 let quitRequested = false;
 /** Each actual document window owns at most one outstanding close decision. */
 const pendingWindowCloses = new WeakSet<BrowserWindow>();
+/** Appearance-only memory belongs to the native app lifetime and outlives its individual document windows. */
+const formatCopyMemory=new FormatCopyMemory();
 let queuedFile: string | null = null;
 /** Whether initial startup has already created an editor window. */
 let hasCreatedEditor = false;
@@ -708,6 +711,32 @@ async function initialize(): Promise<void> {
   session.defaultSession.setSpellCheckerEnabled(false);
   await clearStalePreviews().catch(reportError);
   await fs.mkdir(app.getPath('userData'), { recursive: true });
+  handle('format-copy:read',
+    /**
+     * Read an independent appearance snapshot for the authenticated native editor.
+     *
+     * Native handler authentication remains in force for replacement renderers.
+     * No document, system clipboard or filesystem state is read or changed.
+     * @returns {import('../src/format-copy-session.ts').FormatCopySession|null} Current process-local copied appearance.
+     * @example
+     * // A new Mac source window can read a snapshot accepted by its prior renderer.
+     */
+    ()=>formatCopyMemory.read(),
+  );
+  handle('format-copy:write',
+    /**
+     * Retain one validated appearance snapshot in native app-session memory.
+     *
+     * Failed validation preserves prior memory; no source data reaches disk.
+     * @param {unknown} value - Untrusted isolated renderer appearance snapshot.
+     * @returns {boolean} True only after complete validation and independent storage.
+     * @throws {TypeError} If the source or accepted choices are malformed.
+     * @throws {RangeError} If the appearance snapshot exceeds its session limit.
+     * @example
+     * // Actual app exit discards this memory without a persistence operation.
+     */
+    value=>{formatCopyMemory.write(value);return true;},
+  );
   handle('document:open', /**
    * Handle the document:open application operation.
    *

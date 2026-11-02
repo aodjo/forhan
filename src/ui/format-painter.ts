@@ -5,21 +5,11 @@ import {CellSelection} from '@tiptap/pm/tables';
 import {closeHistory} from '@tiptap/pm/history';
 import {defaultFontSize} from '../formatting.ts';
 import {hasCharacterMark} from '../character-defaults.ts';
+import {FORMAT_COPY_PARAGRAPH_FIELDS,type FormatPainterSource,type FormatPainterOptions} from '../format-copy-session.ts';
+export type {FormatPainterMode,FormatPainterOptions,FormatPainterSource} from '../format-copy-session.ts';
 
-/** The independent body-format choices currently represented by the editable source schema. */
-export type FormatPainterMode='character'|'paragraph'|'both';
-/** Explicit dialog choices remain separate from the immutable copied source. */
-export interface FormatPainterOptions {mode:FormatPainterMode;cellBackground:boolean;cellOnly:boolean;}
-/** Copied appearance contains no source identifiers, text, hyperlinks, dimensions or document ownership. */
-export interface FormatPainterSource {
-  marks:NonNullable<JSONContent['marks']>;
-  paragraph:Record<string,unknown>;
-  cellBackground:string|null|undefined;
-}
 /** Only character appearance marks can overwrite target appearance; links retain their own destination. */
 const CHARACTER_MARKS=new Set(['bold','italic','underline','strike','textStyle','superscript','subscript','code']);
-/** Paragraph-shape fields exclude authored page breaks, source identities and semantic heading levels. */
-const PARAGRAPH_FIELDS=['textAlign','lineHeight','marginLeft','marginRight','marginTop','marginBottom','textIndent','nativeSnapToGrid','nativeParagraphCondense','nativeBreakLatinWord','nativeBreakNonLatinWord'] as const;
 
 /**
  * Locate the source cell containing a collapsed original text cursor.
@@ -75,7 +65,7 @@ export function captureFormatPainter(editor:Editor):FormatPainterSource|null{
   if(sourceLink&&sourceLink.attrs.nativeDefaultUnderline!==false&&!hasCharacterMark(marks,'underline'))marks.push({type:'underline'});
   /** Native paragraph shape remains independent from the original paragraph's identity. */
   const paragraph:Record<string,unknown>={};
-  for(/** Every represented paragraph property is copied, including its explicit default reset. */const key of PARAGRAPH_FIELDS)paragraph[key]=block.attrs[key]??(key==='textAlign'?'justify':key==='lineHeight'?'1.6':null);
+  for(/** Every represented paragraph property is copied, including its explicit default reset. */const key of FORMAT_COPY_PARAGRAPH_FIELDS)paragraph[key]=block.attrs[key]??(key==='textAlign'?'justify':key==='lineHeight'?'1.6':null);
   /** An absent cell stays distinguishable from an actual cell with no fill. */
   const cell=sourceCell(editor);
   return structuredClone({marks,paragraph,cellBackground:cell?cell.attrs.backgroundColor??null:undefined});

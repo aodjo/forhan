@@ -1616,6 +1616,10 @@ export async function readHwpx(
                 cell.attrs.colwidth.push(
                   (columnWidths[start + offset] ||number(size.width)/number(span.colSpan,1))/CELL_UNITS_PER_PIXEL,
                 );
+              /** A resized owning cell can disagree with the shared logical grid; its actual source total takes precedence. */
+              let resolvedWidth=0;
+              for(/** Summing before rounding retains the exact native width across merged source columns. */const width of cell.attrs.colwidth)resolvedWidth+=width*CELL_UNITS_PER_PIXEL;
+              if(Math.round(resolvedWidth)!==number(size.width))cell.attrs.colwidth=[number(size.width)/CELL_UNITS_PER_PIXEL];
             }
             /**
              * The native solid background color selected for the current table cell.
@@ -3717,6 +3721,17 @@ export async function writeHwpx({
                       "cellMargin",
                     ].includes(local(n)),
                 );
+                /** Real owning-cell widths remain independent from the shared logical column allocation. */
+                const suppliedWidths=c.attrs?.colwidth as unknown;
+                let ownWidth=columnSpanWidth(columnWidths,start,cs);
+                if(Array.isArray(suppliedWidths)&&(suppliedWidths.length===cs||suppliedWidths.length===1)){
+                  let total=0,valid=true;
+                  for(/** Both per-column arrays and retained one-slot merged totals belong to this actual source cell. */const part of suppliedWidths){
+                    if(typeof part!=='number'||!Number.isFinite(part)||part<=0){valid=false;break;}
+                    total+=part*CELL_UNITS_PER_PIXEL;
+                  }
+                  if(valid)ownWidth=Math.max(1,Math.round(total));
+                }
                 /**
                  * The retained native cell size reused when imported geometry remains applicable.
                  */
@@ -3727,12 +3742,12 @@ export async function writeHwpx({
                 const cellSize = oldSize
                   ? clone(oldSize)
                   : el("hp:cellSz", {
-                      width: columnSpanWidth(columnWidths, start, cs),
+                      width: ownWidth,
                       height: 2400 * rs,
                     });
                 if (geometryChanged)
                   cellSize.attrs.width = String(
-                    columnSpanWidth(columnWidths, start, cs),
+                    ownWidth,
                   );
                 /** Explicit source height remains exact even when text changes or a cell is resized. */
                 const cellHeight=nativeCellDimension(c.attrs?.nativeCellHeight);

@@ -9,6 +9,10 @@ import {
 import { importSource, selectSource } from "./helpers/format-painter.ts";
 import { saveNativeCopy } from "./helpers/format-copy-native.ts";
 import {
+  cellSizeDocument,
+  assertIndependentCellWidths,
+} from "./helpers/cell-size.ts";
+import {
   tableDialogDocument,
   openTableDialog,
   editTableDialog,
@@ -82,6 +86,26 @@ async function verifyNativeTableDialogFiles(): Promise<void> {
     expect(
       await saveNativeCopy(desktop, page, profile, "undone", "forhan"),
     ).toEqual(before);
+    await importSource(
+      page,
+      "native-independent-cell-widths.fhn",
+      cellSizeDocument(true),
+    );
+    for (/** Actual copied ZIP and DMG applications must preserve the independently sized original cell. */ const format of [
+      "forhan",
+      "hwpx",
+      "hwp",
+    ] as const)
+      assertIndependentCellWidths(
+        await saveNativeCopy(
+          desktop,
+          page,
+          profile,
+          "independent-widths",
+          format,
+        ),
+        format,
+      );
   } finally {
     await closeOwnedDesktop(desktop);
     expect(path.dirname(profile)).toBe(path.resolve(tmpdir()));

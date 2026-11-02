@@ -1,4 +1,110 @@
-import { TableCell, TableHeader } from "@tiptap/extension-table";
+import { Table, TableCell, TableHeader } from "@tiptap/extension-table";
+import { Plugin, type Transaction, type EditorState } from "@tiptap/pm/state";
+import { tableEditingKey } from "@tiptap/pm/tables";
+
+/**
+ * Keep original owning-cell widths while retaining ordinary table structure repair.
+ *
+ * Hangul permits different widths in cells that share a logical column. The
+ * standard table plugin replaces those widths with a common column value.
+ * Only that replacement is reversed; valid selection and structural repairs
+ * retain their original implementation and transaction mapping.
+ * @param {Plugin} plugin - Original editor table plugin with its existing key and event behavior.
+ * @returns {Plugin} Equivalent plugin that preserves independently owned source widths.
+ * @example
+ * preserveNativeCellWidths(tablePlugin); // Keeps5669 above6122 in one column.
+ */
+export function preserveNativeCellWidths(plugin: Plugin): Plugin {
+  if (plugin.spec.key !== tableEditingKey || !plugin.spec.appendTransaction)
+    return plugin;
+  /** The original repair and selection implementation remains the source of structural behavior. */
+  const append = plugin.spec.appendTransaction;
+  return new Plugin({
+    ...plugin.spec,
+    /**
+     * Retain each structurally unchanged cell's original width after ordinary table repair.
+     *
+     * Mapped positions preserve actual source ownership when other repairs insert
+     * cells. Repaired spans keep their repaired widths. A width-only reversal
+     * produces no history entry or repeated normalization transaction.
+     * @param {readonly Transaction[]} transactions - Original transactions awaiting table normalization.
+     * @param {EditorState} oldState - State before those actual transactions.
+     * @param {EditorState} state - Current source state with independently owned cell widths.
+     * @returns {Transaction|null|undefined} Necessary structural/selection repair or no effective change.
+     * @example
+     * // Normalizing another row cannot replace an original first-cell width.
+     */
+    appendTransaction(
+      transactions: readonly Transaction[],
+      oldState: EditorState,
+      state: EditorState,
+    ) {
+      /** Existing normalization still repairs malformed topology and genuine invalid selections. */
+      const repaired = append.call(this, transactions, oldState, state);
+      if (!repaired?.docChanged) return repaired;
+      state.doc.descendants(
+        /**
+         * Restore only a real original cell's independently owned column measurements.
+         *
+         * New cells and altered spans remain governed by structural normalization.
+         * @param {import('@tiptap/pm/model').Node} before - Actual source node before the repair.
+         * @param {number} position - Its original document position.
+         * @returns {void} Retains source measurements in the mapped owning cell.
+         * @example
+         * // An unrelated missing-cell repair must still add its real missing cell.
+         */
+        (before, position) => {
+          if (
+            before.type.spec.tableRole !== "cell" &&
+            before.type.spec.tableRole !== "header_cell"
+          )
+            return;
+          /** Only matching original cell structure can receive retained source width metadata. */
+          const mapped = repaired.mapping.map(position),
+            after = repaired.doc.nodeAt(mapped);
+          if (
+            !after ||
+            after.type !== before.type ||
+            after.attrs.colspan !== before.attrs.colspan ||
+            after.attrs.rowspan !== before.attrs.rowspan ||
+            !after.content.eq(before.content)
+          )
+            return;
+          if (
+            JSON.stringify(after.attrs.colwidth) !==
+            JSON.stringify(before.attrs.colwidth)
+          )
+            repaired.setNodeMarkup(
+              mapped,
+              undefined,
+              { ...after.attrs, colwidth: before.attrs.colwidth },
+              after.marks,
+            );
+        },
+      );
+      return repaired.doc.eq(state.doc) &&
+        repaired.selection.eq(state.selection)
+        ? null
+        : repaired;
+    },
+  });
+}
+
+/** Native table repair retains individual physical cell widths instead of imposing a shared source column width. */
+export const NativeTable = Table.extend({
+  /**
+   * Keep table pointer, keyboard, paste, resize and selection plugins with native width ownership.
+   *
+   * Only the standard table normalization transaction is adapted. Column resize
+   * commands continue to edit their explicitly selected logical column normally.
+   * @returns {Plugin[]} Original table plugins with independent owning-cell widths preserved.
+   * @example
+   * // Ordinary native table commands retain their parent implementations.
+   */
+  addProseMirrorPlugins() {
+    return (this.parent?.() ?? []).map(preserveNativeCellWidths);
+  },
+});
 
 /**
  * Read an authored HTML column length without truncating fractional pixels.

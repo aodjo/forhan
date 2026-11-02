@@ -161,6 +161,10 @@ import {captureFormatPainter,applyFormatPainter} from './ui/format-painter.ts';
 import {FormatCopyMemory,type FormatCopySession,type FormatPainterOptions} from './format-copy-session.ts';
 import {renderNativeFormatPainterDialog,bindNativeFormatPainterDialog} from './ui/native-format-painter.ts';
 import './ui/native-format-painter.css';
+import {captureTableProperties,applyTableProperties} from './ui/table-properties-editor.ts';
+import {tableCellDialogValues,renderNativeTableCellDialog} from './ui/native-table-cell-dialog.ts';
+import {bindNativeTableCellDialog} from './ui/native-table-cell-dialog-binding.ts';
+import './ui/native-table-cell-dialog.css';
 import {NativeCharacterDefaults} from './ui/character-defaults.ts';
 import "./ui/native-scroll.css";
 
@@ -1099,6 +1103,7 @@ function modal(
        * trap(tabEvent) // Wraps focus when the last dialog control is active.
        */
       function trap(event: KeyboardEvent): void {
+        if(event.isComposing||event.keyCode===229)return;
         if (event.key === "Escape") {
           event.preventDefault();
           finish("cancel");
@@ -3626,6 +3631,21 @@ async function runNativeCommand(
   anchor?: HTMLElement,
 ): Promise<void> {
   if ($("#modal-root").firstChild) return;
+  if((command==='edit-object'||command==='object-properties')&&editor.isActive('table')){
+    /** Only the actual invocation's immutable source table can receive an accepted dialog draft. */
+    const context=captureTableProperties(editor);
+    if(!context)return;
+    /** Native controls retain exact source values behind their rounded physical display. */
+    const values=tableCellDialogValues(editor,context),decision=modal('표/셀 속성','',[],renderNativeTableCellDialog(values)),binding=bindNativeTableCellDialog($('.native-dialog-table-cell'),values,context);
+    try{
+      if(await decision==='apply'){
+        if(editor.state.doc!==context.doc)toast('문서가 바뀌었습니다. 표/셀 속성을 다시 실행하세요.',true);
+        else applyTableProperties(editor,context,binding.read());
+      }
+    }catch(error){toast(error instanceof Error?error.message:'표/셀 속성을 적용하지 못했습니다.',true);}
+    finally{binding.destroy();editor.view.focus();}
+    return;
+  }
   if (command === 'format-painter') {
     await formatPainter();
     return;

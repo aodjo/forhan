@@ -33,23 +33,44 @@ export async function importSource(page:Page,name:string,doc:JSONContent):Promis
 }
 
 /**
+ * Finish native editor focus restoration before assigning a synthetic source range.
+ *
+ * ProseMirror schedules its original model-to-DOM selection restoration 20 ms
+ * after focus. A genuine browser range assigned before that task can disappear
+ * before selectionchange reaches the editor. This bounded fixture delay leaves
+ * the production focus handler and every source-selection assertion unchanged.
+ * @async
+ * @param {Page} page - Actual isolated application renderer.
+ * @returns {Promise<void>} Resolves after the original delayed focus task can finish.
+ * @example
+ * await focusSourceForSelection(page);
+ */
+export async function focusSourceForSelection(page:Page):Promise<void>{
+  await page.locator('.tiptap').focus();
+  await page.waitForTimeout(30);
+}
+
+/**
  * Select actual original DOM text without editing its source or using editor internals.
  *
- * Auxiliary drawings are excluded from character offsets. The next real Shift
- * key synchronizes an otherwise asynchronous browser selection before clicking
- * a selection-preserving native command button.
+ * Auxiliary drawings are excluded from character offsets. The actual editing
+ * ribbon is mounted and the native focus restoration is settled before source
+ * selection. Its ordinary Copy command must
+ * acknowledge the requested nonempty or collapsed selection before a later
+ * selection-preserving native command can be invoked.
  * @async
  * @param {Page} page - Actual application renderer.
  * @param {string} selector - One actual original source paragraph.
  * @param {number} from - Original UTF-16 anchor inside that paragraph.
  * @param {number} [to=from] - Original head, or the same position for a cursor.
- * @returns {Promise<void>} Resolves with the actual source range selected and editor focused.
+ * @returns {Promise<void>} Resolves after the actual editor selection is acknowledged by its real Copy command.
  * @throws {RangeError} If either requested original source endpoint is absent.
  * @example
  * await selectSource(page,'.tiptap > p:first-child',1);
  */
 export async function selectSource(page:Page,selector:string,from:number,to=from):Promise<void>{
-  await page.locator('.tiptap').focus();
+  await page.locator('button[data-native-tab="edit"]').click();
+  await focusSourceForSelection(page);
   await page.locator(selector).evaluate(
     /**
      * Resolve source-only DOM endpoints and assign the browser's genuine selection.
@@ -80,6 +101,8 @@ export async function selectSource(page:Page,selector:string,from:number,to=from
     },{from,to},
   );
   await page.keyboard.press('Shift');
+  if(from!==to)await expect(page.locator('.native-ribbon [data-native-action="copy"]')).toBeEnabled();
+  else await expect(page.locator('.native-ribbon [data-native-action="copy"]')).toBeDisabled();
 }
 
 /**
@@ -95,12 +118,14 @@ export async function selectSource(page:Page,selector:string,from:number,to=from
  * const doc=await savedSource(page,'hwpx');
  */
 export async function savedSource(page:Page,format:'forhan'|'hwp'|'hwpx'='forhan'):Promise<JSONContent>{
+  await expect(page.locator('#save-document')).toBeEnabled();
   /** The listener is registered before the original save command. */
   const pending=page.waitForEvent('download');
   await page.locator('#export-menu-toggle').click();
   await page.locator(`[data-export="${format}"]`).click();
   /** Actual complete output bytes come from the public production download. */
   const download=await pending,bytes=await readFile((await download.path())!);
+  await expect(page.locator('#save-document')).toBeEnabled();
   return format==='forhan'?JSON.parse(bytes.toString()).doc:format==='hwp'?readHwp(bytes).doc:(await readHwpx(bytes)).doc;
 }
 

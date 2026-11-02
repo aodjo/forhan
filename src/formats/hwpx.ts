@@ -1,4 +1,5 @@
 import type { JSONContent } from "@tiptap/core";
+import {readHwpxCellProperties,readHwpxCellMargins,hwpxCellProperties,nativeCellMargins} from '../cell-properties.ts';
 import { characterDecoration, nativeDecorationPattern, NATIVE_LINE_PATTERNS, type CharacterDecoration, type DecorationKind } from "../character-decorations.ts";
 import { characterShadow } from "../character-shadow.ts";
 import { characterOutline, NATIVE_OUTLINE_TYPES } from "../character-outline.ts";
@@ -1647,6 +1648,7 @@ export async function readHwpx(
               attrs: {
                 colspan: number(span.colSpan, 1),
                 rowspan: number(span.rowSpan, 1),
+                nativeCellProperties:readHwpxCellProperties(tc.attrs,child(tc,'subList')?.attrs??{},child(tc,'cellMargin')?.attrs),
                 colwidth: size.width ? [] : null,
               },
               content: kids(child(tc, "subList"), "p").flatMap(paragraph),
@@ -1683,7 +1685,7 @@ export async function readHwpx(
     );
     activeLinkIds.length = 0;
     activeLinkIds.push(...parentLinks);
-    return remember({ type: "table", content }, tbl, { object: true });
+    return remember({ type: "table", attrs:{nativeCellMargins:readHwpxCellMargins(child(tbl,'inMargin')?.attrs)}, content }, tbl, { object: true });
   }
   /**
    * Advance a recognized hyperlink field scope while reading ordered controls.
@@ -3615,7 +3617,7 @@ export async function writeHwpx({
           horzOffset: 0,
         }),
         el("hp:outMargin", { left: 0, right: 0, top: 0, bottom: 0 }),
-        el("hp:inMargin", { left: 510, right: 510, top: 141, bottom: 141 }),
+        el("hp:inMargin", {...nativeCellMargins(node.attrs?.nativeCellMargins)}),
       ];
     else if (geometryChanged) {
       /** The retained native table-size record whose width follows edited column measurements. */
@@ -3632,6 +3634,20 @@ export async function writeHwpx({
           }),
         );
     }
+    /** Table defaults remain separate from cell overrides, including a zero margin on any side. */
+    const tableMargins=child(table,'inMargin');
+    if(tableMargins)Object.assign(tableMargins.attrs,Object.fromEntries(Object.entries(nativeCellMargins(node.attrs?.nativeCellMargins)).map(
+      /**
+       * Encode one exact physical table default as its native XML integer.
+       *
+       * Source units remain integral and independent of browser display zoom.
+       * @param {[string,number]} entry - Original side name and physical source distance.
+       * @returns {[string,string]} Native XML attribute pair.
+       * @example
+       * // An original top margin of zero remains the string zero.
+       */
+      ([side,value])=>[side,String(value)])));
+    else table.children.push(el('hp:inMargin',{...nativeCellMargins(node.attrs?.nativeCellMargins)}));
     table.children = table.children.filter(
       /**
        * Evaluate the filter callback.
@@ -3689,6 +3705,9 @@ export async function writeHwpx({
                         dirty: 0,
                         borderFillIDRef: cellBorder(c.attrs?.backgroundColor),
                       });
+                /** Complete retained cell appearance is serialized independently of its unchanged source shell. */
+                const properties=hwpxCellProperties(c.attrs?.nativeCellProperties);
+                Object.assign(tc.attrs,properties.cell,{header:String(Number(c.type==='tableHeader'))});
                 if (
                   prior &&
                   (c.attrs?.backgroundColor || null) !==
@@ -3717,6 +3736,7 @@ export async function writeHwpx({
                     hasTextRef: 0,
                     hasNumRef: 0,
                   });
+                Object.assign(sub.attrs,properties.list);
                 sub.children = (c.content || [{ type: "paragraph" }]).flatMap(
                   blocks,
                 );
@@ -3763,10 +3783,7 @@ export async function writeHwpx({
                   el("hp:cellSpan", { colSpan: cs, rowSpan: rs }),
                   cellSize,
                   el("hp:cellMargin", {
-                    left: 510,
-                    right: 510,
-                    top: 141,
-                    bottom: 141,
+                    ...properties.margins,
                   }),
                 );
                 return tc;

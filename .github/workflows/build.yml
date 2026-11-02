@@ -24,6 +24,11 @@ on:
         type: boolean
         default: false
         required: false
+      platform_diagnostic_repeats:
+        description: Repeat focused native diagnostics between 1 and 20 times
+        type: number
+        default: 1
+        required: false
       native_package_diagnostics:
         description: Build and execute native distribution checks without repeating unchanged renderer UI tests
         type: boolean
@@ -81,6 +86,7 @@ jobs:
         env:
           PLAYWRIGHT_JSON_OUTPUT_FILE: test-results/platform-report.json
           FORHAN_DIAGNOSTIC_GREP: ${{ inputs.platform_diagnostic_pattern }}
+          FORHAN_DIAGNOSTIC_REPEATS: ${{ inputs.platform_diagnostic_repeats }}
           FORHAN_KEY_SOURCE_OBSERVE: ${{ inputs.observe_native_keys && '1' || '' }}
       - run: node node_modules/electron-builder/cli.js ${{ matrix.package }} --publish never
         if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}

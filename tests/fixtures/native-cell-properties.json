@@ -1,0 +1,692 @@
+{
+  "kind": "owned-original-native-cell-property-observations",
+  "sourceBinarySha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "scope": "Twelve controlled original cell states, exported as actual HWP and HWPX after native COM property reads; each process quit normally. Numeric cell-list payloads and XML attributes come from these synthetic owned documents. This is ordinary COM evidence, not REA runtime tracing or complete table behavior coverage.",
+  "officialParameterReference": "https://raw.githubusercontent.com/hancom-io/devcenter-archive/main/hwp-automation/ParameterSetObject.pdf",
+  "rows": [
+    {
+      "id": "v2-baseline",
+      "expected": {
+        "textDirection": 0,
+        "lineWrap": 0,
+        "verticalAlign": 1,
+        "hasMargin": false,
+        "margins": {
+          "left": 510,
+          "right": 510,
+          "top": 141,
+          "bottom": 141
+        },
+        "protected": false,
+        "editable": false
+      },
+      "header": false,
+      "hwp": {
+        "flags": 32,
+        "cellHeaderHex": "01000000200000000000000001000100ea1700001a010000fe01fe018d008d000300ea170000000000000000000000"
+      },
+      "hwpx": {
+        "cell": {
+          "name": "",
+          "header": "0",
+          "hasMargin": "0",
+          "protect": "0",
+          "editable": "0",
+          "dirty": "0",
+          "borderFillIDRef": "3"
+        },
+        "list": {
+          "id": "",
+          "textDirection": "HORIZONTAL",
+          "lineWrap": "BREAK",
+          "vertAlign": "CENTER",
+          "linkListIDRef": "0",
+          "linkListNextIDRef": "0",
+          "textWidth": "0",
+          "textHeight": "0",
+          "hasTextRef": "0",
+          "hasNumRef": "0"
+        },
+        "margins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        },
+        "tableMargins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        }
+      }
+    },
+    {
+      "id": "v2-margins",
+      "expected": {
+        "textDirection": 0,
+        "lineWrap": 0,
+        "verticalAlign": 1,
+        "hasMargin": true,
+        "margins": {
+          "left": 123,
+          "right": 456,
+          "top": 0,
+          "bottom": 789
+        },
+        "protected": false,
+        "editable": false
+      },
+      "header": false,
+      "hwp": {
+        "flags": 65568,
+        "cellHeaderHex": "01000000200001000000000001000100ea1700001a0100007b00c801000015030300ea170000000000000000000000"
+      },
+      "hwpx": {
+        "cell": {
+          "name": "",
+          "header": "0",
+          "hasMargin": "1",
+          "protect": "0",
+          "editable": "0",
+          "dirty": "0",
+          "borderFillIDRef": "3"
+        },
+        "list": {
+          "id": "",
+          "textDirection": "HORIZONTAL",
+          "lineWrap": "BREAK",
+          "vertAlign": "CENTER",
+          "linkListIDRef": "0",
+          "linkListNextIDRef": "0",
+          "textWidth": "0",
+          "textHeight": "0",
+          "hasTextRef": "0",
+          "hasNumRef": "0"
+        },
+        "margins": {
+          "left": "123",
+          "right": "456",
+          "top": "0",
+          "bottom": "789"
+        },
+        "tableMargins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        }
+      }
+    },
+    {
+      "id": "v2-bottom",
+      "expected": {
+        "textDirection": 0,
+        "lineWrap": 0,
+        "verticalAlign": 2,
+        "hasMargin": true,
+        "margins": {
+          "left": 123,
+          "right": 456,
+          "top": 0,
+          "bottom": 789
+        },
+        "protected": false,
+        "editable": false
+      },
+      "header": false,
+      "hwp": {
+        "flags": 65600,
+        "cellHeaderHex": "01000000400001000000000001000100ea1700001a0100007b00c801000015030300ea170000000000000000000000"
+      },
+      "hwpx": {
+        "cell": {
+          "name": "",
+          "header": "0",
+          "hasMargin": "1",
+          "protect": "0",
+          "editable": "0",
+          "dirty": "0",
+          "borderFillIDRef": "3"
+        },
+        "list": {
+          "id": "",
+          "textDirection": "HORIZONTAL",
+          "lineWrap": "BREAK",
+          "vertAlign": "BOTTOM",
+          "linkListIDRef": "0",
+          "linkListNextIDRef": "0",
+          "textWidth": "0",
+          "textHeight": "0",
+          "hasTextRef": "0",
+          "hasNumRef": "0"
+        },
+        "margins": {
+          "left": "123",
+          "right": "456",
+          "top": "0",
+          "bottom": "789"
+        },
+        "tableMargins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        }
+      }
+    },
+    {
+      "id": "v2-single-line",
+      "expected": {
+        "textDirection": 0,
+        "lineWrap": 1,
+        "verticalAlign": 2,
+        "hasMargin": true,
+        "margins": {
+          "left": 123,
+          "right": 456,
+          "top": 0,
+          "bottom": 789
+        },
+        "protected": false,
+        "editable": false
+      },
+      "header": false,
+      "hwp": {
+        "flags": 65608,
+        "cellHeaderHex": "01000000480001000000000001000100ea1700001a0100007b00c801000015030300ea170000000000000000000000"
+      },
+      "hwpx": {
+        "cell": {
+          "name": "",
+          "header": "0",
+          "hasMargin": "1",
+          "protect": "0",
+          "editable": "0",
+          "dirty": "0",
+          "borderFillIDRef": "3"
+        },
+        "list": {
+          "id": "",
+          "textDirection": "HORIZONTAL",
+          "lineWrap": "SQUEEZE",
+          "vertAlign": "BOTTOM",
+          "linkListIDRef": "0",
+          "linkListNextIDRef": "0",
+          "textWidth": "0",
+          "textHeight": "0",
+          "hasTextRef": "0",
+          "hasNumRef": "0"
+        },
+        "margins": {
+          "left": "123",
+          "right": "456",
+          "top": "0",
+          "bottom": "789"
+        },
+        "tableMargins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        }
+      }
+    },
+    {
+      "id": "v2-vertical",
+      "expected": {
+        "textDirection": 1,
+        "lineWrap": 1,
+        "verticalAlign": 2,
+        "hasMargin": true,
+        "margins": {
+          "left": 123,
+          "right": 456,
+          "top": 0,
+          "bottom": 789
+        },
+        "protected": false,
+        "editable": false
+      },
+      "header": false,
+      "hwp": {
+        "flags": 65609,
+        "cellHeaderHex": "01000000490001000000000001000100ea1700001a0100007b00c801000015030300ea170000000000000000000000"
+      },
+      "hwpx": {
+        "cell": {
+          "name": "",
+          "header": "0",
+          "hasMargin": "1",
+          "protect": "0",
+          "editable": "0",
+          "dirty": "0",
+          "borderFillIDRef": "3"
+        },
+        "list": {
+          "id": "",
+          "textDirection": "VERTICAL",
+          "lineWrap": "SQUEEZE",
+          "vertAlign": "BOTTOM",
+          "linkListIDRef": "0",
+          "linkListNextIDRef": "0",
+          "textWidth": "0",
+          "textHeight": "0",
+          "hasTextRef": "0",
+          "hasNumRef": "0"
+        },
+        "margins": {
+          "left": "123",
+          "right": "456",
+          "top": "0",
+          "bottom": "789"
+        },
+        "tableMargins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        }
+      }
+    },
+    {
+      "id": "v2-header",
+      "expected": {
+        "textDirection": 1,
+        "lineWrap": 1,
+        "verticalAlign": 2,
+        "hasMargin": true,
+        "margins": {
+          "left": 123,
+          "right": 456,
+          "top": 0,
+          "bottom": 789
+        },
+        "protected": false,
+        "editable": false
+      },
+      "header": true,
+      "hwp": {
+        "flags": 327753,
+        "cellHeaderHex": "01000000490005000000000001000100ea1700001a0100007b00c801000015030300ea170000000000000000000000"
+      },
+      "hwpx": {
+        "cell": {
+          "name": "",
+          "header": "1",
+          "hasMargin": "1",
+          "protect": "0",
+          "editable": "0",
+          "dirty": "0",
+          "borderFillIDRef": "3"
+        },
+        "list": {
+          "id": "",
+          "textDirection": "VERTICAL",
+          "lineWrap": "SQUEEZE",
+          "vertAlign": "BOTTOM",
+          "linkListIDRef": "0",
+          "linkListNextIDRef": "0",
+          "textWidth": "0",
+          "textHeight": "0",
+          "hasTextRef": "0",
+          "hasNumRef": "0"
+        },
+        "margins": {
+          "left": "123",
+          "right": "456",
+          "top": "0",
+          "bottom": "789"
+        },
+        "tableMargins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        }
+      }
+    },
+    {
+      "id": "v3-baseline",
+      "expected": {
+        "textDirection": 0,
+        "lineWrap": 0,
+        "verticalAlign": 1,
+        "hasMargin": false,
+        "margins": {
+          "left": 510,
+          "right": 510,
+          "top": 141,
+          "bottom": 141
+        },
+        "protected": false,
+        "editable": false
+      },
+      "header": false,
+      "hwp": {
+        "flags": 32,
+        "cellHeaderHex": "01000000200000000000000001000100ea1700001a010000fe01fe018d008d000300ea170000000000000000000000"
+      },
+      "hwpx": {
+        "cell": {
+          "name": "",
+          "header": "0",
+          "hasMargin": "0",
+          "protect": "0",
+          "editable": "0",
+          "dirty": "0",
+          "borderFillIDRef": "3"
+        },
+        "list": {
+          "id": "",
+          "textDirection": "HORIZONTAL",
+          "lineWrap": "BREAK",
+          "vertAlign": "CENTER",
+          "linkListIDRef": "0",
+          "linkListNextIDRef": "0",
+          "textWidth": "0",
+          "textHeight": "0",
+          "hasTextRef": "0",
+          "hasNumRef": "0"
+        },
+        "margins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        },
+        "tableMargins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        }
+      }
+    },
+    {
+      "id": "v3-keep",
+      "expected": {
+        "textDirection": 0,
+        "lineWrap": 2,
+        "verticalAlign": 1,
+        "hasMargin": false,
+        "margins": {
+          "left": 510,
+          "right": 510,
+          "top": 141,
+          "bottom": 141
+        },
+        "protected": false,
+        "editable": false
+      },
+      "header": false,
+      "hwp": {
+        "flags": 48,
+        "cellHeaderHex": "01000000300000000000000001000100ea1700001a010000fe01fe018d008d000300ea170000000000000000000000"
+      },
+      "hwpx": {
+        "cell": {
+          "name": "",
+          "header": "0",
+          "hasMargin": "0",
+          "protect": "0",
+          "editable": "0",
+          "dirty": "0",
+          "borderFillIDRef": "3"
+        },
+        "list": {
+          "id": "",
+          "textDirection": "HORIZONTAL",
+          "lineWrap": "KEEP",
+          "vertAlign": "CENTER",
+          "linkListIDRef": "0",
+          "linkListNextIDRef": "0",
+          "textWidth": "0",
+          "textHeight": "0",
+          "hasTextRef": "0",
+          "hasNumRef": "0"
+        },
+        "margins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        },
+        "tableMargins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        }
+      }
+    },
+    {
+      "id": "v3-vertical-upright",
+      "expected": {
+        "textDirection": 2,
+        "lineWrap": 2,
+        "verticalAlign": 1,
+        "hasMargin": false,
+        "margins": {
+          "left": 510,
+          "right": 510,
+          "top": 141,
+          "bottom": 141
+        },
+        "protected": false,
+        "editable": false
+      },
+      "header": false,
+      "hwp": {
+        "flags": 50,
+        "cellHeaderHex": "01000000320000000000000001000100ea1700001a010000fe01fe018d008d000300ea170000000000000000000000"
+      },
+      "hwpx": {
+        "cell": {
+          "name": "",
+          "header": "0",
+          "hasMargin": "0",
+          "protect": "0",
+          "editable": "0",
+          "dirty": "0",
+          "borderFillIDRef": "3"
+        },
+        "list": {
+          "id": "",
+          "textDirection": "VERTICALALL",
+          "lineWrap": "KEEP",
+          "vertAlign": "CENTER",
+          "linkListIDRef": "0",
+          "linkListNextIDRef": "0",
+          "textWidth": "0",
+          "textHeight": "0",
+          "hasTextRef": "0",
+          "hasNumRef": "0"
+        },
+        "margins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        },
+        "tableMargins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        }
+      }
+    },
+    {
+      "id": "v3-top",
+      "expected": {
+        "textDirection": 2,
+        "lineWrap": 2,
+        "verticalAlign": 0,
+        "hasMargin": false,
+        "margins": {
+          "left": 510,
+          "right": 510,
+          "top": 141,
+          "bottom": 141
+        },
+        "protected": false,
+        "editable": false
+      },
+      "header": false,
+      "hwp": {
+        "flags": 18,
+        "cellHeaderHex": "01000000120000000000000001000100ea1700001a010000fe01fe018d008d000300ea170000000000000000000000"
+      },
+      "hwpx": {
+        "cell": {
+          "name": "",
+          "header": "0",
+          "hasMargin": "0",
+          "protect": "0",
+          "editable": "0",
+          "dirty": "0",
+          "borderFillIDRef": "3"
+        },
+        "list": {
+          "id": "",
+          "textDirection": "VERTICALALL",
+          "lineWrap": "KEEP",
+          "vertAlign": "TOP",
+          "linkListIDRef": "0",
+          "linkListNextIDRef": "0",
+          "textWidth": "0",
+          "textHeight": "0",
+          "hasTextRef": "0",
+          "hasNumRef": "0"
+        },
+        "margins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        },
+        "tableMargins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        }
+      }
+    },
+    {
+      "id": "v3-protected",
+      "expected": {
+        "textDirection": 2,
+        "lineWrap": 2,
+        "verticalAlign": 0,
+        "hasMargin": false,
+        "margins": {
+          "left": 510,
+          "right": 510,
+          "top": 141,
+          "bottom": 141
+        },
+        "protected": true,
+        "editable": false
+      },
+      "header": false,
+      "hwp": {
+        "flags": 67239954,
+        "cellHeaderHex": "01000000120002040000000001000100ea1700001a010000fe01fe018d008d000300ea170000000000000000000000"
+      },
+      "hwpx": {
+        "cell": {
+          "name": "",
+          "header": "0",
+          "hasMargin": "0",
+          "protect": "1",
+          "editable": "0",
+          "dirty": "0",
+          "borderFillIDRef": "3"
+        },
+        "list": {
+          "id": "",
+          "textDirection": "VERTICALALL",
+          "lineWrap": "KEEP",
+          "vertAlign": "TOP",
+          "linkListIDRef": "0",
+          "linkListNextIDRef": "0",
+          "textWidth": "0",
+          "textHeight": "0",
+          "hasTextRef": "0",
+          "hasNumRef": "0"
+        },
+        "margins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        },
+        "tableMargins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        }
+      }
+    },
+    {
+      "id": "v3-editable",
+      "expected": {
+        "textDirection": 2,
+        "lineWrap": 2,
+        "verticalAlign": 0,
+        "hasMargin": false,
+        "margins": {
+          "left": 510,
+          "right": 510,
+          "top": 141,
+          "bottom": 141
+        },
+        "protected": false,
+        "editable": true
+      },
+      "header": false,
+      "hwp": {
+        "flags": 67633170,
+        "cellHeaderHex": "01000000120008040000000001000100ea1700001a010000fe01fe018d008d000300ea170000000000000000000000"
+      },
+      "hwpx": {
+        "cell": {
+          "name": "",
+          "header": "0",
+          "hasMargin": "0",
+          "protect": "0",
+          "editable": "1",
+          "dirty": "0",
+          "borderFillIDRef": "3"
+        },
+        "list": {
+          "id": "",
+          "textDirection": "VERTICALALL",
+          "lineWrap": "KEEP",
+          "vertAlign": "TOP",
+          "linkListIDRef": "0",
+          "linkListNextIDRef": "0",
+          "textWidth": "0",
+          "textHeight": "0",
+          "hasTextRef": "0",
+          "hasNumRef": "0"
+        },
+        "margins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        },
+        "tableMargins": {
+          "left": "510",
+          "right": "510",
+          "top": "141",
+          "bottom": "141"
+        }
+      }
+    }
+  ]
+}

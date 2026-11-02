@@ -45,8 +45,8 @@ function bodyRadio(value:string,label:string,top:number,draft:FormatPainterOptio
  * Recreate the measured installed-Hangul format-copy dialog.
  *
  * The original 361-by-387 outer frame retains all three native groups and
- * their actual labels. Source-supported cell fill is independent from body
- * appearance; native style definitions, cell properties and borders still
+ * their actual labels. Source-supported cell properties and fill are independent from body
+ * appearance; native style definitions and cell borders still
  * require source-model support and are never accepted as working operations.
  * @param {FormatPainterOptions} draft - Independent current copy choices.
  * @param {boolean} hasCell - Whether the actual source cursor is inside a table cell.
@@ -59,7 +59,7 @@ export function renderNativeFormatPainterDialog(draft:FormatPainterOptions,hasCe
   const body=bodyRadio('character','글자 모양',25,draft)+bodyRadio('paragraph','문단 모양',49,draft)+bodyRadio('both','글자 모양과 문단 모양 둘 다 복사',73,draft)+bodyRadio('character-style','글자 스타일',97,draft,true)+bodyRadio('paragraph-style','문단 스타일',121,draft,true);
   /** Original caption tools offer local help without launching an online feature. */
   const header='<header class="modal-header"><h2 id="modal-title">모양 복사</h2><button type="button" class="nf-quick-help" data-format-copy-help aria-label="빠른 도움말"><svg width="13" height="13" viewBox="0 0 13 13" aria-hidden="true"><path d="M1.5 1.5h10v8h-4l-2 2v-2h-4zM3.5 4h6M3.5 6h6" fill="none" stroke="currentColor" stroke-width="0.8"/></svg></button><button type="button" class="nf-help" data-format-copy-help aria-label="도움말">?</button><button type="button" class="modal-x" aria-label="닫기">×</button></header>';
-  return{width:361,height:387,className:'native-dialog native-dialog-format-painter',html:header+`<div class="modal-body"><form id="native-format-copy-form"><fieldset class="nf-group nf-body"><legend>본문 모양 복사</legend>${body}</fieldset><fieldset class="nf-group nf-cell"><legend>셀 모양 복사</legend><label class="nf-option" style="top:25px"><input type="checkbox" name="format-copy-cell-properties" disabled><span>셀 속성</span></label><label class="nf-option" style="top:49px"><input type="checkbox" name="format-copy-cell-border" disabled><span>셀 테두리</span></label><label class="nf-option" style="top:73px"><input type="checkbox" name="format-copy-cell-background" ${draft.cellBackground?'checked':''} ${hasCell?'':'disabled'}><span>셀 배경</span></label></fieldset><fieldset class="nf-group nf-target"><legend>표에서 적용 대상</legend><label class="nf-option" style="top:25px"><input type="radio" name="format-copy-table-target" value="both" ${draft.cellOnly?'':'checked'} ${hasCell?'':'disabled'}><span>본문 모양과 셀 모양 둘 다</span></label><label class="nf-option" style="top:49px"><input type="radio" name="format-copy-table-target" value="cell" ${draft.cellOnly?'checked':''} ${hasCell?'':'disabled'}><span>셀 모양만</span></label></fieldset></form></div><div class="modal-actions"><button type="button" class="nd-apply" data-modal-value="apply">복사(<u>D</u>)</button><button type="button" data-modal-value="cancel">취소</button></div><div class="nf-help-text" hidden>커서 위치의 모양을 복사한 다음, 바꿀 부분을 블록으로 선택하고 모양 복사를 다시 실행하세요.</div>`};
+  return{width:361,height:387,className:'native-dialog native-dialog-format-painter',html:header+`<div class="modal-body"><form id="native-format-copy-form"><fieldset class="nf-group nf-body"><legend>본문 모양 복사</legend>${body}</fieldset><fieldset class="nf-group nf-cell"><legend>셀 모양 복사</legend><label class="nf-option" style="top:25px"><input type="checkbox" name="format-copy-cell-properties" ${draft.cellProperties?'checked':''} ${hasCell?'':'disabled'}><span>셀 속성</span></label><label class="nf-option" style="top:49px"><input type="checkbox" name="format-copy-cell-border" disabled><span>셀 테두리</span></label><label class="nf-option" style="top:73px"><input type="checkbox" name="format-copy-cell-background" ${draft.cellBackground?'checked':''} ${hasCell?'':'disabled'}><span>셀 배경</span></label></fieldset><fieldset class="nf-group nf-target"><legend>표에서 적용 대상</legend><label class="nf-option" style="top:25px"><input type="radio" name="format-copy-table-target" value="both" ${draft.cellOnly?'':'checked'} ${hasCell?'':'disabled'}><span>본문 모양과 셀 모양 둘 다</span></label><label class="nf-option" style="top:49px"><input type="radio" name="format-copy-table-target" value="cell" ${draft.cellOnly?'checked':''} ${hasCell?'':'disabled'}><span>셀 모양만</span></label></fieldset></form></div><div class="modal-actions"><button type="button" class="nd-apply" data-modal-value="apply">복사(<u>D</u>)</button><button type="button" data-modal-value="cancel">취소</button></div><div class="nf-help-text" hidden>커서 위치의 모양을 복사한 다음, 바꿀 부분을 블록으로 선택하고 모양 복사를 다시 실행하세요.</div>`};
 }
 
 /**
@@ -83,13 +83,14 @@ export function bindNativeFormatPainterDialog(root:HTMLElement,original:FormatPa
    * The default copy button is disabled for an empty cell-only operation.
    * @returns {void} Updates only the independent retained copy choices and button state.
    * @example
-   * // Selecting cell-only requires selecting the supported cell background.
+   * // Selecting cell-only requires selecting cell properties or background.
    */
   function update():void{
     draft.mode=root.querySelector<HTMLInputElement>('[name="format-copy-body"]:checked')!.value as FormatPainterMode;
     draft.cellBackground=root.querySelector<HTMLInputElement>('[name="format-copy-cell-background"]')!.checked;
+    draft.cellProperties=root.querySelector<HTMLInputElement>('[name="format-copy-cell-properties"]')!.checked;
     draft.cellOnly=root.querySelector<HTMLInputElement>('[name="format-copy-table-target"]:checked')!.value==='cell';
-    root.querySelector<HTMLButtonElement>('[data-modal-value="apply"]')!.disabled=draft.cellOnly&&!draft.cellBackground;
+    root.querySelector<HTMLButtonElement>('[data-modal-value="apply"]')!.disabled=draft.cellOnly&&!draft.cellBackground&&!draft.cellProperties;
   }
   root.addEventListener('change',update,{signal:listeners.signal});
   root.addEventListener('click',

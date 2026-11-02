@@ -1,4 +1,8 @@
 @import url("./system-fonts.css");
+/* Native cell wrapping remains independent of the ordinary paragraph pre-wrap default. */
+[data-forhan-cell-properties] :is(p, h1, h2, h3, h4, h5, h6) {
+  white-space: var(--forhan-cell-wrap, pre-wrap);
+}
 .outline-item > span {
   flex-shrink: 0;
   min-width: 15px;

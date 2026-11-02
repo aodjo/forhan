@@ -299,6 +299,7 @@ export function measureNativeParagraph(
     rootStyle = window.getComputedStyle(paragraph),
     rootSize = parseFloat(rootStyle.fontSize) || 0,
     bidirectional = /[\u0590-\u08ff\ufb1d-\ufdff\ufe70-\ufeff]/u.test(paragraph.textContent || "");
+  if(rootStyle.writingMode!=='horizontal-tb')return null;
   if (rootStyle.direction === "rtl") return null;
   /** Original base height and an explicit native interval are kept independently for each line. */
   const lines: NativeVisualLine[] = [

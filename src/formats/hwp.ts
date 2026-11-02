@@ -3,6 +3,7 @@
  * https://cdn.hancom.com/link/docs/한글문서파일형식_5.0_revision1.3.pdf
  */
 import CFB from "cfb";
+import {readHwpCellProperties,type NativeCellProperties,type NativeCellMargins} from '../cell-properties.ts';
 import { characterDecoration } from "../character-decorations.ts";
 import { NATIVE_SHADOW_TYPES } from "../character-shadow.ts";
 import { characterOutline } from "../character-outline.ts";
@@ -66,6 +67,9 @@ export interface HwpNodeAttributes extends HwpParagraphAttributes {
   rowspan?: number;
   colwidth?: number[] | null;
   backgroundColor?: string;
+  nativeCellProperties?: NativeCellProperties;
+  nativeCellFlags?: number;
+  nativeCellMargins?: NativeCellMargins;
   src?: string;
   alt?: string;
   width?: number;
@@ -1417,6 +1421,11 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
       const attrs: HwpNodeAttributes = {
         colspan,
         rowspan,
+        nativeCellFlags: cd.getUint32(offset-4,true),
+        nativeCellProperties: readHwpCellProperties(cd.getUint32(offset-4,true),{
+          left:cd.getUint16(offset+16,true),right:cd.getUint16(offset+18,true),
+          top:cd.getUint16(offset+20,true),bottom:cd.getUint16(offset+22,true),
+        }),
         colwidth:
           width > 0
             ? Array<number>(colspan).fill(Math.round(width / colspan))
@@ -1430,7 +1439,7 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
       starts[row].push({
         col,
         node: {
-          type: "tableCell",
+          type: cd.getUint32(offset-4,true)&(1<<18)?"tableHeader":"tableCell",
           attrs,
           content: content.length ? content : [emptyParagraph()],
         },
@@ -1483,7 +1492,7 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
         };
       },
     );
-    return { type: "table", content };
+    return { type: "table", attrs:{nativeCellMargins:{left:d.getUint16(10,true),right:d.getUint16(12,true),top:d.getUint16(14,true),bottom:d.getUint16(16,true)}}, content };
   }
   /**
    * Convert one anchored HWP control.

@@ -1,7 +1,7 @@
 import {test,expect,type Page} from '@playwright/test';
 import type {JSONContent} from '@tiptap/core';
 import {readFile} from 'node:fs/promises';
-import {SOURCE_DOCUMENT,SOURCE_METRICS,SOURCE_PARAGRAPH,importSource,selectSource,savedSource,ribbonCopy} from './helpers/format-painter.ts';
+import {SOURCE_DOCUMENT,SOURCE_METRICS,SOURCE_PARAGRAPH,importSource,focusSourceForSelection,selectSource,savedSource,ribbonCopy} from './helpers/format-painter.ts';
 
 /**
  * Check measured original dialog controls, cancellation and independent accepted copying.
@@ -216,7 +216,7 @@ async function verifyOriginalParagraphEndpoint({page}:{page:Page}):Promise<void>
   const before=await savedSource(page);
   await selectSource(page,'.tiptap > p:first-child',oracle.sourceOffset);await ribbonCopy(page);
   await page.locator('[name="format-copy-body"][value="paragraph"]').check();await page.keyboard.press('Alt+d');
-  await page.locator('.tiptap').focus();await page.locator('.tiptap').evaluate(
+  await focusSourceForSelection(page);await page.locator('.tiptap').evaluate(
     /**
      * Select actual source from the target start to the following paragraph's first position.
      *

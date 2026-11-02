@@ -5,6 +5,7 @@ import {CellSelection} from '@tiptap/pm/tables';
 import {closeHistory} from '@tiptap/pm/history';
 import {defaultFontSize} from '../formatting.ts';
 import {hasCharacterMark} from '../character-defaults.ts';
+import {nativeCellProperties} from '../cell-properties.ts';
 import {FORMAT_COPY_PARAGRAPH_FIELDS,type FormatPainterSource,type FormatPainterOptions} from '../format-copy-session.ts';
 export type {FormatPainterMode,FormatPainterOptions,FormatPainterSource} from '../format-copy-session.ts';
 
@@ -68,7 +69,8 @@ export function captureFormatPainter(editor:Editor):FormatPainterSource|null{
   for(/** Every represented paragraph property is copied, including its explicit default reset. */const key of FORMAT_COPY_PARAGRAPH_FIELDS)paragraph[key]=block.attrs[key]??(key==='textAlign'?'justify':key==='lineHeight'?'1.6':null);
   /** An absent cell stays distinguishable from an actual cell with no fill. */
   const cell=sourceCell(editor);
-  return structuredClone({marks,paragraph,cellBackground:cell?cell.attrs.backgroundColor??null:undefined});
+  if(cell&&nativeCellProperties(cell.attrs.nativeCellProperties).protected)return null;
+  return structuredClone({marks,paragraph,cellBackground:cell?cell.attrs.backgroundColor??null:undefined,cellProperties:cell?nativeCellProperties(cell.attrs.nativeCellProperties):undefined,cellHeader:cell?cell.type.name==='tableHeader':undefined});
 }
 
 /**
@@ -85,7 +87,7 @@ export function captureFormatPainter(editor:Editor):FormatPainterSource|null{
  * @returns {boolean} Whether at least one actual document appearance change was committed.
  * @throws {RangeError} If a copied mark is incompatible with the active schema.
  * @example
- * applyFormatPainter(editor,source,{mode:'both',cellBackground:false,cellOnly:false});
+ * applyFormatPainter(editor,source,{mode:'both',cellProperties:false,cellBackground:false,cellOnly:false});
  */
 export function applyFormatPainter(editor:Editor,source:FormatPainterSource,options:FormatPainterOptions):boolean{
   /** No composition, collapsed cursor or structural node selection is rewritten by a paste operation. */
@@ -94,18 +96,26 @@ export function applyFormatPainter(editor:Editor,source:FormatPainterSource,opti
   /** An explicit history boundary separates this formatting operation from earlier typing. */
   const transaction=closeHistory(state.tr),paragraphs=new Set<number>(),cells=new Set<number>();
   /**
-   * Apply the copied fill to one exact original target cell at most once.
+   * Apply copied native properties and fill to one exact original target cell at most once.
    *
    * Parent cells of nested tables cannot be borrowed from broad range ancestry.
    * @param {ProseMirrorNode} cell - Actual selected target cell.
    * @param {number} position - Its original absolute node position.
-   * @returns {void} Appends only the supported background attribute change.
+   * @returns {void} Appends only accepted cell appearance and native title-cell ownership changes.
    * @example
    * // A rectangular CellSelection supplies only its actual selected cells.
    */
   function fillCell(cell:ProseMirrorNode,position:number):void{
-    if(!options.cellBackground||source.cellBackground===undefined||cells.has(position))return;
-    cells.add(position);transaction.setNodeMarkup(position,undefined,{...cell.attrs,backgroundColor:source.cellBackground},cell.marks);
+    if(cells.has(position)||!options.cellProperties&&!options.cellBackground)return;
+    /** Destination dimensions, unknown native flags, border ownership and source identity remain untouched. */
+    const attrs={...cell.attrs};
+    let type=cell.type;
+    if(options.cellBackground&&source.cellBackground!==undefined)attrs.backgroundColor=source.cellBackground;
+    if(options.cellProperties&&source.cellProperties!==undefined){
+      attrs.nativeCellProperties=nativeCellProperties(source.cellProperties);
+      type=state.schema.nodes[source.cellHeader?'tableHeader':'tableCell'];
+    }
+    cells.add(position);transaction.setNodeMarkup(position,type,attrs,cell.marks);
   }
   if(selection instanceof CellSelection)selection.forEachCell(fillCell);
   for(/** Actual disjoint cell ranges must not include unselected cells between their numeric endpoints. */const range of selection.ranges){

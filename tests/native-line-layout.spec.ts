@@ -635,9 +635,25 @@ async function verifyHebrewLineFlow({page}:{page:Page}):Promise<void>{
   await page.locator('#file-input').setInputFiles({name:'hebrew-soft-zero.forhan',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({application:'forhan',version:1,doc:{type:'doc',content:[{type:'paragraph',attrs:{textAlign:'left',lineHeight:'0pt'},content}]}}))});
   await expect(page.locator('#toast')).toContainText('hebrew-soft-zero.forhan');
   await expect(page.locator('.tiptap p')).toHaveAttribute('data-forhan-layout-height','0');
-  /** Wrapped equal-height lines overlap at the same real baseline under native fixed-zero progress. */
-  const zero=await page.locator('.tiptap p').evaluate(hebrewLineGeometry);
-  for(/** Original editable source remains complete even when all drawn lines coincide. */const baseline of zero.baselines)expect(baseline).toBeCloseTo(32*4/3*.85,1);
+  await expect(
+    /**
+     * Await every actual wrapped source glyph after changing to fixed-zero progress.
+     *
+     * Paragraph height metadata can update before dependent glyph offsets. Each
+     * observation retains the original baseline tolerance and complete source count.
+     * @async
+     * @returns {Promise<void>} Resolves only when all original glyphs share their native zero-progress baseline.
+     * @throws {Error} If a source glyph is missing or retains a different physical baseline.
+     * @example
+     * // Zero paragraph progress cannot establish that its actual glyph paint is ready.
+     */
+    async()=>{
+      /** Real source ranges establish the original physical overlap independently of metadata attributes. */
+      const zero=await page.locator('.tiptap p').evaluate(hebrewLineGeometry);
+      expect(zero.baselines).toHaveLength([...text].length);
+      for(/** Original editable source remains complete even when all drawn lines coincide. */const baseline of zero.baselines)expect(baseline).toBeCloseTo(32*4/3*.85,1);
+    },
+  ).toPass({timeout:5000,intervals:[16,32,64,100]});
   /** Source serialization must retain one original paragraph with no layout characters or drawings. */
   const pending=page.waitForEvent('download');
   await page.locator('#save-document').click();

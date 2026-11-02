@@ -11,6 +11,7 @@ import {readHwpxWordBreaks,hwpxWordBreaks} from '../paragraph-word-break.ts';
 import {paragraphCondense,hwpxParagraphCondense} from '../paragraph-minimum-space.ts';
 import {paragraphSnapToGrid} from '../paragraph-line-grid.ts';
 import {sectionGridSettings,sectionGridDistance,type SectionGridSettings} from '../section-grid.ts';
+import {retainNormalCharacterWeight,nativeHyperlinkAppearance} from '../character-defaults.ts';
 import {
   CHARACTER_LANGUAGES,
   characterMetrics,
@@ -1758,7 +1759,7 @@ export async function readHwpx(
           const textMarks = clone(ms);
           /** The portable hyperlink attributes active at this exact native text position. */
           const link = linkDefinitions.get(activeLinkIds.at(-1) || "");
-          if (link) textMarks.push({ type: "link", attrs: { ...link } });
+          if (link) textMarks.push(nativeHyperlinkAppearance(textMarks,{...link}));
           content.push(...inline(n, textMarks));
         } else if (tag === "tbl") objects.push(table(n));
         else if (tag === "pic") objects.push(image(n));
@@ -1946,6 +1947,7 @@ export async function readHwpx(
      */
     const attrs = pAttrs(p);
     if (heading) attrs.level = Math.max(1, Math.min(6, number(heading[1], 1)));
+    if(heading)for(/** An explicit native normal weight must survive semantic heading reconstruction. */const node of content)if(node.type==='text'){node.marks??=[];retainNormalCharacterWeight(node.marks);}
     /**
      * The editable paragraph paired with its retained native XML.
      */
@@ -2855,11 +2857,11 @@ export async function writeHwpx({
         decorated.decorations ||= {};
         decorated.decorations[mark.type] = characterDecoration(mark.attrs,mark.type);
       }
-    if (heading && !style.tags.includes("bold")) style.tags.push("bold");
+    if (heading && style.attrs.nativeNormalWeight !== true && !style.tags.includes("bold")) style.tags.push("bold");
     for (/** The link mark whose standard native visual formatting needs a default. */ const mark of marks) {
       if (mark.type === "link") {
         if (!style.attrs.color) style.attrs.color = "#0000FF";
-        if (!style.tags.includes("underline")) style.tags.push("underline");
+        if (mark.attrs?.nativeDefaultUnderline !== false && !style.tags.includes("underline")) style.tags.push("underline");
       }
     }
     /**

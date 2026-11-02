@@ -155,6 +155,11 @@ import { bindNativeFit, type NativeFitBinding } from "./ui/native-fit";
 import {readNativePageView,setNativePageView} from './ui/native-page-view';
 import {renderNativeZoomDialog,bindNativeZoomDialog,NATIVE_ZOOM_PRESETS,type NativeZoomDraft,type NativeZoomChoice} from './ui/native-zoom-dialog';
 import './ui/native-zoom-dialog.css';
+import {captureFormatPainter,applyFormatPainter} from './ui/format-painter.ts';
+import {FormatCopyMemory,type FormatCopySession,type FormatPainterOptions} from './format-copy-session.ts';
+import {renderNativeFormatPainterDialog,bindNativeFormatPainterDialog} from './ui/native-format-painter.ts';
+import './ui/native-format-painter.css';
+import {NativeCharacterDefaults} from './ui/character-defaults.ts';
 import "./ui/native-scroll.css";
 
 /** Icons available to application controls and menus. */
@@ -414,6 +419,7 @@ const editor = new Editor({
     TextStyleKit.configure({ fontSize: false, fontFamily: false }),
     NativeFontFamily,
     NativeCharacterFormatting,
+    NativeCharacterDefaults,
     NativeUnderline,
     NativeStrike,
     NativeCharacterDecorations,
@@ -3540,6 +3546,63 @@ async function nativeFormatSettings(
   }
 }
 
+/** Browser-only appearance memory stays outside document content and recovery storage. */
+const browserFormatCopyMemory=new FormatCopyMemory();
+/** An application with no accepted source starts with the original native character-only choice. */
+const defaultFormatCopyOptions:FormatPainterOptions={mode:'character',cellBackground:false,cellOnly:false};
+
+/**
+ * Copy cursor appearance or apply the remembered source to an actual selection.
+ *
+ * A collapsed source cursor opens the original native copy dialog. Accepting
+ * remembers an independent source snapshot without editing the document;
+ * cancellation keeps the previous snapshot. A nonempty selection applies the
+ * accepted choices in one undoable appearance transaction without reopening.
+ * @async
+ * @returns {Promise<void>} Resolves after the explicit copy decision or selected-source application.
+ * @example
+ * await formatPainter(); // Copy at the cursor, then apply after selecting target text.
+ */
+async function formatPainter():Promise<void>{
+  if(editor.view.composing)return;
+  try{
+    /** Only the original invocation's source and selection may receive an asynchronously read snapshot. */
+    const original=editor.state;
+    /** Accepted native appearance belongs to the app process rather than the current source renderer. */
+    let copied:FormatCopySession|null;
+    if(native){
+      /** The authenticated native bridge returns an independent app-session snapshot. */
+      const result=await native.readFormatCopy();
+      if(!result.ok)throw new Error(result.error);
+      copied=result.value;
+    }else copied=browserFormatCopyMemory.read();
+    if($('#modal-root').firstChild||editor.view.composing||editor.state.doc!==original.doc||!editor.state.selection.eq(original.selection))return;
+    if(!original.selection.empty){
+      if(!copied){toast('복사한 모양이 없습니다. 복사할 글자 뒤에 커서를 놓고 모양 복사를 실행하세요.');return;}
+      applyFormatPainter(editor,copied.source,copied.options);
+      return;
+    }
+    /** Candidate source and draft remain independent from the last accepted app-session snapshot. */
+    const source=captureFormatPainter(editor);
+    if(!source)return;
+    /** An actual non-cell source cannot borrow previous table-only choices. */
+    const draft={...(copied?.options??defaultFormatCopyOptions),...(source.cellBackground===undefined?{cellBackground:false,cellOnly:false}:{})},
+      decision=modal('모양 복사','',[],renderNativeFormatPainterDialog(draft,source.cellBackground!==undefined)),
+      binding=bindNativeFormatPainterDialog($('.native-dialog-format-painter'),draft);
+    try{
+      if(await decision==='apply'){
+        /** Only an explicitly accepted appearance snapshot can replace existing app-session memory. */
+        const accepted:FormatCopySession={version:1,source,options:binding.read()};
+        if(native){
+          /** Rejected native writes preserve the earlier accepted source instead of diverging between windows. */
+          const result=await native.writeFormatCopy(accepted);
+          if(!result.ok)throw new Error(result.error);
+        }else browserFormatCopyMemory.write(accepted);
+      }
+    }finally{binding.destroy();editor.view.focus();}
+  }catch(error){toast(error instanceof Error?error.message:'모양 복사를 완료하지 못했습니다.',true);}
+}
+
 /**
  * Dispatch a measured native menu or ribbon command to the working editor.
  *
@@ -3558,6 +3621,10 @@ async function runNativeCommand(
   anchor?: HTMLElement,
 ): Promise<void> {
   if ($("#modal-root").firstChild) return;
+  if (command === 'format-painter') {
+    await formatPainter();
+    return;
+  }
   if (command === "ribbon-field-cancel") {
     synchronizeFormatRibbon(editor, anchor);
     editor.commands.focus();
@@ -3936,6 +4003,11 @@ document.addEventListener(
    */
   (e) => {
     if ($("#modal-root").firstChild || e.isComposing) return;
+    if(e.altKey&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&(e.code==='KeyC'||e.key.toLowerCase()==='c')&&document.activeElement===editor.view.dom){
+      e.preventDefault();
+      void runNativeCommand('format-painter');
+      return;
+    }
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "h") {
       e.preventDefault();
       void runNativeCommand("replace");

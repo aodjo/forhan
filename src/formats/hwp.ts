@@ -12,6 +12,7 @@ import { inflateSync } from "fflate";
 import {sectionGridSettings,type SectionGridSettings} from '../section-grid.ts';
 import { hasCharacterFonts } from "../character-fonts.ts";
 import { isSafeDocumentLink } from "../documents.ts";
+import {retainNormalCharacterWeight,nativeHyperlinkAppearance} from '../character-defaults.ts';
 import {
   characterLanguage,
   characterMetrics,
@@ -1710,8 +1711,9 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
       const marks = [
         ...(info.marksByLanguage[language]?.[id] || info.marks[id] || []),
       ];
+      if(headingLevel)retainNormalCharacterWeight(marks);
       if (activeHyperlink)
-        marks.push({ type: "link", attrs: { href: activeHyperlink } });
+        marks.push(nativeHyperlinkAppearance(marks,{href:activeHyperlink}));
       /** Previous inline node considered for adjacent text merging. */
       const previous = inline.at(-1);
       if (

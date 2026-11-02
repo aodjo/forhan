@@ -690,7 +690,7 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
          * matchCharacterStyle(markOrStyle) // Whether it supplies the requested formatting.
          */
         (mark) => mark.type === "bold",
-      ) || heading
+      ) || (heading && text.nativeNormalWeight !== true)
         ? 2
         : 0) |
       (marks.some(

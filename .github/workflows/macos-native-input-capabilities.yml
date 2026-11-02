@@ -1,0 +1,36 @@
+name: Observe native Mac input capabilities
+on:
+  push:
+    branches: [test/macos-native-input-capabilities]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  capabilities:
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            arch: arm64
+          - os: macos-15-intel
+            arch: x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          architecture: ${{ matrix.arch }}
+      - name: Observe native permissions and installed sources without posting input
+        run: node scripts/probe-macos-native-input-capabilities.ts
+        env:
+          FORHAN_CAPABILITY_ARCH: ${{ matrix.arch }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Forhan-native-input-capabilities-${{ matrix.arch }}
+          path: release/validation/macos-input-capabilities-*.json
+          if-no-files-found: error
+          retention-days: 7

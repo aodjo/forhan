@@ -36,6 +36,7 @@ on:
         required: false
 jobs:
   desktop:
+    if: ${{ github.ref != 'refs/heads/test/macos-native-input-capabilities' }}
     strategy:
       fail-fast: false
       matrix:

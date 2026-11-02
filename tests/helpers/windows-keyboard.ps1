@@ -20,12 +20,15 @@ public static class ForhanImeNative {
  /**
   * Activate only the verified generated application through its visible title bar.
   *
-  * Raising the owned frame does not activate another application. The exact hit
-  * window is checked before a balanced mouse click; cursor restoration follows
-  * native dispatch. Foreground and keyboard-focus guards remain mandatory afterward.
+  * Requesting foreground activation targets only the verified owned frame and
+  * succeeds only after actual foreground ownership agrees. Raising a background
+  * frame alone does not prove that its title bar is exposed. A background
+  * fixture may be exposed temporarily above other frames, restoring its exact
+  * prior topmost state before return. Every click still requires exact process
+  * and root-frame ownership. No foreign window receives input or a state change.
   * @param {IntPtr} window - Previously verified generated application frame.
   * @param {uint} expected - Previously verified process identifier.
-  * @returns {void} Clicks only an unobstructed owned title bar and restores the cursor.
+  * @returns {void} Clicks only an acknowledged owned title bar and restores an unmoved cursor.
   * @throws {InvalidOperationException} If the frame, hit target or native observation differs.
   * @example
   * ForhanImeNative.FocusOwned(window, process);
@@ -34,19 +37,73 @@ public static class ForhanImeNative {
   uint actual;GetWindowThreadProcessId(window,out actual);
   if(actual!=expected)throw new InvalidOperationException("Owned activation process changed.");
   if(GetForegroundWindow()==window)return;
+  if(SetForegroundWindow(window)){
+   for(int attempt=0;attempt<20;attempt++){
+    if(GetForegroundWindow()==window)return;
+    System.Threading.Thread.Sleep(10);
+   }
+  }
   Rect bounds;Point previous;
   if(!GetWindowRect(window,out bounds)||bounds.Right-bounds.Left<200||bounds.Bottom-bounds.Top<100||!GetCursorPos(out previous))throw new InvalidOperationException("Owned frame geometry is unavailable.");
-  if(!SetWindowPos(window,IntPtr.Zero,0,0,0,0,0x13))throw new InvalidOperationException("Owned frame could not be raised.");
-  Point target=new Point{X=bounds.Left+(bounds.Right-bounds.Left)/2,Y=bounds.Top+12};
-  IntPtr hit=WindowFromPoint(target);GetWindowThreadProcessId(hit,out actual);
-  if(actual!=expected||GetAncestor(hit,2)!=window)throw new InvalidOperationException("Owned title bar is obstructed; no click was sent.");
+  Point target=new Point();IntPtr hit=IntPtr.Zero;bool restoreTopmost=false;
   try{
-   if(!SetCursorPos(target.X,target.Y))throw new InvalidOperationException("Owned title-bar cursor placement failed.");
+   if(!SetWindowPos(window,IntPtr.Zero,0,0,0,0,0x13))throw new InvalidOperationException("Owned frame could not be raised.");
+   bool exposed=WaitOwnedTitle(window,expected,80,out bounds,out target,out hit,out actual);
+   if(!exposed){
+    bool originallyTopmost=(GetWindowLongPtr(window,-20).ToInt64()&8)!=0;
+    if(!SetWindowPos(window,new IntPtr(-1),0,0,0,0,0x13))throw new InvalidOperationException("Owned fixture could not be temporarily exposed.");
+    restoreTopmost=!originallyTopmost;
+    exposed=WaitOwnedTitle(window,expected,40,out bounds,out target,out hit,out actual);
+   }
+   if(!exposed){
+    uint foregroundProcess;GetWindowThreadProcessId(GetForegroundWindow(),out foregroundProcess);
+    throw new InvalidOperationException("Owned title bar remains obstructed; no click was sent. Bounds="+bounds.Left+","+bounds.Top+","+bounds.Right+","+bounds.Bottom+"; target="+target.X+","+target.Y+"; hitProcess="+actual+"; hitRoot="+GetAncestor(hit,2).ToInt64()+"; expectedRoot="+window.ToInt64()+"; foregroundProcess="+foregroundProcess);
+   }
+   try{
+    if(!SetCursorPos(target.X,target.Y))throw new InvalidOperationException("Owned title-bar cursor placement failed.");
+    hit=WindowFromPoint(target);GetWindowThreadProcessId(hit,out actual);
+    if(actual!=expected||GetAncestor(hit,2)!=window)throw new InvalidOperationException("Owned title-bar ownership changed; no click was sent.");
+    mouse_event(2,0,0,0,UIntPtr.Zero);mouse_event(4,0,0,0,UIntPtr.Zero);
+    System.Threading.Thread.Sleep(80);
+   }finally{Point current;if(GetCursorPos(out current)&&current.X==target.X&&current.Y==target.Y)SetCursorPos(previous.X,previous.Y);}
+  }finally{
+   if(restoreTopmost){
+    GetWindowThreadProcessId(window,out actual);
+    if(actual==expected){
+     if(!SetWindowPos(window,new IntPtr(-2),0,0,0,0,0x13)||(GetWindowLongPtr(window,-20).ToInt64()&8)!=0)throw new InvalidOperationException("Owned fixture topmost state was not restored.");
+    }else if(actual!=0)throw new InvalidOperationException("Owned fixture identity changed before restoring stacking state.");
+   }
+  }
+ }
+ /**
+  * Wait for the exact original title-bar point to belong to the owned frame.
+  *
+  * Bounds and both process/root hit ownership are re-read on every observation.
+  * No pointer, keyboard, application or foreign-window state changes here.
+  * @param {IntPtr} window - Exact original isolated application frame.
+  * @param {uint} expected - Original verified native process identifier.
+  * @param {int} attempts - Maximum bounded25ms observation count.
+  * @param {Rect} bounds - Receives actual original frame bounds.
+  * @param {Point} target - Receives actual title-bar activation coordinates.
+  * @param {IntPtr} hit - Receives actual window beneath the activation point.
+  * @param {uint} actual - Receives actual hit-window process ownership.
+  * @returns {bool} Whether the exact native hit acknowledges original ownership.
+  * @throws {InvalidOperationException} If original frame ownership or geometry disappears.
+  * @example
+  * // FocusOwned never clicks until this original native observation succeeds.
+  */
+ private static bool WaitOwnedTitle(IntPtr window,uint expected,int attempts,out Rect bounds,out Point target,out IntPtr hit,out uint actual){
+  bounds=new Rect();target=new Point();hit=IntPtr.Zero;actual=0;
+  for(int attempt=0;attempt<attempts;attempt++){
+   uint owner;GetWindowThreadProcessId(window,out owner);
+   if(owner!=expected)throw new InvalidOperationException("Owned activation process changed while awaiting native exposure.");
+   if(!GetWindowRect(window,out bounds))throw new InvalidOperationException("Owned frame geometry disappeared while awaiting native exposure.");
+   target=new Point{X=bounds.Left+(bounds.Right-bounds.Left)/2,Y=bounds.Top+12};
    hit=WindowFromPoint(target);GetWindowThreadProcessId(hit,out actual);
-   if(actual!=expected||GetAncestor(hit,2)!=window)throw new InvalidOperationException("Owned title-bar ownership changed; no click was sent.");
-   mouse_event(2,0,0,0,UIntPtr.Zero);mouse_event(4,0,0,0,UIntPtr.Zero);
-   System.Threading.Thread.Sleep(80);
-  }finally{SetCursorPos(previous.X,previous.Y);}
+   if(actual==expected&&GetAncestor(hit,2)==window)return true;
+   System.Threading.Thread.Sleep(25);
+  }
+  return false;
  }
  /**
   * Read actual owned frame bounds.
@@ -60,9 +117,34 @@ public static class ForhanImeNative {
   */
  [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr window,out Rect bounds);
  /**
+  * Request foreground activation for the exact verified owned application.
+  *
+  * Windows may deny activation. The caller still observes actual foreground
+  * ownership and retains its exact guarded owned-title-bar fallback.
+  * @param {IntPtr} window - Previously verified isolated application frame.
+  * @returns {bool} Whether Windows accepted the foreground request.
+  * @example
+  * ForhanImeNative.SetForegroundWindow(window); // Observe GetForegroundWindow before accepting focus.
+  */
+ [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr window);
+ /**
+  * Read only the original owned frame's extended window styles.
+  *
+  * The topmost bit is retained before temporary exposure and independently
+  * rechecked after restoring this same isolated application frame.
+  * @param {IntPtr} window - Exact original verified owned frame.
+  * @param {int} index - Extended-style slotGWL_EXSTYLE, always negative20.
+  * @returns {IntPtr} Original native extended-style flags.
+  * @example
+  * (ForhanImeNative.GetWindowLongPtr(window,-20).ToInt64()&8)!=0; // Actual original topmost state.
+  */
+ [DllImport("user32.dll",EntryPoint="GetWindowLongPtrW")] public static extern IntPtr GetWindowLongPtr(IntPtr window,int index);
+ /**
   * Raise the owned frame without changing size, position or activation.
   *
-  * Only HWND_TOP with no-move, no-size and no-activate flags is used.
+  * Normal raising and temporary owned topmost exposure both preserve frame
+  * geometry and avoid requesting activation. Any temporary topmost state is
+  * restored before the caller accepts keyboard ownership.
   * @param {IntPtr} window - Verified generated frame.
   * @param {IntPtr} after - Requested native stacking position.
   * @param {int} x - Unused horizontal coordinate.

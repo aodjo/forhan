@@ -3,6 +3,8 @@
  * https://cdn.hancom.com/link/docs/한글문서파일형식_5.0_revision1.3.pdf
  */
 import CFB from "cfb";
+import {CELL_UNITS_PER_PIXEL,nativeColumnMeasurements,nativeCellDimension,type NativeColumnMeasurement} from '../cell-geometry.ts';
+import {readHwpCellField} from '../cell-field-name.ts';
 import {readHwpCellProperties,type NativeCellProperties,type NativeCellMargins} from '../cell-properties.ts';
 import { characterDecoration } from "../character-decorations.ts";
 import { NATIVE_SHADOW_TYPES } from "../character-shadow.ts";
@@ -70,6 +72,9 @@ export interface HwpNodeAttributes extends HwpParagraphAttributes {
   nativeCellProperties?: NativeCellProperties;
   nativeCellFlags?: number;
   nativeCellMargins?: NativeCellMargins;
+  nativeCellFieldName?: string | null;
+  nativeCellFieldData?: string;
+  nativeCellHeight?: number | null;
   src?: string;
   alt?: string;
   width?: number;
@@ -1344,7 +1349,7 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
       () => Array<HwpRecord | null>(cols).fill(null),
     );
     /** Editable cells grouped by their starting row. */
-    const starts: { col: number; node: HwpDocumentNode }[][] = Array.from(
+    const starts: { col: number; width:number; node: HwpDocumentNode }[][] = Array.from(
       { length: rows },
       /**
        * Evaluate the current parsing callback.
@@ -1356,6 +1361,8 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
        */
       () => [],
     );
+    /** Original cell spans constrain logical columns before merged widths are represented in CSS. */
+    const measurements:NativeColumnMeasurement[]=[];
     for (/** Current cell binding supplied by the enclosing source iteration. */
     const cell of cells) {
       /** Little-endian view of the current cell-list payload. */
@@ -1415,12 +1422,15 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
           (r) => r.tag === 66,
         )
         .flatMap(paragraph);
-      /** Screen width reconstructed from source HWP units. */
-      const width = px(cd.getUint32(offset + 8, true));
+      /** Original integer source width remains independent from display-pixel precision. */
+      const width = cd.getUint32(offset + 8, true);
+      measurements.push({column:col,span:colspan,width});
       /** Editor attributes reconstructed from the source properties. */
       const attrs: HwpNodeAttributes = {
         colspan,
         rowspan,
+        nativeCellHeight:nativeCellDimension(cd.getUint32(offset+12,true)),
+        ...readHwpCellField(cell.bytes.subarray(offset+30)),
         nativeCellFlags: cd.getUint32(offset-4,true),
         nativeCellProperties: readHwpCellProperties(cd.getUint32(offset-4,true),{
           left:cd.getUint16(offset+16,true),right:cd.getUint16(offset+18,true),
@@ -1428,7 +1438,7 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
         }),
         colwidth:
           width > 0
-            ? Array<number>(colspan).fill(Math.round(width / colspan))
+            ? Array<number>(colspan).fill(width / CELL_UNITS_PER_PIXEL / colspan)
             : null,
       };
       if (cell.bytes.length >= offset + 26) {
@@ -1438,6 +1448,7 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
       }
       starts[row].push({
         col,
+        width,
         node: {
           type: cd.getUint32(offset-4,true)&(1<<18)?"tableHeader":"tableCell",
           attrs,
@@ -1446,6 +1457,17 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
       });
     }
     if (!cells.length) throw error("표의 셀 목록이 없습니다.");
+    /** Independent unmerged measurements recover unequal logical columns inside original merged cells. */
+    const columnWidths=nativeColumnMeasurements(cols,measurements,control.bytes.length>=20?view(control.bytes).getUint32(16,true):0);
+    for(/** Original row and cell ownership remain unchanged while native logical boundaries are resolved. */const row of starts)for(/** A cell retains its own total if inconsistent source constraints cannot share a single grid. */const cell of row){
+      if(!cell.node.attrs?.colwidth)continue;
+      /** Only matching original totals can replace an inferred equal division inside a merged cell. */
+      const widths=columnWidths.slice(cell.col,cell.col+(cell.node.attrs.colspan??1));
+      let total=0;for(/** Native distances are summed before any CSS-pixel conversion. */const width of widths)total+=width;
+      if(Math.round(total)===cell.width)cell.node.attrs.colwidth=[];
+      else continue;
+      for(/** Fractional CSS widths retain every original native physical unit. */const width of widths)cell.node.attrs.colwidth.push(width/CELL_UNITS_PER_PIXEL);
+    }
     /** Editable child nodes accumulated in source order. */
     const content = starts.map(
       /**

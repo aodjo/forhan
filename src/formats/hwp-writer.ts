@@ -1,4 +1,6 @@
 import CFB from "cfb";
+import {nativeCellDimension} from '../cell-geometry.ts';
+import {writeHwpCellField} from '../cell-field-name.ts';
 import {hwpCellFlags,nativeCellProperties,nativeCellMargins,type NativeCellMargins} from '../cell-properties.ts';
 import { characterDecoration, type CharacterDecoration } from "../character-decorations.ts";
 import { characterFonts } from "../character-fonts.ts";
@@ -982,11 +984,11 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
             grid[y][x] = true;
           }
         }
-        /** Optional explicit editor column widths for the current cell. */
+        /** Explicit per-column widths or one older total spanning the complete merged cell. */
         const colwidth = cell.attrs?.colwidth as number[] | null;
         /** Decoded raster or table width used by the current source structure. */
         const width =
-          colwidth?.length === colspan &&
+          (colwidth?.length === colspan || colwidth?.length === 1) &&
           colwidth.every(
             /**
              * Validate an explicit table-column width.
@@ -1023,7 +1025,7 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
           colspan,
           rowspan,
           width,
-          height: Math.max(2400 * (cell.content?.length || 1), 2400 * rowspan),
+          height: nativeCellDimension(cell.attrs?.nativeCellHeight)??Math.max(2400 * (cell.content?.length || 1), 2400 * rowspan),
           fill: borderId(cell.attrs?.backgroundColor),
         });
         rowCounts[row] = (rowCounts[row] || 0) + 1;
@@ -1215,7 +1217,7 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
       /** Exact source cell properties remain independent from the destination geometry and border reference. */
       const properties=nativeCellProperties(cell.node.attrs?.nativeCellProperties),flags=hwpCellFlags(properties,cell.node.type==='tableHeader',cell.node.attrs?.nativeCellFlags??0),margins=properties.hasMargin?properties.margins:layout.margins;
       /** Modern cell-list header containing paragraph count and explicit geometry. */
-      const cellHeader = fields(47, [
+      const cellHeader = join([fields(38, [
         [0, blocks.length],
         [4, flags],
         [8, cell.column, 2],
@@ -1230,7 +1232,7 @@ export function writeHwp(options: HwpWriteOptions): Uint8Array {
         [30, properties.margins.bottom, 2],
         [32, cell.fill, 2],
         [34, cell.width],
-      ]);
+      ]),writeHwpCellField(cell.node.attrs?.nativeCellFieldName,cell.node.attrs?.nativeCellFieldData)]);
       result.push(record(72, level + 1, cellHeader));
       for (let index = 0; index < blocks.length; index++)
         result.push(

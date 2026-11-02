@@ -1,0 +1,19 @@
+{
+  "kind": "owned-original-native-cell-field-name-observations",
+  "binarySha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "scope": "Literal cell-list extensions independently saved by the original Hancom 2024 after assigning and clearing names on a synthetic one-cell table. The reference width ends at byte 38. Visible cell text stayed unchanged and the owned original process exited normally.",
+  "rows": [
+    { "id": "empty", "name": "", "extensionHex": "000000000000000000" },
+    {
+      "id": "ascii",
+      "name": "FORHAN_FIELD_A",
+      "extensionHex": "ff1b0201000000004001000e0046004f005200480041004e005f004600490045004c0044005f0041000000000000000000"
+    },
+    {
+      "id": "unicode",
+      "name": "포한_FIELD_B",
+      "extensionHex": "ff1b0201000000004001000a00ecd35cd55f004600490045004c0044005f0042000000000000000000"
+    },
+    { "id": "cleared", "name": "", "extensionHex": "000000000000000000" }
+  ]
+}

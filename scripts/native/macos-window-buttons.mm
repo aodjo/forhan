@@ -31,7 +31,7 @@ static id frame(AXUIElementRef element){
   /** Retained native geometry is decoded only after its AXValue type is checked. */
   CFTypeRef const position=attribute(element,kAXPositionAttribute),size=attribute(element,kAXSizeAttribute);
   CGPoint point={0,0};CGSize dimensions={0,0};
-  bool const valid=position&&size&&CFGetTypeID(position)==AXValueGetTypeID()&&CFGetTypeID(size)==AXValueGetTypeID()&&AXValueGetValue((AXValueRef)position,kAXValueCGPointType,&point)&&AXValueGetValue((AXValueRef)size,kAXValueCGSizeType,&dimensions);
+  bool const valid=position&&size&&CFGetTypeID(position)==AXValueGetTypeID()&&CFGetTypeID(size)==AXValueGetTypeID()&&AXValueGetValue((AXValueRef)position,(AXValueType)kAXValueCGPointType,&point)&&AXValueGetValue((AXValueRef)size,(AXValueType)kAXValueCGSizeType,&dimensions);
   if(position)CFRelease(position);if(size)CFRelease(size);
   return valid?@{@"x":@(point.x),@"y":@(point.y),@"width":@(dimensions.width),@"height":@(dimensions.height)}:[NSNull null];
 }

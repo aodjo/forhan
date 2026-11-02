@@ -17,7 +17,7 @@ on:
       platform_diagnostic_pattern:
         description: Optional test title filter for focused native platform diagnostics
         type: string
-        default: ''
+        default: ""
         required: false
       observe_native_keys:
         description: Retain passive source-key event observations for explicit diagnostics
@@ -93,6 +93,18 @@ jobs:
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: false
           CSC_FOR_PULL_REQUEST: true
+      - name: Inspect actual native caption before complete package diagnostics
+        if: ${{ inputs.native_package_diagnostics }}
+        run: node scripts/test-native-caption.ts
+      - name: Retain focused actual native caption observations
+        if: ${{ always() && inputs.native_package_diagnostics }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: Forhan-focused-native-caption-${{ matrix.platform }}-${{ matrix.arch }}
+          path: |
+            release/validation/native-caption-*.json
+            test-results/native-caption-*/
+          if-no-files-found: warn
       - run: npm run test:packaged -- --platform ${{ matrix.platform }} --arch ${{ matrix.arch }}
         if: ${{ !inputs.standalone_layout_diagnostics && !inputs.platform_layout_diagnostics }}
         env:

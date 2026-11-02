@@ -48,7 +48,10 @@ public static class ForhanImeNative {
    if(actual==expected&&GetAncestor(hit,2)==window){exposed=true;break;}
    System.Threading.Thread.Sleep(25);
   }
-  if(!exposed)throw new InvalidOperationException("Owned title bar did not become unobstructed within two seconds; no click was sent.");
+  if(!exposed){
+   uint foregroundProcess;GetWindowThreadProcessId(GetForegroundWindow(),out foregroundProcess);
+   throw new InvalidOperationException("Owned title bar did not become unobstructed within two seconds; no click was sent. Bounds="+bounds.Left+","+bounds.Top+","+bounds.Right+","+bounds.Bottom+"; target="+target.X+","+target.Y+"; hitProcess="+actual+"; hitRoot="+GetAncestor(hit,2).ToInt64()+"; expectedRoot="+window.ToInt64()+"; foregroundProcess="+foregroundProcess);
+  }
   try{
    if(!SetCursorPos(target.X,target.Y))throw new InvalidOperationException("Owned title-bar cursor placement failed.");
    hit=WindowFromPoint(target);GetWindowThreadProcessId(hit,out actual);

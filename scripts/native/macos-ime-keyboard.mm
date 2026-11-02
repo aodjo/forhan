@@ -49,9 +49,32 @@ static NSString* identifier(TISInputSourceRef source){
  * enabled(source); // No configuration is changed.
  */
 static bool enabled(TISInputSourceRef source){
+  if(!source)return false;
   /** Only an original native Boolean can establish enabled state. */
   CFTypeRef const value=TISGetInputSourceProperty(source,kTISPropertyInputSourceIsEnabled);
   return value&&CFGetTypeID(value)==CFBooleanGetTypeID()&&CFBooleanGetValue((CFBooleanRef)value);
+}
+
+/**
+ * Obtain a fresh retained native source after asynchronous input-source state changes.
+ *
+ * The original pre-enable enumeration is retained separately for restoration;
+ * selection observes a new actual source object rather than assuming its old metadata changed.
+ * @param {NSString*} name - Exact previously observed native input-source identifier.
+ * @returns {TISInputSourceRef} Fresh retained matching source, or null when absent.
+ * @example
+ * TISInputSourceRef source=freshSource(@"com.apple.inputmethod.Korean.2SetKorean");
+ */
+static TISInputSourceRef freshSource(NSString* name){
+  /** The fresh list remains owned until the matching source is independently retained. */
+  CFArrayRef const list=TISCreateInputSourceList(NULL,true);
+  TISInputSourceRef found=NULL;
+  if(list)for(CFIndex index=0;index<CFArrayGetCount(list);index++){
+    /** Original IDs are compared without inventing a target from its localized display name. */
+    TISInputSourceRef const source=(TISInputSourceRef)CFArrayGetValueAtIndex(list,index);
+    if([identifier(source) isEqualToString:name]){found=(TISInputSourceRef)CFRetain(source);break;}
+  }
+  if(list)CFRelease(list);return found;
 }
 
 /**
@@ -104,6 +127,7 @@ int main(void){
     /** Only sources actually enabled by this invocation may be disabled during cleanup. */
     NSMutableArray* const newlyEnabled=[NSMutableArray array];
     CGEventSourceRef eventSource=NULL;
+    TISInputSourceRef freshTarget=NULL;
     bool succeeded=false;
     @try{
       if(!original||!sources)@throw [NSException exceptionWithName:@"MissingInputSources" reason:@"Native input-source enumeration failed." userInfo:nil];
@@ -145,9 +169,20 @@ int main(void){
         if([name isEqualToString:@"com.apple.inputmethod.Korean.2SetKorean"])target=source;
       }
       if(!target)@throw [NSException exceptionWithName:@"KoreanInputSourceUnavailable" reason:@"The installed Apple Korean two-set source was not found." userInfo:nil];
+      for(int attempt=0;attempt<20;attempt++){
+        if(freshTarget)CFRelease(freshTarget);
+        freshTarget=freshSource(@"com.apple.inputmethod.Korean.2SetKorean");
+        if(enabled(freshTarget))break;
+        settle(0.1);
+      }
+      /** Actual post-enable mode and parent state distinguish unavailable activation from stale source references. */
+      TISInputSourceRef const freshParent=freshSource(@"com.apple.inputmethod.Korean");
+      report[@"modeEnabledAfterEnable"]=@(enabled(freshTarget));report[@"parentEnabledAfterEnable"]=@(enabled(freshParent));
+      if(freshParent)CFRelease(freshParent);
+      if(!freshTarget||!enabled(freshTarget))@throw [NSException exceptionWithName:@"ModeEnableNotObserved" reason:@"Fresh native enumeration did not observe the requested mode as enabled." userInfo:nil];
       requireOwner(pid,executable,bundle);
       /** A native API result cannot substitute for the independently observed selected source. */
-      OSStatus const selected=TISSelectInputSource(target);
+      OSStatus const selected=TISSelectInputSource(freshTarget);
       report[@"selectStatus"]=@(selected);
       settle(1.0);
       TISInputSourceRef const current=TISCopyCurrentKeyboardInputSource();
@@ -181,6 +216,7 @@ int main(void){
     }@catch(NSException* exception){report[@"failure"]=exception.reason?:exception.name;}
     @finally{
       if(eventSource)CFRelease(eventSource);
+      if(freshTarget)CFRelease(freshTarget);
       /** Original selection is restored even when a source enable or foreground check failed. */
       OSStatus const restored=original?TISSelectInputSource(original):paramErr;
       settle(0.3);

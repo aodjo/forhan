@@ -20,12 +20,13 @@ public static class ForhanImeNative {
  /**
   * Activate only the verified generated application through its visible title bar.
   *
-  * Raising the owned frame does not activate another application. The exact hit
-  * window is checked before a balanced mouse click; cursor restoration follows
-  * native dispatch. Foreground and keyboard-focus guards remain mandatory afterward.
+  * Raising the owned frame does not prove that the native window manager has
+  * exposed its title bar yet. A bounded wait observes the exact native hit
+  * owner before any click; all process, root-frame and focus guards remain
+  * mandatory. Cursor restoration respects intervening user pointer movement.
   * @param {IntPtr} window - Previously verified generated application frame.
   * @param {uint} expected - Previously verified process identifier.
-  * @returns {void} Clicks only an unobstructed owned title bar and restores the cursor.
+  * @returns {void} Clicks only an acknowledged owned title bar and restores an unmoved cursor.
   * @throws {InvalidOperationException} If the frame, hit target or native observation differs.
   * @example
   * ForhanImeNative.FocusOwned(window, process);
@@ -37,16 +38,24 @@ public static class ForhanImeNative {
   Rect bounds;Point previous;
   if(!GetWindowRect(window,out bounds)||bounds.Right-bounds.Left<200||bounds.Bottom-bounds.Top<100||!GetCursorPos(out previous))throw new InvalidOperationException("Owned frame geometry is unavailable.");
   if(!SetWindowPos(window,IntPtr.Zero,0,0,0,0,0x13))throw new InvalidOperationException("Owned frame could not be raised.");
-  Point target=new Point{X=bounds.Left+(bounds.Right-bounds.Left)/2,Y=bounds.Top+12};
-  IntPtr hit=WindowFromPoint(target);GetWindowThreadProcessId(hit,out actual);
-  if(actual!=expected||GetAncestor(hit,2)!=window)throw new InvalidOperationException("Owned title bar is obstructed; no click was sent.");
+  Point target=new Point();IntPtr hit=IntPtr.Zero;bool exposed=false;
+  for(int attempt=0;attempt<80;attempt++){
+   GetWindowThreadProcessId(window,out actual);
+   if(actual!=expected)throw new InvalidOperationException("Owned activation process changed while awaiting native exposure.");
+   if(!GetWindowRect(window,out bounds))throw new InvalidOperationException("Owned frame geometry disappeared while awaiting native exposure.");
+   target=new Point{X=bounds.Left+(bounds.Right-bounds.Left)/2,Y=bounds.Top+12};
+   hit=WindowFromPoint(target);GetWindowThreadProcessId(hit,out actual);
+   if(actual==expected&&GetAncestor(hit,2)==window){exposed=true;break;}
+   System.Threading.Thread.Sleep(25);
+  }
+  if(!exposed)throw new InvalidOperationException("Owned title bar did not become unobstructed within two seconds; no click was sent.");
   try{
    if(!SetCursorPos(target.X,target.Y))throw new InvalidOperationException("Owned title-bar cursor placement failed.");
    hit=WindowFromPoint(target);GetWindowThreadProcessId(hit,out actual);
    if(actual!=expected||GetAncestor(hit,2)!=window)throw new InvalidOperationException("Owned title-bar ownership changed; no click was sent.");
    mouse_event(2,0,0,0,UIntPtr.Zero);mouse_event(4,0,0,0,UIntPtr.Zero);
    System.Threading.Thread.Sleep(80);
-  }finally{SetCursorPos(previous.X,previous.Y);}
+  }finally{Point current;if(GetCursorPos(out current)&&current.X==target.X&&current.Y==target.Y)SetCursorPos(previous.X,previous.Y);}
  }
  /**
   * Read actual owned frame bounds.

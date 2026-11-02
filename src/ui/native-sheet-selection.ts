@@ -192,6 +192,35 @@ export function nativeSheetKeySelection(view:EditorView,event:KeyboardEvent):fal
 }
 
 /**
+ * Commit the genuine browser navigation endpoint before deferred focus work can restore older source.
+ *
+ * A native horizontal arrow can move the browser caret before selectionchange
+ * reaches the editor model. On macOS a later focus restoration can then replace
+ * that real endpoint with the previous model position. Navigation keyup commits
+ * only the observed source selection without adding history or changing text.
+ * The original DOM endpoints retain bidi and soft-wrap affinity when their
+ * source nodes survive and no other plugin redirects the committed selection.
+ * Active IME composition and non-navigation input keep their normal ownership.
+ * @param {EditorView} view - Actual owning original source view.
+ * @param {KeyboardEvent} event - Genuine browser navigation-key release.
+ * @returns {false} Preserves ordinary ownership of the original keyup event.
+ * @example
+ * nativeSheetKeyUpSelection(view,event); // Three real right arrows remain three before a following Down.
+ */
+export function nativeSheetKeyUpSelection(view:EditorView,event:KeyboardEvent):false{
+  if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(event.key)||view.composing||event.isComposing||event.defaultPrevented||event.keyCode===229)return false;
+  /** Genuine source endpoints are resolved against the same unchanged document. */
+  const transaction=preserveNativeTextSelection(view,view.state.tr.setMeta('addToHistory',false));
+  if(!transaction.selectionSet||!(transaction.selection instanceof TextSelection))return false;
+  /** Original text-leaf affinity is independent of the model's equivalent logical position. */
+  const selection=view.dom.ownerDocument.getSelection(),anchor=selection?.anchorNode,focus=selection?.focusNode,anchorOffset=selection?.anchorOffset,focusOffset=selection?.focusOffset;
+  if(!selection||!anchor||!focus||anchorOffset===undefined||focusOffset===undefined)return false;
+  view.dispatch(transaction.scrollIntoView());
+  if(transaction.selection.eq(view.state.selection)&&anchor.isConnected&&focus.isConnected&&view.dom.contains(anchor)&&view.dom.contains(focus))selection.setBaseAndExtent(anchor,anchorOffset,focus,focusOffset);
+  return false;
+}
+
+/**
  * Advance native-width left-to-right source by complete original graphemes.
  *
  * Negative native letter spacing and interleaved vector copies can make a

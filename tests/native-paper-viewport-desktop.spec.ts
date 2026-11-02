@@ -4,7 +4,7 @@ import {tmpdir} from 'node:os';
 import {createHash,randomUUID} from 'node:crypto';
 import path from 'node:path';
 import {desktopLaunchOptions,closeOwnedDesktop,resizeOwnedDesktop} from './helpers/desktop-launch.ts';
-import {exerciseNativePaperFrames,exerciseNativePaperResize} from './helpers/native-paper-scenarios.ts';
+import {exerciseNativePaperFrames,exerciseNativePaperResize,exerciseNativeNavigationKeyup} from './helpers/native-paper-scenarios.ts';
 import {observeNativeKeySource,retainNativeKeySource} from './helpers/native-key-source-observation.ts';
 
 /**
@@ -132,3 +132,47 @@ async function verifyDesktopNativePaperCaretColumns():Promise<void>{
 }
 
 test('native source caret columns survive real native resize after immediate arrow movement',verifyDesktopNativePaperCaretColumns);
+
+/**
+ * Verify actual native navigation releases commit source before deferred focus can restore an older caret.
+ *
+ * The original short-line fixture uses genuine native key events and a read-only
+ * root-phase observer. The selected packaged executable must remain a real
+ * archived application, and all cleanup stays inside its generated profile.
+ * @async
+ * @returns {Promise<void>} Resolves after actual original navigation endpoints agree.
+ * @throws {Error} If actual source, runtime identity, native keyup or owned cleanup fails.
+ * @example
+ * // Three Right releases retain the third original source position on Mac and Windows.
+ */
+async function verifyDesktopNativeNavigationKeyup():Promise<void>{
+  test.setTimeout(60000);
+  /** One unique native application and disposable profile own this independent regression. */
+  const profile=await mkdtemp(path.join(tmpdir(),'forhan-native-keyup-columns-')),options=desktopLaunchOptions(profile);
+  options.args!.push('--force-device-scale-factor=1');
+  /** Real native execution cannot be replaced by a browser viewport or fake platform. */
+  const desktop=await electron.launch(options);
+  try{
+    /** Original source and native keyboard events belong to this actual renderer. */
+    const page=await desktop.firstWindow();await expect(page.locator('.tiptap')).toBeVisible();
+    if(process.env.FORHAN_PACKAGED_EXECUTABLE)expect(await desktop.evaluate(
+      /**
+       * Read actual native packaging identity without changing the selected application.
+       *
+       * @param {typeof import('electron')} context - Actual owned native process exports.
+       * @returns {boolean} Original real packaging state.
+       * @example
+       * // Development Electron cannot satisfy the packaged gate.
+       */
+      ({app})=>app.isPackaged,
+    )).toBe(true);
+    await resizeOwnedDesktop(desktop,1440,960);
+    await exerciseNativeNavigationKeyup(page);
+  }finally{
+    await closeOwnedDesktop(desktop);
+    expect(path.dirname(path.resolve(profile))).toBe(path.resolve(tmpdir()));expect(path.basename(profile).startsWith('forhan-native-keyup-columns-')).toBe(true);
+    await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:200});
+  }
+}
+
+test('native source caret navigation commits actual keyup before delayed focus work',verifyDesktopNativeNavigationKeyup);

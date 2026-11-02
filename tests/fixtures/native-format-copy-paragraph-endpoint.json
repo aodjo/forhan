@@ -1,0 +1,18 @@
+{
+  "kind": "owned-original-Hwp-COM-format-copy-observation",
+  "sourceBinarySha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "texts": ["원본", "대상", "유지"],
+  "initialNativeAlignment": [3, 1, 2],
+  "initialAlignment": ["right", "left", "center"],
+  "copyMode": "paragraph",
+  "sourceParagraph": 0,
+  "sourceOffset": 1,
+  "selection": { "fromParagraph": 1, "fromOffset": 0, "toParagraph": 2, "toOffset": 0 },
+  "observedNativeAlignment": [3, 3, 2],
+  "observedAlignment": ["right", "right", "center"],
+  "sourceTextUnchanged": true,
+  "copyOptionsRestored": true,
+  "normalExit": true,
+  "forced": false,
+  "scope": "One original desktop paragraph-copy endpoint observation. It is ordinary owned COM evidence, not REA runtime tracing or a complete format-copy oracle."
+}

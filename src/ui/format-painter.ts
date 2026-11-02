@@ -139,11 +139,12 @@ export function applyFormatPainter(editor:Editor,source:FormatPainterSource,opti
        * Node dimensions, identifiers, manual breaks and child content remain unchanged.
        * @param {ProseMirrorNode} node - Actual selected target node.
        * @param {number} position - Original absolute target-node start.
-       * @returns {void} Appends position-preserving node-attribute changes.
+       * @returns {false|void} Skips an unselected trailing block or appends position-preserving appearance changes.
        * @example
        * // Two selected cells receive the source fill without changing their colspan.
        */
       (node,position)=>{
+        if(node.isTextblock&&position+1===to)return false;
         if(!options.cellOnly&&(options.mode==='character'||options.mode==='both')&&node.isText){
           for(/** Each actual target URL is retained while its automatic underline becomes explicit copied character appearance. */const mark of node.marks)if(mark.type.name==='link')transaction.addMark(Math.max(from,position),Math.min(to,position+node.nodeSize),mark.type.create({...mark.attrs,nativeDefaultUnderline:false}));
         }

@@ -1,5 +1,6 @@
 import {test,expect,type Page} from '@playwright/test';
 import type {JSONContent} from '@tiptap/core';
+import {readFile} from 'node:fs/promises';
 import {SOURCE_DOCUMENT,SOURCE_METRICS,SOURCE_PARAGRAPH,importSource,selectSource,savedSource,ribbonCopy} from './helpers/format-painter.ts';
 
 /**
@@ -192,3 +193,59 @@ async function verifyNormalDefaults({page}:{page:Page}):Promise<void>{
 }
 
 test('plain copied character defaults override heading weight and only selected hyperlink decoration',verifyNormalDefaults);
+
+/**
+ * Preserve the original native paragraph-copy boundary at the next paragraph's start.
+ *
+ * A separately observed installed-Hwp case supplies actual before and after
+ * alignments. The final source paragraph owns no selected glyph and must keep
+ * its original shape rather than receiving the preceding paragraph's copy.
+ * @async
+ * @param {{page:Page}} context - Actual isolated public application renderer.
+ * @returns {Promise<void>} Resolves after the original endpoint result and one-step undo agree.
+ * @example
+ * // Original native alignments 3,1,2 become 3,3,2, preserving the last centered paragraph.
+ */
+async function verifyOriginalParagraphEndpoint({page}:{page:Page}):Promise<void>{
+  /** Public numeric source observations contain no native program bytes or private document data. */
+  const oracle=JSON.parse(await readFile(new URL('./fixtures/native-format-copy-paragraph-endpoint.json',import.meta.url),'utf8')),
+    doc:JSONContent={type:'doc',content:[]};
+  for(let index=0;index<oracle.texts.length;index++)doc.content!.push({type:'paragraph',attrs:{textAlign:oracle.initialAlignment[index]},content:[{type:'text',text:oracle.texts[index]}]});
+  await page.goto('/');await importSource(page,'original-copy-endpoint.fhn',doc);
+  /** Actual production source before copying supplies complete untouched paragraph invariants. */
+  const before=await savedSource(page);
+  await selectSource(page,'.tiptap > p:first-child',oracle.sourceOffset);await ribbonCopy(page);
+  await page.locator('[name="format-copy-body"][value="paragraph"]').check();await page.keyboard.press('Alt+d');
+  await page.locator('.tiptap').focus();await page.locator('.tiptap').evaluate(
+    /**
+     * Select actual source from the target start to the following paragraph's first position.
+     *
+     * Only genuine browser selection changes; no model attributes or content are assigned.
+     * @param {HTMLElement} root - Actual owning source editor root.
+     * @returns {void} Assigns original source endpoints matching the independently observed native case.
+     * @throws {Error} If the selected original source text is absent.
+     * @example
+     * // The final paragraph's first original glyph remains outside the selection.
+     */
+    root=>{
+      /** Each original paragraph contributes its actual first editable text node. */
+      const points:Node[]=[];
+      for(/** Only the two independent source endpoint blocks establish the selection. */const index of [1,2]){
+        /** Auxiliary drawings cannot become source endpoints. */
+        const walker=document.createTreeWalker(root.children[index],NodeFilter.SHOW_TEXT);
+        while(walker.nextNode())if(!walker.currentNode.parentElement?.closest('svg,[contenteditable="false"]')){points.push(walker.currentNode);break;}
+      }
+      if(points.length!==2)throw new Error('Original endpoint source is absent.');
+      document.getSelection()!.setBaseAndExtent(points[0],0,points[1],0);
+    },
+  );
+  await page.keyboard.press('Shift');await ribbonCopy(page);
+  /** Actual serialized paragraph alignments are independent from generated paint and selection markup. */
+  const after=await savedSource(page),alignments:string[]=[];
+  for(/** Every final source block retains its real paragraph identity. */const node of after.content!)alignments.push(node.attrs!.textAlign);
+  expect(alignments).toEqual(oracle.observedAlignment);
+  expect(after.content![2]).toEqual(before.content![2]);
+  await page.locator('.tiptap').focus();await page.keyboard.press('ControlOrMeta+z');expect(await savedSource(page)).toEqual(before);
+}
+
+test('format copying preserves the independently observed original next-paragraph selection boundary',verifyOriginalParagraphEndpoint);

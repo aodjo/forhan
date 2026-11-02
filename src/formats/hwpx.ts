@@ -1,4 +1,5 @@
 import type { JSONContent } from "@tiptap/core";
+import {nativeTableProperties,readHwpxTableProperties,hwpxTableProperties} from '../table-properties.ts';
 import {CELL_UNITS_PER_PIXEL,nativeColumnMeasurements,nativeCellDimension,type NativeColumnMeasurement} from '../cell-geometry.ts';
 import {cellFieldName} from '../cell-field-name.ts';
 import {readHwpxCellProperties,readHwpxCellMargins,hwpxCellProperties,nativeCellMargins} from '../cell-properties.ts';
@@ -1601,11 +1602,12 @@ export async function readHwpx(
                 nativeCellHeight:nativeCellDimension(size.height===undefined?null:Number(size.height)),
                 nativeCellFieldName:cellFieldName(tc.attrs.name??''),
                 nativeCellProperties:readHwpxCellProperties(tc.attrs,child(tc,'subList')?.attrs??{},child(tc,'cellMargin')?.attrs),
-                colwidth: size.width ? [] : null,
+                colwidth: size.width===undefined ? null : [],
               },
               content: kids(child(tc, "subList"), "p").flatMap(paragraph),
             };
-            if (size.width) {
+            if(size.width!==undefined&&number(size.width)===0)cell.attrs.colwidth=[0];
+            else if (size.width!==undefined) {
               /** The first logical column occupied by this native cell. */
               const start = Math.max(
                 0,
@@ -1615,6 +1617,10 @@ export async function readHwpx(
                 cell.attrs.colwidth.push(
                   (columnWidths[start + offset] ||number(size.width)/number(span.colSpan,1))/CELL_UNITS_PER_PIXEL,
                 );
+              /** A resized owning cell can disagree with the shared logical grid; its actual source total takes precedence. */
+              let resolvedWidth=0;
+              for(/** Summing before rounding retains the exact native width across merged source columns. */const width of cell.attrs.colwidth)resolvedWidth+=width*CELL_UNITS_PER_PIXEL;
+              if(Math.round(resolvedWidth)!==number(size.width))cell.attrs.colwidth=[number(size.width)/CELL_UNITS_PER_PIXEL];
             }
             /**
              * The native solid background color selected for the current table cell.
@@ -1632,7 +1638,7 @@ export async function readHwpx(
     );
     activeLinkIds.length = 0;
     activeLinkIds.push(...parentLinks);
-    return remember({ type: "table", attrs:{nativeCellMargins:readHwpxCellMargins(child(tbl,'inMargin')?.attrs)}, content }, tbl, { object: true });
+    return remember({ type: "table", attrs:{nativeTableProperties:readHwpxTableProperties(tbl.attrs),nativeCellMargins:readHwpxCellMargins(child(tbl,'inMargin')?.attrs)}, content }, tbl, { object: true });
   }
   /**
    * Advance a recognized hyperlink field scope while reading ordered controls.
@@ -3513,15 +3519,17 @@ export async function writeHwpx({
         );
       },
     );
+    /** Explicit source properties take precedence over older retained XML-only metadata. */
+    const priorProperties=readHwpxTableProperties(table.attrs),properties=nativeTableProperties(node.attrs?.nativeTableProperties??priorProperties),spacingChanged=properties.cellSpacing!==priorProperties.cellSpacing;
     /** Explicit editor column measurements, with page-width fallback only for missing slots. */
     const columnWidths = editableColumnWidths(
       coords,
       maxCols,
-      unit(page.width - page.marginLeft - page.marginRight),
+      Math.max(1,unit(page.width - page.marginLeft - page.marginRight)-properties.cellSpacing*(maxCols+1)),
     );
     /** Native table dimensions derived from resolved columns rather than forced page-body width. */
-    const width = columnSpanWidth(columnWidths),
-      height = rows.length * 2400;
+    const width = columnSpanWidth(columnWidths)+properties.cellSpacing*(maxCols+1),
+      height = rows.length * 2400+properties.cellSpacing*(rows.length+1);
     let geometryChanged = !src || src.original.content?.length !== rows.length;
     for (/** The positioned row checked for explicit cell-geometry changes. */ const row of coords) {
       for (/** The positioned cell compared with its retained native geometry. */ const cell of row) {
@@ -3536,8 +3544,12 @@ export async function writeHwpx({
           geometryChanged = true;
       }
     }
+    /** A spacing-only edit retains the original fitted object height plus the independent perimeter/inter-row gaps. */
+    const cellsChanged=geometryChanged;
+    geometryChanged ||= spacingChanged;
     table.attrs = {
       ...table.attrs,
+      ...hwpxTableProperties(properties),
       rowCnt: String(rows.length),
       colCnt: String(maxCols),
     };
@@ -3569,8 +3581,10 @@ export async function writeHwpx({
     else if (geometryChanged) {
       /** The retained native table-size record whose width follows edited column measurements. */
       const tableSize = child(table, "sz");
-      if (tableSize) tableSize.attrs.width = String(width);
-      else
+      if (tableSize) {
+        tableSize.attrs.width = String(width);
+        if(spacingChanged&&!cellsChanged)tableSize.attrs.height=String(Math.max(0,number(tableSize.attrs.height)+(properties.cellSpacing-priorProperties.cellSpacing)*(rows.length+1)));
+      } else
         table.children.unshift(
           el("hp:sz", {
             width,
@@ -3708,6 +3722,17 @@ export async function writeHwpx({
                       "cellMargin",
                     ].includes(local(n)),
                 );
+                /** Real owning-cell widths remain independent from the shared logical column allocation. */
+                const suppliedWidths=c.attrs?.colwidth as unknown;
+                let ownWidth=columnSpanWidth(columnWidths,start,cs);
+                if(Array.isArray(suppliedWidths)&&(suppliedWidths.length===cs||suppliedWidths.length===1)){
+                  let total=0,valid=true;
+                  for(/** Both per-column arrays and retained one-slot merged totals belong to this actual source cell. */const part of suppliedWidths){
+                    if(typeof part!=='number'||!Number.isFinite(part)||part<0){valid=false;break;}
+                    total+=part*CELL_UNITS_PER_PIXEL;
+                  }
+                  if(valid)ownWidth=Math.round(total);
+                }
                 /**
                  * The retained native cell size reused when imported geometry remains applicable.
                  */
@@ -3718,12 +3743,12 @@ export async function writeHwpx({
                 const cellSize = oldSize
                   ? clone(oldSize)
                   : el("hp:cellSz", {
-                      width: columnSpanWidth(columnWidths, start, cs),
+                      width: ownWidth,
                       height: 2400 * rs,
                     });
                 if (geometryChanged)
                   cellSize.attrs.width = String(
-                    columnSpanWidth(columnWidths, start, cs),
+                    ownWidth,
                   );
                 /** Explicit source height remains exact even when text changes or a cell is resized. */
                 const cellHeight=nativeCellDimension(c.attrs?.nativeCellHeight);

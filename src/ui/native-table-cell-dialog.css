@@ -1,0 +1,456 @@
+.native-dialog-table-cell .ntc-tabs {
+  position: absolute;
+  inset: 40px 0 auto;
+  height: 31px;
+}
+.native-dialog-table-cell .ntc-tabs button {
+  position: absolute;
+  top: 0;
+  height: 31px;
+  min-width: 0;
+  padding: 0 8px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: #fff;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+  color: #172c45;
+}
+.native-dialog-table-cell .ntc-tabs button[aria-selected="true"] {
+  color: #2864ff;
+  border-bottom-color: #2864ff;
+}
+.native-dialog-table-cell .ntc-panel {
+  position: absolute;
+  left: 15px;
+  top: 70px;
+  width: 549px;
+  height: 590px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+}
+.native-dialog-table-cell .ntc-panel[hidden] {
+  display: none;
+}
+.native-dialog-table-cell .ntc-check,
+.native-dialog-table-cell .ntc-distance,
+.native-dialog-table-cell .ntc-text,
+.native-dialog-table-cell .ntc-group,
+.native-dialog-table-cell .ntc-field-label {
+  position: absolute;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+  white-space: nowrap;
+}
+.native-dialog-table-cell .ntc-check {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 18px;
+  margin: 0;
+}
+.native-dialog-table-cell input[type="checkbox"] {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  margin: 0;
+  flex: none;
+}
+.native-dialog-table-cell input[type="checkbox"]:checked {
+  background: #fff
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='m2 7 3 3 7-8' fill='none' stroke='%235178ff' stroke-width='1.2'/%3E%3C/svg%3E")
+    center/14px 14px no-repeat;
+}
+.native-dialog-table-cell input[type="checkbox"]:indeterminate {
+  background: linear-gradient(#6b87cf, #6b87cf) center/8px 2px no-repeat;
+}
+.native-dialog-table-cell label:has(input:disabled) {
+  color: #aaa;
+}
+.native-dialog-table-cell .ntc-distance {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  gap: 0;
+  line-height: 24px;
+}
+.native-dialog-table-cell .ntc-distance > span:first-child {
+  display: inline-block;
+  width: var(--ntc-caption-width);
+  flex: none;
+}
+.native-dialog-table-cell .ntc-number {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 91px;
+  height: 24px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+}
+.native-dialog-table-cell .ntc-number:has(input:disabled) {
+  border-color: #e5e5e5;
+}
+.native-dialog-table-cell .ntc-number input {
+  width: 52px;
+  height: 22px;
+  min-width: 0;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+  color: #172c45;
+  outline: none;
+}
+.native-dialog-table-cell .ntc-number input:disabled,
+.native-dialog-table-cell .ntc-number:has(input:disabled) .ntc-unit {
+  color: #b3b6bb;
+}
+.native-dialog-table-cell .ntc-unit {
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+  color: #172c45;
+}
+.native-dialog-table-cell .ntc-steps {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 16px;
+  height: 22px;
+  border-left: 1px solid #e5e5e5;
+}
+.native-dialog-table-cell .ntc-steps button {
+  height: 11px;
+  min-height: 0;
+  min-width: 0;
+  width: 15px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #808080;
+  font:
+    12px Arial,
+    sans-serif;
+  line-height: 10px;
+}
+.native-dialog-table-cell .ntc-steps button:disabled {
+  color: #ddd;
+}
+.native-dialog-table-cell .ntc-group {
+  width: 516px;
+  height: 17px;
+  line-height: 16px;
+  background: linear-gradient(#e5e5e5, #e5e5e5) left 8px/100% 1px no-repeat;
+}
+.native-dialog-table-cell .ntc-group > span {
+  padding-right: 8px;
+  background: #fff;
+}
+.native-dialog-table-cell .ntc-page-choice {
+  position: absolute;
+  width: 80px;
+  height: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+}
+.native-dialog-table-cell .ntc-page-choice input,
+.native-dialog-table-cell .ntc-align input,
+.native-dialog-table-cell .ntc-direction input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  margin: 0;
+  appearance: none;
+}
+.native-dialog-table-cell .ntc-page-choice svg {
+  border: 1px solid #ccc;
+  background: #fff;
+}
+.native-dialog-table-cell .ntc-page-choice:has(input:checked) svg {
+  background: #ddd;
+  border-color: #888;
+}
+.native-dialog-table-cell .ntc-page-choice:focus-within svg,
+.native-dialog-table-cell .ntc-align:focus-within {
+  outline: 1px dotted #2864ff;
+  outline-offset: -2px;
+}
+.native-dialog-table-cell .ntc-align {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+}
+.native-dialog-table-cell .ntc-align:has(input:checked) {
+  background: #ddd;
+  border-color: #999;
+}
+.native-dialog-table-cell .ntc-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.native-dialog-table-cell .ntc-direction {
+  position: absolute;
+  width: 64px;
+  height: 66px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+  color: #172c45;
+}
+.native-dialog-table-cell .ntc-direction-symbol {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #ddd;
+  writing-mode: vertical-rl;
+  color: #2f6cff;
+  letter-spacing: 2px;
+  padding: 5px 8px;
+  font:
+    13px Arial,
+    sans-serif;
+}
+.native-dialog-table-cell .ntc-direction:has(input:disabled) {
+  color: #aaa;
+}
+.native-dialog-table-cell
+  .ntc-direction:has(input:disabled)
+  .ntc-direction-symbol {
+  border-color: #eee;
+  color: #b4c8ff;
+}
+.native-dialog-table-cell
+  .ntc-direction:has(input:checked:not(:disabled))
+  .ntc-direction-symbol {
+  background: #ddd;
+  border-color: #999;
+}
+.native-dialog-table-cell .ntc-field-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.native-dialog-table-cell .ntc-field-label input {
+  height: 24px;
+  width: 490px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+  color: #172c45;
+  background: #fff;
+}
+.native-dialog-table-cell .ntc-divider-controls {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #b3b6bb;
+}
+.native-dialog-table-cell .ntc-divider-controls label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 25px;
+}
+.native-dialog-table-cell .ntc-divider-controls select,
+.native-dialog-table-cell .ntc-divider-controls button {
+  width: 127px;
+  height: 24px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background: #fff;
+  color: #aaa;
+}
+.native-dialog-table-cell .ntc-divider-controls button {
+  background: #999;
+}
+.native-dialog-table-cell .ntc-basic-position,
+.native-dialog-table-cell .ntc-unavailable-wrap,
+.native-dialog-table-cell .ntc-caption-grid {
+  position: absolute;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+}
+.native-dialog-table-cell .ntc-basic-position {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  color: #aaa;
+}
+.native-dialog-table-cell .ntc-basic-position select {
+  width: 91px;
+  height: 24px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background: #fff;
+  color: #aaa;
+}
+.native-dialog-table-cell .ntc-basic-position input {
+  width: 70px;
+  height: 24px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  border-radius: 4px;
+}
+.native-dialog-table-cell .ntc-unavailable-wrap {
+  display: flex;
+  gap: 6px;
+}
+.native-dialog-table-cell .ntc-unavailable-wrap button {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #ccd5e5;
+}
+.native-dialog-table-cell .ntc-caption-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 44px);
+  gap: 6px;
+}
+.native-dialog-table-cell .ntc-caption-grid button {
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #b4c8ff;
+}
+.native-dialog-table-cell .modal-actions {
+  position: absolute;
+  left: 576px;
+  top: 41px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+.native-dialog-table-cell .modal-actions button {
+  width: 80px;
+  height: 28px;
+  min-height: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+  color: #172c45;
+  padding: 0;
+}
+.native-dialog-table-cell .modal-actions .nd-apply {
+  border: 2px solid #2864ff;
+}
+.native-dialog-table-cell .ntc-footer {
+  position: absolute;
+  left: 15px;
+  top: 668px;
+  display: block;
+  width: 549px;
+  height: 24px;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+  line-height: 24px;
+}
+.native-dialog-table-cell .ntc-footer select {
+  position: absolute;
+  left: 78px;
+  top: 0;
+  width: 419px;
+  height: 24px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+  color: #172c45;
+}
+.native-dialog-table-cell .ntc-footer button {
+  position: absolute;
+  left: 503px;
+  top: 0;
+  width: 46px;
+  height: 24px;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  white-space: nowrap;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+  color: #aaa;
+}
+.native-dialog-table-cell .ntc-help,
+.native-dialog-table-cell .ntc-quick-help {
+  position: absolute;
+  top: 0;
+  width: 34px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #777;
+  font:
+    14px Arial,
+    sans-serif;
+}
+.native-dialog-table-cell .ntc-help {
+  right: 34px;
+}
+.native-dialog-table-cell .ntc-quick-help {
+  right: 68px;
+}
+.native-dialog-table-cell .ntc-help-text {
+  position: absolute;
+  left: 32px;
+  bottom: 55px;
+  width: 516px;
+  padding: 8px;
+  border: 1px solid #c5d2ed;
+  background: #f3f6ff;
+  font:
+    12px "Malgun Gothic",
+    sans-serif;
+}

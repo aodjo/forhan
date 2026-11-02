@@ -3,6 +3,7 @@
  * https://cdn.hancom.com/link/docs/한글문서파일형식_5.0_revision1.3.pdf
  */
 import CFB from "cfb";
+import {readHwpTableProperties,type NativeTableProperties} from '../table-properties.ts';
 import {CELL_UNITS_PER_PIXEL,nativeColumnMeasurements,nativeCellDimension,type NativeColumnMeasurement} from '../cell-geometry.ts';
 import {readHwpCellField} from '../cell-field-name.ts';
 import {readHwpCellProperties,type NativeCellProperties,type NativeCellMargins} from '../cell-properties.ts';
@@ -75,6 +76,8 @@ export interface HwpNodeAttributes extends HwpParagraphAttributes {
   nativeCellFieldName?: string | null;
   nativeCellFieldData?: string;
   nativeCellHeight?: number | null;
+  nativeTableProperties?: NativeTableProperties;
+  nativeTableFlags?: number;
   src?: string;
   alt?: string;
   width?: number;
@@ -1439,7 +1442,7 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
         colwidth:
           width > 0
             ? Array<number>(colspan).fill(width / CELL_UNITS_PER_PIXEL / colspan)
-            : null,
+            : [0],
       };
       if (cell.bytes.length >= offset + 26) {
         /** Referenced solid background definition for the current cell. */
@@ -1514,7 +1517,7 @@ export function readHwp(input: Uint8Array | ArrayBuffer): HwpImportResult {
         };
       },
     );
-    return { type: "table", attrs:{nativeCellMargins:{left:d.getUint16(10,true),right:d.getUint16(12,true),top:d.getUint16(14,true),bottom:d.getUint16(16,true)}}, content };
+    return { type: "table", attrs:{nativeTableFlags:d.getUint32(0,true),nativeTableProperties:readHwpTableProperties(d.getUint32(0,true),d.getUint16(8,true)),nativeCellMargins:{left:d.getUint16(10,true),right:d.getUint16(12,true),top:d.getUint16(14,true),bottom:d.getUint16(16,true)}}, content };
   }
   /**
    * Convert one anchored HWP control.

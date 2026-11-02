@@ -118,4 +118,3 @@ export async function ribbonCopy(page:Page):Promise<void>{
   await page.locator('button[data-native-tab="edit"]').click();
   await page.locator('.native-ribbon [data-native-action="format-painter"]').click();
 }
-

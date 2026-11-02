@@ -337,6 +337,7 @@ const button = (id: string, name: string, label: string, cls = ""): string =>
   `<button id="${id}" class="${cls}" title="${label}" aria-label="${label}">${i(name)}</button>`;
 /** Optional desktop bridge; absent during browser preview. */
 const native = window.forhan;
+document.documentElement.dataset.nativePlatform=native?.platform??'browser';
 /**
  * Normalise an error for a user-visible message.
  *

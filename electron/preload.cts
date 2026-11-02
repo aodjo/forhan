@@ -41,6 +41,8 @@ async function invoke<T>(channel: string, ...args: unknown[]): Promise<BridgeRes
 
 /** Expose only document operations supported by the isolated main process. */
 const bridge: DesktopBridge = {
+  /** Actual host platform is supplied by the isolated preload for native caption layout. */
+  platform:process.platform,
   /**
    * Read appearance remembered by the authenticated native application process.
    *

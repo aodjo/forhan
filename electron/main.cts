@@ -587,7 +587,9 @@ async function createWindow(): Promise<void> {
   /** Native window owned by this lifecycle, independent of later replacement windows. */
   const owner = new BrowserWindow({
     width: 1440, height: 960, minWidth: 950, minHeight: 640, backgroundColor: '#f5f5f5', title: '포한 · Forhan',
-    frame: false,
+    ...(process.platform === 'darwin'
+      ? {titleBarStyle:'hidden' as const,trafficLightPosition:{x:12,y:9}}
+      : {frame:false}),
     autoHideMenuBar: process.platform !== 'darwin',
     webPreferences: { preload: path.join(__dirname, 'preload.cjs'), nodeIntegration: false, contextIsolation: true, sandbox: true, spellcheck: false },
   });

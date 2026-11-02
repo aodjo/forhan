@@ -28,6 +28,7 @@ export async function saveNativeCopy(
   id: string,
   format: "forhan" | "hwp" | "hwpx",
 ): Promise<JSONContent> {
+  await expect(page.locator('#save-document')).toBeEnabled();
   /** Each output identity is inside the already created owned temporary directory. */
   const output = path.join(
     profile,
@@ -87,6 +88,7 @@ export async function saveNativeCopy(
     .toBe(true);
   /** Actual complete native bytes are read independently after production saving. */
   const bytes = await readFile(output);
+  await expect(page.locator('#save-document')).toBeEnabled();
   return format === "forhan"
     ? JSON.parse(bytes.toString()).doc
     : format === "hwp"

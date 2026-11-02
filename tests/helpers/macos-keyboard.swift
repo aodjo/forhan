@@ -15,6 +15,20 @@ func sourceString(_ source: TISInputSource, _ key: CFString) -> String {
     return Unmanaged<CFString>.fromOpaque(pointer).takeUnretainedValue() as String
 }
 
+/**
+ * Read a native input-source Boolean property without changing its enabled state.
+ *
+ * Parent input methods and their child modes have independent enabled flags.
+ * @param {TISInputSource} source - Native parent or mode being inspected.
+ * @param {CFString} key - Native Boolean property identifier.
+ * @returns {Bool} Original native property, or false when absent.
+ * @example sourceBoolean(source, kTISPropertyInputSourceIsEnabled)
+ */
+func sourceBoolean(_ source: TISInputSource, _ key: CFString) -> Bool {
+    guard let pointer = TISGetInputSourceProperty(source, key) else { return false }
+    return CFBooleanGetValue(Unmanaged<CFBoolean>.fromOpaque(pointer).takeUnretainedValue())
+}
+
 /** Actual host observations are written even when native event access is unavailable. */
 var report: [String: Any] = ["kind": "actual-macOS-Carbon-CGEvent-keyboard", "postEventAccess": CGPreflightPostEventAccess()]
 do {
@@ -42,21 +56,42 @@ do {
     guard let korean = sources.first(where: { sourceString($0, kTISPropertyInputSourceID) == "com.apple.inputmethod.Korean.2SetKorean" }) else {
         throw NSError(domain: "ForhanKeyboard", code: 4, userInfo: [NSLocalizedDescriptionKey: "The Apple two-set Korean input source is absent."])
     }
-    /** A previously disabled source must return to its original enabled state after the probe. */
-    let wasEnabled = CFBooleanGetValue(Unmanaged<CFBoolean>.fromOpaque(TISGetInputSourceProperty(korean, kTISPropertyInputSourceIsEnabled)!).takeUnretainedValue())
+    /** A disabled parent prevents selecting an enabled child mode on clean macOS runners. */
+    guard let parent = sources.first(where: { sourceString($0, kTISPropertyInputSourceID) == "com.apple.inputmethod.Korean" }) else {
+        throw NSError(domain: "ForhanKeyboard", code: 8, userInfo: [NSLocalizedDescriptionKey: "The Apple Korean parent input method is absent."])
+    }
+    /** Previously disabled parent and mode sources must both return to their original enabled states. */
+    let wasEnabled = sourceBoolean(korean, kTISPropertyInputSourceIsEnabled)
+    let parentWasEnabled = sourceBoolean(parent, kTISPropertyInputSourceIsEnabled)
+    report["modeInitiallyEnabled"] = wasEnabled
+    report["parentInitiallyEnabled"] = parentWasEnabled
     defer {
         report["restoreInputSourceStatus"] = TISSelectInputSource(original)
         if !wasEnabled { report["disableTemporaryInputSourceStatus"] = TISDisableInputSource(korean) }
+        if !parentWasEnabled { report["disableTemporaryParentStatus"] = TISDisableInputSource(parent) }
         report["restoredInputSource"] = sourceString(TISCopyCurrentKeyboardInputSource().takeRetainedValue(), kTISPropertyInputSourceID)
+    }
+    if !parentWasEnabled {
+        /** Parent activation uses Carbon's normal input-source service and is restored by the owned probe. */
+        let enableParent = TISEnableInputSource(parent)
+        report["enableParentStatus"] = enableParent
+        guard enableParent == noErr else {
+            throw NSError(domain: "ForhanKeyboard", code: 9, userInfo: [NSLocalizedDescriptionKey: "The actual Korean parent input method could not be enabled."])
+        }
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.2))
     }
     if !wasEnabled, TISEnableInputSource(korean) != noErr {
         throw NSError(domain: "ForhanKeyboard", code: 5, userInfo: [NSLocalizedDescriptionKey: "The actual Korean input source could not be enabled."])
     }
-    guard TISSelectInputSource(korean) == noErr else {
+    application.activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
+    RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.3))
+    /** The real Carbon status is retained before any source-selection assertion. */
+    let selectStatus = TISSelectInputSource(korean)
+    report["selectInputSourceStatus"] = selectStatus
+    guard selectStatus == noErr else {
         throw NSError(domain: "ForhanKeyboard", code: 6, userInfo: [NSLocalizedDescriptionKey: "The actual Korean input source could not be selected."])
     }
-    application.activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
-    usleep(300_000)
+    RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.3))
     report["selectedInputSource"] = sourceString(TISCopyCurrentKeyboardInputSource().takeRetainedValue(), kTISPropertyInputSourceID)
     /** Numeric physical key positions are parsed separately from the independent expected Korean source. */
     let keys = try JSONSerialization.jsonObject(with: Data(arguments[2].utf8)) as! [UInt16]

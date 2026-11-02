@@ -38,6 +38,7 @@ import { characterEmphasis } from "./character-emphasis";
 import { NativeCharacterEmphasis } from "./ui/character-emphasis";
 import { NativeDocumentNavigation } from "./ui/document-navigation";
 import { NativeWidthSelection } from "./ui/width-selection";
+import {NativeCellProtection} from './ui/native-cell-protection.ts';
 import { NativeCharacterWidths } from "./ui/character-width";
 import {
   characterMetrics,
@@ -457,6 +458,7 @@ const editor = new Editor({
     NativeCharacterEmphasis,
     NativeDocumentNavigation,
     NativeWidthSelection,
+    NativeCellProtection,
     NativeCharacterWidths,
     NativeParagraphWordBreak,
     Superscript,

@@ -1,0 +1,56 @@
+{
+  "kind": "owned-original-native-cell-protection-observations",
+  "binarySha256": "0d72eb8aba393d2eded01c3f16a2015e5a7125cd229adc373a0e7d1210d6c5d5",
+  "staticReaEvidence": "ev_b99e582f2e63ba9bb78cb30241a31f21695119fdd706c3c75b70478c5fc705a7",
+  "runtimeKind": "Ordinary owned COM, not REA runtime.",
+  "scope": "Ordinary cell navigation skips protected cells independently of form-editable metadata. Direct COM SetPosBySet bypasses ordinary navigation protection and is not a pointer/keyboard observation.",
+  "texts": [
+    "LEFT",
+    "MIDDLE",
+    "RIGHT"
+  ],
+  "rows": [
+    {
+      "id": "ordinary",
+      "protected": false,
+      "editable": false,
+      "expectedRightCell": 1,
+      "expectedLeftCell": 1,
+      "originalLists": {
+        "middle": 3,
+        "right": 3,
+        "left": 3
+      },
+      "directComPositionAccepted": true,
+      "directComInsertionAccepted": true
+    },
+    {
+      "id": "protected",
+      "protected": true,
+      "editable": false,
+      "expectedRightCell": 2,
+      "expectedLeftCell": 0,
+      "originalLists": {
+        "middle": 3,
+        "right": 4,
+        "left": 2
+      },
+      "directComPositionAccepted": true,
+      "directComInsertionAccepted": true
+    },
+    {
+      "id": "protected-form-editable",
+      "protected": true,
+      "editable": true,
+      "expectedRightCell": 2,
+      "expectedLeftCell": 0,
+      "originalLists": {
+        "middle": 3,
+        "right": 4,
+        "left": 2
+      },
+      "directComPositionAccepted": true,
+      "directComInsertionAccepted": true
+    }
+  ]
+}

@@ -184,9 +184,10 @@ async function verifyExplicitCellSelection({
     second = await page.locator(".tiptap td").nth(1).boundingBox();
   expect(first).not.toBeNull();
   expect(second).not.toBeNull();
-  await page.mouse.move(first!.x + 10, first!.y + 10);
+  /** Native protection permits cell-block extension from the ordinary cell into the protected adjacent cell. */
+  await page.mouse.move(second!.x + 10, second!.y + 10);
   await page.mouse.down();
-  await page.mouse.move(second!.x + 10, second!.y + 10, { steps: 8 });
+  await page.mouse.move(first!.x + 10, first!.y + 10, { steps: 8 });
   await page.mouse.up();
   await expect(page.locator(".tiptap .selectedCell")).toHaveCount(2);
   await ribbonCopy(page);
@@ -323,9 +324,11 @@ async function verifyProtectedCopySource({
       margins: { left: 9, right: 8, top: 7, bottom: 6 },
     };
   await importSource(page, "protected-copy-source.fhn", protectedSource);
-  await selectSource(page, ".tiptap th p", 1);
-  await ribbonCopy(page);
+  /** Actual unchanged imported source remains independent of schema defaults. */
+  const protectedBefore=await savedSource(page);
+  await page.locator('.tiptap th p').click();
   await expect(page.locator(".native-dialog-format-painter")).toHaveCount(0);
+  expect(await savedSource(page)).toEqual(protectedBefore);
   await importSource(
     page,
     "protected-rejection-target.fhn",
